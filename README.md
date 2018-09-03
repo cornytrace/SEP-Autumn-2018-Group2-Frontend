@@ -6,7 +6,7 @@
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/coreui/coreui-free-vue-admin-template.git eit-dash
+$ git clone https://github.com/cornytrace/SEP-Autumn-2018-Group2 eit-dash
 
 # go into app's directory
 $ cd eit-dash

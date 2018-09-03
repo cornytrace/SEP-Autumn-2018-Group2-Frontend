@@ -10,6 +10,11 @@ export default {
       }*/
     },
     {
+      name: 'Charts',
+      url: '/charts',
+      icon: 'icon-pie-chart'
+    },
+    {
       name: 'Geography'
     },
     {
@@ -169,11 +174,6 @@ export default {
           icon: 'icon-cursor'
         }
       ]
-    },
-    {
-      name: 'Charts',
-      url: '/charts',
-      icon: 'icon-pie-chart'
     },
     {
       name: 'Icons',
