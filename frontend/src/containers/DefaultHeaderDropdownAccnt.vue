@@ -27,28 +27,24 @@
       </b-dropdown-header>
       <b-dropdown-item><i class="fa fa-user" /> Profile</b-dropdown-item>
       <b-dropdown-item><i class="fa fa-wrench" /> Settings</b-dropdown-item>
-      <b-dropdown-item><i class="fa fa-usd" /> Payments
-        <b-badge variant="secondary">{{ itemsCount }}</b-badge>
-      </b-dropdown-item>
       <b-dropdown-item><i class="fa fa-file" /> Projects
         <b-badge variant="primary">{{ itemsCount }}</b-badge>
       </b-dropdown-item>
       <b-dropdown-divider />
-      <b-dropdown-item><i class="fa fa-shield" /> Lock Account</b-dropdown-item>
       <b-dropdown-item><i class="fa fa-lock" /> Logout</b-dropdown-item>
     </template>
   </AppHeaderDropdown>
 </template>
 
 <script>
-import { HeaderDropdown as AppHeaderDropdown } from '@coreui/vue'
+import { HeaderDropdown as AppHeaderDropdown } from "@coreui/vue";
 export default {
-  name: 'DefaultHeaderDropdownAccnt',
+  name: "DefaultHeaderDropdownAccnt",
   components: {
     AppHeaderDropdown
   },
   data: () => {
-    return { itemsCount: 42 }
+    return { itemsCount: 42 };
   }
-}
+};
 </script>

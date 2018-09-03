@@ -4,12 +4,31 @@ export default {
       name: 'Dashboard',
       url: '/dashboard',
       icon: 'icon-speedometer',
-      badge: {
+      /*badge: {
         variant: 'primary',
         text: 'NEW'
-      }
+      }*/
     },
     {
+      name: 'Geography'
+    },
+    {
+      name: 'Videos'
+    },
+    {
+      name: 'Graded Quizzes'
+    },
+    {
+      name: 'Forum'
+    },
+    {
+      name: 'Settings'
+    },
+    {
+      name: 'Contact',
+      icon: 'icon-envelope-open'
+    }
+    /*{
       title: true,
       name: 'Theme',
       class: '',
@@ -255,6 +274,6 @@ export default {
           icon: 'icon-star'
         }
       ]
-    },
+    },*/
   ]
 }
