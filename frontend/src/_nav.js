@@ -1,20 +1,16 @@
 export default {
   items: [
     {
-      name: 'Dashboard',
-      url: '/dashboard',
-      icon: 'icon-speedometer',
-      /*badge: {
-        variant: 'primary',
-        text: 'NEW'
-      }*/
+      icon: 'cui-dashboard',
+      url: '/courses',
+      name: 'Graded Quizzes'
+    },
+    {
+      name: 'Videos'
     },
     {
       name: 'Courses',
-      icon: 'cui-dashboard',
-      url: '/courses',
     },
-
     {
       name: 'Settings',
       icon: 'icon-settings'
