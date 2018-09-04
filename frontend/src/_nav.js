@@ -11,8 +11,8 @@ export default {
     },
     {
       name: 'Courses',
-      icon: 'cui-dashboard'
-      //url: '/courses'
+      icon: 'cui-dashboard',
+      url: '/courses',
     },
 
     {

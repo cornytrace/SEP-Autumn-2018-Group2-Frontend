@@ -6,6 +6,8 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 
 // Views
 const Dashboard = () => import('@/views/Dashboard')
+const Courses = () => import('@/views/Courses')
+const CourseDetail = () => import('@/views/CourseDetail')
 
 const Colors = () => import('@/views/theme/Colors')
 const Typography = () => import('@/views/theme/Typography')
@@ -75,6 +77,16 @@ export default new Router({
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
+        },
+        {
+          path: 'courses',
+          name: 'Courses',
+          component: Courses,
+        },
+        {
+          path: '/course/:courseid',
+          name: 'CourseDetail',
+          component: CourseDetail,
         },
         {
           path: 'theme',
