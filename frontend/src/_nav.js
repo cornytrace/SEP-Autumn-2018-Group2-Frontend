@@ -6,10 +6,12 @@ export default {
       url: '/courses',
     },
     {
-      name: 'Videos'
+      name: 'Videos',
+      icon: 'icon-chart'
     },
     {
-      name: 'Graded Quizzes'
+      name: 'Graded Quizzes',
+      icon: 'icon-check'
     },
     {
       name: 'Settings',
