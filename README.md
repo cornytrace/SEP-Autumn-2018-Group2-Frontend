@@ -2,6 +2,11 @@
 
 ## Installation
 
+### Preparation
+
+Install Node and NPM: https://nodejs.org/en/
+Either version is fine.
+
 ### Clone repo
 
 ``` bash
@@ -25,7 +30,7 @@ $ npm install
 ### Usage
 
 ``` bash
-# serve with hot reload at localhost:8080
+# run the site with hot reload at localhost:8080
 npm run serve
 
 # build for production with minification
