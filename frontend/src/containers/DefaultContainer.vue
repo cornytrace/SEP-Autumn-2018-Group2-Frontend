@@ -11,6 +11,10 @@
         <!--<b-nav-item class="px-3" to="/users" exact>Users</b-nav-item>-->
         <b-nav-item class="px-3">Settings</b-nav-item>
       </b-navbar-nav>
+      <b-dropdown id="ddown1" text="Coursera" class="m-md-2">
+        <b-dropdown-item>Coursera</b-dropdown-item>
+        <b-dropdown-item>Other Platform</b-dropdown-item>
+      </b-dropdown>
       <b-navbar-nav class="ml-auto">
         <b-nav-item class="d-md-down-none">
           <i class="icon-bell"></i>
