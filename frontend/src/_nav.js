@@ -10,6 +10,10 @@ export default {
       }*/
     },
     {
+      name: 'Courses',
+      //url: '/courses'
+    },
+    {
       name: 'Charts',
       url: '/charts',
       icon: 'icon-pie-chart'

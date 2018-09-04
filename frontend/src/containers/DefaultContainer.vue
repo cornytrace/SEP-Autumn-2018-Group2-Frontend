@@ -15,6 +15,10 @@
         <b-dropdown-item>Coursera</b-dropdown-item>
         <b-dropdown-item>Other Platform</b-dropdown-item>
       </b-dropdown>
+      <b-dropdown id="ddown1" text="course-1" class="m-md-2">
+        <b-dropdown-item>course-1</b-dropdown-item>
+        <b-dropdown-item>course-2</b-dropdown-item>
+      </b-dropdown>
       <b-navbar-nav class="ml-auto">
         <b-nav-item class="d-md-down-none">
           <i class="icon-bell"></i>
