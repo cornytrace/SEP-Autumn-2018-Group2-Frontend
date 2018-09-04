@@ -1,39 +1,75 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col sm="8" lg="6">
-        <b-card no-body header="Coursera Courses" class="bg-primary">
+      <b-col sm="8" lg="4">
+        <b-card no-body class="bg-primary">
           <b-card-body class="pb-0">
-            <b-card no-body class="bg-info">
-              <b-card-header>
-                course-1
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Data About Course 1</p>
-              </b-card-body>
-            </b-card>
-            <b-card no-body header="course-2" class="bg-info">
-              <b-card-body class="pb-0">
-                <p>Data About Course 2</p>
-              </b-card-body>
-            </b-card>
+            <b-dropdown class="float-right" variant="transparent p-0" right>
+              <template slot="button-content">
+                <i class="icon-settings"></i>
+              </template>
+              <b-dropdown-item>Action</b-dropdown-item>
+              <b-dropdown-item>Another action</b-dropdown-item>
+              <b-dropdown-item>Something else here...</b-dropdown-item>
+              <b-dropdown-item disabled>Disabled action</b-dropdown-item>
+            </b-dropdown>
+            <h4 class="mb-0">35246</h4>
+            <p>Total number of enrollers</p>
           </b-card-body>
+          <card-line1-chart-example chartId="card-chart-01" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
+        </b-card>
+      </b-col>
+      <b-col sm="8" lg="4">
+        <b-card no-body class="bg-info">
+          <b-card-body class="pb-0">
+            <b-dropdown class="float-right" variant="transparent p-0" right no-caret>
+              <template slot="button-content">
+                <i class="icon-location-pin"></i>
+              </template>
+              <b-dropdown-item>Action</b-dropdown-item>
+              <b-dropdown-item>Another action</b-dropdown-item>
+              <b-dropdown-item>Something else here...</b-dropdown-item>
+              <b-dropdown-item disabled>Disabled action</b-dropdown-item>
+            </b-dropdown>
+            <h4 class="mb-0">482</h4>
+            <p>Students who have completed a course</p>
+          </b-card-body>
+          <card-line2-chart-example chartId="card-chart-02" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
+        </b-card>
+      </b-col>
+      <b-col sm="8" lg="4">
+        <b-card no-body class="bg-warning">
+          <b-card-body class="pb-0">
+            <b-dropdown class="float-right" variant="transparent p-0" right>
+              <template slot="button-content">
+                <i class="icon-settings"></i>
+              </template>
+              <b-dropdown-item>Action</b-dropdown-item>
+              <b-dropdown-item>Another action</b-dropdown-item>
+              <b-dropdown-item>Something else here...</b-dropdown-item>
+              <b-dropdown-item disabled>Disabled action</b-dropdown-item>
+            </b-dropdown>
+            <h4 class="mb-0">326</h4>
+            <p>Total number of payments</p>
+          </b-card-body>
+          <card-line3-chart-example chartId="card-chart-03" class="chart-wrapper" style="height:70px;" height="70"/>
+        </b-card>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col sm="8" lg="6">
+        <b-card header="Conversion rate - Payments">
+            <div class="chart-wrapper">
+              <bar-example chartId="chart-bar-01"/>
+            </div>
         </b-card>
       </b-col>
       <b-col sm="8" lg="6">
-        <b-card no-body header="Other Platform Courses" class="bg-primary">
-          <b-card-body class="pb-0">
-            <b-card no-body header="course-1" class="bg-info">
-              <b-card-body class="pb-0">
-                <p>Data About Course 1</p>
-              </b-card-body>
-            </b-card>
-            <b-card no-body header="course-2" class="bg-info">
-              <b-card-body class="pb-0">
-                <p>Data About Course 2</p>
-              </b-card-body>
-            </b-card>
-          </b-card-body>
+        <b-card header="Graduation percentage">
+            <div class="chart-wrapper">
+              <bar-example chartId="chart-bar-01"/>
+            </div>
         </b-card>
       </b-col>
     </b-row>
