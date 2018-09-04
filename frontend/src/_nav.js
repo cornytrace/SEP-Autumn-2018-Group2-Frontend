@@ -11,27 +11,13 @@ export default {
     },
     {
       name: 'Courses',
+      icon: 'cui-dashboard'
       //url: '/courses'
     },
+
     {
-      name: 'Charts',
-      url: '/charts',
-      icon: 'icon-pie-chart'
-    },
-    {
-      name: 'Geography'
-    },
-    {
-      name: 'Videos'
-    },
-    {
-      name: 'Graded Quizzes'
-    },
-    {
-      name: 'Forum'
-    },
-    {
-      name: 'Settings'
+      name: 'Settings',
+      icon: 'icon-settings'
     },
     {
       name: 'Contact',
