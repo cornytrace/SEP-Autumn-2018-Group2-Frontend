@@ -85,7 +85,7 @@ export default new Router({
         },
         {
           path: '/course/:courseid',
-          name: 'Course',
+          name: 'CourseDetail',
           component: CourseDetail,
         },
         {
