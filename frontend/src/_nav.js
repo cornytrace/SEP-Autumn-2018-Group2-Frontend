@@ -1,15 +1,15 @@
 export default {
   items: [
     {
+      name: 'Courses',
       icon: 'cui-dashboard',
       url: '/courses',
-      name: 'Graded Quizzes'
     },
     {
       name: 'Videos'
     },
     {
-      name: 'Courses',
+      name: 'Graded Quizzes'
     },
     {
       name: 'Settings',
