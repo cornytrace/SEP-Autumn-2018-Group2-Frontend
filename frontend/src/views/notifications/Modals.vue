@@ -100,8 +100,8 @@ export default {
       successModal: false,
       warningModal: false,
       dangerModal: false,
-      infoModal: false
+      infoModal: false,
     }
-  }
+  },
 }
 </script>

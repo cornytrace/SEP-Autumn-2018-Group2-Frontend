@@ -86,14 +86,14 @@ export default {
   name: 'paginations',
   data () {
     return {
-      currentPage: 3
+      currentPage: 3,
     }
   },
   methods: {
     linkGen (pageNum) {
       return '#page/' + pageNum + '/foobar'
-    }
-  }
+    },
+  },
 }
 </script>
 

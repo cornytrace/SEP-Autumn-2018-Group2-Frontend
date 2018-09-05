@@ -682,8 +682,8 @@
 export default {
   name: 'standard-buttons',
   data: () => {
-    return { togglePress: false }
-  }
+    return { togglePress: false, }
+  },
 }
 </script>
 

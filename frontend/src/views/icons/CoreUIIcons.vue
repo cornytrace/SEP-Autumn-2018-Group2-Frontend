@@ -418,6 +418,6 @@
 </template>
 <script>
 export default {
-  name: 'CoreUIIcons'
+  name: 'CoreUIIcons',
 }
 </script>

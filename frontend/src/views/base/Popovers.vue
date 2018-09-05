@@ -186,9 +186,9 @@ export default {
         'topright', 'top', 'topleft',
         'bottomright', 'bottom', 'bottomleft',
         'righttop', 'right', 'lefttop',
-        'rightbottom', 'left', 'leftbottom'
+        'rightbottom', 'left', 'leftbottom',
       ],
-      show: false
+      show: false,
     }
   },
   methods: {
@@ -203,7 +203,7 @@ export default {
     },
     onDisable () {
       this.$refs.popover2.$emit('disable')
-    }
-  }
+    },
+  },
 }
 </script>

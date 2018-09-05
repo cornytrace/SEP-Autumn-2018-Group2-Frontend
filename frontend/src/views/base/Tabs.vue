@@ -159,13 +159,13 @@ export default {
   name: 'tabs',
   data () {
     return {
-      tabIndex: [0, 0],
+      tabIndex: [0, 0,],
       tabs: [
         'Calculator',
         'Shopping cart',
-        'Charts'
-      ]
+        'Charts',
+      ],
     }
-  }
+  },
 }
 </script>

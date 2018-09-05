@@ -121,7 +121,7 @@
 
 <script>
 export default {
-  name: 'navs'
+  name: 'navs',
 }
 </script>
 

@@ -236,9 +236,9 @@ export default {
   name: 'cards',
   data: function () {
     return {
-      show: true
+      show: true,
     }
-  }
+  },
 }
 </script>
 

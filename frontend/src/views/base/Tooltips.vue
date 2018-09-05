@@ -122,7 +122,7 @@ export default {
   data () {
     return {
       show: true,
-      disabled: false
+      disabled: false,
     }
   },
   methods: {
@@ -138,8 +138,8 @@ export default {
       } else {
         this.$refs.tooltip2.$emit('disable')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

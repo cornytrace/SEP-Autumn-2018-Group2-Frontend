@@ -246,7 +246,7 @@
 
 <script>
 export default {
-  name: 'list-groups'
+  name: 'list-groups',
 }
 </script>
 

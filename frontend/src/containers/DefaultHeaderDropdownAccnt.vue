@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import { HeaderDropdown as AppHeaderDropdown } from "@coreui/vue";
+import { HeaderDropdown as AppHeaderDropdown, } from "@coreui/vue";
 export default {
   name: "DefaultHeaderDropdownAccnt",
   components: {
-    AppHeaderDropdown
+    AppHeaderDropdown,
   },
   data: () => {
-    return { itemsCount: 42 };
-  }
+    return { itemsCount: 42, };
+  },
 };
 </script>

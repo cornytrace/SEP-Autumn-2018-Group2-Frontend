@@ -1,6 +1,6 @@
 <script>
-import { Bar } from "vue-chartjs";
-import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
+import { Bar, } from "vue-chartjs";
+import { CustomTooltips, } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 
 export default {
   extends: Bar,
@@ -20,15 +20,15 @@ export default {
           "September",
           "October",
           "November",
-          "December"
+          "December",
         ],
         datasets: [
           {
             label: "GitHub Commits",
             backgroundColor: "#f87979",
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-          }
-        ]
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11,],
+          },
+        ],
       },
       {
         responsive: true,
@@ -43,13 +43,13 @@ export default {
             labelColor: function(tooltipItem, chart) {
               return {
                 backgroundColor:
-                  chart.data.datasets[tooltipItem.datasetIndex].backgroundColor
+                  chart.data.datasets[tooltipItem.datasetIndex].backgroundColor,
               };
-            }
-          }
-        }
+            },
+          },
+        },
       }
     );
-  }
+  },
 };
 </script>

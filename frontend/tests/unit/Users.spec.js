@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount, mount, } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Users from '@/views/users/Users'
 
@@ -28,7 +28,7 @@ describe('Users.vue', () => {
   it('renders props.caption when passed', () => {
     const caption = 'Users List'
     const wrapper = mount(Users, {
-      propsData: { caption }
+      propsData: { caption, },
     })
     expect(wrapper.find('div.card-header > div').text()).toMatch(caption)
   })

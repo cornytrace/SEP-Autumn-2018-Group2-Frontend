@@ -1,4 +1,4 @@
-import { shallowMount, mount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, mount, createLocalVue, } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import User from '@/views/users/User'
@@ -19,28 +19,28 @@ describe('User.vue', () => {
   it('sets the correct default data', () => {
     expect(typeof User.data).toMatch('function')
     const defaultData = User.data()
-    expect(defaultData.fields).toEqual([{key: 'key'}, {key: 'value'}])
+    expect(defaultData.fields).toEqual([{key: 'key',}, {key: 'value',},])
   })
   it('is Vue instance', () => {
     const wrapper = shallowMount(User, {
       localVue,
-      router
+      router,
     })
     expect(wrapper.isVueInstance()).toBe(true)
   })
   it('is User', () => {
     const wrapper = shallowMount(User, {
       localVue,
-      router
+      router,
     })
     expect(wrapper.is(User)).toBe(true)
   })
   it('renders props.caption when passed', () => {
     const caption = 'User id:'
     const wrapper = mount(User, {
-      propsData: { caption },
+      propsData: { caption, },
       localVue,
-      router
+      router,
     })
     expect(wrapper.find('div.card-header').text()).toMatch(caption)
   })

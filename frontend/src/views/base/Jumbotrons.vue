@@ -85,7 +85,7 @@
 
 <script>
 export default {
-  name: 'jumbotrons'
+  name: 'jumbotrons',
 }
 </script>
 

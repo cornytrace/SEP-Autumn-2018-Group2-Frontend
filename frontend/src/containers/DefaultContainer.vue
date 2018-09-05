@@ -63,7 +63,7 @@ import {
   Aside as AppAside,
   AsideToggler,
   Footer as TheFooter,
-  Breadcrumb
+  Breadcrumb,
 } from "@coreui/vue";
 import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
@@ -86,11 +86,11 @@ export default {
     SidebarHeader,
     SidebarNav,
     SidebarMinimizer,
-    NotificationToggler
+    NotificationToggler,
   },
   data() {
     return {
-      nav: nav.items
+      nav: nav.items,
     };
   },
   computed: {
@@ -101,7 +101,7 @@ export default {
       return this.$route.matched.filter(
         route => route.name || route.meta.label
       );
-    }
-  }
+    },
+  },
 };
 </script>

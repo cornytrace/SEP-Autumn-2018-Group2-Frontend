@@ -746,6 +746,6 @@
 
 <script>
 export default {
-  name: 'simple-line-icons'
+  name: 'simple-line-icons',
 }
 </script>

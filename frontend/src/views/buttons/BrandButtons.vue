@@ -287,7 +287,7 @@
 
 <script>
 export default {
-  name: 'brand-buttons'
+  name: 'brand-buttons',
 }
 </script>
 

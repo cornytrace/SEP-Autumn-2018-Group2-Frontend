@@ -151,7 +151,7 @@ export default {
     return {
       dismissSecs: 10,
       dismissCountDown: 0,
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
     }
   },
   methods: {
@@ -160,7 +160,7 @@ export default {
     },
     showAlert () {
       this.dismissCountDown = this.dismissSecs
-    }
-  }
+    },
+  },
 }
 </script>

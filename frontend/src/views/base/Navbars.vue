@@ -158,7 +158,7 @@
 
 <script>
 export default {
-  name: 'navbars'
+  name: 'navbars',
 }
 </script>
 
