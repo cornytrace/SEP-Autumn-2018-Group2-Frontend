@@ -7,6 +7,16 @@
 Install Node and NPM: https://nodejs.org/en/
 Either version is fine.
 
+If you use Visual Studio Code, install the ESLint extension and add the following to your preferences:
+
+``` json
+"eslint.autoFixOnSave": true
+```  
+
+This will ensure that your code is automatically fixed to conform to our coding style.
+
+If you use another editor, follow their instructions to enable ESLint and to enable fix-on-save.
+
 ### Clone repo
 
 ``` bash
