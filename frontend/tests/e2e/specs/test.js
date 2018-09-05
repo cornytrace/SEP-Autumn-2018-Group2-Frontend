@@ -101,5 +101,5 @@ module.exports = {
     browser
       .pause(5000)
       .end()
-  }
+  },
 }

@@ -64,6 +64,6 @@ import ColorTheme from './ColorTheme'
 
 export default {
   name: 'colors',
-  components: { ColorTheme }
+  components: { ColorTheme, },
 }
 </script>

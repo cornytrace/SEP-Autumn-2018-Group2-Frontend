@@ -24,7 +24,7 @@ export default {
       name: 'Contact',
       icon: 'icon-envelope-open',
       url: '/contact',
-    }
+    },
     /*{
       title: true,
       name: 'Theme',
@@ -267,5 +267,5 @@ export default {
         }
       ]
     },*/
-  ]
+  ],
 }

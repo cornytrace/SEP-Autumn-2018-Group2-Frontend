@@ -10,34 +10,34 @@
 </template>
 
 <script>
-import { asideMenuCssClasses, validBreakpoints, checkBreakpoint } from '../../shared/classes'
+import { asideMenuCssClasses, validBreakpoints, checkBreakpoint, } from '../../shared/classes'
 import toggleClasses from '../../shared/toggle-classes'
 export default {
   name: 'AsideToggler',
   props: {
     defaultOpen: {
       type: Boolean,
-      default: false
+      default: false,
     },
     display: {
       type: String,
-      default: ''
+      default: '',
     },
     mobile: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
   computed: {
     classList () {
       return [
-        'navbar-toggler'
+        'navbar-toggler',
       ]
-    }
+    },
   },
   methods: {
     toggle (force) {
-      const [display, mobile] = [this.display, this.mobile]
+      const [display, mobile,] = [this.display, this.mobile,]
       let cssClass = asideMenuCssClasses[0]
       if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
         cssClass = `aside-menu-${display}-show`
@@ -47,7 +47,7 @@ export default {
     asideToggle (e) {
       e.preventDefault()
       this.toggle()
-    }
-  }
+    },
+  },
 }
 </script>

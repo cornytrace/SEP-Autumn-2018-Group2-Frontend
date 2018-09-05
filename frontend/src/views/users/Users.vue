@@ -30,42 +30,42 @@ export default {
   props: {
     caption: {
       type: String,
-      default: 'Users'
+      default: 'Users',
     },
     hover: {
       type: Boolean,
-      default: true
+      default: true,
     },
     striped: {
       type: Boolean,
-      default: true
+      default: true,
     },
     bordered: {
       type: Boolean,
-      default: false
+      default: false,
     },
     small: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fixed: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: () => {
     return {
       items: usersData.filter((user) => user.id < 42),
       fields: [
-        {key: 'id'},
-        {key: 'name'},
-        {key: 'registered'},
-        {key: 'role'},
-        {key: 'status'}
+        {key: 'id',},
+        {key: 'name',},
+        {key: 'registered',},
+        {key: 'role',},
+        {key: 'status',},
       ],
       currentPage: 1,
       perPage: 5,
-      totalRows: 0
+      totalRows: 0,
     }
   },
   computed: {
@@ -85,10 +85,10 @@ export default {
     },
     rowClicked (item) {
       const userLink = this.userLink(item.id)
-      this.$router.push({path: userLink})
-    }
+      this.$router.push({path: userLink,})
+    },
 
-  }
+  },
 }
 </script>
 

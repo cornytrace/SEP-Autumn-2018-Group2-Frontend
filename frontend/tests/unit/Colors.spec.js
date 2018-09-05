@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount, mount, } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Colors from '@/views/theme/Colors'
 

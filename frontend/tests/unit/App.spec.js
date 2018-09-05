@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue, } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import App from '@/App'
@@ -17,14 +17,14 @@ describe('App.vue', () => {
   it('is Vue instance', () => {
     const wrapper = shallowMount(App, {
       localVue,
-      router
+      router,
     })
     expect(wrapper.isVueInstance()).toBe(true)
   })
   it('is App', () => {
     const wrapper = shallowMount(App, {
       localVue,
-      router
+      router,
     })
     expect(wrapper.is(App)).toBe(true)
   })

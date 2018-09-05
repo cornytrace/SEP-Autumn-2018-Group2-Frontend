@@ -1039,14 +1039,14 @@ export default {
   data () {
     return {
       selected: [], // Must be an array reference!
-      show: true
+      show: true,
     }
   },
   methods: {
     click () {
       // do nothing
-    }
-  }
+    },
+  },
 }
 </script>
 

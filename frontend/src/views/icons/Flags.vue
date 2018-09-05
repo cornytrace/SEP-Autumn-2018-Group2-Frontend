@@ -1013,6 +1013,6 @@
 
 <script>
 export default {
-  name: 'flags'
+  name: 'flags',
 }
 </script>

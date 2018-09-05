@@ -46,9 +46,9 @@ export default {
   name: "course-overview",
   data: function() {
     return {
-      show: true
+      show: true,
     };
-  }
+  },
 };
 </script>
 

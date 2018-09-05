@@ -2843,6 +2843,6 @@
 
 <script>
 export default {
-  name: 'font-awesome'
+  name: 'font-awesome',
 }
 </script>

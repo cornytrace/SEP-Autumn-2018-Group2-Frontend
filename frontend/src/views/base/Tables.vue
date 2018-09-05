@@ -35,6 +35,6 @@ import cTable from './Table.vue'
 
 export default {
   name: 'tables',
-  components: {cTable}
+  components: {cTable,},
 }
 </script>

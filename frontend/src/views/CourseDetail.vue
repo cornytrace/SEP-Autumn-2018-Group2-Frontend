@@ -94,7 +94,7 @@ export default {
   components: {
     LineExample,
     ScatterExample,
-  }
+  },
 }
 </script>
 

@@ -1,24 +1,24 @@
 <script>
-import { Line } from 'vue-chartjs'
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { getStyle } from '@coreui/coreui/dist/js/coreui-utilities'
+import { Line, } from 'vue-chartjs'
+import { CustomTooltips, } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
+import { getStyle, } from '@coreui/coreui/dist/js/coreui-utilities'
 
 export default {
   components: {
-    CustomTooltips
+    CustomTooltips,
   },
   extends: Line,
-  props: ['data', 'height', 'width', 'variant'],
+  props: ['data', 'height', 'width', 'variant',],
   mounted () {
     this.renderChart({
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',],
       datasets: [
         {
           backgroundColor: 'transparent',
           borderColor: this.getVariant(this.variant) || '#c2cfd6',
-          data: this.data
-        }
-      ]
+          data: this.data,
+        },
+      ],
     }, {
       responsive: true,
       tooltips: {
@@ -29,39 +29,39 @@ export default {
         position: 'nearest',
         callbacks: {
           labelColor: function (tooltipItem, chart) {
-            return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
-          }
-        }
+            return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor, }
+          },
+        },
       },
       maintainAspectRatio: true,
       scales: {
         xAxes: [{
-          display: false
-        }],
+          display: false,
+        },],
         yAxes: [{
-          display: false
-        }]
+          display: false,
+        },],
       },
       elements: {
         line: {
-          borderWidth: 2
+          borderWidth: 2,
         },
         point: {
           radius: 0,
           hitRadius: 10,
           hoverRadius: 4,
-          hoverBorderWidth: 3
-        }
+          hoverBorderWidth: 3,
+        },
       },
       legend: {
-        display: false
-      }
+        display: false,
+      },
     })
   },
   methods: {
     getVariant (val, el) {
       return val[0] === '#' ? val : getStyle(`--${val}`, el)
-    }
-  }
+    },
+  },
 }
 </script>
