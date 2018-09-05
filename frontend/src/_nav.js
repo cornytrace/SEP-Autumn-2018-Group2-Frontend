@@ -7,19 +7,23 @@ export default {
     },
     {
       name: 'Videos',
-      icon: 'icon-chart'
+      icon: 'icon-chart',
+      url: '/videos',
     },
     {
       name: 'Graded Quizzes',
-      icon: 'icon-check'
+      icon: 'icon-check',
+      url: '/quizes',
     },
     {
       name: 'Settings',
-      icon: 'icon-settings'
+      icon: 'icon-settings',
+      url: '/settings',
     },
     {
       name: 'Contact',
-      icon: 'icon-envelope-open'
+      icon: 'icon-envelope-open',
+      url: '/contact',
     }
     /*{
       title: true,

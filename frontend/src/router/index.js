@@ -8,12 +8,15 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 const Dashboard = () => import('@/views/Dashboard')
 const Courses = () => import('@/views/Courses')
 const CourseDetail = () => import('@/views/CourseDetail')
+const Videos = () => import('@/views/Videos')
+const VideoDetail = () => import('@/views/VideoDetail')
+const Quizes = () => import('@/views/Quizes')
+const QuizDetail = () => import('@/views/QuizDetail')
+const Contact = () => import('@/views/Contact')
+const Settings = () => import('@/views/Settings')
 
 const Colors = () => import('@/views/theme/Colors')
 const Typography = () => import('@/views/theme/Typography')
-
-const Charts = () => import('@/views/Charts')
-const Widgets = () => import('@/views/Widgets')
 
 // Views - Components
 const Cards = () => import('@/views/base/Cards')
@@ -87,6 +90,45 @@ export default new Router({
           path: '/course/:courseid',
           name: 'CourseDetail',
           component: CourseDetail,
+          meta: {
+            label: "Course Details"
+          }
+        },
+        {
+          path: '/videos',
+          name: 'Videos',
+          component: Videos,
+        },
+        {
+          path: '/video/:videoid',
+          name: 'VideoDetail',
+          component: VideoDetail,
+          meta: {
+            label: "Video Details"
+          }
+        },
+        {
+          path: '/quizes',
+          name: 'Quizes',
+          component: Quizes,
+        },
+        {
+          path: '/quiz/:quizid',
+          name: 'QuizDetail',
+          component: QuizDetail,
+          meta: {
+            label: "Quiz Details"
+          }
+        },
+        {
+          path: '/settings',
+          name: 'Settings',
+          component: Settings,
+        },
+        {
+          path: '/contact',
+          name: 'Contact',
+          component: Contact,
         },
         {
           path: 'theme',
@@ -107,16 +149,6 @@ export default new Router({
               component: Typography
             }
           ]
-        },
-        {
-          path: 'charts',
-          name: 'Charts',
-          component: Charts
-        },
-        {
-          path: 'widgets',
-          name: 'Widgets',
-          component: Widgets
         },
         {
           path: 'users',
