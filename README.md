@@ -10,6 +10,16 @@ Either version is fine.
 If you use Visual Studio Code, install the ESLint extension and add the following to your preferences:
 
 ``` json
+"eslint.validate": [
+    {
+        "language": "vue",
+        "autoFix": true
+    },
+    {
+        "language": "javascript",
+        "autoFix": true
+    },
+],
 "eslint.autoFixOnSave": true
 ```  
 
