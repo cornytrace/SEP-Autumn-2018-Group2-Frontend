@@ -21,7 +21,7 @@
         </b-nav-item> -->
         <DefaultHeaderDropdownAccnt/>
       </b-navbar-nav>
-      <NotificationToggler class="d-none d-lg-block" />
+      <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
       <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">
@@ -91,7 +91,11 @@ export default {
   data() {
     return {
       nav: nav.items,
+      testCount: 5,
     };
+  },
+  beforeMount() {
+    this.testCount = 2;
   },
   computed: {
     name() {

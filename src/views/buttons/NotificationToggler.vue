@@ -6,6 +6,7 @@
     type="button"
     @click="asideToggle">
     <span class="icon-bell" />
+    <span class="badge badge-pill badge-danger">{{ notificationCount }}</span>
   </button>
 </template>
 
@@ -13,7 +14,7 @@
 import { asideMenuCssClasses, validBreakpoints, checkBreakpoint, } from '../../shared/classes'
 import toggleClasses from '../../shared/toggle-classes'
 export default {
-  name: 'AsideToggler',
+  name: 'NotificationToggler',
   props: {
     defaultOpen: {
       type: Boolean,
@@ -26,6 +27,10 @@ export default {
     mobile: {
       type: Boolean,
       default: false,
+    },
+    notificationCount: {
+      type: Number,
+      default: 0,
     },
   },
   computed: {

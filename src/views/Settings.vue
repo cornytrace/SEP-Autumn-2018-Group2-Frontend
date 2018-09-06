@@ -15,6 +15,11 @@
             </b-form-checkbox-group>
           </b-form-group>
 
+          <label class="switch switch-pill switch-primary">
+            <input type="checkbox" class="switch-input" checked>
+            <span class="switch-slider"></span>
+          </label>
+
         </b-card>
       </b-col>
     </b-row>
@@ -28,19 +33,19 @@
         selected: [], // Must be an array reference!
         options: [{
             text: 'Value 1',
-            value: '1'
+            value: '1',
           },
           {
             text: 'Value 2',
-            value: '2'
+            value: '2',
           },
           {
             text: 'Value 3',
-            value: '3'
+            value: '3',
           },
-        ]
+        ],
       }
-    }
+    },
   }
 
 </script>
