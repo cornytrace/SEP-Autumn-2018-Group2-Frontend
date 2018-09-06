@@ -1,5 +1,8 @@
 # SEP Autumn 2018 Group 2 EIT-Dashboard
 
+## View the latest build of the site on:
+## https://cornytrace.github.io/SEP-Autumn-2018-Group2-Frontend
+
 ## Installation
 
 ### Preparation
