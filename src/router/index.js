@@ -75,16 +75,15 @@ export default new Router({
   }),
   routes: [{
       path: '/',
-      redirect: '/dashboard',
-      name: 'Home',
+      redirect: '/home',
       component: DefaultContainer,
       children: [{
-          path: 'dashboard',
-          name: 'Dashboard',
+          path: 'home',
+          name: 'Home',
           component: Dashboard,
         },
         {
-          path: 'courses',
+          path: '/courses',
           name: 'Courses',
           component: Courses,
         },

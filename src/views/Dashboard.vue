@@ -4,7 +4,7 @@
       <b-col sm="8" lg="6">
         <b-card class="bg" no-body>
           <b-card-header>
-            <h4>Coursera</h4>
+            <router-link to="/courses"><h4>Coursera</h4></router-link>
           </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
@@ -19,7 +19,7 @@
             </b-card>
             <b-card no-body>
               <b-card-header class="bg-primary">
-                Quantitative model checking
+                <router-link to="/course/automata-system-validation" class="link-light">Quantitative model checking</router-link>
               </b-card-header>
               <b-card-body class="pb-0">
                 <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
@@ -29,7 +29,7 @@
             </b-card>
             <b-card no-body>
               <b-card-header class="bg-primary">
-                Automata system
+                <router-link to="/course/automata-system-validation" class="link-light">Automata system</router-link>
               </b-card-header>
               <b-card-body class="pb-0">
                 <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
@@ -43,12 +43,12 @@
       <b-col sm="8" lg="6">
         <b-card class="bg" no-body>
           <b-card-header>
-            <h4>Platform 2</h4>
+            <router-link to="/courses"><h4>Platform 4</h4></router-link>
           </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
               <b-card-header class="bg-success">
-                Platform Information
+                Information
               </b-card-header>
               <b-card-body class="pb-0">
                 <p>Number of courses: 2<br>Total enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
@@ -58,7 +58,7 @@
             </b-card>
             <b-card no-body>
               <b-card-header class="bg-primary">
-                Quantitative model checking
+                <router-link to="/course/automata-system-validation" class="link-light">Quantitative model checking</router-link>
               </b-card-header>
               <b-card-body class="pb-0">
                 <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
@@ -68,7 +68,7 @@
             </b-card>
             <b-card no-body>
               <b-card-header class="bg-primary">
-                Automata system
+                <router-link to="/course/automata-system-validation" class="link-light">Automata system</router-link>
               </b-card-header>
               <b-card-body class="pb-0">
                 <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>

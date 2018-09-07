@@ -1,8 +1,8 @@
 export default {
   items: [{
-      name: 'Dashboard',
+      name: 'Home',
       icon: 'cui-home',
-      url: '/dashboard',
+      url: '/home',
     },
     {
       name: 'Courses',
