@@ -84,13 +84,6 @@
 </template>
 
 <script>
-import CardLine1ChartExample from "./dashboard/CardLine1ChartExample";
-import CardLine2ChartExample from "./dashboard/CardLine2ChartExample";
-import CardLine3ChartExample from "./dashboard/CardLine3ChartExample";
-import CardBarChartExample from "./dashboard/CardBarChartExample";
-import MainChartExample from "./dashboard/MainChartExample";
-import SocialBoxChartExample from "./dashboard/SocialBoxChartExample";
-import CalloutChartExample from "./dashboard/CalloutChartExample";
 import BarExample from "./charts/BarExample";
 import { Callout, } from "@coreui/vue";
 
@@ -99,13 +92,6 @@ export default {
   components: {
     BarExample,
     Callout,
-    CardLine1ChartExample,
-    CardLine2ChartExample,
-    CardLine3ChartExample,
-    CardBarChartExample,
-    MainChartExample,
-    SocialBoxChartExample,
-    CalloutChartExample,
   },
   data: function() {
     return {
