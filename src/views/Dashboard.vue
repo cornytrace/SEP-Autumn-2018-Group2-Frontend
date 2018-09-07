@@ -2,10 +2,13 @@
   <div class="animated fadeIn">
     <b-row>
       <b-col sm="8" lg="6">
-        <b-card no-body header="Coursera" class="bg">
+        <b-card class="bg" no-body>
+          <b-card-header>
+            <h3>Coursera</h3>
+          </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
-              <b-card-header class="bg-danger">
+              <b-card-header class="bg-success">
                 Platform Information
               </b-card-header>
               <b-card-body class="pb-0">
@@ -38,10 +41,13 @@
         </b-card>
       </b-col>
       <b-col sm="8" lg="6">
-        <b-card no-body header="Coursera" class="bg">
+        <b-card class="bg" no-body>
+          <b-card-header>
+            <h3>Platform 2</h3>
+          </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
-              <b-card-header class="bg-danger">
+              <b-card-header class="bg-success">
                 Platform Information
               </b-card-header>
               <b-card-body class="pb-0">

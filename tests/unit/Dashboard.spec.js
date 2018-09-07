@@ -1,5 +1,8 @@
 import Vue from 'vue'
-import { shallowMount, mount, } from '@vue/test-utils'
+import {
+  shallowMount,
+  mount,
+} from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Dashboard from '@/views/Dashboard'
 
@@ -27,6 +30,6 @@ describe('Dashboard.vue', () => {
   })
   it('should render correct content', () => {
     const wrapper = mount(Dashboard)
-    expect(wrapper.html()).toContain('<div>Coursera Courses</div>')
+    expect(wrapper.html()).toContain('Coursera')
   })
 })
