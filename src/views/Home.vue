@@ -88,7 +88,7 @@ import BarExample from "./charts/BarExample";
 import { Callout, } from "@coreui/vue";
 
 export default {
-  name: "dashboard",
+  name: "home",
   components: {
     BarExample,
     Callout,

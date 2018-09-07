@@ -4,32 +4,32 @@ import {
   mount,
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
-import Dashboard from '@/views/Dashboard'
+import Home from '@/views/Home'
 
 Vue.use(BootstrapVue)
 
-describe('Dashboard.vue', () => {
+describe('Home.vue', () => {
   it('has a name', () => {
-    expect(Dashboard.name).toMatch('dashboard')
+    expect(Home.name).toMatch('Home')
   })
   it('has a created hook', () => {
-    expect(typeof Dashboard.data).toMatch('function')
+    expect(typeof Home.data).toMatch('function')
   })
   it('sets the correct default data', () => {
-    expect(typeof Dashboard.data).toMatch('function')
-    const defaultData = Dashboard.data()
+    expect(typeof Home.data).toMatch('function')
+    const defaultData = Home.data()
     expect(defaultData.selected).toMatch('Month')
   })
   it('is Vue instance', () => {
-    const wrapper = shallowMount(Dashboard)
+    const wrapper = shallowMount(Home)
     expect(wrapper.isVueInstance()).toBe(true)
   })
-  it('is Dashboard', () => {
-    const wrapper = shallowMount(Dashboard)
-    expect(wrapper.is(Dashboard)).toBe(true)
+  it('is Home', () => {
+    const wrapper = shallowMount(Home)
+    expect(wrapper.is(Home)).toBe(true)
   })
   it('should render correct content', () => {
-    const wrapper = mount(Dashboard)
+    const wrapper = mount(Home)
     expect(wrapper.html()).toContain('Coursera')
   })
 })

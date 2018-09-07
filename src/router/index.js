@@ -7,7 +7,7 @@ import store from '@/store'
 const DefaultContainer = () => import('@/containers/DefaultContainer')
 
 // Views
-const Dashboard = () => import('@/views/Dashboard')
+const Home = () => import('@/views/Home')
 const Courses = () => import('@/views/Courses')
 const CourseDetail = () => import('@/views/CourseDetail')
 const Videos = () => import('@/views/Videos')
@@ -40,9 +40,9 @@ const router = new VueRouter({
       redirect: '/home',
       component: DefaultContainer,
       children: [{
-          path: 'home',
+          path: '/home',
           name: 'Home',
-          component: Dashboard,
+          component: Home,
         },
         {
           path: '/courses',
