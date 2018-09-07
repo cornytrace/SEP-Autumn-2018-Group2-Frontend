@@ -29,7 +29,7 @@ const User = () => import('@/views/users/User')
 
 Vue.use(VueRouter)
 
-const router = new Router({
+const router = new VueRouter({
   mode: 'hash', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'open active',
   scrollBehavior: () => ({
