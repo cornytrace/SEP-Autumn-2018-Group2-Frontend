@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
 import store from '@/store'
 
@@ -27,7 +27,7 @@ const Register = () => import('@/views/pages/Register')
 const Users = () => import('@/views/users/Users')
 const User = () => import('@/views/users/User')
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 const router = new Router({
   mode: 'hash', // https://router.vuejs.org/api/#mode
