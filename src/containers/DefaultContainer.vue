@@ -14,10 +14,10 @@
         <b-dropdown-item>course-1</b-dropdown-item>
         <b-dropdown-item>course-2</b-dropdown-item>
       </b-dropdown>
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
+        <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
       </b-navbar-nav>
-      <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
       <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">

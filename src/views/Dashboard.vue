@@ -4,7 +4,7 @@
       <b-col sm="8" lg="6">
         <b-card class="bg" no-body>
           <b-card-header>
-            <h3>Coursera</h3>
+            <h4>Coursera</h4>
           </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
@@ -43,7 +43,7 @@
       <b-col sm="8" lg="6">
         <b-card class="bg" no-body>
           <b-card-header>
-            <h3>Platform 2</h3>
+            <h4>Platform 2</h4>
           </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
