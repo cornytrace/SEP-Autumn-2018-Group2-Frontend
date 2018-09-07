@@ -6,14 +6,8 @@
         <h4>EIT Dashboard</h4>
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
-      <b-dropdown id="ddown1" text="Coursera" class="m-md-2">
-        <b-dropdown-item>Coursera</b-dropdown-item>
-        <b-dropdown-item>Other Platform</b-dropdown-item>
-      </b-dropdown>
-      <b-dropdown id="ddown1" text="course-1" class="m-md-2">
-        <b-dropdown-item>course-1</b-dropdown-item>
-        <b-dropdown-item>course-2</b-dropdown-item>
-      </b-dropdown>
+      <b-form-select class="header-select" v-model="selectedPlatform" :options="platformOptions"></b-form-select>
+      <b-form-select class="header-select" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
         <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
@@ -88,6 +82,17 @@ export default {
     return {
       nav: nav.items,
       testCount: 5,
+      selectedPlatform: "platform-select",
+      platformOptions: [
+        { value: "platform-select", text: "Select platform", },
+        { value: "coursera", text: "Coursera", },
+      ],
+      selectedCourse: "course-select",
+      courseOptions: [
+        { value: "course-select", text: "Select course", },
+        { value: "course1", text: "Course 1", },
+        { value: "course2", text: "Course 2", },
+      ],
     };
   },
   beforeMount() {
