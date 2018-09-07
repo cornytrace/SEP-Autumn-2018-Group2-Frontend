@@ -15,6 +15,7 @@ Either version is fine.
 If you use Visual Studio Code, install the ESLint extension and add the following to your preferences:
 
 ``` json
+"editor.formatOnSave": true,
 "eslint.validate": [
     {
         "language": "vue",
