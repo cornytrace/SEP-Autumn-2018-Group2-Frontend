@@ -10,7 +10,7 @@ Vue.use(BootstrapVue)
 
 describe('Home.vue', () => {
   it('has a name', () => {
-    expect(Home.name).toMatch('Home')
+    expect(Home.name).toMatch('home')
   })
   it('has a created hook', () => {
     expect(typeof Home.data).toMatch('function')
