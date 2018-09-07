@@ -37,11 +37,12 @@ const router = new VueRouter({
   }),
   routes: [{
       path: '/',
+      name: 'Home',
       redirect: '/home',
       component: DefaultContainer,
-      children: [{
+      children: [
+        {
           path: '/home',
-          name: 'Home',
           component: Home,
         },
         {
