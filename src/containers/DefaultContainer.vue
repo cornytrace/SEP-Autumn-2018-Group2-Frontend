@@ -15,10 +15,6 @@
         <b-dropdown-item>course-2</b-dropdown-item>
       </b-dropdown>
       <b-navbar-nav class="ml-auto">
-        <!-- <b-nav-item class="d-md-down-none">
-          <i class="icon-bell"></i>
-          <b-badge pill variant="danger">5</b-badge>
-        </b-nav-item> -->
         <DefaultHeaderDropdownAccnt/>
       </b-navbar-nav>
       <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
