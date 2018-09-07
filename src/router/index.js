@@ -16,6 +16,7 @@ const Quizes = () => import('@/views/Quizes')
 const QuizDetail = () => import('@/views/QuizDetail')
 const Contact = () => import('@/views/Contact')
 const Settings = () => import('@/views/Settings')
+const AdminPanel = () => import('@/views/admin/AdminPanel')
 
 // Views - Pages
 const Page404 = () => import('@/views/pages/Page404')
@@ -40,8 +41,7 @@ const router = new VueRouter({
       name: 'Home',
       redirect: '/home',
       component: DefaultContainer,
-      children: [
-        {
+      children: [{
           path: '/home',
           component: Home,
         },
@@ -126,6 +126,11 @@ const router = new VueRouter({
           component: Register,
         },
       ],
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: AdminPanel,
     },
   ],
 })
