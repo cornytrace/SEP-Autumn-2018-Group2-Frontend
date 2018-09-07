@@ -2,35 +2,72 @@
   <div class="animated fadeIn">
     <b-row>
       <b-col sm="8" lg="6">
-        <b-card no-body header="Coursera Courses" class="bg-primary">
+        <b-card no-body header="Coursera" class="bg">
           <b-card-body class="pb-0">
-            <b-card no-body class="bg-info">
-              <b-card-header>
-                course-1
+            <b-card no-body>
+              <b-card-header class="bg-danger">
+                Platform Information
               </b-card-header>
               <b-card-body class="pb-0">
-                <p>Data About Course 1</p>
+                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
+                <div class="chart-wrapper">
+                </div>
               </b-card-body>
             </b-card>
-            <b-card no-body header="course-2" class="bg-info">
+            <b-card no-body>
+              <b-card-header class="bg-primary">
+                Quantitative model checking
+              </b-card-header>
               <b-card-body class="pb-0">
-                <p>Data About Course 2</p>
+                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
+                <div class="chart-wrapper">
+                </div>
+              </b-card-body>
+            </b-card>
+            <b-card no-body>
+              <b-card-header class="bg-primary">
+                Automata system
+              </b-card-header>
+              <b-card-body class="pb-0">
+                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
+                <div class="chart-wrapper">
+                </div>
               </b-card-body>
             </b-card>
           </b-card-body>
         </b-card>
       </b-col>
       <b-col sm="8" lg="6">
-        <b-card no-body header="Other Platform Courses" class="bg-primary">
+        <b-card no-body header="Coursera" class="bg">
           <b-card-body class="pb-0">
-            <b-card no-body header="course-1" class="bg-info">
+            <b-card no-body>
+              <b-card-header class="bg-danger">
+                Platform Information
+              </b-card-header>
               <b-card-body class="pb-0">
-                <p>Data About Course 1</p>
+                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
+                <div class="chart-wrapper">
+                </div>
               </b-card-body>
             </b-card>
-            <b-card no-body header="course-2" class="bg-info">
+            <b-card no-body>
+              <b-card-header class="bg-primary">
+                Quantitative model checking
+              </b-card-header>
               <b-card-body class="pb-0">
-                <p>Data About Course 2</p>
+                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
+                <div class="chart-wrapper">
+                </div>
+              </b-card-body>
+            </b-card>
+            <b-card no-body>
+              <b-card-header class="bg-primary">
+                Automata system
+              </b-card-header>
+              <b-card-body class="pb-0">
+                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
+                <div class="chart-wrapper">
+                </div>
               </b-card-body>
             </b-card>
           </b-card-body>
