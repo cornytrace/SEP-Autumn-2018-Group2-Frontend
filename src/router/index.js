@@ -67,7 +67,7 @@ const User = () => import('@/views/users/User')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'hash', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'open active',
   scrollBehavior: () => ({
@@ -390,3 +390,18 @@ export default new Router({
     },
   ],
 })
+
+router.beforeEach((to, from, next) => {
+  if (!Vue.localStorage.get("isAuthenticated", false, Boolean) && to.path !== "/pages/login") {
+    next({
+      path: "/pages/login",
+      query: {
+        redirect: to.fullPath,
+      },
+    });
+  } else {
+    next()
+  }
+});
+
+export default router

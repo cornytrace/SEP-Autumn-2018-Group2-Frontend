@@ -40,8 +40,7 @@ export default {
   name: "Login",
   methods: {
     doLogin() {
-      console.log("click");
-      this.$store.dispatch("login");
+      this.$localStorage.set("isAuthenticated", true);
       if (this.$route.query.redirect !== undefined) {
         this.$router.push(this.$route.query.redirect);
       } else {

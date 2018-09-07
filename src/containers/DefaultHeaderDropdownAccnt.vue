@@ -45,9 +45,8 @@ export default {
   },
   methods: {
     doLogout() {
-      this.$store.dispatch("logout");
-      // trigger the beforeEach of the router
-      this.$router.go(0);
+      this.$localStorage.set("isAuthenticated", false);
+      this.$router.go();
     },
   },
 };

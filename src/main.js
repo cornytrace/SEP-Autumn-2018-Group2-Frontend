@@ -10,27 +10,17 @@ import {
   VueAuthenticate,
 } from 'vue-authenticate'
 import axios from 'axios';
-
 import BootstrapVue from 'bootstrap-vue'
+import VueLocalStorage from 'vue-localstorage'
+
 import App from './App'
 import store from './store'
 import router from './router'
 
+
+Vue.use(VueLocalStorage)
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
-
-router.beforeEach((to, from, next) => {
-  if (!store.state.isAuthenticated && to.path !== "/pages/login") {
-    next({
-      path: "/pages/login",
-      query: {
-        redirect: to.fullPath,
-      },
-    });
-  } else {
-    next()
-  }
-});
 
 /* eslint-disable no-new */
 new Vue({
