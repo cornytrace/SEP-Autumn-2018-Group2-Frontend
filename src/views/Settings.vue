@@ -27,25 +27,26 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        selected: [], // Must be an array reference!
-        options: [{
-            text: 'Value 1',
-            value: '1',
-          },
-          {
-            text: 'Value 2',
-            value: '2',
-          },
-          {
-            text: 'Value 3',
-            value: '3',
-          },
-        ],
-      }
-    },
-  }
-
+export default {
+  name: "Settings",
+  data() {
+    return {
+      selected: [], // Must be an array reference!
+      options: [
+        {
+          text: "Value 1",
+          value: "1",
+        },
+        {
+          text: "Value 2",
+          value: "2",
+        },
+        {
+          text: "Value 3",
+          value: "3",
+        },
+      ],
+    };
+  },
+};
 </script>

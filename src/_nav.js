@@ -17,7 +17,7 @@ export default {
     {
       name: 'Graded Quizzes',
       icon: 'icon-check',
-      url: '/quizes',
+      url: '/quizzes',
     },
     {
       name: 'Settings',

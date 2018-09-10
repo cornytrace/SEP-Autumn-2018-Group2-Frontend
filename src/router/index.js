@@ -12,7 +12,7 @@ const Courses = () => import('@/views/Courses')
 const CourseDetail = () => import('@/views/CourseDetail')
 const Videos = () => import('@/views/Videos')
 const VideoDetail = () => import('@/views/VideoDetail')
-const Quizes = () => import('@/views/Quizes')
+const Quizzes = () => import('@/views/Quizzes')
 const QuizDetail = () => import('@/views/QuizDetail')
 const Contact = () => import('@/views/Contact')
 const Settings = () => import('@/views/Settings')
@@ -73,9 +73,9 @@ const router = new VueRouter({
           },
         },
         {
-          path: '/quizes',
-          name: 'Quizes',
-          component: Quizes,
+          path: '/quizzes',
+          name: 'Quizzes',
+          component: Quizzes,
         },
         {
           path: '/quiz/:quizid',

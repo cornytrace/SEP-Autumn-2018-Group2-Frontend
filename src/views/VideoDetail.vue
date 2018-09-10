@@ -18,3 +18,9 @@
     </b-row>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Video Details",
+};
+</script>
