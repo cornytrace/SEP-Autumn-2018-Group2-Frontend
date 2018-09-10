@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="content sidebar-hidden">
         <b-list-group>
             <b-list-group-item v-for="user in users_list" :key="user.name">{{ user.name }} {{ user.email }}</b-list-group-item>
         </b-list-group>
