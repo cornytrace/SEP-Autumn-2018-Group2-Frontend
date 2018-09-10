@@ -22,4 +22,8 @@ describe('Video.vue', () => {
     const wrapper = shallowMount(Videos)
     expect(wrapper.is(Videos)).toBe(true)
   })
+  it('has Video', () => {
+    const wrapper = shallowMount(Videos)
+    expect(wrapper.html()).toContain("Video")
+  })
 })

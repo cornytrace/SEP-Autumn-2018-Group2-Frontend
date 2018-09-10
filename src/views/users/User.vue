@@ -19,33 +19,32 @@
 </template>
 
 <script>
-import usersData from './UsersData'
+import usersData from "./UsersData";
 export default {
-  name: 'User',
+  name: "User",
   props: {
     caption: {
       type: String,
-      default: 'User id',
+      default: "User id",
     },
   },
   data: () => {
     return {
-      items: (id) => {
-        const user = usersData.find( user => user.id.toString() === id)
-        const userDetails = user ? Object.entries(user) : [['id', 'Not found',],]
-        return userDetails.map(([key, value,]) => {return {key: key, value: value,}})
+      items: id => {
+        const user = usersData.find(user => user.id.toString() === id);
+        const userDetails = user ? Object.entries(user) : [["id", "Not found",],];
+        return userDetails.map(([key, value,]) => {
+          return { key: key, value: value, };
+        });
       },
-      fields: [
-        {key: 'key',},
-        {key: 'value',},
-      ],
-    }
+      fields: [{ key: "key", }, { key: "value", },],
+    };
   },
   methods: {
     goBack() {
-      this.$router.go(-1)
+      this.$router.go(-1);
       // this.$router.replace({path: '/users'})
     },
   },
-}
+};
 </script>
