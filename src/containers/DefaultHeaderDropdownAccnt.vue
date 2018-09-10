@@ -46,7 +46,7 @@ export default {
   methods: {
     doLogout() {
       this.$localStorage.set("isAuthenticated", false);
-      this.$router.go();
+      this.$router.push("/pages/login");
     },
   },
 };

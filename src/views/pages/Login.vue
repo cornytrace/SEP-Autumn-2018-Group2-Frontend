@@ -11,11 +11,11 @@
                   <p class="text-muted">Sign In to your account</p>
                   <b-input-group class="mb-3">
                     <b-input-group-prepend><b-input-group-text><i class="icon-user"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="text" class="form-control" placeholder="Username" autocomplete="username email" />
+                    <b-form-input type="text" class="form-control" v-model="username" placeholder="Username" autocomplete="username email" />
                   </b-input-group>
                   <b-input-group class="mb-4">
                     <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="password" class="form-control" placeholder="Password" autocomplete="current-password" />
+                    <b-form-input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password" />
                   </b-input-group>
                   <b-row>
                     <b-col cols="6">
@@ -43,10 +43,18 @@ export default {
       this.$localStorage.set("isAuthenticated", true);
       if (this.$route.query.redirect !== undefined) {
         this.$router.push(this.$route.query.redirect);
+      } else if (this.username == "admin") {
+        this.$router.push("/admin");
       } else {
         this.$router.push("/");
       }
-    },
+    }
   },
+  data: function() {
+    return {
+      username: "",
+      password: ""
+    };
+  }
 };
 </script>
