@@ -3,7 +3,7 @@
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
       <b-link class="navbar-brand" to="/">
-        <h4>EIT Dashboard</h4>
+        <h4>DASH-IT</h4>
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" v-model="selectedPlatform" :options="platformOptions"></b-form-select>
