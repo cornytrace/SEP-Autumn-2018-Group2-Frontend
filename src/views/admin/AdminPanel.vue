@@ -1,5 +1,5 @@
 <template>
-      <div class="app">
+  <div class="app sidebar-hidden">
     <AppHeader fixed>
       <b-link to="/admin" class="navbar-brand">
         <h4>Admin dashboard</h4>
