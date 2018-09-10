@@ -7,36 +7,22 @@
             <b-card-body class="p-4">
               <b-form>
                 <h1>Register</h1>
-                <p class="text-muted">Create your account</p>
+                <p class="text-muted">Create a user account</p>
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
                     <b-input-group-text><i class="icon-user"></i></b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="text" class="form-control" placeholder="Username" autocomplete="username" />
+                  <b-form-input v-model="username" type="text" class="form-control" placeholder="Username" autocomplete="username" />
                 </b-input-group>
 
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
                     <b-input-group-text>@</b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="text" class="form-control" placeholder="Email" autocomplete="email" />
+                  <b-form-input v-model="email" type="text" class="form-control" placeholder="Email" autocomplete="email" />
                 </b-input-group>
 
-                <b-input-group class="mb-3">
-                  <b-input-group-prepend>
-                    <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
-                  </b-input-group-prepend>
-                  <b-form-input type="password" class="form-control" placeholder="Password" autocomplete="new-password" />
-                </b-input-group>
-
-                <b-input-group class="mb-4">
-                  <b-input-group-prepend>
-                    <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
-                  </b-input-group-prepend>
-                  <b-form-input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password" />
-                </b-input-group>
-
-                <b-button variant="success" block>Create Account</b-button>
+                <b-button @click="doRegister" variant="success" block>Create Account</b-button>
               </b-form>
             </b-card-body>
           </b-card>
@@ -49,5 +35,17 @@
 <script>
 export default {
   name: "Register",
+  data: function() {
+    return {
+      username: "",
+      email: "",
+    };
+  },
+  methods: {
+    doRegister() {
+      console.log("register" + this.username + this.email);
+      this.$router.push("/admin");
+    },
+  },
 };
 </script>

@@ -1,16 +1,16 @@
 <template>
       <div class="app">
     <AppHeader fixed>
-      <SidebarToggler class="d-lg-none" display="md" mobile />
-      <b-link class="navbar-brand">
+      <b-link to="/admin" class="navbar-brand">
         <h4>Admin dashboard</h4>
       </b-link>
       <b-form-select class="header-select" v-model="selectedUser" :options="users"></b-form-select>
+      <router-link to="register"><b-button>Add user</b-button></router-link>
     </AppHeader>
     <div class="app-body">
       <main class="main">
         <div class="container-fluid">
-          <div class="admin-content"></div>
+          <router-view></router-view>
         </div>
       </main>
     </div>
@@ -18,12 +18,11 @@
 </template>
 
 <script>
-import { Header as AppHeader, SidebarToggler, } from "@coreui/vue";
+import { Header as AppHeader, } from "@coreui/vue";
 export default {
   name: "full",
   components: {
     AppHeader,
-    SidebarToggler,
   },
   data() {
     return {
@@ -38,3 +37,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.navbar {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>
