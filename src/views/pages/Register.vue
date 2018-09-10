@@ -8,13 +8,7 @@
               <b-form>
                 <h1>Register</h1>
                 <p class="text-muted">Create a user account</p>
-                <b-input-group class="mb-3">
-                  <b-input-group-prepend>
-                    <b-input-group-text><i class="icon-user"></i></b-input-group-text>
-                  </b-input-group-prepend>
-                  <b-form-input v-model="username" type="text" class="form-control" placeholder="Username" autocomplete="username" />
-                </b-input-group>
-
+              
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
                     <b-input-group-text>@</b-input-group-text>
@@ -43,7 +37,7 @@ export default {
   },
   methods: {
     doRegister() {
-      console.log("register" + this.username + this.email);
+      console.log("register" + this.email);
       this.$router.push("/admin");
     },
   },
