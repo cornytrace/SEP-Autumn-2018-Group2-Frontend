@@ -1,13 +1,30 @@
-import Vue from 'vue'
+import Vuex from 'vuex'
 import {
   shallowMount,
+  createLocalVue,
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Login from '@/views/pages/Login'
 
-Vue.use(BootstrapVue)
+const localVue = createLocalVue()
+localVue.use(BootstrapVue)
+localVue.use(Vuex)
 
 describe('Login.vue', () => {
+  let actions
+  let store
+
+  beforeEach(() => {
+    actions = {
+      login: jest.fn(),
+      logout: jest.fn(),
+    }
+    store = new Vuex.Store({
+      state: {},
+      actions,
+    })
+  })
+
   it('has a name', () => {
     expect(Login.name).toMatch('Login')
   })
@@ -33,12 +50,14 @@ describe('Login.vue', () => {
   })
   it('login admin', () => {
     const wrapper = shallowMount(Login, {
+      store,
+      localVue,
       mocks: {
-        $store: {
-          commit: function () {},
-        },
         $router: {
           push: function () {},
+          query: {
+            redirect: undefined,
+          },
         },
       },
     })

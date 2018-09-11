@@ -99,9 +99,6 @@ export default {
     this.testCount = 2;
   },
   computed: {
-    name() {
-      return this.$route.name;
-    },
     list() {
       return this.$route.matched.filter(
         route => route.meta.label || route.name

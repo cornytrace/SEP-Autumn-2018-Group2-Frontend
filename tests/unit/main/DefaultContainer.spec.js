@@ -1,11 +1,13 @@
 import BootstrapVue from 'bootstrap-vue'
-import { shallowMount, createLocalVue, } from '@vue/test-utils'
+import {
+  mount,
+  createLocalVue,
+} from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import DefaultContainer from '@/containers/DefaultContainer'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
-const router = new VueRouter()
 
 localVue.use(BootstrapVue)
 
@@ -22,9 +24,16 @@ describe('DefaultContainer.vue', () => {
     expect(typeof defaultData.nav).toMatch('object')
   })
   it('is Vue instance', () => {
-    const wrapper = shallowMount(DefaultContainer, {
-      localVue,
-      router,
+    const wrapper = mount(DefaultContainer, {
+      mocks: {
+        $route: {
+          matched: [{
+            meta: {
+              label: "",
+            },
+          }, ],
+        },
+      },
     })
     expect(wrapper.isVueInstance()).toBe(true)
   })
