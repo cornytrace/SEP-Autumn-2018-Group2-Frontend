@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/9</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/9</span>
+        <span class='fraction'>10/10</span>
       </div>
     </div>
   </div>
@@ -152,7 +152,19 @@
 107
 108
 109
-110</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,20 +194,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -211,7 +209,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,12 +265,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -281,7 +305,8 @@
       &lt;AppSidebar fixed&gt;
         &lt;SidebarHeader/&gt;
         &lt;SidebarForm/&gt;
-        &lt;SidebarNav :navItems="nav"&gt;&lt;/SidebarNav&gt;
+        &lt;SidebarNav :navItems="home_nav"&gt;&lt;/SidebarNav&gt;
+        &lt;BottombarNav :navItems="bottom_nav"&gt;&lt;/BottombarNav&gt;
         &lt;SidebarFooter/&gt;
         &lt;SidebarMinimizer/&gt;
       &lt;/AppSidebar&gt;
@@ -303,7 +328,7 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import nav from "@/_nav";
+import nav from "@/nav";
 import {
   Header as AppHeader,
   SidebarToggler,
@@ -321,6 +346,7 @@ import {
 import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
 import NotificationToggler from "../views/buttons/NotificationToggler";
+import BottombarNav from "../views/sidebars/BottombarNav";
 &nbsp;
 export default {
   name: "full",
@@ -340,10 +366,12 @@ export default {
     SidebarNav,
     SidebarMinimizer,
     NotificationToggler,
+    BottombarNav,
   },
   data() {
     return {
-      nav: nav.items,
+      home_nav: nav.home_items,
+      bottom_nav: nav.bottom_items,
       testCount: 5,
       selectedPlatform: "platform-select",
       platformOptions: [
@@ -370,13 +398,21 @@ export default {
   },
 };
 &lt;/script&gt;
+&nbsp;
+&lt;style&gt;
+.bottom-nav {
+  flex-direction: column;
+  justify-content: flex-end;
+}
+&lt;/style&gt;
+&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 11 2018 14:45:14 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 11 2018 14:56:02 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
