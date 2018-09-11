@@ -80,33 +80,34 @@
 </template>
 
 <script>
-import LineExample from './charts/LineExample'
-import ScatterExample from './charts/ScatterExample'
+import LineExample from "./charts/LineExample";
+import ScatterExample from "./charts/ScatterExample";
 
 export default {
-  name: 'course-detail',
-  data: function () {
+  name: "course-detail",
+  data: function() {
     return {
       show: true,
       course: this.$route.params.courseid,
-    }
+    };
   },
   components: {
     LineExample,
     ScatterExample,
   },
-}
+};
 </script>
 
 <style scoped>
-  .fade-enter-active {
-    transition: all .3s ease;
-  }
-  .fade-leave-active {
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
-  .fade-enter, .fade-leave-to {
-    transform: translateX(10px);
-    opacity: 0;
-  }
+.fade-enter-active {
+  transition: all 0.3s ease;
+}
+.fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>

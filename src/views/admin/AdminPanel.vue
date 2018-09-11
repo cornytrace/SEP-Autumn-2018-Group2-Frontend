@@ -20,7 +20,7 @@
 <script>
 import { Header as AppHeader, } from "@coreui/vue";
 export default {
-  name: "full",
+  name: "AdminPanel",
   components: {
     AppHeader,
   },

@@ -8,39 +8,11 @@
 
 <script>
 export default {
-  props: {
-    users: {
-      type: Array,
-    },
-  },
+  name: "AdminHome",
   data() {
     return {
       users_list: [
         { name: "test1", email: "test1@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
-        { name: "test2", email: "test2@test.nl", },
-        { name: "test3", email: "test3@test.nl", },
-        { name: "test4", email: "test4@test.nl", },
         { name: "test2", email: "test2@test.nl", },
         { name: "test3", email: "test3@test.nl", },
         { name: "test4", email: "test4@test.nl", },

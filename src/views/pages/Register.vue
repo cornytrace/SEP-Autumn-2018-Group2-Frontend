@@ -16,7 +16,7 @@
                   <b-form-input v-model="email" type="text" class="form-control" placeholder="Email" autocomplete="email" />
                 </b-input-group>
 
-                <b-button @click="doRegister" variant="success" block>Create Account</b-button>
+                <b-button @click="doRegister" id="registerbutton" variant="success" block>Create Account</b-button>
               </b-form>
             </b-card-body>
           </b-card>

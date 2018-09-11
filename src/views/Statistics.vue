@@ -81,7 +81,7 @@ import BarExample from "./charts/BarExample";
 import { Callout, } from "@coreui/vue";
 
 export default {
-  name: "Home",
+  name: "Statistics",
   components: {
     BarExample,
     Callout,
@@ -181,22 +181,23 @@ export default {
     };
   },
   methods: {
-    variant(value) {
-      let $variant;
-      if (value <= 25) {
-        $variant = "info";
-      } else if (value > 25 && value <= 50) {
-        $variant = "success";
-      } else if (value > 50 && value <= 75) {
-        $variant = "warning";
-      } else if (value > 75 && value <= 100) {
-        $variant = "danger";
-      }
-      return $variant;
-    },
-    flag(value) {
-      return "flag-icon flag-icon-" + value;
-    },
+    // Example code
+    // variant(value) {
+    //   let $variant;
+    //   if (value <= 25) {
+    //     $variant = "info";
+    //   } else if (value > 25 && value <= 50) {
+    //     $variant = "success";
+    //   } else if (value > 50 && value <= 75) {
+    //     $variant = "warning";
+    //   } else if (value > 75 && value <= 100) {
+    //     $variant = "danger";
+    //   }
+    //   return $variant;
+    // },
+    // flag(value) {
+    //   return "flag-icon flag-icon-" + value;
+    // },
   },
 };
 </script>

@@ -26,4 +26,8 @@ describe('Notification.vue', () => {
     const wrapper = shallowMount(NotificationToggler)
     expect(wrapper.html()).toContain("button")
   })
+  it('click Button', () => {
+    const wrapper = shallowMount(NotificationToggler)
+    wrapper.find('button').trigger('click')
+  })
 })

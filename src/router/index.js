@@ -19,6 +19,9 @@ const Settings = () => import('@/views/Settings')
 const AdminPanel = () => import('@/views/admin/AdminPanel')
 const AdminHome = () => import('@/views/admin/AdminHome')
 
+// Mockup pages
+const Statistics = () => import('@/views/Statistics')
+
 // Views - Pages
 const Page404 = () => import('@/views/pages/Page404')
 const Page500 = () => import('@/views/pages/Page500')
@@ -94,6 +97,11 @@ const router = new VueRouter({
           path: '/contact',
           name: 'Contact',
           component: Contact,
+        },
+        {
+          path: '/mockup',
+          name: "mockup graphs",
+          component: Statistics,
         },
       ],
     },

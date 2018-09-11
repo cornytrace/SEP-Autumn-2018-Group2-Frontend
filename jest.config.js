@@ -24,8 +24,14 @@ module.exports = {
   testURL: "http://localhost/",
   collectCoverage: true,
   collectCoverageFrom: [
-      "src/**/*.{js,vue}",
-      "!**/node_modules/**",
+    "src/**/*.{js,vue}",
+    "!**/node_modules/**",
+    // Example code, so excluded from testing.
+    "!**/charts/*.vue",
+    // Untestable js code.
+    // If store.js gets used it should be tested.
+    "!**/router/*.js",
+    "!**/src/*.js",
   ],
-  coverageReporters: ["html", "text-summary",],
+  coverageReporters: ["html", "text-summary", ],
 }

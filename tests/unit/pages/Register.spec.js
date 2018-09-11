@@ -1,5 +1,7 @@
 import Vue from 'vue'
-import { shallowMount, } from '@vue/test-utils'
+import {
+  shallowMount,
+} from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Register from '@/views/pages/Register'
 
@@ -20,5 +22,9 @@ describe('Register.vue', () => {
   it('should render correct content', () => {
     const wrapper = shallowMount(Register)
     expect(wrapper.find('h1').text()).toMatch('Register')
+  })
+  it('click Button', () => {
+    const wrapper = shallowMount(Register)
+    wrapper.find('#registerbutton').trigger('click')
   })
 })
