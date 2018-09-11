@@ -23,8 +23,20 @@ describe('Login.vue', () => {
     const wrapper = shallowMount(Login)
     expect(wrapper.find('h1').text()).toMatch('Login')
   })
-  it('click Button', () => {
+  it('login empty', () => {
     const wrapper = shallowMount(Login)
+    wrapper.setData({
+      username: '',
+      password: '',
+    })
+    wrapper.find('#loginbutton').trigger('click')
+  })
+  it('login admin', () => {
+    const wrapper = shallowMount(Login)
+    wrapper.setData({
+      username: 'admin',
+      password: '',
+    })
     wrapper.find('#loginbutton').trigger('click')
   })
 })
