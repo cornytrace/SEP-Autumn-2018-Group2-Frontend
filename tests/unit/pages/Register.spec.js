@@ -25,6 +25,6 @@ describe('Register.vue', () => {
   })
   it('click Button', () => {
     const wrapper = shallowMount(Register)
-    wrapper.find('#registerbutton').trigger('click')
+    wrapper.vm.doRegister()
   })
 })

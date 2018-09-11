@@ -29,14 +29,14 @@ describe('Login.vue', () => {
       username: '',
       password: '',
     })
-    wrapper.find('#loginbutton').trigger('click')
+    wrapper.vm.doLogin()
   })
   it('login admin', () => {
     const wrapper = shallowMount(Login)
     wrapper.setData({
-      username: 'admin',
+      username: 'test',
       password: '',
     })
-    wrapper.find('#loginbutton').trigger('click')
+    wrapper.vm.doLogin();
   })
 })
