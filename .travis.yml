@@ -6,6 +6,7 @@ script:
 
 before_deploy:
   - npm run build
+  - cp -R coverage ./dist/
 
 deploy:
   provider: pages
