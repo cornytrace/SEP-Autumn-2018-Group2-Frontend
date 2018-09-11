@@ -18,7 +18,8 @@
       <AppSidebar fixed>
         <SidebarHeader/>
         <SidebarForm/>
-        <SidebarNav :navItems="nav"></SidebarNav>
+        <SidebarNav :navItems="home_nav"></SidebarNav>
+        <BottombarNav :navItems="bottom_nav"></BottombarNav>
         <SidebarFooter/>
         <SidebarMinimizer/>
       </AppSidebar>
@@ -40,7 +41,7 @@
 </template>
 
 <script>
-import nav from "@/_nav";
+import nav from "@/nav";
 import {
   Header as AppHeader,
   SidebarToggler,
@@ -58,6 +59,7 @@ import {
 import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
 import NotificationToggler from "../views/buttons/NotificationToggler";
+import BottombarNav from "../views/sidebars/BottombarNav";
 
 export default {
   name: "full",
@@ -77,10 +79,12 @@ export default {
     SidebarNav,
     SidebarMinimizer,
     NotificationToggler,
+    BottombarNav,
   },
   data() {
     return {
-      nav: nav.items,
+      home_nav: nav.home_items,
+      bottom_nav: nav.bottom_items,
       testCount: 5,
       selectedPlatform: "platform-select",
       platformOptions: [
@@ -107,3 +111,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.bottom-nav {
+  flex-direction: column;
+  justify-content: flex-end;
+}
+</style>
+

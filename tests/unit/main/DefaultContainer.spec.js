@@ -21,7 +21,7 @@ describe('DefaultContainer.vue', () => {
   it('sets the correct default data', () => {
     expect(typeof DefaultContainer.data).toMatch('function')
     const defaultData = DefaultContainer.data()
-    expect(typeof defaultData.nav).toMatch('object')
+    expect(typeof defaultData.home_nav).toMatch('object')
   })
   it('is Vue instance', () => {
     const wrapper = mount(DefaultContainer, {

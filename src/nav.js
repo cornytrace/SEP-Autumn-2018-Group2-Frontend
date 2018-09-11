@@ -1,25 +1,21 @@
 export default {
-  items: [{
+  home_items: [{
       name: 'Home',
       icon: 'cui-home',
       url: '/home',
     },
     {
-      name: 'Courses',
+      name: 'Coursera',
       icon: 'cui-dashboard',
       url: '/courses',
     },
     {
-      name: 'Videos',
-      icon: 'icon-chart',
-      url: '/videos',
+      name: 'Platform 2',
+      icon: 'cui-dashboard',
+      url: '/courses',
     },
-    {
-      name: 'Graded Quizzes',
-      icon: 'icon-check',
-      url: '/quizzes',
-    },
-    {
+  ],
+  bottom_items: [{
       name: 'Settings',
       icon: 'icon-settings',
       url: '/settings',
