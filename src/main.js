@@ -6,9 +6,7 @@ import 'core-js/es7/array'
 // import cssVars from 'css-vars-ponyfill'
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
-import {
-  VueAuthenticate,
-} from 'vue-authenticate'
+import VueAuthenticate from 'vue-authenticate'
 import axios from 'axios';
 import BootstrapVue from 'bootstrap-vue'
 import VueLocalStorage from 'vue-localstorage'

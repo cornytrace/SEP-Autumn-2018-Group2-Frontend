@@ -71,9 +71,9 @@ npm run test:unit
 # run e2e tests
 npm run test:e2e
 
-
-
 ```
+
+To bypass the frontend login use the username "test". This will use an invalid token, so requests to the backend will not work.
 
 ## Backend
 

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import store from '@/store'
+import util from '@/util'
 
 // Containers
 const DefaultContainer = () => import('@/containers/DefaultContainer')
@@ -144,7 +144,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!Vue.localStorage.get("isAuthenticated", false, Boolean) && to.path !== "/pages/login") {
+  if (!util.isAuthenticated() && to.path !== "/pages/login") {
     next({
       path: "/pages/login",
       query: {
