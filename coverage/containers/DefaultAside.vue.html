@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for containers/DefaultAside.vue</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">containers</a> DefaultAside.vue
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+  &lt;b-tabs&gt;
+    &lt;b-tab&gt;
+      &lt;template slot="title"&gt;
+        &lt;i class='icon-list'&gt;&lt;/i&gt;
+      &lt;/template&gt;
+      &lt;b-list-group class="list-group-accent"&gt;
+        &lt;b-list-group-item class="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small"&gt;
+          Today
+        &lt;/b-list-group-item&gt;
+        &lt;b-list-group-item href="#" class="list-group-item-accent-warning list-group-item-divider"&gt;
+          &lt;div class="avatar float-right"&gt;
+            &lt;img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com"&gt;
+          &lt;/div&gt;
+          &lt;div&gt;Meeting with
+            &lt;strong&gt;Lucas&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;small class="text-muted mr-3"&gt;
+            &lt;i class="icon-calendar"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;1 - 3pm
+          &lt;/small&gt;
+          &lt;small class="text-muted"&gt;
+            &lt;i class="icon-location-pin"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;Palo Alto, CA
+          &lt;/small&gt;
+        &lt;/b-list-group-item&gt;
+        &lt;b-list-group-item href="#" class="list-group-item-accent-info"&gt;
+          &lt;div class="avatar float-right"&gt;
+            &lt;img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com"&gt;
+          &lt;/div&gt;
+          &lt;div&gt;Skype with &lt;strong&gt;Megan&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;small class="text-muted mr-3"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;4 - 5pm&lt;/small&gt;
+          &lt;small class="text-muted"&gt;&lt;i class="icon-social-skype"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;On-line&lt;/small&gt;
+        &lt;/b-list-group-item&gt;
+        &lt;hr class="transparent mx-3 my-0"&gt;
+        &lt;b-list-group-item class="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small"&gt;
+          Tomorrow
+        &lt;/b-list-group-item&gt;
+        &lt;b-list-group-item href="#" class="list-group-item-accent-danger list-group-item-divider"&gt;
+          &lt;div&gt;New UI Project - &lt;strong&gt;deadline&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;small class="text-muted mr-3"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;10 - 11pm&lt;/small&gt;
+          &lt;small class="text-muted"&gt;&lt;i class="icon-home"&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;creativeLabs HQ&lt;/small&gt;
+          &lt;div class="avatars-stack mt-2"&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img class="img-avatar" src="img/avatars/3.jpg" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img class="img-avatar" src="img/avatars/5.jpg" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/b-list-group-item&gt;
+        &lt;b-list-group-item href="#" class="list-group-item-accent-success list-group-item-divider"&gt;
+          &lt;div&gt;&lt;strong&gt;#10 Startups.Garden&lt;/strong&gt; Meetup&lt;/div&gt;
+          &lt;small class="text-muted mr-3"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&amp;nbsp; 1 - 3pm&lt;/small&gt;
+          &lt;small class="text-muted"&gt;&lt;i class="icon-location-pin"&gt;&lt;/i&gt;&amp;nbsp; Palo Alto, CA&lt;/small&gt;
+        &lt;/b-list-group-item&gt;
+        &lt;b-list-group-item href="#" class="list-group-item-accent-primary list-group-item-divider"&gt;
+          &lt;div&gt;&lt;strong&gt;Team meeting&lt;/strong&gt;&lt;/div&gt;
+          &lt;small class="text-muted mr-3"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&amp;nbsp; 4 - 6pm&lt;/small&gt;
+          &lt;small class="text-muted"&gt;&lt;i class="icon-home"&gt;&lt;/i&gt;&amp;nbsp; creativeLabs HQ&lt;/small&gt;
+          &lt;div class="avatars-stack mt-2"&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+            &lt;div class="avatar avatar-xs"&gt;
+              &lt;img src="img/avatars/8.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/b-list-group-item&gt;
+      &lt;/b-list-group&gt;
+    &lt;/b-tab&gt;
+    &lt;b-tab&gt;
+      &lt;template slot="title"&gt;
+        &lt;i class='icon-speech'&gt;&lt;/i&gt;
+      &lt;/template&gt;
+      &lt;div class="p-3"&gt;
+        &lt;div class="message"&gt;
+          &lt;div class="py-3 pb-5 mr-3 float-left"&gt;
+            &lt;div class="avatar"&gt;
+              &lt;img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+              &lt;b-badge variant="success" class="avatar-status"&gt;&lt;/b-badge&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lukasz Holeczek&lt;/small&gt;
+            &lt;small class="text-muted float-right mt-1"&gt;1:52 PM&lt;/small&gt;
+          &lt;/div&gt;
+          &lt;div class="text-truncate font-weight-bold"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+          &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;hr&gt;
+        &lt;div class="message"&gt;
+          &lt;div class="py-3 pb-5 mr-3 float-left"&gt;
+            &lt;div class="avatar"&gt;
+              &lt;img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+              &lt;b-badge variant="danger" class="avatar-status"&gt;&lt;/b-badge&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lukasz Holeczek&lt;/small&gt;
+            &lt;small class="text-muted float-right mt-1"&gt;1:52 PM&lt;/small&gt;
+          &lt;/div&gt;
+          &lt;div class="text-truncate font-weight-bold"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+          &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;hr&gt;
+        &lt;div class="message"&gt;
+          &lt;div class="py-3 pb-5 mr-3 float-left"&gt;
+            &lt;div class="avatar"&gt;
+              &lt;img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+              &lt;b-badge variant="info" class="avatar-status"&gt;&lt;/b-badge&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lukasz Holeczek&lt;/small&gt;
+            &lt;small class="text-muted float-right mt-1"&gt;1:52 PM&lt;/small&gt;
+          &lt;/div&gt;
+          &lt;div class="text-truncate font-weight-bold"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+          &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;hr&gt;
+        &lt;div class="message"&gt;
+          &lt;div class="py-3 pb-5 mr-3 float-left"&gt;
+            &lt;div class="avatar"&gt;
+              &lt;img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+              &lt;b-badge variant="warning" class="avatar-status"&gt;&lt;/b-badge&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lukasz Holeczek&lt;/small&gt;
+            &lt;small class="text-muted float-right mt-1"&gt;1:52 PM&lt;/small&gt;
+          &lt;/div&gt;
+          &lt;div class="text-truncate font-weight-bold"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+          &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;hr&gt;
+        &lt;div class="message"&gt;
+          &lt;div class="py-3 pb-5 mr-3 float-left"&gt;
+            &lt;div class="avatar"&gt;
+              &lt;img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"&gt;
+              &lt;b-badge variant="dark" class="avatar-status"&gt;&lt;/b-badge&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lukasz Holeczek&lt;/small&gt;
+            &lt;small class="text-muted float-right mt-1"&gt;1:52 PM&lt;/small&gt;
+          &lt;/div&gt;
+          &lt;div class="text-truncate font-weight-bold"&gt;Lorem ipsum dolor sit amet&lt;/div&gt;
+          &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/b-tab&gt;
+    &lt;b-tab&gt;
+      &lt;template slot="title"&gt;
+        &lt;i class='icon-settings'&gt;&lt;/i&gt;
+      &lt;/template&gt;
+      &lt;div class="p-3"&gt;
+        &lt;h6&gt;Settings&lt;/h6&gt;
+        &lt;div class="aside-options"&gt;
+          &lt;div class="clearfix mt-4"&gt;
+            &lt;small&gt;&lt;b&gt;Option 1&lt;/b&gt;&lt;/small&gt;
+            &lt;c-switch color="success" label variant="pill" size="sm" class="float-right" checked /&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/small&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="aside-options"&gt;
+          &lt;div class="clearfix mt-3"&gt;
+            &lt;small&gt;&lt;b&gt;Option 2&lt;/b&gt;&lt;/small&gt;
+            &lt;c-switch color="success" label variant="pill" size="sm" class="float-right" /&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/small&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="aside-options"&gt;
+          &lt;div class="clearfix mt-3"&gt;
+            &lt;small&gt;&lt;b&gt;Option 3&lt;/b&gt;&lt;/small&gt;
+            &lt;c-switch color="success" label variant="pill" size="sm" class="float-right" disabled defaultChecked/&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;small class="text-muted"&gt;Disabled option.&lt;/small&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="aside-options"&gt;
+          &lt;div class="clearfix mt-3"&gt;
+            &lt;small&gt;&lt;b&gt;Option 4&lt;/b&gt;&lt;/small&gt;
+            &lt;c-switch color="success" label variant="pill" size="sm" class="float-right" checked /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;hr&gt;
+        &lt;h6&gt;System Utilization&lt;/h6&gt;
+        &lt;div class="text-uppercase mb-1 mt-4"&gt;
+          &lt;small&gt;&lt;b&gt;CPU Usage&lt;/b&gt;&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;b-progress height={} class="progress-xs" variant="info" :value="25"&gt;&lt;/b-progress&gt;
+        &lt;small class="text-muted"&gt;348 Processes. 1/4 Cores.&lt;/small&gt;
+        &lt;div class="text-uppercase mb-1 mt-2"&gt;
+          &lt;small&gt;&lt;b&gt;Memory Usage&lt;/b&gt;&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;b-progress height={} class="progress-xs" variant="warning" :value="70"&gt;&lt;/b-progress&gt;
+        &lt;small class="text-muted"&gt;11444GB/16384MB&lt;/small&gt;
+        &lt;div class="text-uppercase mb-1 mt-2"&gt;
+          &lt;small&gt;&lt;b&gt;SSD 1 Usage&lt;/b&gt;&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;b-progress height={} class="progress-xs" variant="danger" :value="95"&gt;&lt;/b-progress&gt;
+        &lt;small class="text-muted"&gt;243GB/256GB&lt;/small&gt;
+        &lt;div class="text-uppercase mb-1 mt-2"&gt;
+          &lt;small&gt;&lt;b&gt;SSD 2 Usage&lt;/b&gt;&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;b-progress height={} class="progress-xs" variant="success" :value="10"&gt;&lt;/b-progress&gt;
+        &lt;small class="text-muted"&gt;25GB/256GB&lt;/small&gt;
+      &lt;/div&gt;
+    &lt;/b-tab&gt;
+  &lt;/b-tabs&gt;
+&lt;/template&gt;
+&nbsp;
+&lt;script&gt;
+import { Switch as cSwitch, } from '@coreui/vue'
+export default {
+  name: 'DefaultAside',
+  components: {
+    cSwitch,
+  },
+}
+&lt;/script&gt;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 11 2018 13:33:13 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
