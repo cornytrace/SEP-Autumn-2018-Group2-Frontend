@@ -67,4 +67,51 @@ describe('Login.vue', () => {
     })
     wrapper.vm.doLogin();
   })
+
+  it('login dispatch catch', () => {
+    const wrapper = shallowMount(Login, {
+      store,
+      localVue,
+      mocks: {
+        response: {
+          response: {
+            status: 401,
+          },
+        },
+        $route: {
+          query: {
+            redirect: undefined,
+          },
+        },
+        $router: {
+          push: function () {},
+        },
+      },
+    })
+    wrapper.setData({
+      username: 'test',
+      password: '1234',
+    })
+    wrapper.vm.doLogin();
+  })
+
+  it('login dispatch catch', () => {
+    const wrapper = shallowMount(Login, {
+      store,
+      localVue,
+      mocks: {
+        $router: {
+          push: function () {},
+          query: {
+            redirect: undefined,
+          },
+        },
+      },
+    })
+    wrapper.setData({
+      username: 'test',
+      password: '1234',
+    })
+    wrapper.vm.doLogin();
+  })
 })
