@@ -30,4 +30,17 @@ describe('Notification.vue', () => {
     const wrapper = shallowMount(NotificationToggler)
     wrapper.find('button').trigger('click')
   })
+  // Not working, but is needed
+  it('click Button 2', () => {
+    const wrapper = shallowMount(NotificationToggler, {
+      mocks: {
+        display: true,
+        mobile: false,
+        checkBreakpoint: function () {
+          return true
+        },
+      },
+    })
+    wrapper.find('button').trigger('click')
+  })
 })

@@ -32,7 +32,16 @@ describe('Login.vue', () => {
     wrapper.vm.doLogin()
   })
   it('login admin', () => {
-    const wrapper = shallowMount(Login)
+    const wrapper = shallowMount(Login, {
+      mocks: {
+        $store: {
+          commit: function () {},
+        },
+        $router: {
+          push: function () {},
+        },
+      },
+    })
     wrapper.setData({
       username: 'test',
       password: '',

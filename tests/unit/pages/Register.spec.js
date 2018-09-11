@@ -24,7 +24,13 @@ describe('Register.vue', () => {
     expect(wrapper.find('h1').text()).toMatch('Register')
   })
   it('click Button', () => {
-    const wrapper = shallowMount(Register)
+    const wrapper = shallowMount(Register, {
+      mocks: {
+        $router: {
+          push: function () {},
+        },
+      },
+    })
     wrapper.vm.doRegister()
   })
 })
