@@ -14,12 +14,10 @@ localVue.use(BootstrapVue)
 
 describe('CourseDetail.vue', () => {
   it('is Vue instance', () => {
-    console.log(router)
     const wrapper = shallowMount(CourseDetail, {
       localVue,
       router,
     })
-    console.log(wrapper.html)
     expect(wrapper.isVueInstance()).toBe(true)
   })
 })
