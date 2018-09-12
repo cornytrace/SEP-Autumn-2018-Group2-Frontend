@@ -92,7 +92,21 @@ export default {
     return {
       apiStatus: "Connecting...",
       isPrimary: false,
-      home_nav: nav.home_items,
+      home_nav: [
+        {
+          name: "Home",
+          icon: "cui-home",
+          url: "/home",
+        },
+      ],
+      platforms: [
+        {
+          name: "Coursera",
+        },
+        {
+          name: "Platform 2",
+        },
+      ],
       bottom_nav: nav.bottom_items,
       testCount: 5,
       selectedPlatform: "platform-select",
@@ -120,6 +134,18 @@ export default {
       .catch(() => {
         this.apiStatus = "Connection Error";
       });
+  },
+  mounted() {
+    console.log("created called");
+    console.log(this.home_nav);
+    for (var platform of this.platforms) {
+      console.log(platform);
+      this.home_nav.push({
+        name: platform.name,
+        url: "/" + platform.name.toLowerCase(),
+        icon: "cui-dashboard",
+      });
+    }
   },
   computed: {
     list() {
