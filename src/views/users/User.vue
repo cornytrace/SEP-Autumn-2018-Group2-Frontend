@@ -41,10 +41,11 @@ export default {
     };
   },
   methods: {
-    goBack() {
-      this.$router.go(-1);
-      // this.$router.replace({path: '/users'})
-    },
+    // Example code
+    // goBack() {
+    //   this.$router.go(-1);
+    //   // this.$router.replace({path: '/users'})
+    // },
   },
 };
 </script>

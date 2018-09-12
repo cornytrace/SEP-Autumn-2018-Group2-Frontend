@@ -24,13 +24,13 @@
 </template>
 
 <script>
-import usersData from './UsersData'
+import usersData from "./UsersData";
 export default {
-  name: 'Users',
+  name: "Users",
   props: {
     caption: {
       type: String,
-      default: 'Users',
+      default: "Users",
     },
     hover: {
       type: Boolean,
@@ -55,41 +55,45 @@ export default {
   },
   data: () => {
     return {
-      items: usersData.filter((user) => user.id < 42),
+      items: usersData.filter(user => user.id < 42),
       fields: [
-        {key: 'id',},
-        {key: 'name',},
-        {key: 'registered',},
-        {key: 'role',},
-        {key: 'status',},
+        { key: "id", },
+        { key: "name", },
+        { key: "registered", },
+        { key: "role", },
+        { key: "status", },
       ],
       currentPage: 1,
       perPage: 5,
       totalRows: 0,
-    }
+    };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
-    getBadge (status) {
-      return status === 'Active' ? 'success'
-        : status === 'Inactive' ? 'secondary'
-          : status === 'Pending' ? 'warning'
-            : status === 'Banned' ? 'danger' : 'primary'
+    getBadge(status) {
+      return status === "Active"
+        ? "success"
+        : status === "Inactive"
+          ? "secondary"
+          : status === "Pending"
+            ? "warning"
+            : status === "Banned" ? "danger" : "primary";
     },
-    getRowCount (items) {
-      return items.length
-    },
-    userLink (id) {
-      return `users/${id.toString()}`
-    },
-    rowClicked (item) {
-      const userLink = this.userLink(item.id)
-      this.$router.push({path: userLink,})
+    getRowCount(items) {
+      return items.length;
     },
 
+    // Example code
+
+    // userLink (id) {
+    //   return `users/${id.toString()}`
+    // },
+    // rowClicked (item) {
+    //   const userLink = this.userLink(item.id)
+    //   this.$router.push({path: userLink,})
+    // },
   },
-}
+};
 </script>
 
 <style scoped>

@@ -81,15 +81,10 @@ export default {
         minScrollbarLength: 40,
         suppressScrollX: true,
         wheelPropagation: false,
-        interceptRailY: styles => ({ ...styles, height: 0, }),
       },
     };
   },
-  methods: {
-    scrollHandle() {
-      // console.log(evt)
-    },
-  },
+  methods: {},
 };
 </script>
 

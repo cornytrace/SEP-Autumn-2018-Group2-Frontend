@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import {
   shallowMount,
+  mount,
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import NotificationToggler from '@/views/buttons/NotificationToggler'
@@ -32,13 +33,21 @@ describe('Notification.vue', () => {
   })
   // Not working, but is needed
   it('click Button 2', () => {
-    const wrapper = shallowMount(NotificationToggler, {
-      mocks: {
-        display: true,
+    const wrapper = mount(NotificationToggler, {
+      propsData: {
+        navItems: [{
+            name: 'Settings',
+            icon: 'icon-settings',
+            url: '/settings',
+          },
+          {
+            name: 'Contact',
+            icon: 'icon-envelope-open',
+            url: '/contact',
+          },
+        ],
+        display: "lg",
         mobile: false,
-        checkBreakpoint: function () {
-          return true
-        },
       },
     })
     wrapper.find('button').trigger('click')
