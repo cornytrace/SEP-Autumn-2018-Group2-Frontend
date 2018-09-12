@@ -34,9 +34,9 @@
         <DefaultAside/>
       </AppAside>
     </div>
-    <!-- <TheFooter>
-          
-        </TheFooter> -->
+    <TheFooter>
+           API Status: {{apiStatus}}
+    </TheFooter>
   </div>
 </template>
 
@@ -61,6 +61,8 @@ import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
 import NotificationToggler from "../views/buttons/NotificationToggler";
 import BottombarNav from "../views/sidebars/BottombarNav";
 
+import util from "@/util";
+
 export default {
   name: "full",
   components: {
@@ -83,6 +85,7 @@ export default {
   },
   data() {
     return {
+      apiStatus: "Connecting...",
       home_nav: nav.home_items,
       bottom_nav: nav.bottom_items,
       testCount: 5,
@@ -101,6 +104,15 @@ export default {
   },
   beforeMount() {
     this.testCount = 2;
+    util
+      .testAuth()
+      .then(() => {
+        console.log("ok");
+        this.apiStatus = "OK";
+      })
+      .catch(() => {
+        this.apiStatus = "Connection Error";
+      });
   },
   computed: {
     list() {
