@@ -18,8 +18,19 @@ describe('AdminHome.vue', () => {
   })
   it('sets the correct default data', () => {
     expect(typeof AdminHome.data).toMatch('function')
-    const defaultData = AdminHome.data()
-    expect(defaultData.users_list.length).toBeGreaterThan(0)
+    const wrapper = shallowMount(AdminHome, {
+      localVue,
+      router,
+      propsData: {
+        users: [
+          {
+            pk: 1,
+            email: "test@example.org",
+          },
+        ],
+      },
+    })
+    expect(wrapper.vm.users.length).toBe(1)
   })
   it('is Vue instance', () => {
     const wrapper = shallowMount(AdminHome, {

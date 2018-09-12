@@ -22,4 +22,18 @@ export default {
         headers: this.authHeader(),
       })
   },
+
+  getUsers() {
+    return axios
+      .get(this.apiUrl() + "/api/users/", {
+        headers: this.authHeader(),
+      })
+  },
+
+  createUser(data) {
+    return axios
+      .post(this.apiUrl() + "/api/users/", data, {
+        headers: this.authHeader(),
+      })
+  },
 }

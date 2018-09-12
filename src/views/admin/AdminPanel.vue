@@ -4,13 +4,15 @@
       <b-link to="/admin" class="navbar-brand">
         <h4>Admin dashboard</h4>
       </b-link>
-      <b-form-select class="header-select" v-model="selectedUser" :options="users"></b-form-select>
+      <b-form-select class="header-select" v-model="selectedUser" text-field="email" value-field="pk" :options="users">
+        <option :value="null">Select user</option>
+      </b-form-select>
       <router-link to="register"><b-button>Add user</b-button></router-link>
     </AppHeader>
     <div class="app-body">
       <main class="main">
         <div class="container-fluid">
-          <router-view></router-view>
+          <router-view v-bind:users="users" v-on:update:users="onUpdateUsers"></router-view>
         </div>
       </main>
     </div>
@@ -19,6 +21,7 @@
 
 <script>
 import { Header as AppHeader, } from "@coreui/vue";
+import util from "@/util";
 export default {
   name: "AdminPanel",
   components: {
@@ -26,14 +29,24 @@ export default {
   },
   data() {
     return {
-      selectedUser: "user-select",
-      users: [
-        { value: "user-select", text: "Select user", },
-        { value: "user1", text: "User 1", },
-        { value: "user2", text: "User 2", },
-        { value: "user3", text: "User 3", },
-      ],
+      selectedUser: null,
+      users: [],
     };
+  },
+  beforeMount() {
+    util
+      .getUsers()
+      .then((response) => {
+        this.users = response.data
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
+  methods: {
+    onUpdateUsers: function (value) {
+      this.users.push(value)
+    },
   },
 };
 </script>

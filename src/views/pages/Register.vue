@@ -27,19 +27,28 @@
 </template>
 
 <script>
+import util from "@/util"
 export default {
   name: "Register",
   data: function() {
     return {
-      username: "",
       email: "",
-    };
+    }
   },
   methods: {
     doRegister() {
-      console.log("register" + this.email);
-      this.$router.push("/admin");
+      util
+        .createUser({
+          email: this.email,
+        })
+        .then((response) => {
+          this.$emit('update:users', response.data)
+          this.$router.push("/admin")
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
   },
-};
+}
 </script>
