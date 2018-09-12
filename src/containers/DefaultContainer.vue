@@ -2,7 +2,7 @@
   <div class="app">
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
-      <b-link class="navbar-brand" to="/">
+      <b-link class="nav-brand" to="/">
         <h4>DASH-IT</h4>
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
@@ -130,6 +130,16 @@ export default {
 .bottom-nav {
   flex-direction: column;
   justify-content: flex-end;
+}
+.nav-brand {
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 155px;
+  height: 55px;
+  padding: 0;
+  margin-right: 0;
 }
 </style>
 
