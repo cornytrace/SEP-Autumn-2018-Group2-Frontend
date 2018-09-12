@@ -18,7 +18,8 @@
       <AppSidebar fixed>
         <SidebarHeader/>
         <SidebarForm/>
-        <SidebarNav :navItems="home_nav"></SidebarNav>
+        <BackButton :callback=goUp></BackButton>
+        <TopbarNav :navItems="home_nav"></TopbarNav>
         <BottombarNav :navItems="bottom_nav"></BottombarNav>
         <SidebarFooter/>
         <SidebarMinimizer/>
@@ -60,6 +61,8 @@ import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
 import NotificationToggler from "../views/buttons/NotificationToggler";
 import BottombarNav from "../views/sidebars/BottombarNav";
+import TopbarNav from "../views/sidebars/TopbarNav";
+import BackButton from "../views/sidebars/sidebaritems/BackButton";
 
 import util from "@/util";
 
@@ -82,6 +85,8 @@ export default {
     SidebarMinimizer,
     NotificationToggler,
     BottombarNav,
+    TopbarNav,
+    BackButton,
   },
   data() {
     return {
@@ -121,6 +126,11 @@ export default {
       return this.$route.matched.filter(
         route => route.meta.label || route.name
       );
+    },
+  },
+  methods: {
+    goUp: function() {
+      console.log("backbutton clicked");
     },
   },
 };
