@@ -34,7 +34,7 @@
         <DefaultAside/>
       </AppAside>
     </div>
-    <TheFooter>
+    <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
            API Status: {{apiStatus}}
     </TheFooter>
   </div>
@@ -86,6 +86,7 @@ export default {
   data() {
     return {
       apiStatus: "Connecting...",
+      isPrimary: false,
       home_nav: nav.home_items,
       bottom_nav: nav.bottom_items,
       testCount: 5,
@@ -109,6 +110,7 @@ export default {
       .then(() => {
         console.log("ok");
         this.apiStatus = "OK";
+        this.isPrimary = true;
       })
       .catch(() => {
         this.apiStatus = "Connection Error";
