@@ -28,6 +28,9 @@ module.exports = {
     "!**/node_modules/**",
     // Example code, so excluded from testing.
     "!**/charts/*.vue",
+    // Helper functions, if components work helper functions
+    // must work as well.
+    "!**/shared/*.js",
     // Untestable js code.
     // If store.js gets used it should be tested.
     "!**/router/*.js",

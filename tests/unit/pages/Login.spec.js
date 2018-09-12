@@ -48,27 +48,62 @@ describe('Login.vue', () => {
     })
     wrapper.vm.doLogin()
   })
-  it('login admin', () => {
+
+  it('login then if ', () => {
     const wrapper = shallowMount(Login, {
       store,
       localVue,
       mocks: {
+        response: {
+          response: {
+            status: 401,
+          },
+        },
+        $route: {
+          query: {
+            redirect: "",
+          },
+        },
         $router: {
           push: function () {},
-          query: {
-            redirect: undefined,
-          },
         },
       },
     })
     wrapper.setData({
-      username: 'test',
-      password: '',
+      username: 'admin',
+      password: '1234',
     })
     wrapper.vm.doLogin();
   })
 
-  it('login dispatch catch', () => {
+  it('login then else if ', () => {
+    const wrapper = shallowMount(Login, {
+      store,
+      localVue,
+      mocks: {
+        response: {
+          response: {
+            status: 401,
+          },
+        },
+        $route: {
+          query: {
+            redirect: undefined,
+          },
+        },
+        $router: {
+          push: function () {},
+        },
+      },
+    })
+    wrapper.setData({
+      username: 'admin',
+      password: '1234',
+    })
+    wrapper.vm.doLogin();
+  })
+
+  it('login then else', () => {
     const wrapper = shallowMount(Login, {
       store,
       localVue,
@@ -95,7 +130,33 @@ describe('Login.vue', () => {
     wrapper.vm.doLogin();
   })
 
-  it('login dispatch catch', () => {
+  //Not working yet
+  it('login dispatch catch if', () => {
+    const wrapper = shallowMount(Login, {
+      store,
+      localVue,
+      mocks: {
+        response: {
+          response: {
+            status: 401,
+          },
+        },
+        $router: {
+          push: function () {},
+          query: {
+            redirect: undefined,
+          },
+        },
+      },
+    })
+    wrapper.setData({
+      username: 'test',
+      password: '1234',
+    })
+    wrapper.vm.doLogin();
+  })
+
+  it('login dispatch catch else', () => {
     const wrapper = shallowMount(Login, {
       store,
       localVue,
