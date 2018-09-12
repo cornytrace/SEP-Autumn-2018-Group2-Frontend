@@ -15,7 +15,6 @@ export default new Vuex.Store({
   state: {
     apiToken: "",
     apiExpire: Date.now(),
-    apiUrl: "http://localhost:8000",
   },
   getters: {
 
@@ -35,11 +34,13 @@ export default new Vuex.Store({
     }) {
       return new Promise((resolve, reject) => {
         axios.post(
-            util.apiUrl() + "/o/token/",
-            "client_id=7fH0JbXMwmhVoW8sb12NiTbeiokwj2LJVWAIhYZt&grant_type=password&username=" +
-            username +
-            "&password=" +
-            password
+            process.env.VUE_APP_ROOT_API + "/o/token/",
+            new URLSearchParams({
+              client_id: process.env.VUE_APP_CLIENT_ID,
+              grant_type: "password",
+              username: username,
+              password: password,
+            }),
           )
           .then(response => {
             context.commit('setToken', response.data.access_token);
@@ -54,8 +55,12 @@ export default new Vuex.Store({
 
     logout(context) {
       axios.post(
-        util.apiUrl() + "/o/revoke_token/",
-        "client_id=7fH0JbXMwmhVoW8sb12NiTbeiokwj2LJVWAIhYZt&token=" + context.state.apiToken);
+        process.env.VUE_APP_ROOT_API + "/o/revoke_token/",
+        new URLSearchParams({
+          client_id: process.env.VUE_APP_CLIENT_ID,
+          token: context.state.apiToken,
+        }),
+      );
       context.commit('setToken', "");
       context.commit('setExpire', 0);
     },

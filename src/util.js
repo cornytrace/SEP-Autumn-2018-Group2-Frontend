@@ -7,7 +7,7 @@ export default {
   },
 
   apiUrl() {
-    return store.state.apiUrl;
+    return process.env.VUE_APP_ROOT_API;
   },
 
   authHeader(headers = {}) {
