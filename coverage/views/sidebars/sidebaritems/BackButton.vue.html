@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for containers/DefaultHeaderDropdownAccnt.vue</title>
+    <title>Code coverage report for views/sidebars/sidebaritems/BackButton.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">containers</a> DefaultHeaderDropdownAccnt.vue
+      <a href="../../../index.html">All files</a> / <a href="index.html">views/sidebars/sidebaritems</a> BackButton.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>0/0</span>
       </div>
     </div>
   </div>
@@ -88,16 +88,7 @@
 43
 44
 45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+46</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,78 +124,60 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;AppHeaderDropdown right no-caret&gt;
-    &lt;template slot="header"&gt;
-      &lt;i class="icon-user"&gt;&lt;/i&gt;
-    &lt;/template&gt;
-    &lt;template slot="dropdown"&gt;
-      &lt;b-dropdown-header tag="div" class="text-center"&gt;&lt;strong&gt;Account&lt;/strong&gt;&lt;/b-dropdown-header&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-bell-o" /&gt; Updates
-        &lt;b-badge variant="info"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-envelope-o" /&gt; Messages
-        &lt;b-badge variant="success"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-tasks" /&gt; Tasks
-        &lt;b-badge variant="danger"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-comments" /&gt; Comments
-        &lt;b-badge variant="warning"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-header
-        tag="div"
-        class="text-center"&gt;
-        &lt;strong&gt;Settings&lt;/strong&gt;
-      &lt;/b-dropdown-header&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-user" /&gt; Profile&lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-wrench" /&gt; Settings&lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-file" /&gt; Projects
-        &lt;b-badge variant="primary"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-divider /&gt;
-      &lt;b-dropdown-item @click="doLogout"&gt;&lt;i class="fa fa-lock" /&gt; Logout&lt;/b-dropdown-item&gt;
-    &lt;/template&gt;
-  &lt;/AppHeaderDropdown&gt;
+  &lt;button class="backbutton" type="button" @click="callback"&gt;&lt;span v-if="!minimized" class="backbutton-text"&gt;Back&lt;/span&gt;&lt;i class="fa fa-level-up nav-icon"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;/template&gt;
-&nbsp;
 &lt;script&gt;
-import { HeaderDropdown as AppHeaderDropdown, } from "@coreui/vue";
 export default {
-  name: "DefaultHeaderDropdownAccnt",
-  components: {
-    AppHeaderDropdown,
-  },
-  data: () =&gt; {
-    return { itemsCount: 42, };
-  },
-  methods: {
-    doLogout() {
-      this.$store.dispatch("logout").then(() =&gt; {
-        this.$router.push("/pages/login");
-      });
-    },
+  name: "sidebar-minimizer",
+  methods: {},
+  props: {
+<span class="fstat-no" title="function not covered" >    callback: function() {},</span>
+    minimized: false,
   },
 };
 &lt;/script&gt;
+&nbsp;
+&lt;style&gt;
+.backbutton {
+  position: relative;
+  -ms-flex: 0 0 50px;
+  flex: 0 0 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 0;
+}
+&nbsp;
+.backbutton i {
+  display: inline-block;
+  color: #fff;
+  widows: 1.09375rem;
+  font-size: 1.2rem;
+}
+&nbsp;
+.backbutton-text {
+  color: #fff;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+&nbsp;
+.backbutton .backbutton-text {
+  display: inline;
+}
+&nbsp;
+.sidebar-minimized .backbutton .backbutton-text {
+  display: none;
+}
+&lt;/style&gt;
+&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -214,7 +187,7 @@ export default {
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 13 2018 07:46:59 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
-<script src="../prettify.js"></script>
+<script src="../../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -222,6 +195,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../sorter.js"></script>
+<script src="../../../sorter.js"></script>
 </body>
 </html>

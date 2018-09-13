@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.47% </span>
+        <span class="strong">80.77% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/17</span>
+        <span class='fraction'>21/26</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/6</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.47% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/17</span>
+        <span class='fraction'>20/25</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -188,7 +188,36 @@
 143
 144
 145
-146</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -233,6 +262,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,8 +280,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -293,6 +327,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -306,11 +347,26 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -353,7 +409,8 @@
       &lt;AppSidebar fixed&gt;
         &lt;SidebarHeader/&gt;
         &lt;SidebarForm/&gt;
-        &lt;SidebarNav :navItems="home_nav"&gt;&lt;/SidebarNav&gt;
+        &lt;BackButton :callback=goUp&gt;&lt;/BackButton&gt;
+        &lt;TopbarNav :navItems="home_nav"&gt;&lt;/TopbarNav&gt;
         &lt;BottombarNav :navItems="bottom_nav"&gt;&lt;/BottombarNav&gt;
         &lt;SidebarFooter/&gt;
         &lt;SidebarMinimizer/&gt;
@@ -377,6 +434,7 @@
 &nbsp;
 &lt;script&gt;
 import nav from "@/nav";
+import settings from "@/settings";
 import {
   Header as AppHeader,
   SidebarToggler,
@@ -395,6 +453,8 @@ import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
 import NotificationToggler from "../views/buttons/NotificationToggler";
 import BottombarNav from "../views/sidebars/BottombarNav";
+import TopbarNav from "../views/sidebars/TopbarNav";
+import BackButton from "../views/sidebars/sidebaritems/BackButton";
 &nbsp;
 import util from "@/util";
 &nbsp;
@@ -417,12 +477,21 @@ export default {
     SidebarMinimizer,
     NotificationToggler,
     BottombarNav,
+    TopbarNav,
+    BackButton,
   },
   data() {
     return {
       apiStatus: "Connecting...",
       isPrimary: false,
-      home_nav: nav.home_items,
+      home_nav: [
+        {
+          name: "Home",
+          icon: "cui-home",
+          url: "/home",
+        },
+      ],
+      platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
       selectedPlatform: "platform-select",
@@ -451,11 +520,26 @@ export default {
 <span class="cstat-no" title="statement not covered" >        this.apiStatus = "Connection Error";</span>
       });
   },
+  mounted() {
+    for (var platform of this.platforms) {
+      console.log(platform);
+      this.home_nav.push({
+        name: platform.name,
+        url: platform.url || "/" + platform.name.toLowerCase(),
+        icon: "cui-dashboard",
+      });
+    }
+  },
   computed: {
     list() {
       return this.$route.matched.filter(
         route =&gt; route.meta.label || route.name
       );
+    },
+  },
+  methods: {
+<span class="fstat-no" title="function not covered" >    goUp: function() {</span>
+<span class="cstat-no" title="statement not covered" >      console.log("backbutton clicked");</span>
     },
   },
 };
@@ -484,7 +568,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 12 2018 14:16:35 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 13 2018 07:46:59 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
