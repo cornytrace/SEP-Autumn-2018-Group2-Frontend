@@ -31,6 +31,8 @@ import * as coursera from '@/views/platforms/coursera'
 
 Vue.use(VueRouter)
 
+var level = 0;
+
 const router = new VueRouter({
   mode: 'hash', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'open active',
@@ -42,6 +44,9 @@ const router = new VueRouter({
       name: 'Home',
       redirect: '/home',
       component: DefaultContainer,
+      props: {
+        level: level,
+      },
       children: [{
           path: '/home',
           component: Home,
@@ -64,7 +69,7 @@ const router = new VueRouter({
               },
             },
             {
-              path: '/videos',
+              path: '/coursera/:courseid/videos',
               name: 'Videos',
               component: coursera.Videos,
             },

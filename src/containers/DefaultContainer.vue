@@ -18,8 +18,8 @@
       <AppSidebar fixed>
         <SidebarHeader/>
         <SidebarForm/>
-        <BackButton :callback=goUp></BackButton>
-        <TopbarNav :navItems="home_nav"></TopbarNav>
+        <BackButton v-if="level > 0" :callback=goUp></BackButton>
+        <TopbarNav :navItems="top_nav[level]"></TopbarNav>
         <BottombarNav :navItems="bottom_nav"></BottombarNav>
         <SidebarFooter/>
         <SidebarMinimizer/>
@@ -93,6 +93,8 @@ export default {
     return {
       apiStatus: "Connecting...",
       isPrimary: false,
+      level: 0,
+      top_nav: [],
       home_nav: [
         {
           name: "Home",
@@ -137,6 +139,18 @@ export default {
         icon: "cui-dashboard",
       });
     }
+    this.top_nav[0] = this.home_nav;
+    this.top_nav[1] = [{ name: "course1", },];
+    this.top_nav[2] = [
+      { name: "Videos", },
+      { name: "Quizzes", },
+      { name: "Assignments", },
+    ];
+    this.fixMenu(this.$route.path);
+    this.$router.beforeEach((to, from, next) => {
+      this.fixMenu(to.path);
+      next();
+    });
   },
   computed: {
     list() {
@@ -147,7 +161,29 @@ export default {
   },
   methods: {
     goUp: function() {
-      console.log("backbutton clicked");
+      this.level--;
+    },
+    fixMenu: function(path) {
+      if (path === "/home") {
+        this.level = 0;
+      } else if (path.split("/").length - 1 === 2) {
+        this.top_nav[2] = [
+          {
+            name: "Videos",
+            url: path + "/videos",
+            icon: "fa fa-video-camera",
+          },
+          { name: "Quizzes", url: path + "/quizzes", icon: "cui-check", },
+          {
+            name: "Assignments",
+            url: path + "/assignments",
+            icon: "cui-calendar",
+          },
+        ];
+        this.level = path.split("/").length - 1;
+      } else {
+        this.level = path.split("/").length - 1;
+      }
     },
   },
 };
