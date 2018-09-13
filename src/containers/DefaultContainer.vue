@@ -7,7 +7,7 @@
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange"  :options="platformOptions"></b-form-select>
-      <b-form-select class="header-select" v-model="selectedCourse" :options="courseOptions"></b-form-select>
+      <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
         <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
@@ -197,8 +197,8 @@ export default {
       console.log(evt);
       if (evt !== "platform-select") {
         this.$router.push(evt);
+        // Update course dropdown
       }
-      // Update course dropdown
     },
   },
 };
