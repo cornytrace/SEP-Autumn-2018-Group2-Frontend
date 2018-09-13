@@ -52,7 +52,7 @@ const router = new VueRouter({
           component: Home,
         },
         {
-          path: '/home',
+          path: '/coursera',
           redirect: '/coursera',
           name: 'Coursera',
           component: Platform,

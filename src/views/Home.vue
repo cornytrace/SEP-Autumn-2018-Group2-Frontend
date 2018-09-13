@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col v-for="platform in platforms" :key="platform.name" sm="8" lg="6">
+      <b-col v-for="platform in platforms" :key="platform.name" :sm="12/platforms.length" :lg="12/platforms.length">
         <b-card class="bg" no-body>
           <b-card-header>
             <router-link :to="platform.name.toLowerCase()" ><h4>{{platform.name}}</h4></router-link>
