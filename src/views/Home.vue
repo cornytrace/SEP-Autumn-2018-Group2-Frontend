@@ -1,54 +1,15 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col sm="8" lg="6">
+      <b-col v-for="platform in platforms" :key="platform.name" sm="8" lg="6">
         <b-card class="bg" no-body>
           <b-card-header>
-            <router-link to="/courses"><h4>Coursera</h4></router-link>
+            <router-link :to="platform.name.toLowerCase()" ><h4>{{platform.name}}</h4></router-link>
           </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body>
               <b-card-header class="bg-success">
                 Platform Information
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
-                <div class="chart-wrapper">
-                </div>
-              </b-card-body>
-            </b-card>
-            <b-card no-body>
-              <b-card-header class="bg-primary">
-                <router-link to="/course/automata-system-validation" class="link-light">Quantitative model checking</router-link>
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
-                <div class="chart-wrapper">
-                </div>
-              </b-card-body>
-            </b-card>
-            <b-card no-body>
-              <b-card-header class="bg-primary">
-                <router-link to="/course/automata-system-validation" class="link-light">Automata system</router-link>
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
-                <div class="chart-wrapper">
-                </div>
-              </b-card-body>
-            </b-card>
-          </b-card-body>
-        </b-card>
-      </b-col>
-      <b-col sm="8" lg="6">
-        <b-card class="bg" no-body>
-          <b-card-header>
-            <router-link to="/courses"><h4>Platform 4</h4></router-link>
-          </b-card-header>
-          <b-card-body class="pb-0">
-            <b-card no-body>
-              <b-card-header class="bg-success">
-                Information
               </b-card-header>
               <b-card-body class="pb-0">
                 <p>Number of courses: 2<br>Total enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
@@ -85,7 +46,8 @@
 
 <script>
 import BarExample from "./charts/BarExample";
-import { Callout, } from "@coreui/vue";
+import { Callout } from "@coreui/vue";
+import settings from "@/settings";
 
 export default {
   name: "home",
@@ -95,6 +57,7 @@ export default {
   },
   data: function() {
     return {
+      platforms: settings.platforms,
       selected: "Month",
       tableItems: [
         {
