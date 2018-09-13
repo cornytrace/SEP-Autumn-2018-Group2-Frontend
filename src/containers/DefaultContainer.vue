@@ -43,6 +43,7 @@
 
 <script>
 import nav from "@/nav";
+import settings from "@/settings";
 import {
   Header as AppHeader,
   SidebarToggler,
@@ -99,14 +100,7 @@ export default {
           url: "/home",
         },
       ],
-      platforms: [
-        {
-          name: "Coursera",
-        },
-        {
-          name: "Platform 2",
-        },
-      ],
+      platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
       selectedPlatform: "platform-select",
@@ -136,13 +130,11 @@ export default {
       });
   },
   mounted() {
-    console.log("created called");
-    console.log(this.home_nav);
     for (var platform of this.platforms) {
       console.log(platform);
       this.home_nav.push({
         name: platform.name,
-        url: "/" + platform.name.toLowerCase(),
+        url: platform.url || "/" + platform.name.toLowerCase(),
         icon: "cui-dashboard",
       });
     }
