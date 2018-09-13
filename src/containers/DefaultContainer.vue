@@ -6,7 +6,7 @@
         <h4>DASH-IT</h4>
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
-      <b-form-select class="header-select" v-model="selectedPlatform" :options="platformOptions"></b-form-select>
+      <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange"  :options="platformOptions"></b-form-select>
       <b-form-select class="header-select" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
@@ -106,10 +106,7 @@ export default {
       bottom_nav: nav.bottom_items,
       testCount: 5,
       selectedPlatform: "platform-select",
-      platformOptions: [
-        { value: "platform-select", text: "Select platform", },
-        { value: "coursera", text: "Coursera", },
-      ],
+      platformOptions: [],
       selectedCourse: "course-select",
       courseOptions: [
         { value: "course-select", text: "Select course", },
@@ -132,11 +129,19 @@ export default {
       });
   },
   mounted() {
+    this.platformOptions = [
+      { value: "platform-select", text: "Select platform", },
+    ];
+
     for (var platform of this.platforms) {
       this.home_nav.push({
         name: platform.name,
         url: platform.url || "/" + platform.name.toLowerCase(),
         icon: "cui-dashboard",
+      });
+      this.platformOptions.push({
+        value: "/" + platform.name.toLowerCase(),
+        text: platform.name,
       });
     }
     this.top_nav[0] = this.home_nav;
@@ -147,6 +152,8 @@ export default {
       { name: "Assignments", },
     ];
     this.fixMenu(this.$route.path);
+
+    // On every router change update
     this.$router.beforeEach((to, from, next) => {
       this.fixMenu(to.path);
       next();
@@ -166,6 +173,7 @@ export default {
     fixMenu: function(path) {
       if (path === "/home") {
         this.level = 0;
+        this.selectedPlatform = "platform-select";
       } else if (path.split("/").length - 1 === 2) {
         this.top_nav[2] = [
           {
@@ -184,6 +192,13 @@ export default {
       } else {
         this.level = path.split("/").length - 1;
       }
+    },
+    platformChange(evt) {
+      console.log(evt);
+      if (evt !== "platform-select") {
+        this.$router.push(evt);
+      }
+      // Update course dropdown
     },
   },
 };
