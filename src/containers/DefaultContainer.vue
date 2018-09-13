@@ -152,13 +152,13 @@ export default {
       { name: "Assignments", },
     ];
     if (this.$route.path) {
-      this.fixMenu(this.$route.path);
+      this.setNavigation(this.$route.path);
     }
 
     // On every router change update
     if (this.$router) {
       this.$router.beforeEach((to, from, next) => {
-        this.fixMenu(to.path);
+        this.setNavigation(to.path);
         next();
       });
     }
@@ -174,7 +174,7 @@ export default {
     goUp: function() {
       this.level--;
     },
-    fixMenu: function(path) {
+    setNavigation: function(path) {
       if (path === "/home") {
         this.level = 0;
         this.selectedPlatform = "platform-select";
@@ -193,12 +193,14 @@ export default {
           },
         ];
         this.level = path.split("/").length - 1;
+      } else if (path.split("/").length - 1 === 1) {
+        this.selectedPlatform = "/coursera";
+        this.level = path.split("/").length - 1;
       } else {
         this.level = path.split("/").length - 1;
       }
     },
     platformChange(evt) {
-      console.log(evt);
       if (evt !== "platform-select") {
         this.$router.push(evt);
         // Update course dropdown
