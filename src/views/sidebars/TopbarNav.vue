@@ -62,6 +62,7 @@ export default {
         minScrollbarLength: 40,
         suppressScrollX: true,
         wheelPropagation: false,
+        interceptRailY: styles => ({ ...styles, height: 0, }),
       },
     };
   },
@@ -69,6 +70,7 @@ export default {
     goBack: function() {
       console.log("back");
     },
+    scrollHandle() {},
   },
 };
 </script>

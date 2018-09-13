@@ -3,10 +3,10 @@
 </template>
 <script>
 export default {
-  name: "sidebar-minimizer",
+  name: "backbutton",
   methods: {},
   props: {
-    callback: function() {},
+    callback: Function,
     minimized: false,
   },
 };

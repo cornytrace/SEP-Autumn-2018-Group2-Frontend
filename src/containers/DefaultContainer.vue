@@ -56,7 +56,7 @@ import {
   Aside as AppAside,
   AsideToggler,
   Footer as TheFooter,
-  Breadcrumb,
+  Breadcrumb
 } from "@coreui/vue";
 import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
@@ -131,7 +131,6 @@ export default {
   },
   mounted() {
     for (var platform of this.platforms) {
-      console.log(platform);
       this.home_nav.push({
         name: platform.name,
         url: platform.url || "/" + platform.name.toLowerCase(),
