@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import {
-  shallowMount,
+  shallowMount
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
-import Quizzes from '@/views/Quizzes'
+import Quizzes from '@/views/platforms/coursera/Quizzes'
 
 Vue.use(BootstrapVue)
 

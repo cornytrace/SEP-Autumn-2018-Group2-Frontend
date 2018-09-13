@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import {
-  shallowMount,
+  shallowMount
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
-import Courses from '@/views/Courses'
+import Courses from '@/views/platforms/coursera/Courses'
 
 Vue.use(BootstrapVue)
 

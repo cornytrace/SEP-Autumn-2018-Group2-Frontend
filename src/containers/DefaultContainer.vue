@@ -151,13 +151,17 @@ export default {
       { name: "Quizzes", },
       { name: "Assignments", },
     ];
-    this.fixMenu(this.$route.path);
+    if (this.$route.path) {
+      this.fixMenu(this.$route.path);
+    }
 
     // On every router change update
-    this.$router.beforeEach((to, from, next) => {
-      this.fixMenu(to.path);
-      next();
-    });
+    if (this.$router) {
+      this.$router.beforeEach((to, from, next) => {
+        this.fixMenu(to.path);
+        next();
+      });
+    }
   },
   computed: {
     list() {
