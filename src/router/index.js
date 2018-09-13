@@ -8,12 +8,6 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 
 // Views
 const Home = () => import('@/views/Home')
-const Courses = () => import('@/views/Courses')
-const CourseDetail = () => import('@/views/CourseDetail')
-const Videos = () => import('@/views/Videos')
-const VideoDetail = () => import('@/views/VideoDetail')
-const Quizzes = () => import('@/views/Quizzes')
-const QuizDetail = () => import('@/views/QuizDetail')
 const Contact = () => import('@/views/Contact')
 const Settings = () => import('@/views/Settings')
 const AdminPanel = () => import('@/views/admin/AdminPanel')
@@ -31,6 +25,8 @@ const Register = () => import('@/views/pages/Register')
 // Users
 const Users = () => import('@/views/users/Users')
 const User = () => import('@/views/users/User')
+
+import * as coursera from '@/views/platforms/coursera'
 
 Vue.use(VueRouter)
 
@@ -50,45 +46,48 @@ const router = new VueRouter({
           component: Home,
         },
         {
-          path: '/courses',
-          name: 'Courses',
-          component: Courses,
-        },
-        {
-          path: '/course/:courseid',
-          name: 'CourseDetail',
-          component: CourseDetail,
-          meta: {
-            label: "Course Details",
-          },
-        },
-        {
-          path: '/videos',
-          name: 'Videos',
-          component: Videos,
-        },
-        {
-          path: '/video/:videoid',
-          name: 'VideoDetail',
-          component: VideoDetail,
-          meta: {
-            label: "Video Details",
-          },
-        },
-        {
-          path: '/quizzes',
-          name: 'Quizzes',
-          component: Quizzes,
-        },
-        {
-          path: '/quiz/:quizid',
-          name: 'QuizDetail',
-          component: QuizDetail,
-          meta: {
-            label: "Quiz Details",
-          },
-        },
-        {
+          path: '/coursera',
+          name: 'Coursera',
+          children: [{
+              path: 'courses',
+              name: 'Courses',
+              component: coursera.Courses,
+            }, {
+              path: '/course/:courseid',
+              name: 'CourseDetail',
+              component: coursera.CourseDetail,
+              meta: {
+                label: "Course Details",
+              },
+            },
+            {
+              path: '/videos',
+              name: 'Videos',
+              component: coursera.Videos,
+            },
+            {
+              path: '/video/:videoid',
+              name: 'VideoDetail',
+              component: coursera.VideoDetail,
+              meta: {
+                label: "Video Details",
+              },
+            },
+            {
+              path: '/quizzes',
+              name: 'Quizzes',
+              component: coursera.Quizzes,
+            },
+            {
+              path: '/quiz/:quizid',
+              name: 'QuizDetail',
+              component: coursera.QuizDetail,
+              meta: {
+                label: "Quiz Details",
+              },
+            },
+          ],
+        }, {
           path: '/settings',
           name: 'Settings',
           component: Settings,

@@ -80,8 +80,8 @@
 </template>
 
 <script>
-import LineExample from "./charts/LineExample";
-import ScatterExample from "./charts/ScatterExample";
+import LineExample from "@/views/charts/LineExample";
+import ScatterExample from "@/views/charts/ScatterExample";
 
 export default {
   name: "course-detail",

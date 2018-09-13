@@ -10,7 +10,13 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'comma-dangle': ['warn', 'always', ],
+    'comma-dangle': ['warn', {
+      "arrays": "always",
+      "objects": "always",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+    }],
     'implicit-arrow-linebreak': ['warn', 'beside'],
   },
   parserOptions: {
