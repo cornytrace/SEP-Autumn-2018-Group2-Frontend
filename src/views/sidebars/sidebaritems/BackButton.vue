@@ -1,5 +1,5 @@
 <template>
-  <button class="backbutton" type="button" @click="callback"><span v-if="!minimized" class="backbutton-text">Back</span><i class="fa fa-level-up nav-icon"></i></button>
+  <button class="backbutton" type="button" @click="callback"><span v-if="!minimized" class="backbutton-text">Up</span><i class="fa fa-level-up nav-icon"></i></button>
 </template>
 <script>
 export default {

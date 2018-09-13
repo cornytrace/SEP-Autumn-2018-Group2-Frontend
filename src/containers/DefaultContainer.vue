@@ -10,7 +10,7 @@
       <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
-        <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" />
+        <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
       </b-navbar-nav>
       <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
@@ -87,7 +87,7 @@ export default {
     NotificationToggler,
     BottombarNav,
     TopbarNav,
-    BackButton,
+    BackButton
   },
   data() {
     return {
@@ -99,20 +99,19 @@ export default {
         {
           name: "Home",
           icon: "cui-home",
-          url: "/home",
-        },
+          url: "/home"
+        }
       ],
       platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
-      selectedPlatform: "platform-select",
       platformOptions: [],
+      selectedPlatform: "platform-select",
+      courseOptions: [],
       selectedCourse: "course-select",
-      courseOptions: [
-        { value: "course-select", text: "Select course", },
-        { value: "course1", text: "Course 1", },
-        { value: "course2", text: "Course 2", },
-      ],
+      courses: {
+        coursera: [{ name: "Coursera course 1" }, { name: "Coursera course 2" }]
+      }
     };
   },
   beforeMount() {
@@ -130,26 +129,27 @@ export default {
   },
   mounted() {
     this.platformOptions = [
-      { value: "platform-select", text: "Select platform", },
+      { value: "platform-select", text: "Select platform" }
     ];
+    this.initializeCourses();
 
     for (var platform of this.platforms) {
       this.home_nav.push({
         name: platform.name,
         url: platform.url || "/" + platform.name.toLowerCase(),
-        icon: "cui-dashboard",
+        icon: "cui-dashboard"
       });
       this.platformOptions.push({
         value: "/" + platform.name.toLowerCase(),
-        text: platform.name,
+        text: platform.name
       });
     }
     this.top_nav[0] = this.home_nav;
-    this.top_nav[1] = [{ name: "course1", },];
+    this.top_nav[1] = [];
     this.top_nav[2] = [
-      { name: "Videos", },
-      { name: "Quizzes", },
-      { name: "Assignments", },
+      { name: "Videos" },
+      { name: "Quizzes" },
+      { name: "Assignments" }
     ];
     if (this.$route.path) {
       this.setNavigation(this.$route.path);
@@ -168,33 +168,45 @@ export default {
       return this.$route.matched.filter(
         route => route.meta.label || route.name
       );
-    },
+    }
   },
   methods: {
     goUp: function() {
       this.level--;
     },
     setNavigation: function(path) {
-      if (path === "/home") {
+      if (path === "/home" || path === "/settings" || path === "/contact") {
         this.level = 0;
         this.selectedPlatform = "platform-select";
+      } else if (path.split("/").length - 1 === 1) {
+        // Course overview level
+        this.selectedPlatform = "/coursera";
+        this.level = path.split("/").length - 1;
+        this.initializeCourses();
+        this.setCourses(this.courses.coursera);
+        this.top_nav[1] = [];
+        for (var course of this.courses.coursera) {
+          this.top_nav[1].push({
+            name: course.name,
+            url: path + "/" + course.name.replace(/\s+/g, "-").toLowerCase(),
+            icon: "cui-dashboard"
+          });
+        }
       } else if (path.split("/").length - 1 === 2) {
+        // Course level
         this.top_nav[2] = [
           {
             name: "Videos",
             url: path + "/videos",
-            icon: "fa fa-video-camera",
+            icon: "fa fa-video-camera"
           },
-          { name: "Quizzes", url: path + "/quizzes", icon: "cui-check", },
+          { name: "Quizzes", url: path + "/quizzes", icon: "cui-check" },
           {
             name: "Assignments",
             url: path + "/assignments",
-            icon: "cui-calendar",
-          },
+            icon: "cui-calendar"
+          }
         ];
-        this.level = path.split("/").length - 1;
-      } else if (path.split("/").length - 1 === 1) {
-        this.selectedPlatform = "/coursera";
         this.level = path.split("/").length - 1;
       } else {
         this.level = path.split("/").length - 1;
@@ -206,7 +218,23 @@ export default {
         // Update course dropdown
       }
     },
-  },
+    initializeCourses: function() {
+      this.courseOptions = [
+        {
+          value: "course-select",
+          text: "Select course"
+        }
+      ];
+    },
+    setCourses(c) {
+      for (var course of c) {
+        this.courseOptions.push({
+          value: "/" + course.name.replace(" ", "-"),
+          text: course.name
+        });
+      }
+    }
+  }
 };
 </script>
 

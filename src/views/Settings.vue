@@ -31,6 +31,7 @@ export default {
   name: "Settings",
   data() {
     return {
+      status: false,
       selected: [], // Must be an array reference!
       options: [
         {
