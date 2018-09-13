@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>4/4</span>
       </div>
     </div>
   </div>
@@ -206,44 +206,7 @@
 161
 162
 163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+164</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -290,45 +253,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -443,57 +368,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="animated fadeIn"&gt;
     &lt;b-row&gt;
-      &lt;b-col sm="8" lg="6"&gt;
+      &lt;b-col v-for="platform in platforms" :key="platform.name" :sm="12/platforms.length" :lg="12/platforms.length"&gt;
         &lt;b-card class="bg" no-body&gt;
           &lt;b-card-header&gt;
-            &lt;router-link to="/courses"&gt;&lt;h4&gt;Coursera&lt;/h4&gt;&lt;/router-link&gt;
+            &lt;router-link :to="platform.name.toLowerCase()" &gt;&lt;h4&gt;{{platform.name}}&lt;/h4&gt;&lt;/router-link&gt;
           &lt;/b-card-header&gt;
           &lt;b-card-body class="pb-0"&gt;
             &lt;b-card no-body&gt;
               &lt;b-card-header class="bg-success"&gt;
                 Platform Information
-              &lt;/b-card-header&gt;
-              &lt;b-card-body class="pb-0"&gt;
-                &lt;p&gt;Number of courses: 2&lt;br&gt;Total enrolled student: 243,342&lt;br&gt;Course completers: 243,342&lt;br&gt;Payments: 243,342&lt;/p&gt;
-                &lt;div class="chart-wrapper"&gt;
-                &lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-            &lt;b-card no-body&gt;
-              &lt;b-card-header class="bg-primary"&gt;
-                &lt;router-link to="/course/automata-system-validation" class="link-light"&gt;Quantitative model checking&lt;/router-link&gt;
-              &lt;/b-card-header&gt;
-              &lt;b-card-body class="pb-0"&gt;
-                &lt;p&gt;Number of courses: 2&lt;br&gt;Total enrolled student: 243,342&lt;br&gt;New enrolled student: 243,342&lt;br&gt;Course completers: 243,342&lt;br&gt;Payments: 243,342&lt;/p&gt;
-                &lt;div class="chart-wrapper"&gt;
-                &lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-            &lt;b-card no-body&gt;
-              &lt;b-card-header class="bg-primary"&gt;
-                &lt;router-link to="/course/automata-system-validation" class="link-light"&gt;Automata system&lt;/router-link&gt;
-              &lt;/b-card-header&gt;
-              &lt;b-card-body class="pb-0"&gt;
-                &lt;p&gt;Number of courses: 2&lt;br&gt;Total enrolled student: 243,342&lt;br&gt;New enrolled student: 243,342&lt;br&gt;Course completers: 243,342&lt;br&gt;Payments: 243,342&lt;/p&gt;
-                &lt;div class="chart-wrapper"&gt;
-                &lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-card-body&gt;
-        &lt;/b-card&gt;
-      &lt;/b-col&gt;
-      &lt;b-col sm="8" lg="6"&gt;
-        &lt;b-card class="bg" no-body&gt;
-          &lt;b-card-header&gt;
-            &lt;router-link to="/courses"&gt;&lt;h4&gt;Platform 4&lt;/h4&gt;&lt;/router-link&gt;
-          &lt;/b-card-header&gt;
-          &lt;b-card-body class="pb-0"&gt;
-            &lt;b-card no-body&gt;
-              &lt;b-card-header class="bg-success"&gt;
-                Information
               &lt;/b-card-header&gt;
               &lt;b-card-body class="pb-0"&gt;
                 &lt;p&gt;Number of courses: 2&lt;br&gt;Total enrolled student: 243,342&lt;br&gt;Course completers: 243,342&lt;br&gt;Payments: 243,342&lt;/p&gt;
@@ -530,7 +417,8 @@
 &nbsp;
 &lt;script&gt;
 import BarExample from "./charts/BarExample";
-import { Callout, } from "@coreui/vue";
+import { Callout } from "@coreui/vue";
+import settings from "@/settings";
 &nbsp;
 export default {
   name: "home",
@@ -540,6 +428,7 @@ export default {
   },
   data: function() {
     return {
+      platforms: settings.platforms,
       selected: "Month",
       tableItems: [
         {
@@ -649,7 +538,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 13 2018 08:36:12 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 13 2018 12:28:08 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

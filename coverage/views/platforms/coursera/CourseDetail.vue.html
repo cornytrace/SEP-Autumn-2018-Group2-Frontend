@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for views/sidebars/BottombarNav.vue</title>
+    <title>Code coverage report for views/platforms/coursera/CourseDetail.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">views/sidebars</a> BottombarNav.vue
+      <a href="../../../index.html">All files</a> / <a href="index.html">views/platforms/coursera</a> CourseDetail.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/5</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/5</span>
+        <span class='fraction'>4/4</span>
       </div>
     </div>
   </div>
@@ -146,7 +146,20 @@
 101
 102
 103
-104</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,8 +208,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,7 +221,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,15 +233,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,109 +276,122 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;nav class="sidebar-nav"&gt;
-    &lt;VuePerfectScrollbar class="scroll-area" :settings="psSettings" @ps-scroll-y="scrollHandle"&gt;
-    &lt;ul class="nav"&gt;
-      &lt;template v-for="(item, index) in navItems"&gt;
-        &lt;template v-if="item.title"&gt;
-          &lt;SidebarNavTitle :key="index" :name="item.name" :classes="item.class" :wrapper="item.wrapper"/&gt;
-        &lt;/template&gt;
-        &lt;template v-else-if="item.divider"&gt;
-          &lt;SidebarNavDivider :key="index" :classes="item.class"/&gt;
-        &lt;/template&gt;
-        &lt;template v-else-if="item.label"&gt;
-          &lt;SidebarNavLabel :key="index" :name="item.name" :url="item.url" :icon="item.icon" :label="item.label" :classes="item.class"/&gt;
-        &lt;/template&gt;
-        &lt;template v-else&gt;
-          &lt;template v-if="item.children"&gt;
-            &lt;!-- First level dropdown --&gt;
-            &lt;SidebarNavDropdown :key="index" :name="item.name" :url="item.url" :icon="item.icon"&gt;
-              &lt;template v-for="(childL1, index1) in item.children"&gt;
-                &lt;template v-if="childL1.children"&gt;
-                  &lt;!-- Second level dropdown --&gt;
-                  &lt;SidebarNavDropdown :key="index1" :name="childL1.name" :url="childL1.url" :icon="childL1.icon"&gt;
-                    &lt;li :key="index2" class="nav-item" v-for="(childL2, index2) in childL1.children"&gt;
-                      &lt;SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="item.variant"/&gt;
-                    &lt;/li&gt;
-                  &lt;/SidebarNavDropdown&gt;
-                &lt;/template&gt;
-                &lt;template v-else&gt;
-                  &lt;SidebarNavItem :key="index1" :classes="item.class"&gt;
-                    &lt;SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="item.variant"/&gt;
-                  &lt;/SidebarNavItem&gt;
-                &lt;/template&gt;
-              &lt;/template&gt;
-            &lt;/SidebarNavDropdown&gt;
-          &lt;/template&gt;
-          &lt;template v-else&gt;
-            &lt;SidebarNavItem :key="index" :classes="item.class"&gt;
-              &lt;SidebarNavLink :name="item.name" :url="item.url" :icon="item.icon" :badge="item.badge" :variant="item.variant"/&gt;
-            &lt;/SidebarNavItem&gt;
-          &lt;/template&gt;
-        &lt;/template&gt;
-      &lt;/template&gt;
-    &lt;/ul&gt;
-    &lt;slot&gt;&lt;/slot&gt;
-    &lt;/VuePerfectScrollbar&gt;
-  &lt;/nav&gt;
+  &lt;div class="animated fadeIn"&gt;
+    &lt;b-row&gt;
+      &lt;b-col sm="6" md="8"&gt;
+        &lt;b-card header="Automata System Validation"&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.&lt;/p&gt;
+          &lt;b-form-group
+            label="Select a quiz:"
+            label-for="select-quiz"
+            :label-cols="3"
+            :horizontal="true"&gt;
+            &lt;b-form-select id="select-quiz"
+              :plain="true"
+              :options="['Automata to model behaviour','Basic behavioural equivalences', 'More behavioural equivalences']"
+              value="More behavioural equivalences"&gt;
+            &lt;/b-form-select&gt;
+          &lt;/b-form-group&gt;
+          &lt;b-form-group
+            label="Select a quiz version:"
+            label-for="select-quiz-version"
+            :label-cols="3"
+            :horizontal="true"&gt;
+            &lt;b-form-select id="select-quiz-version"
+              :plain="true"
+              :options="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']"
+              value="13"&gt;
+            &lt;/b-form-select&gt;
+          &lt;/b-form-group&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col cols="12" sm="6" lg="3"&gt;
+        &lt;b-row&gt;
+          &lt;b-col sm="6" md="12"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix"&gt;
+                &lt;i class="fa fa-star bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;0.63&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Average grade&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col cols="12" sm="6" lg="12"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix"&gt;
+                &lt;i class="fa fa-user bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;107&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Unique learners&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col cols="12" sm="6" lg="12"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix"&gt;
+                &lt;i class="fa fa-clipboard bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;920&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Total responses&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+        &lt;/b-row&gt;
+      &lt;/b-col&gt;
+    &lt;/b-row&gt;&lt;!--/.row--&gt;
+    &lt;b-row&gt;
+      &lt;b-col md="6"&gt;
+        &lt;b-card header="Grade distribution"&gt;
+          &lt;div class="chart-wrapper"&gt;
+            &lt;line-example chartId="chart-line-01"/&gt;
+          &lt;/div&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col md="6"&gt;
+        &lt;b-card header="P-value v. RIT-score"&gt;
+          &lt;div class="chart-wrapper"&gt;
+            &lt;scatter-example chartId="chart-scatter-01"/&gt;
+          &lt;/div&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+    &lt;/b-row&gt;&lt;!--/.row--&gt;
+  &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import VuePerfectScrollbar from "vue-perfect-scrollbar";
-import {
-  SidebarNavDivider,
-  SidebarNavDropdown,
-  SidebarNavLink,
-  SidebarNavTitle,
-  SidebarNavItem,
-  SidebarNavLabel,
-} from "@coreui/vue";
+import LineExample from "@/views/charts/LineExample";
+import ScatterExample from "@/views/charts/ScatterExample";
+&nbsp;
 export default {
-  name: "BottombarNav",
-  props: {
-    navItems: {
-      type: Array,
-      required: true,
-      default: () =&gt; [],
-    },
-  },
-  components: {
-    SidebarNavDivider,
-    SidebarNavDropdown,
-    SidebarNavLink,
-    SidebarNavTitle,
-    SidebarNavItem,
-    SidebarNavLabel,
-    VuePerfectScrollbar,
-  },
-  data() {
+  name: "course-detail",
+  data: function() {
     return {
-      psSettings: {
-        maxScrollbarLength: 200,
-        minScrollbarLength: 40,
-        suppressScrollX: true,
-        wheelPropagation: false,
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        interceptRailY: styles =&gt; ({ ...styles, height: 0, }),</span></span>
-      },
+      show: true,
+      course: this.$route.params.courseid,
     };
   },
-  methods: {
-<span class="fstat-no" title="function not covered" >    scrollHandle() {},</span>
+  components: {
+    LineExample,
+    ScatterExample,
+  },
+  created: function() {
+    this.$route.meta.label = this.$route.params.courseid;
   },
 };
 &lt;/script&gt;
 &nbsp;
-&lt;style scoped lang="css"&gt;
-.scroll-area {
-  position: absolute;
-  height: 100%;
-  margin: auto;
+&lt;style scoped&gt;
+.fade-enter-active {
+  transition: all 0.3s ease;
 }
-.nav {
-  flex-direction: column;
-  justify-content: flex-end;
+.fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
-&lt;/style&gt;</pre></td></tr>
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+&lt;/style&gt;
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
@@ -361,7 +400,7 @@ export default {
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 13 2018 12:28:08 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
-<script src="../../prettify.js"></script>
+<script src="../../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -369,6 +408,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../sorter.js"></script>
+<script src="../../../sorter.js"></script>
 </body>
 </html>
