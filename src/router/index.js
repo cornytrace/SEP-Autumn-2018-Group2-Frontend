@@ -12,6 +12,7 @@ const Contact = () => import('@/views/Contact')
 const Settings = () => import('@/views/Settings')
 const AdminPanel = () => import('@/views/admin/AdminPanel')
 const AdminHome = () => import('@/views/admin/AdminHome')
+const Platform = () => import('@/views/platforms/Platform')
 
 // Mockup pages
 const Statistics = () => import('@/views/Statistics')
@@ -46,14 +47,16 @@ const router = new VueRouter({
           component: Home,
         },
         {
-          path: '/coursera',
+          path: '',
+          redirect: '/coursera',
           name: 'Coursera',
+          component: Platform,
           children: [{
-              path: 'courses',
-              name: 'Courses',
+              path: '/coursera',
+              name: '',
               component: coursera.Courses,
             }, {
-              path: '/course/:courseid',
+              path: '/coursera/:courseid',
               name: 'CourseDetail',
               component: coursera.CourseDetail,
               meta: {
