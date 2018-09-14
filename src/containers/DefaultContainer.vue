@@ -181,7 +181,7 @@ export default {
         this.$store.commit("setCourses", this.courses.coursera);
       } else if (this.level === 2) {
         // Course level
-
+        this.setCourses(this.courses.coursera, this.selectedPlatform);
         this.top_nav[2] = [];
         for (var subpage of settings.course_pages) {
           this.top_nav[2].push({
@@ -197,6 +197,7 @@ export default {
         this.selectedPlatform = "/" + path.split("/")[1];
       }
       if (this.level > 1) {
+        console.log(this.level);
         this.selectedCourse = path;
       }
     },
@@ -227,6 +228,12 @@ export default {
       ];
     },
     setCourses(c, platform) {
+      this.courseOptions = [
+        {
+          value: settings.course_default,
+          text: "Select course",
+        },
+      ];
       for (var course of c) {
         this.courseOptions.push({
           value: platform + "/" + util.toUrl(course.name),
