@@ -36,4 +36,8 @@ export default {
         headers: this.authHeader(),
       })
   },
+
+  toUrl(x) {
+    return x.replace(/\s+/g, "-").toLowerCase()
+  },
 }

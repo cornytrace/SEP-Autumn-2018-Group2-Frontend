@@ -1,40 +1,10 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col sm="6" md="4">
-        <b-card header="Course 1">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: 'automata-system-validation'} }">Details...</router-link></div>
-        </b-card>
-      </b-col>
-      <b-col sm="6" md="4">
-        <b-card header="Course 2">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: 'automata-system-validation'} }">Details...</router-link></div>
-        </b-card>
-      </b-col>
-      <b-col sm="6" md="4">
-        <b-card header="Course 3">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: 'automata-system-validation'} }">Details...</router-link></div>
-        </b-card>
-      </b-col>
-      <b-col sm="6" md="4">
-        <b-card header="Course 4">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: 'automata-system-validation'} }">Details...</router-link></div>
-        </b-card>
-      </b-col>
-      <b-col sm="6" md="4">
-        <b-card header="Course 5">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: 'automata-system-validation'} }">Details...</router-link></div>
-        </b-card>
-      </b-col>
-      <b-col sm="6" md="4">
-        <b-card header="Course 6">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: 'automata-system-validation'} }">Details...</router-link></div>
+      <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
+        <b-card :header="course.name">
+          {{course.description}}
+          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: util.toUrl(course.name)} }">Details...</router-link></div>
         </b-card>
       </b-col>
     </b-row><!--/.row-->
@@ -42,12 +12,19 @@
 </template>
 
 <script>
+import util from "@/util";
+
 export default {
   name: "course-overview",
   data: function() {
     return {
       show: true,
+      courses: [],
+      util: util,
     };
+  },
+  mounted: function() {
+    this.courses = this.$store.state.courses;
   },
 };
 </script>

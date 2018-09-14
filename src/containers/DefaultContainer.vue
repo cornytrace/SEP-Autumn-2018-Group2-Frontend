@@ -7,7 +7,7 @@
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange"  :options="platformOptions"></b-form-select>
-      <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" v-model="selectedCourse" :options="courseOptions"></b-form-select>
+      <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
         <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
@@ -87,7 +87,7 @@ export default {
     NotificationToggler,
     BottombarNav,
     TopbarNav,
-    BackButton
+    BackButton,
   },
   data() {
     return {
@@ -95,23 +95,21 @@ export default {
       isPrimary: false,
       level: 0,
       top_nav: [],
-      home_nav: [
-        {
-          name: "Home",
-          icon: "cui-home",
-          url: "/home"
-        }
-      ],
+      level_0: ["/home", "/settings", "/contact",],
       platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
       platformOptions: [],
-      selectedPlatform: "platform-select",
+      selectedPlatform: settings.platform_default,
       courseOptions: [],
-      selectedCourse: "course-select",
+      selectedCourse: settings.course_default,
+      // Mock
       courses: {
-        coursera: [{ name: "Coursera course 1" }, { name: "Coursera course 2" }]
-      }
+        coursera: [
+          { name: "Coursera course 1", description: "description course 1", },
+          { name: "Coursera course 2", description: "description course 2", },
+        ],
+      },
     };
   },
   beforeMount() {
@@ -129,28 +127,12 @@ export default {
   },
   mounted() {
     this.platformOptions = [
-      { value: "platform-select", text: "Select platform" }
+      { value: settings.platform_default, text: "Select platform", },
     ];
+
+    this.setPlatforms();
     this.initializeCourses();
 
-    for (var platform of this.platforms) {
-      this.home_nav.push({
-        name: platform.name,
-        url: platform.url || "/" + platform.name.toLowerCase(),
-        icon: "cui-dashboard"
-      });
-      this.platformOptions.push({
-        value: "/" + platform.name.toLowerCase(),
-        text: platform.name
-      });
-    }
-    this.top_nav[0] = this.home_nav;
-    this.top_nav[1] = [];
-    this.top_nav[2] = [
-      { name: "Videos" },
-      { name: "Quizzes" },
-      { name: "Assignments" }
-    ];
     if (this.$route.path) {
       this.setNavigation(this.$route.path);
     }
@@ -168,73 +150,110 @@ export default {
       return this.$route.matched.filter(
         route => route.meta.label || route.name
       );
-    }
+    },
   },
   methods: {
     goUp: function() {
       this.level--;
     },
+    // Update the navigation menus.
     setNavigation: function(path) {
-      if (path === "/home" || path === "/settings" || path === "/contact") {
-        this.level = 0;
-        this.selectedPlatform = "platform-select";
-      } else if (path.split("/").length - 1 === 1) {
-        // Course overview level
-        this.selectedPlatform = "/coursera";
-        this.level = path.split("/").length - 1;
+      // Get level.
+      this.level = this.getLevel(path);
+
+      // Set navigation based on the level.
+      if (this.level === 0) {
+        // Home level
+        this.selectedPlatform = settings.platform_default;
+      } else if (this.level === 1) {
+        // Course overview level.
+        this.selectedCourse = settings.course_default;
         this.initializeCourses();
-        this.setCourses(this.courses.coursera);
+        this.setCourses(this.courses.coursera, this.selectedPlatform);
         this.top_nav[1] = [];
         for (var course of this.courses.coursera) {
           this.top_nav[1].push({
             name: course.name,
-            url: path + "/" + course.name.replace(/\s+/g, "-").toLowerCase(),
-            icon: "cui-dashboard"
+            url: path + "/" + util.toUrl(course.name),
+            icon: "cui-dashboard",
           });
         }
-      } else if (path.split("/").length - 1 === 2) {
+        this.$store.commit("setCourses", this.courses.coursera);
+      } else if (this.level === 2) {
         // Course level
-        this.top_nav[2] = [
-          {
-            name: "Videos",
-            url: path + "/videos",
-            icon: "fa fa-video-camera"
-          },
-          { name: "Quizzes", url: path + "/quizzes", icon: "cui-check" },
-          {
-            name: "Assignments",
-            url: path + "/assignments",
-            icon: "cui-calendar"
-          }
-        ];
-        this.level = path.split("/").length - 1;
-      } else {
-        this.level = path.split("/").length - 1;
+
+        this.top_nav[2] = [];
+        for (var subpage of settings.course_pages) {
+          this.top_nav[2].push({
+            name: subpage.name,
+            icon: subpage.icon,
+            url: path + util.toUrl(subpage.name),
+          });
+        }
+      }
+
+      //Set dropdown menus to the correct value
+      if (this.level > 0) {
+        this.selectedPlatform = "/" + path.split("/")[1];
+      }
+      if (this.level > 1) {
+        this.selectedCourse = path;
       }
     },
+    // Dropdown listeners
     platformChange(evt) {
-      if (evt !== "platform-select") {
+      if (evt !== settings.platform_default) {
         this.$router.push(evt);
-        // Update course dropdown
       }
+    },
+    courseChange(evt) {
+      if (evt !== settings.course_default) {
+        this.$router.push(evt);
+      }
+    },
+    // Helper functions
+    getLevel(path) {
+      if (this.level_0.indexOf(path) !== -1) {
+        return 0;
+      }
+      return path.split("/").length - 1;
     },
     initializeCourses: function() {
       this.courseOptions = [
         {
-          value: "course-select",
-          text: "Select course"
-        }
+          value: settings.course_default,
+          text: "Select course",
+        },
       ];
     },
-    setCourses(c) {
+    setCourses(c, platform) {
       for (var course of c) {
         this.courseOptions.push({
-          value: "/" + course.name.replace(" ", "-"),
-          text: course.name
+          value: platform + "/" + util.toUrl(course.name),
+          text: course.name,
         });
       }
-    }
-  }
+    },
+    setPlatforms() {
+      this.top_nav[0] = [];
+      this.top_nav[0].push({
+        name: "Home",
+        icon: "cui-home",
+        url: "/home",
+      });
+      for (var platform of this.platforms) {
+        this.top_nav[0].push({
+          name: platform.name,
+          url: platform.url || "/" + util.toUrl(platform.name),
+          icon: "cui-dashboard",
+        });
+        this.platformOptions.push({
+          value: "/" + util.toUrl(platform.name),
+          text: platform.name,
+        });
+      }
+    },
+  },
 };
 </script>
 

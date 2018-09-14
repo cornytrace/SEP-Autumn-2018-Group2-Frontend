@@ -15,6 +15,7 @@ export default new Vuex.Store({
   state: {
     apiToken: "",
     apiExpire: Date.now(),
+    courses: [],
   },
   getters: {
 
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     setExpire(state, expire) {
       state.apiExpire = expire;
+    },
+    setCourses(state, courses) {
+      state.courses = courses
     },
   },
   actions: {

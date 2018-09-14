@@ -95,9 +95,6 @@ export default {
     LineExample,
     ScatterExample,
   },
-  created: function() {
-    this.$route.meta.label = this.$route.params.courseid;
-  },
 };
 </script>
 
