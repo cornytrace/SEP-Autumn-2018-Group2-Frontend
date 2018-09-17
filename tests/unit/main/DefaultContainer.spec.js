@@ -1,7 +1,7 @@
 import BootstrapVue from 'bootstrap-vue'
 import {
   mount,
-  createLocalVue,
+  createLocalVue
 } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import DefaultContainer from '@/containers/DefaultContainer'
@@ -21,7 +21,7 @@ describe('DefaultContainer.vue', () => {
   it('sets the correct default data', () => {
     expect(typeof DefaultContainer.data).toMatch('function')
     const defaultData = DefaultContainer.data()
-    expect(typeof defaultData.home_nav).toMatch('object')
+    expect(typeof defaultData.top_nav).toMatch('object')
   })
   it('is Vue instance', () => {
     const wrapper = mount(DefaultContainer, {
