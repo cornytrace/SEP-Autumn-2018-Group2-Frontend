@@ -187,7 +187,7 @@ export default {
           this.top_nav[2].push({
             name: subpage.name,
             icon: subpage.icon,
-            url: path + util.toUrl(subpage.name),
+            url: path + "/" + util.toUrl(subpage.name),
           });
         }
       }
@@ -197,7 +197,6 @@ export default {
         this.selectedPlatform = "/" + path.split("/")[1];
       }
       if (this.level > 1) {
-        console.log(this.level);
         this.selectedCourse = path;
       }
     },
