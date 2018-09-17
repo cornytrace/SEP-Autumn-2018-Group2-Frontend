@@ -19,7 +19,7 @@
         <SidebarHeader/>
         <SidebarForm/>
         <BackButton v-if="level > 0" :callback=goUp></BackButton>
-        <TopbarNav :navItems="top_nav[level]"></TopbarNav>
+        <TopbarNav :navItems="top_nav[level]" :clickCallback=sideButtonClick></TopbarNav>
         <BottombarNav :navItems="bottom_nav"></BottombarNav>
         <SidebarFooter/>
         <SidebarMinimizer/>
@@ -210,6 +210,9 @@ export default {
       if (evt !== settings.course_default) {
         this.$router.push(evt);
       }
+    },
+    sideButtonClick(event) {
+      this.setNavigation(event.srcElement.hash.substring(1));
     },
     // Helper functions
     getLevel(path) {

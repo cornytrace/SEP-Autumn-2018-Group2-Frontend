@@ -2,9 +2,6 @@
   <nav class="sidebar-nav">
     <VuePerfectScrollbar class="scroll-area" :settings="psSettings" @ps-scroll-y="scrollHandle">
     <ul class="nav">
-      <!-- <SidebarNavItem>
-        <SidebarNavLink id="backbutton" name="Back" url="" icon="cui-chevron-left" @click.native="goBack"/>
-      </SidebarNavItem> -->
       <template v-for="(item, index) in navItems">
         <template v-if="item.title">
           <SidebarNavTitle :key="index" :name="item.name" :classes="item.class" :wrapper="item.wrapper"/>
@@ -17,7 +14,7 @@
         </template>
         <template v-else>
           <SidebarNavItem :key="index" :classes="item.class">
-            <SidebarNavLink :name="item.name" :url="item.url" :icon="item.icon" :badge="item.badge" :variant="item.variant"/>
+            <SidebarNavLink :name="item.name" :url="item.url" :icon="item.icon" :badge="item.badge" :variant="item.variant" @click.native="clickCallback"/>
           </SidebarNavItem>
         </template>
       </template>
@@ -35,7 +32,7 @@ import {
   SidebarNavLink,
   SidebarNavTitle,
   SidebarNavItem,
-  SidebarNavLabel,
+  SidebarNavLabel
 } from "@coreui/vue";
 export default {
   name: "TopbarNav",
@@ -45,6 +42,7 @@ export default {
       required: true,
       default: () => [],
     },
+    clickCallback: Function,
   },
   components: {
     SidebarNavDivider,
