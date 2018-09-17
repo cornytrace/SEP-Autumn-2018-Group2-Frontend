@@ -1,10 +1,22 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
+      <!-- <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
         <b-card :header="course.name">
           {{course.description}}
           <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: util.toUrl(course.name)} }">Details...</router-link></div>
+        </b-card>
+      </b-col> -->
+      <b-col sm="6" md="4">
+        <b-card header="Lesson 1">
+          This is a discription of the first lesson
+          <div slot="footer"><router-link to="">Details...</router-link></div>
+        </b-card>
+      </b-col>
+      <b-col sm="6" md="4">
+        <b-card header="Lesson 2">
+          This is a discription of the second lesson
+          <div slot="footer"><router-link to="">Details...</router-link></div>
         </b-card>
       </b-col>
     </b-row><!--/.row-->
