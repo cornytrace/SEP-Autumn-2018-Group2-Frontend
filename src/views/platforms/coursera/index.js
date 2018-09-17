@@ -32,3 +32,8 @@ export {
   default as Assignments
 }
 from './Assignments'
+
+export {
+  default as Lessons
+}
+from './Lessons'

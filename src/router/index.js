@@ -99,6 +99,11 @@ const router = new VueRouter({
               name: 'Assignments',
               component: coursera.Assignments,
             },
+            {
+              path: '/coursera/:courseid/lessons',
+              name: 'Lessons',
+              component: coursera.Lessons,
+            },
           ],
         }, {
           path: '/settings',

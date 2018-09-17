@@ -14,6 +14,9 @@ export default {
     {
       name: "Assignments",
       icon: "cui-calendar",
+    }, {
+      name: "Lessons",
+      icon: "cui-calendar",
     },
   ],
 
