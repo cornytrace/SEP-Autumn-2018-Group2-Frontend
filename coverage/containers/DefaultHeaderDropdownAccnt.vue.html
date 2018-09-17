@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>5/6</span>
       </div>
     </div>
   </div>
@@ -81,42 +81,7 @@
 36
 37
 38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+39</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,6 +114,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
@@ -158,36 +126,17 @@
     &lt;/template&gt;
     &lt;template slot="dropdown"&gt;
       &lt;b-dropdown-header tag="div" class="text-center"&gt;&lt;strong&gt;Account&lt;/strong&gt;&lt;/b-dropdown-header&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-bell-o" /&gt; Updates
-        &lt;b-badge variant="info"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-envelope-o" /&gt; Messages
-        &lt;b-badge variant="success"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-tasks" /&gt; Tasks
-        &lt;b-badge variant="danger"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-comments" /&gt; Comments
-        &lt;b-badge variant="warning"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-header
-        tag="div"
-        class="text-center"&gt;
-        &lt;strong&gt;Settings&lt;/strong&gt;
-      &lt;/b-dropdown-header&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-user" /&gt; Profile&lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-wrench" /&gt; Settings&lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-item&gt;&lt;i class="fa fa-file" /&gt; Projects
-        &lt;b-badge variant="primary"&gt;{{ itemsCount }}&lt;/b-badge&gt;
-      &lt;/b-dropdown-item&gt;
-      &lt;b-dropdown-divider /&gt;
+      &lt;!-- &lt;b-dropdown-item&gt;&lt;i class="fa fa-user" /&gt; Profile&lt;/b-dropdown-item&gt; --&gt;
+      &lt;b-dropdown-item @click="doSettings"&gt;&lt;i class="fa fa-wrench" /&gt; Settings&lt;/b-dropdown-item&gt;
+      &lt;!-- Example divider --&gt;
+      &lt;!-- &lt;b-dropdown-divider /&gt; --&gt;
       &lt;b-dropdown-item @click="doLogout"&gt;&lt;i class="fa fa-lock" /&gt; Logout&lt;/b-dropdown-item&gt;
     &lt;/template&gt;
   &lt;/AppHeaderDropdown&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import { HeaderDropdown as AppHeaderDropdown, } from "@coreui/vue";
+import { HeaderDropdown as AppHeaderDropdown } from "@coreui/vue";
 export default {
   name: "DefaultHeaderDropdownAccnt",
   components: {
@@ -202,6 +151,9 @@ export default {
         this.$router.push("/pages/login");
       });
     },
+<span class="fstat-no" title="function not covered" >    doSettings() {</span>
+<span class="cstat-no" title="statement not covered" >      this.$router.push("/settings");</span>
+    },
   },
 };
 &lt;/script&gt;
@@ -211,7 +163,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Sep 14 2018 14:22:52 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 17 2018 10:59:46 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
