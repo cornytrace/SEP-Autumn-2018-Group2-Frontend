@@ -156,10 +156,23 @@ export default {
     goUp: function() {
       this.level--;
     },
+    doDown: function() {
+      this.level++;
+    },
     // Update the navigation menus.
     setNavigation: function(path) {
       // Get level.
       this.level = this.getLevel(path);
+
+      //Set dropdown menus to the correct value
+      if (this.level > 0) {
+        this.selectedPlatform = "/" + path.split("/")[1];
+      }
+      if (this.level > 1) {
+        var split = path.split("/");
+        this.setCourses(this.courses.coursera, this.selectedPlatform);
+        this.selectedCourse = "/" + split[1] + "/" + split[2];
+      }
 
       // Set navigation based on the level.
       if (this.level === 0) {
@@ -168,36 +181,10 @@ export default {
       } else if (this.level === 1) {
         // Course overview level.
         this.selectedCourse = settings.course_default;
-        this.initializeCourses();
-        this.setCourses(this.courses.coursera, this.selectedPlatform);
-        this.top_nav[1] = [];
-        for (var course of this.courses.coursera) {
-          this.top_nav[1].push({
-            name: course.name,
-            url: path + "/" + util.toUrl(course.name),
-            icon: "cui-dashboard",
-          });
-        }
         this.$store.commit("setCourses", this.courses.coursera);
       } else if (this.level === 2) {
         // Course level
-        this.setCourses(this.courses.coursera, this.selectedPlatform);
-        this.top_nav[2] = [];
-        for (var subpage of settings.course_pages) {
-          this.top_nav[2].push({
-            name: subpage.name,
-            icon: subpage.icon,
-            url: path + "/" + util.toUrl(subpage.name),
-          });
-        }
-      }
-
-      //Set dropdown menus to the correct value
-      if (this.level > 0) {
-        this.selectedPlatform = "/" + path.split("/")[1];
-      }
-      if (this.level > 1) {
-        this.selectedCourse = path;
+        this.setSubPages(this.selectedPlatform);
       }
     },
     // Dropdown listeners
@@ -229,20 +216,6 @@ export default {
         },
       ];
     },
-    setCourses(c, platform) {
-      this.courseOptions = [
-        {
-          value: settings.course_default,
-          text: "Select course",
-        },
-      ];
-      for (var course of c) {
-        this.courseOptions.push({
-          value: platform + "/" + util.toUrl(course.name),
-          text: course.name,
-        });
-      }
-    },
     setPlatforms() {
       this.top_nav[0] = [];
       this.top_nav[0].push({
@@ -259,6 +232,38 @@ export default {
         this.platformOptions.push({
           value: "/" + util.toUrl(platform.name),
           text: platform.name,
+        });
+      }
+    },
+    setCourses(c, platform) {
+      this.courseOptions = [
+        {
+          value: settings.course_default,
+          text: "Select course",
+        },
+      ];
+      this.top_nav[1] = [];
+      for (var course of c) {
+        // Push to dropdown
+        this.courseOptions.push({
+          value: platform + "/" + util.toUrl(course.name),
+          text: course.name,
+        });
+        // Push to navbar
+        this.top_nav[1].push({
+          name: course.name,
+          url: platform + "/" + util.toUrl(course.name),
+          icon: "cui-dashboard",
+        });
+      }
+    },
+    setSubPages(platform) {
+      this.top_nav[2] = [];
+      for (var subpage of settings.course_pages) {
+        this.top_nav[2].push({
+          name: subpage.name,
+          icon: subpage.icon,
+          url: platform + "/" + util.toUrl(subpage.name),
         });
       }
     },
