@@ -165,10 +165,8 @@ export default {
       this.level = this.getLevel(path);
 
       //Set dropdown menus to the correct value
-      if (this.level > 0) {
+      if (this.level >= 1) {
         this.selectedPlatform = "/" + path.split("/")[1];
-      }
-      if (this.level > 1) {
         var split = path.split("/");
         this.setCourses(this.courses.coursera, this.selectedPlatform);
         this.selectedCourse = "/" + split[1] + "/" + split[2];
