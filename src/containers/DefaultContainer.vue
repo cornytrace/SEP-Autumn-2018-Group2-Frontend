@@ -184,7 +184,7 @@ export default {
         this.$store.commit("setCourses", this.courses.coursera);
       } else if (this.level === 2) {
         // Course level
-        this.setSubPages(this.selectedPlatform);
+        this.setSubPages(path);
       }
     },
     // Dropdown listeners
@@ -257,13 +257,13 @@ export default {
         });
       }
     },
-    setSubPages(platform) {
+    setSubPages(path) {
       this.top_nav[2] = [];
       for (var subpage of settings.course_pages) {
         this.top_nav[2].push({
           name: subpage.name,
           icon: subpage.icon,
-          url: platform + "/" + util.toUrl(subpage.name),
+          url: path + "/" + util.toUrl(subpage.name),
         });
       }
     },
