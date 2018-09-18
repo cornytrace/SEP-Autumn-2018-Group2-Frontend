@@ -16,6 +16,8 @@ export default new Vuex.Store({
     apiToken: "",
     apiExpire: Date.now(),
     courses: [],
+    resetToken: "",
+    resetId: "",
   },
   getters: {
 
@@ -29,6 +31,12 @@ export default new Vuex.Store({
     },
     setCourses(state, courses) {
       state.courses = courses
+    },
+    setResetToken(state, token) {
+      state.resetToken = token
+    },
+    setResetId(state, id) {
+      state.resetId = id
     },
   },
   actions: {

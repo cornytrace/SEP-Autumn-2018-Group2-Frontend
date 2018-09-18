@@ -31,6 +31,8 @@ module.exports = {
     // Helper functions, if components work helper functions
     // must work as well.
     "!**/shared/*.js",
+    // referral page
+    "!**/views/pages/resetreferrer.vue",
     // Untestable js code.
     // If store.js gets used it should be tested.
     "!**/router/*.js",

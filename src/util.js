@@ -37,6 +37,13 @@ export default {
       })
   },
 
+  resetPassword(id, data) {
+    return axios
+      .put(this.apiUrl() + `/api/users/${id}/password_reset/`, data, {
+        headers: this.authHeader(),
+      })
+  },
+
   toUrl(x) {
     return x.replace(/\s+/g, "-").toLowerCase()
   },
