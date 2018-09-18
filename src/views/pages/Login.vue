@@ -17,7 +17,7 @@
                     <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
                     <b-form-input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password" @keyup.native.enter="doLogin"/>
                   </b-input-group>
-                  <b-alert variant="danger"
+                  <b-alert id="errorAlert" variant="danger"
                       dismissible
                       :show="showAlert"
                       @dismissed="showAlert=false">
@@ -63,7 +63,7 @@ export default {
         // login successful
         .then(() => {
           // if we have a redirect query, redirect to it, else redirect to home
-          if (this.$route.query.redirect !== undefined) {
+          if (this.$route.query && this.$route.query.redirect !== undefined) {
             this.$router.push(this.$route.query.redirect);
           } else if (this.username == "admin") {
             this.$router.push("/admin");
