@@ -74,7 +74,7 @@ const router = new VueRouter({
               component: coursera.Videos,
             },
             {
-              path: '/video/:videoid',
+              path: '/coursera/:courseid/videos/:videoid',
               name: 'VideoDetail',
               component: coursera.VideoDetail,
               meta: {
