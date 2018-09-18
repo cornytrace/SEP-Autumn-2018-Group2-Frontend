@@ -44,6 +44,13 @@ export default {
       })
   },
 
+  getCourses() {
+    return axios
+      .get(this.apiUrl() + "/api/courses/", {
+        headers: this.authHeader(),
+      })
+  },
+
   toUrl(x) {
     return x.replace(/\s+/g, "-").toLowerCase()
   },

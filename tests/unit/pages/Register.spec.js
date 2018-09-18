@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import {
   shallowMount,
+  mount
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Register from '@/views/pages/Register'
+
+import util from '@/util'
+
+jest.mock('@/util')
 
 Vue.use(BootstrapVue)
 
@@ -23,14 +28,64 @@ describe('Register.vue', () => {
     const wrapper = shallowMount(Register)
     expect(wrapper.find('h1').text()).toMatch('Register')
   })
-  it('click Button', () => {
-    const wrapper = shallowMount(Register, {
-      mocks: {
-        $router: {
-          push: function () {},
+
+  // Check if the warning shows
+  it('check warning', () => {
+    const wrapper = shallowMount(Register)
+    wrapper.setData({
+      email: "",
+    })
+    wrapper.vm.doRegister()
+    expect(wrapper.find('#email-warning').classes()).not.toContain('hidden')
+  })
+
+  // Check if courses get parses properly
+  it('check courses', () => {
+    const wrapper = shallowMount(Register)
+    wrapper.setData({
+      email: "test@test.nl",
+      selectedCourses: ["Course 1", "Course 2", ],
+    })
+    wrapper.vm.doRegister()
+    expect(wrapper.find('#email-warning').classes()).toContain('hidden')
+  })
+
+  // Check if the promise resolves
+  it('check register resolve', () => {
+    const wrapper = mount(Register)
+    util.createUser = jest.fn().mockResolvedValueOnce("test");
+    wrapper.setData({
+      email: "test@test.nl",
+      selectedCourses: ["Course 1", "Course 2", ],
+      role: "qdt",
+    })
+
+    wrapper.find('#registerbutton').trigger('click')
+    wrapper.vm.$nextTick(function () {
+      expect(util.createUser).toHaveBeenCalledTimes(1);
+    })
+  })
+
+  // Check for error display on promise reject
+  it('check register reject', () => {
+    const wrapper = mount(Register)
+    util.createUser = jest.fn().mockRejectedValueOnce({
+      response: {
+        data: {
+          error: ["error message", ],
         },
       },
     })
-    wrapper.vm.doRegister()
+    wrapper.setData({
+      email: "test@test.nl",
+      selectedCourses: ["Course 1", "Course 2", ],
+      role: "qdt",
+      warningText: "",
+    })
+    wrapper.find('#registerbutton').trigger('click')
+    wrapper.vm.$nextTick(function () {
+      expect(util.createUser).toHaveBeenCalledTimes(1);
+      expect(wrapper.find('#email-warning').classes()).not.toContain('hidden')
+    })
   })
 })
