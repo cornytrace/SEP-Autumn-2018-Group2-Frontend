@@ -22,6 +22,8 @@ const Page404 = () => import('@/views/pages/Page404')
 const Page500 = () => import('@/views/pages/Page500')
 const Login = () => import('@/views/pages/Login')
 const Register = () => import('@/views/pages/Register')
+const ResetReferrer = () => import('@/views/pages/ResetReferrer')
+const ResetPassword = () => import('@/views/pages/ResetPassword')
 
 // Users
 const Users = () => import('@/views/users/Users')
@@ -145,6 +147,16 @@ const router = new VueRouter({
           path: 'login',
           name: 'Login',
           component: Login,
+        },
+        {
+          path: 'resetpassword/:token/:id',
+          name: 'ResetPassword',
+          component: ResetReferrer,
+        },
+        {
+          path: 'resetpassword',
+          name: 'ResetPassword',
+          component: ResetPassword,
         },
       ],
     },
