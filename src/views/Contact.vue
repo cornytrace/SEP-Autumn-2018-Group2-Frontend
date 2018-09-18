@@ -10,7 +10,7 @@
     <b-row>
       <b-col sm="6" md="6" lg="6">
         <b-card class="border-0">
-          <b-card-header class="border-contact header-text "><h2>Contact</h2></b-card-header>
+          <b-card-header class="border-contact header-text"><h2>Contact</h2></b-card-header>
           <b-card-body>
               <form>
                 <div class="text-color"><h6>Firstname</h6></div>
@@ -42,12 +42,12 @@
           </b-card-body>
           <b-card-body class="border-contact border-top">
             <div class="align-icons">
-              <img id="cursor-change" src="..\..\public\img\social\fbicon.png" alt="Facebook" class="icons-style" onclick="alert('Facebook not yet imlemented!')">
-              <img id="cursor-change" src="..\..\public\img\social\twicon.png" alt="Twitter" class="icons-style" onclick="alert('Twitter not yet imlemented!')">
-              <img id="cursor-change" src="..\..\public\img\social\instaicon.png" alt="Instagram," class="icons-style" onclick="alert('Instagram not yet imlemented!')">
+              <img id="cursor-change" src="../../public/img/social/fbicon.png" alt="Facebook" class="icons-style" onclick="alert('Facebook not yet imlemented!')">
+              <img id="cursor-change" src="../../public/img/social/twicon.png" alt="Twitter" class="icons-style" onclick="alert('Twitter not yet imlemented!')">
+              <img id="cursor-change" src="../../public/img/social/instaicon.png" alt="Instagram," class="icons-style" onclick="alert('Instagram not yet imlemented!')">
             </div>
             <div>
-              <img src="..\..\public\img\logo.svg" alt="DASH-IT" class="logo-style">
+              <img src="../../public/img/logo.svg" alt="DASH-IT" class="logo-style">
             </div>
           </b-card-body>
         </b-card>

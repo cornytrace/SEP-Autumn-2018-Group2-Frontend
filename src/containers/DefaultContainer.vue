@@ -4,7 +4,7 @@
       <SidebarToggler class="d-lg-none" display="md" mobile />
       <b-link class="nav-brand" to="/">
         <!-- <h4>DASH-IT</h4> -->
-        <img src="..\..\public\img\logo.svg" alt="Logo" class="logo-style">
+        <img src="../../public/img/logo.svg" alt="Logo" class="logo-style">
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange"  :options="platformOptions"></b-form-select>
