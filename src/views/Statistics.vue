@@ -16,7 +16,6 @@
             <h4 class="mb-0">35246</h4>
             <p>Total number of enrollers</p>
           </b-card-body>
-          <card-line1-chart-example chartId="card-chart-01" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
         </b-card>
       </b-col>
       <b-col sm="8" lg="4">
@@ -34,7 +33,6 @@
             <h4 class="mb-0">482</h4>
             <p>Students who have completed a course</p>
           </b-card-body>
-          <card-line2-chart-example chartId="card-chart-02" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
         </b-card>
       </b-col>
       <b-col sm="8" lg="4">
@@ -52,7 +50,6 @@
             <h4 class="mb-0">326</h4>
             <p>Total number of payments</p>
           </b-card-body>
-          <card-line3-chart-example chartId="card-chart-03" class="chart-wrapper" style="height:70px;" height="70"/>
         </b-card>
       </b-col>
     </b-row>
@@ -78,7 +75,7 @@
 
 <script>
 import BarExample from "./charts/BarExample";
-import { Callout, } from "@coreui/vue";
+import { Callout } from "@coreui/vue";
 
 export default {
   name: "Statistics",

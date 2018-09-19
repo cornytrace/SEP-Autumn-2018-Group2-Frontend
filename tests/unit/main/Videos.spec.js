@@ -5,9 +5,12 @@ import {
 import BootstrapVue from 'bootstrap-vue'
 import Videos from '@/views/platforms/coursera/Videos'
 
+import mockUtils from '../mockUtils'
+
 Vue.use(BootstrapVue)
 
 describe('Video.vue', () => {
+  mockUtils.initUtils()
 
   // TODO CONTENT
 

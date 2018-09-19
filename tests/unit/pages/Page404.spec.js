@@ -1,11 +1,16 @@
 import Vue from 'vue'
-import { shallowMount, } from '@vue/test-utils'
+import {
+  shallowMount
+} from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Page404 from '@/views/pages/Page404'
+import mockUtils from '../mockUtils';
 
 Vue.use(BootstrapVue)
 
 describe('Page404.vue', () => {
+  mockUtils.initUtils()
+
   it('has a name', () => {
     expect(Page404.name).toMatch('Page404')
   })

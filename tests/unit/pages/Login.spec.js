@@ -10,27 +10,17 @@ import {
   doesNotReject
 } from 'assert';
 
+import mockUtils from '../mockUtils'
+
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
 localVue.use(Vuex)
 
 describe('Login.vue', () => {
-  let actions
   let store
 
   beforeEach(() => {
-    actions = {
-      login: jest.fn().mockResolvedValue(),
-      logout: jest.fn().mockResolvedValue(),
-    }
-    store = new Vuex.Store({
-      state: {},
-      actions,
-      mutations: {
-        setToken() {},
-        setExpire() {},
-      },
-    })
+    store = mockUtils.mockStore()
   })
 
   it('has a name', () => {

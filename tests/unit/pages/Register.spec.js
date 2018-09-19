@@ -9,29 +9,45 @@ import Register from '@/views/pages/Register'
 import util from '@/util'
 
 jest.mock('@/util')
+import mockUtils from '../mockUtils'
 
 Vue.use(BootstrapVue)
 
 describe('Register.vue', () => {
+  mockUtils.initUtils()
+
+  let store
+
+  beforeEach(() => {
+    store = mockUtils.mockStore()
+  })
+
+  let mountComponent = (components) => {
+    return mount(Register, {
+      store,
+      components,
+    })
+  }
+
   it('has a name', () => {
     expect(Register.name).toMatch('Register')
   })
   it('is Vue instance', () => {
-    const wrapper = shallowMount(Register)
+    const wrapper = mountComponent()
     expect(wrapper.isVueInstance()).toBe(true)
   })
   it('is Register', () => {
-    const wrapper = shallowMount(Register)
+    const wrapper = mountComponent()
     expect(wrapper.is(Register)).toBe(true)
   })
   it('should render correct content', () => {
-    const wrapper = shallowMount(Register)
+    const wrapper = mountComponent()
     expect(wrapper.find('h1').text()).toMatch('Register')
   })
 
   // Check if the warning shows
   it('check warning', () => {
-    const wrapper = shallowMount(Register)
+    const wrapper = mountComponent()
     wrapper.setData({
       email: "",
     })
@@ -41,7 +57,7 @@ describe('Register.vue', () => {
 
   // Check if courses get parses properly
   it('check courses', () => {
-    const wrapper = shallowMount(Register)
+    const wrapper = mountComponent()
     wrapper.setData({
       email: "test@test.nl",
       selectedCourses: ["Course 1", "Course 2", ],
@@ -52,7 +68,7 @@ describe('Register.vue', () => {
 
   // Check if the promise resolves
   it('check register resolve', () => {
-    const wrapper = mount(Register)
+    const wrapper = mountComponent()
     util.createUser = jest.fn().mockResolvedValueOnce("test");
     wrapper.setData({
       email: "test@test.nl",
@@ -61,14 +77,14 @@ describe('Register.vue', () => {
     })
 
     wrapper.find('#registerbutton').trigger('click')
-    wrapper.vm.$nextTick(function () {
+    return wrapper.vm.$nextTick().then(() => {
       expect(util.createUser).toHaveBeenCalledTimes(1);
     })
   })
 
   // Check for error display on promise reject
   it('check register reject', () => {
-    const wrapper = mount(Register)
+    const wrapper = mountComponent()
     util.createUser = jest.fn().mockRejectedValueOnce({
       response: {
         data: {
@@ -83,7 +99,7 @@ describe('Register.vue', () => {
       warningText: "",
     })
     wrapper.find('#registerbutton').trigger('click')
-    wrapper.vm.$nextTick(function () {
+    return wrapper.vm.$nextTick().then(() => {
       expect(util.createUser).toHaveBeenCalledTimes(1);
       expect(wrapper.find('#email-warning').classes()).not.toContain('hidden')
     })

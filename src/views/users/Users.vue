@@ -88,10 +88,10 @@ export default {
     // userLink (id) {
     //   return `users/${id.toString()}`
     // },
-    // rowClicked (item) {
-    //   const userLink = this.userLink(item.id)
-    //   this.$router.push({path: userLink,})
-    // },
+    rowClicked(item) {
+      //const userLink = this.userLink(item.id);
+      //this.$router.push({ path: userLink, });
+    },
   },
 };
 </script>

@@ -6,12 +6,21 @@ import {
 import VueRouter from 'vue-router'
 import DefaultContainer from '@/containers/DefaultContainer'
 
+import router from '@/router'
+import mockUtils from '../mockUtils'
+
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 
 localVue.use(BootstrapVue)
 
 describe('DefaultContainer.vue', () => {
+  let store
+
+  beforeEach(() => {
+    store = mockUtils.mockStore()
+  })
+
   it('has a name', () => {
     expect(DefaultContainer.name).toMatch('full')
   })
@@ -25,6 +34,9 @@ describe('DefaultContainer.vue', () => {
   })
   it('is Vue instance', () => {
     const wrapper = mount(DefaultContainer, {
+      localVue,
+      router,
+      store,
       mocks: {
         $route: {
           matched: [{
