@@ -32,7 +32,7 @@
                   Course sorting mode:
                 </td>
                 <td>
-                  <b-form-radio-group v-model="sortmode" :options="sortOptions" stacked></b-form-radio-group>
+                  <b-form-radio-group v-model="sortMode" :options="sortOptions" stacked></b-form-radio-group>
                 </td>
               </tr>
               
@@ -139,6 +139,7 @@ export default {
 
       selectedPlatform: "1",
       hoverEnable: true,
+      sortMode: "favorite",
 
       showAlertGeneral: false,
       showAlertName: false,
