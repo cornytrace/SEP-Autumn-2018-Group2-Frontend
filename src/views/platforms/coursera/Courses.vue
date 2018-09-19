@@ -15,7 +15,7 @@
 import util from "@/util";
 
 export default {
-  name: "course-overview",
+  name: "Courses",
   data: function() {
     return {
       show: true,
@@ -30,15 +30,15 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active {
-  transition: all 0.3s ease;
+.fade-en-ive {
+  transi-ll 0.3s ease;
 }
-.fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+.fade-le-ive {
+  transi-ll 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.fade-enter,
-.fade-leave-to {
-  transform: translateX(10px);
-  opacity: 0;
+.fade-en-
+.fade-le-{
+  transf-anslateX(10px);
+  opacit-
 }
-</style>
+</style>-

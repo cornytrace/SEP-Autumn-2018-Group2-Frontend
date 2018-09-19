@@ -84,7 +84,7 @@ import LineExample from "@/views/charts/LineExample";
 import ScatterExample from "@/views/charts/ScatterExample";
 
 export default {
-  name: "course-detail",
+  name: "CourseDetail",
   data: function() {
     return {
       show: true,

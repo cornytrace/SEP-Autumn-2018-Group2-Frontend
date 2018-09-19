@@ -1,28 +1,22 @@
 import Vuex from 'vuex'
 import {
   shallowMount,
-  createLocalVue,
+  createLocalVue
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import DefaultHeaderDropdownAccnt from '@/containers/DefaultHeaderDropdownAccnt'
+
+import mockUtils from '../mockUtils'
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
 localVue.use(Vuex)
 
 describe('DefaultHeaderDropdownAccnt.vue', () => {
-  let actions
   let store
 
   beforeEach(() => {
-    actions = {
-      login: jest.fn(),
-      logout: jest.fn(),
-    }
-    store = new Vuex.Store({
-      state: {},
-      actions,
-    })
+    store = mockUtils.mockStore()
   })
 
   it('has a name', () => {

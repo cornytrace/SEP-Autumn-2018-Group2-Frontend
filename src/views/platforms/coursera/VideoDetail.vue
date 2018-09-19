@@ -119,19 +119,16 @@
 
 <script>
 export default {
-  name: "Video Details",
-  data: function(){
+  name: "VideoDetail",
+  data: function() {
     return {
       qdt: true,
-      video_title: 'Video Title',
-      input_text: ''
-
-     
-    }
-  }
+      video_title: "Video Title",
+      input_text: "",
+    };
+  },
 };
 </script>
 
 <style scoped>
-
 </style>

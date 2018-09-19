@@ -27,7 +27,7 @@
 import util from "@/util";
 
 export default {
-  name: "lessons",
+  name: "Lessons",
   data: function() {
     return {
       show: true,
