@@ -153,7 +153,6 @@ export default {
         .getCourses()
         .then(response => {
           this.courses = response.data;
-          console.log(this.courses);
         })
         .catch(error => {
           console.log(error);
