@@ -88,7 +88,7 @@ export default {
     NotificationToggler,
     BottombarNav,
     TopbarNav,
-    BackButton
+    BackButton,
   },
   data() {
     return {
@@ -96,7 +96,7 @@ export default {
       isPrimary: false,
       level: 0,
       top_nav: [],
-      level_0: ["/home", "/settings", "/contact"],
+      level_0: ["/home", "/settings", "/contact",],
       platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
@@ -107,10 +107,10 @@ export default {
       // Mock
       courses: {
         coursera: [
-          { name: "Coursera course 1", description: "description course 1" },
-          { name: "Coursera course 2", description: "description course 2" }
-        ]
-      }
+          { name: "Coursera course 1", description: "description course 1", },
+          { name: "Coursera course 2", description: "description course 2", },
+        ],
+      },
     };
   },
   beforeMount() {
@@ -128,30 +128,26 @@ export default {
   },
   mounted() {
     this.platformOptions = [
-      { value: settings.platform_default, text: "Select platform" }
+      { value: settings.platform_default, text: "Select platform", },
     ];
 
     this.setPlatforms();
     this.initializeCourses();
 
-    if (this.$route.path) {
-      this.setNavigation(this.$route.path);
-    }
+    this.setNavigation(this.$route.path);
 
     // On every router change update
-    if (this.$router) {
-      this.$router.beforeEach((to, from, next) => {
-        this.setNavigation(to.path);
-        next();
-      });
-    }
+    this.$router.beforeEach((to, from, next) => {
+      this.setNavigation(to.path);
+      next();
+    });
   },
   computed: {
     list() {
       return this.$route.matched.filter(
         route => route.meta.label || route.name
       );
-    }
+    },
   },
   methods: {
     goUp: function() {
@@ -211,8 +207,8 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: "Select course"
-        }
+          text: "Select course",
+        },
       ];
     },
     setPlatforms() {
@@ -220,17 +216,17 @@ export default {
       this.top_nav[0].push({
         name: "Home",
         icon: "cui-home",
-        url: "/home"
+        url: "/home",
       });
       for (var platform of this.platforms) {
         this.top_nav[0].push({
           name: platform.name,
           url: platform.url || "/" + util.toUrl(platform.name),
-          icon: "cui-dashboard"
+          icon: "cui-dashboard",
         });
         this.platformOptions.push({
           value: "/" + util.toUrl(platform.name),
-          text: platform.name
+          text: platform.name,
         });
       }
     },
@@ -238,21 +234,21 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: "Select course"
-        }
+          text: "Select course",
+        },
       ];
       this.top_nav[1] = [];
       for (var course of c) {
         // Push to dropdown
         this.courseOptions.push({
           value: platform + "/" + util.toUrl(course.name),
-          text: course.name
+          text: course.name,
         });
         // Push to navbar
         this.top_nav[1].push({
           name: course.name,
           url: platform + "/" + util.toUrl(course.name),
-          icon: "cui-dashboard"
+          icon: "cui-dashboard",
         });
       }
     },
@@ -262,11 +258,11 @@ export default {
         this.top_nav[2].push({
           name: subpage.name,
           icon: subpage.icon,
-          url: path + "/" + util.toUrl(subpage.name)
+          url: path + "/" + util.toUrl(subpage.name),
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

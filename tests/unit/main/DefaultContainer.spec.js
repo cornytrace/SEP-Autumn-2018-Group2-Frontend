@@ -21,6 +21,15 @@ describe('DefaultContainer.vue', () => {
     store = mockUtils.mockStore()
   })
 
+  let mountComponent = (components) => {
+    return mount(DefaultContainer, {
+      localVue,
+      router,
+      store,
+      components,
+    })
+  }
+
   it('has a name', () => {
     expect(DefaultContainer.name).toMatch('full')
   })
@@ -33,20 +42,21 @@ describe('DefaultContainer.vue', () => {
     expect(typeof defaultData.top_nav).toMatch('object')
   })
   it('is Vue instance', () => {
-    const wrapper = mount(DefaultContainer, {
-      localVue,
-      router,
-      store,
-      mocks: {
-        $route: {
-          matched: [{
-            meta: {
-              label: "",
-            },
-          }, ],
-        },
-      },
-    })
+    const wrapper = mountComponent()
     expect(wrapper.isVueInstance()).toBe(true)
+  })
+
+  it('updates navigation on load', () => {
+    const spy = jest.spyOn(DefaultContainer.methods, "setNavigation");
+    mountComponent()
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
+  it('updates navigation on router push', () => {
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation = jest.fn()
+    wrapper.vm.$router.push("/coursera")
+    expect(wrapper.vm.setNavigation).toHaveBeenCalled()
   })
 })
