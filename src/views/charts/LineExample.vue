@@ -1,7 +1,7 @@
 <script>
-import { Line, } from 'vue-chartjs'
-import { CustomTooltips, } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { hexToRgba, } from '@coreui/coreui/dist/js/coreui-utilities'
+import { Line } from "vue-chartjs";
+import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
+import { hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
 
 export default {
   components: {
@@ -9,35 +9,54 @@ export default {
     CustomTooltips,
   },
   extends: Line,
-  mounted () {
+
+  props: {
+    data: {
+      type: Array,
+      default: new Array(),
+    },
+    maintainAspectRatio: {
+      type: Boolean,
+      default: true,
+    },
+
+    labels: {
+      type: Array,
+      default: new Array(),
+    },
+  },
+  mounted() {
     this.renderChart(
       {
-        labels: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,],
+        labels: this.labels,
         datasets: [
           {
-            label: 'Grade distribution',
-            backgroundColor: hexToRgba('#00D8FF', 90),
-            data: [0.6, 0.6, 0.55, 0.5, 0.4, 0.35, 1.0, 1.4, 1.6, 1.2,],
+            label: "Grade distribution",
+            backgroundColor: hexToRgba("#00D8FF", 90),
+            data: this.data,
           },
         ],
       },
       {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: this.maintainAspectRatio,
         tooltips: {
           enabled: false,
           custom: CustomTooltips,
           intersect: true,
-          mode: 'index',
-          position: 'nearest',
+          mode: "index",
+          position: "nearest",
           callbacks: {
-            labelColor: function (tooltipItem, chart) {
-              return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].backgroundColor, }
+            labelColor: function(tooltipItem, chart) {
+              return {
+                backgroundColor:
+                  chart.data.datasets[tooltipItem.datasetIndex].backgroundColor,
+              };
             },
           },
         },
       }
-    )
+    );
   },
-}
+};
 </script>
