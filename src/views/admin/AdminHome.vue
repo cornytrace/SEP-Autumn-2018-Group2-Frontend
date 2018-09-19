@@ -187,7 +187,9 @@ table #pk-cell {
   width: 20px;
 }
 table #email-cell {
-  width: 150px;
+  width: 200px;
+  max-width: 200px;
+  overflow: hidden;
   padding-left: 5px;
 }
 table #name-cell {
