@@ -1,6 +1,6 @@
 import {
   shallowMount,
-  createLocalVue,
+  createLocalVue
 } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
@@ -16,11 +16,6 @@ describe('AdminPanel.vue', () => {
   it('has a name', () => {
     expect(AdminPanel.name).toMatch('AdminPanel')
   })
-  it('sets the correct default data', () => {
-    expect(typeof AdminPanel.data).toMatch('function')
-    const defaultData = AdminPanel.data()
-    expect(defaultData.users.length).toBe(0)
-  })
   it('is Vue instance', () => {
     const wrapper = shallowMount(AdminPanel, {
       localVue,
@@ -34,18 +29,5 @@ describe('AdminPanel.vue', () => {
       router,
     })
     expect(wrapper.is(AdminPanel)).toBe(true)
-  })
-  it('updates the users list', () => {
-    const wrapper = shallowMount(AdminPanel, {
-      localVue,
-      router,
-    })
-    const user = {
-      pk: 1,
-      email: "test@example.org",
-    }
-    wrapper.vm.onUpdateUsers(user)
-    expect(wrapper.vm.users.length).toBe(1)
-    expect(wrapper.vm.users[0]).toBe(user)
   })
 })

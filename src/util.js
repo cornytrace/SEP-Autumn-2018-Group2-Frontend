@@ -51,6 +51,14 @@ export default {
       })
   },
 
+  updateUser(user) {
+    console.log(user);
+    return axios
+      .put(this.apiUrl() + `/api/users/${user.pk}/`, user, {
+        headers: this.authHeader(),
+      })
+  },
+
   toUrl(x) {
     return x.replace(/\s+/g, "-").toLowerCase()
   },

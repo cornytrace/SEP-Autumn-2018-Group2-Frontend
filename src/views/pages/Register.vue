@@ -60,12 +60,12 @@ export default {
   beforeMount: function() {
     util
       .getCourses()
-      .then((response) => {
-        this.courses = response.data
+      .then(response => {
+        this.courses = response.data;
       })
-      .catch((error) => {
-        console.log(error)
-      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     doRegister() {
@@ -118,11 +118,7 @@ export default {
 #course-selector {
   margin-bottom: 5px !important;
 }
-#info-text {
-  display: block;
-  padding-bottom: 20px !important;
-  color: #888;
-}
+
 .hidden {
   display: none;
 }

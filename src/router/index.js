@@ -150,7 +150,7 @@ const router = new VueRouter({
         },
         {
           path: 'resetpassword/:token/:id',
-          name: 'ResetPassword',
+          name: 'ResetPasswordReferrer',
           component: ResetReferrer,
         },
         {

@@ -30,15 +30,14 @@ export default {
 </script>
 
 <style scoped>
-.fade-en-ive {
-  transi-ll 0.3s ease;
+.fade-enter-active {
+  transition: all 0.3s ease;
 }
-.fade-le-ive {
-  transi-ll 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+.fade-leave-active {
+  transition: 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.fade-en-
-.fade-le-{
-  transf-anslateX(10px);
-  opacit-
+.fade-enter .fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>-
