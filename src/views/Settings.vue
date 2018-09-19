@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col sm="8" lg="6">
+      <b-col md="8" lg="6">
         <b-card header="<h3>General settings</h3>" class="bg">
           <table>
             <tbody>
@@ -42,10 +42,10 @@
           <b-btn class="submit" @click="showAlertGeneral=true">Save changes</b-btn>
         </b-card>
       </b-col>
-      <b-col sm="8" lg="6">
+      <b-col md="8" lg="6">
         <b-card header="<h3>Profile settings</h3>">
           <b-row>
-          <b-col sm="8" lg="6">
+          <b-col lg="6">
     
           <b-card class="accordion" no-body>
           <b-card-header class="clickable" v-b-toggle.collapse1 header-bg-variant="primary">Edit display name</b-card-header>
@@ -82,7 +82,7 @@
           </b-collapse>
           </b-card>
           </b-col>
-          <b-col sm="8" lg="6">
+          <b-col lg="6">
             <b-card class="profilecard" header="Profile preview:">
               <p v-if="newProfile.displayName"> 
                   {{ newProfile.displayName }}
@@ -184,7 +184,17 @@ table {
 }
 
 .profilecard {
-  margin-top: 5pt;
+  margin-top: 0pt;
+}
+
+.profilecard {
+  margin-top: 0pt;
+}
+
+@media (max-width: 992px) {
+  .profilecard {
+    margin-top: 5pt;
+  }
 }
 </style>
 
