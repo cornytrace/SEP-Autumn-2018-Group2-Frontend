@@ -2,7 +2,7 @@
   <div class="app">
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
-      <b-link class="nav-brand" to="/">
+      <b-link class="nav-brand logo-link" to="/">
         <!-- <h4>DASH-IT</h4> -->
         <img src="../../public/img/logo.svg" alt="Logo" class="logo-style">
       </b-link>
@@ -283,8 +283,14 @@ export default {
   margin-bottom: 20px;
 }
 
+.logo-link {
+  margin-bottom: 0;
+}
+
 .logo-style {
   width: 100%;
+  margin-bottom: 0;
+  margin-left: 15px;
 }
 </style>
 
