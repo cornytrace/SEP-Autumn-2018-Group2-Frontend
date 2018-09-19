@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/8</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/8</span>
+        <span class='fraction'>1/1</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -76,35 +76,7 @@
 31
 32
 33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+34</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,31 +96,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,15 +115,12 @@
       &lt;b-link to="/admin" class="navbar-brand"&gt;
         &lt;h4&gt;Admin dashboard&lt;/h4&gt;
       &lt;/b-link&gt;
-      &lt;b-form-select class="header-select" v-model="selectedUser" text-field="email" value-field="pk" :options="users"&gt;
-        &lt;option :value="null"&gt;Select user&lt;/option&gt;
-      &lt;/b-form-select&gt;
       &lt;router-link to="register"&gt;&lt;b-button&gt;Add user&lt;/b-button&gt;&lt;/router-link&gt;
     &lt;/AppHeader&gt;
     &lt;div class="app-body"&gt;
       &lt;main class="main"&gt;
         &lt;div class="container-fluid"&gt;
-          &lt;router-view v-bind:users="users" v-on:update:users="onUpdateUsers"&gt;&lt;/router-view&gt;
+          &lt;router-view&gt;&lt;/router-view&gt;
         &lt;/div&gt;
       &lt;/main&gt;
     &lt;/div&gt;
@@ -181,34 +128,12 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import { Header as AppHeader, } from "@coreui/vue";
-import util from "@/util";
+import { Header as AppHeader } from "@coreui/vue";
 export default {
   name: "AdminPanel",
   components: {
-    AppHeader,
-  },
-  data() {
-    return {
-      selectedUser: null,
-      users: [],
-    };
-  },
-  beforeMount() {
-<span class="fstat-no" title="function not covered" >    util</span>
-      .getUsers()
-      .then((response) =&gt; {
-<span class="cstat-no" title="statement not covered" >        this.users = response.data</span>
-<span class="fstat-no" title="function not covered" >      })</span>
-      .catch((error) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log(error)</span>
-      })
-  },
-  methods: {
-    onUpdateUsers: function (value) {
-      this.users.push(value)
-    },
-  },
+    AppHeader
+  }
 };
 &lt;/script&gt;
 &nbsp;
@@ -223,7 +148,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 18 2018 15:19:55 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 19 2018 09:44:40 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
