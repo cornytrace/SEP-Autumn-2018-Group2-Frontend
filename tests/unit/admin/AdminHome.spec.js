@@ -126,54 +126,6 @@ describe('AdminHome.vue', () => {
     })
   })
 
-  it('100% Coverage', () => {
-    const wrapper = mountComponent()
-    util.updateUser = jest.fn().mockRejectedValueOnce({
-      response: {
-        data: {
-          error: ["error message", ],
-        },
-      },
-    });
-    util.getUsers = jest.fn().mockRejectedValueOnce({
-      users: [{
-        courses: [{
-          course_id: "c1",
-          course_name: "Course 1",
-          course_slug: "course1",
-          pk: 1,
-        }, ],
-        email: "amdin@AdminHome.com",
-        pk: 1,
-        role: "qdt",
-      }, ],
-    });
-    util.getCourses = jest.fn().mockRejectedValueOnce({
-      courses: [
-        [{
-          course_id: "c1",
-          course_name: "Course 1",
-          course_slug: "course1",
-          pk: 1,
-        }, ],
-      ],
-    });
-
-    wrapper.setData({
-      selectedUser: 1,
-      selectedEmail: "test@test.nl",
-    });
-
-    wrapper.find('#savebutton').trigger('click')
-
-    return wrapper.vm.$nextTick().then(() => {
-      expect(wrapper.vm.showAlert).toBe(true);
-      expect(wrapper.vm.showSuccess).toBe(false);
-      expect(wrapper.find('#alertbox').exists()).toBe(true);
-      expect(wrapper.find('#successbox').exists()).toBe(false);
-    })
-  })
-
   it('Check change user function', () => {
     const wrapper = mountComponent()
 
@@ -205,54 +157,6 @@ describe('AdminHome.vue', () => {
       expect(wrapper.vm.showAlert).toBe(false);
       expect(wrapper.vm.showSuccess).toBe(false);
       expect(wrapper.find('#alertbox').exists()).toBe(false);
-      expect(wrapper.find('#successbox').exists()).toBe(false);
-    })
-  })
-
-  it('100% Coverage', () => {
-    const wrapper = mountComponent()
-    util.updateUser = jest.fn().mockRejectedValueOnce({
-      response: {
-        data: {
-          error: ["error message", ],
-        },
-      },
-    });
-    util.getUsers = jest.fn().mockRejectedValueOnce({
-      users: [{
-        courses: [{
-          course_id: "c1",
-          course_name: "Course 1",
-          course_slug: "course1",
-          pk: 1,
-        }, ],
-        email: "amdin@AdminHome.com",
-        pk: 1,
-        role: "qdt",
-      }, ],
-    });
-    util.getCourses = jest.fn().mockRejectedValueOnce({
-      courses: [
-        [{
-          course_id: "c1",
-          course_name: "Course 1",
-          course_slug: "course1",
-          pk: 1,
-        }, ],
-      ],
-    });
-
-    wrapper.setData({
-      selectedUser: 1,
-      selectedEmail: "test@test.nl",
-    });
-
-    wrapper.find('#savebutton').trigger('click')
-
-    return wrapper.vm.$nextTick().then(() => {
-      expect(wrapper.vm.showAlert).toBe(true);
-      expect(wrapper.vm.showSuccess).toBe(false);
-      expect(wrapper.find('#alertbox').exists()).toBe(true);
       expect(wrapper.find('#successbox').exists()).toBe(false);
     })
   })
