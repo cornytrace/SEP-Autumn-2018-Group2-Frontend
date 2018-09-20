@@ -2,6 +2,15 @@
 import { Bar } from "vue-chartjs";
 import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 
+// Example data
+// [
+//           {
+//             label: "GitHub Commits",
+//             backgroundColor: "#f87979",
+//             data: this.data,
+//           },
+//         ],
+
 export default {
   name: "BarGraph",
   extends: Bar,
@@ -24,13 +33,7 @@ export default {
     this.renderChart(
       {
         labels: this.labels,
-        datasets: [
-          {
-            label: "GitHub Commits",
-            backgroundColor: "#f87979",
-            data: this.data,
-          },
-        ],
+        datasets: this.data,
       },
       {
         responsive: true,
