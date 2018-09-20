@@ -142,6 +142,18 @@
         </b-card>
       </b-col> 
     </b-row>
+    <!-- QDT Analytics -->
+    <b-row v-if="this.$store.state.user.role === 'qdt'">
+      <b-col md="6">
+        <b-card id="avg-time-in-mod" header="Tend of following courses">
+          <div class="chart-wrapper">
+            <bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels />
+          </div>
+        </b-card>
+      </b-col>
+      <b-col md="6">
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -179,55 +191,64 @@ export default {
         {
           label: "Distribution of evaluation rating",
           backgroundColor: "#1d97d9",
-          data: [18, 6, 3, 56, 4, 25, 10, 9, 33, 3,],
-        },
+          data: [18, 6, 3, 56, 4, 25, 10, 9, 33, 3]
+        }
       ],
-      distEvalRateLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
+      distEvalRateLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 
       // data progression of finished learners
       progFinLearData: [
         {
           label: "Progression of finished learners",
           backgroundColor: hexToRgba("#00D8FF", 90),
-          data: [1, 6, 3, 5, 4, 5, 10, 9, 6, 3,],
-        },
+          data: [1, 6, 3, 5, 4, 5, 10, 9, 6, 3]
+        }
       ],
-      progFinLearLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
+      progFinLearLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 
       // data leaving learners per module
       leavLearModData: [
         {
           label: "Leaving learners per module",
-          backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16",],
-          data: [80, 120, 30, 60,],
-        },
+          backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
+          data: [80, 120, 30, 60]
+        }
       ],
-      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D",],
+      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D"],
 
       // data average time spend in a course by learners
       avgTimeCourData: [
         {
           label: "Average time spend in course by learners",
           backgroundColor: "#f879d9",
-          data: [38, 6, 5, 56, 44, 25,],
-        },
+          data: [38, 6, 5, 56, 44, 25]
+        }
       ],
-      avgTimeCourLabels: [1, 4, 5, 7, 13, 25,],
+      avgTimeCourLabels: [1, 4, 5, 7, 13, 25],
 
       // data average time spend per module by learners
       avgTimeModData: [
         {
           label: "Average timr spend per module by learners",
           backgroundColor: "#f8d979",
-          data: [28, 11, 30, 56,],
-        },
+          data: [28, 11, 30, 56]
+        }
       ],
-      AvgTimeModLabels: [1, 2, 3, 4,],
+      AvgTimeModLabels: [1, 2, 3, 4],
 
       /*
        * QDT member analytics 
        * not yet implemented 
        */
+      //
+      tendFolCourData: [
+        {
+          label: "The tend learners follow the course",
+          backgroundColor: "#f81919",
+          data: [28, 11, 30, 44]
+        }
+      ],
+      tendFolCourLabels: [1, 2, 3, 4]
     };
   },
   components: {
@@ -236,8 +257,8 @@ export default {
     BarGraph,
     DoughnutGraph,
     PolarAreaGraph,
-    RadarGraph,
-  },
+    RadarGraph
+  }
 };
 </script>
 
