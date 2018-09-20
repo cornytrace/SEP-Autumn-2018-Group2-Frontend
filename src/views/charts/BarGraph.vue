@@ -1,39 +1,40 @@
 <script>
-import { Bar, } from "vue-chartjs";
-import { CustomTooltips, } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
+import { Bar } from "vue-chartjs";
+import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 
 export default {
-  name: "BarExample",
+  name: "BarGraph",
   extends: Bar,
+  props: {
+    data: {
+      type: Array,
+      default: new Array(),
+    },
+    labels: {
+      type: Array,
+      default: new Array(),
+    },
+    maintainAspectRatio: {
+      type: Boolean,
+      default: true,
+    },
+  },
   mounted() {
     // Overwriting base render method with actual data.
     this.renderChart(
       {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
+        labels: this.labels,
         datasets: [
           {
             label: "GitHub Commits",
             backgroundColor: "#f87979",
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11,],
+            data: this.data,
           },
         ],
       },
       {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: this.maintainAspectRatio,
         tooltips: {
           enabled: false,
           custom: CustomTooltips,

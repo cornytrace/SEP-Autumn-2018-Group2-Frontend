@@ -4,6 +4,7 @@ import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 import { hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
 
 export default {
+  name: "LineGraph",
   components: {
     hexToRgba,
     CustomTooltips,
@@ -19,7 +20,6 @@ export default {
       type: Boolean,
       default: true,
     },
-
     labels: {
       type: Array,
       default: new Array(),
