@@ -87,7 +87,7 @@
       <b-col xs="12" sm="12" md="12" lg="6">
         <b-card id="dist-eval" header="Distribution of evaluation rating">
           <div class="chart-wrapper" >
-            <bar-example chartId="chart-line-02" />
+            <bar-graph chartId="chart-line-02" />
           </div>
         </b-card>
       </b-col>
@@ -97,14 +97,14 @@
       <b-col md="6">
         <b-card id="progr-fin" header="Progression of finished learners">
           <div class="chart-wrapper">
-            <line-example chartId="chart-bar-01"/>
+            <line-graph chartId="chart-bar-01"/>
           </div>
         </b-card>
       </b-col>
       <b-col md="6">
         <b-card id="leav-per-mod" header="Leaving learners per module">
           <div class="chart-wrapper">
-            <doughnut-example chartId="chart-doughnut-01"/>
+            <doughnut-graph chartId="chart-doughnut-01"/>
           </div>
         </b-card>
       </b-col>
@@ -114,14 +114,14 @@
       <b-col md="6">
         <b-card id="avg-time-in-course" header="Average time spend in course by learners">
           <div class="chart-wrapper">
-            <bar-example chartId="chart-scatter-01"/>
+            <bar-graph chartId="chart-scatter-01"/>
           </div>
         </b-card>
       </b-col>
       <b-col md="6">
         <b-card id="avg-time-in-mod" header="Average time spend per module by learners">
           <div class="chart-wrapper">
-            <bar-example chartId="chart-polar-01"/>
+            <bar-graph chartId="chart-polar-01"/>
           </div>
         </b-card>
       </b-col> 
@@ -130,12 +130,12 @@
 </template>
 
 <script>
-import LineExample from "@/views/charts/LineExample";
-import ScatterExample from "@/views/charts/ScatterExample";
-import BarExample from "@/views/charts/BarExample";
-import DoughnutExample from "@/views/charts/DoughnutExample";
-import PolarAreaExample from "@/views/charts/PolarAreaExample";
-import RadarExample from "@/views/charts/RadarExample";
+import LineGraph from "@/views/charts/LineGraph";
+import ScatterGraph from "@/views/charts/ScatterGraph";
+import BarGraph from "@/views/charts/BarGraph";
+import DoughnutGraph from "@/views/charts/DoughnutGraph";
+import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
+import RadarGraph from "@/views/charts/RadarGraph";
 
 export default {
   name: "CourseDetail",
@@ -148,12 +148,12 @@ export default {
     };
   },
   components: {
-    LineExample,
-    ScatterExample,
-    BarExample,
-    DoughnutExample,
-    PolarAreaExample,
-    RadarExample
+    LineGraph,
+    ScatterGraph,
+    BarGraph,
+    DoughnutGraph,
+    PolarAreaGraph,
+    RadarGraph
   }
 };
 </script>

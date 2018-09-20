@@ -109,7 +109,7 @@
     <b-col md="12">
         <b-card header="Grade distribution">
           <div class="chart-wrapper">
-            <line-example :data= chart_data :maintainAspectRatio=false :labels= chart_labels></line-example>
+            <line-graph :data= chart_data :maintainAspectRatio=false :labels= chart_labels></line-graph>
           </div>
         </b-card>
       </b-col>
@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import LineExample from "@/views/charts/LineExample";
+import LineGraph from "@/views/charts/LineGraph";
 
 export default {
   name: "VideoDetail",
@@ -137,13 +137,13 @@ export default {
 
       nextvid: "#",
 
-      chart_data: [0.3, 0.8, 0.3, 0.5, 0.1, 2, 1, 1, 1, 1, 1, 0.2,],
-      chart_labels: [0.9, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,],
+      chart_data: [0.3, 0.8, 0.3, 0.5, 0.1, 2, 1, 1, 1, 1, 1, 0.2],
+      chart_labels: [0.9, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
     };
   },
   components: {
-    LineExample,
-  },
+    LineGraph
+  }
 };
 </script>
 
