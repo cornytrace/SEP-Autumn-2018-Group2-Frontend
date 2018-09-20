@@ -1,42 +1,39 @@
 <script>
 import { Doughnut } from "vue-chartjs";
 
+//[
+//          {
+//            backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16",],
+//            data: [],
+//          },
+//        ],
+
 export default {
   name: "DoughnutGraph",
   extends: Doughnut,
   props: {
     data: {
       type: Array,
-      default: new Array(),
+      default: new Array()
     },
     labels: {
       type: Array,
-      default: new Array(),
-    },
-    backgroundColors: {
-      type: Array,
-      default: function() {
-        return ["#41B883", "#E46651", "#00D8FF", "#DD1B16",];
-      },
+      default: new Array()
     },
     maintainAspectRatio: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
+
   mounted() {
     this.renderChart(
       {
         labels: this.labels,
-        datasets: [
-          {
-            backgroundColor: this.backgroundColors,
-            data: this.data,
-          },
-        ],
+        datasets: this.data
       },
-      { responsive: true, maintainAspectRatio: this.maintainAspectRatio, }
+      { responsive: true, maintainAspectRatio: this.maintainAspectRatio }
     );
-  },
+  }
 };
 </script>
