@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col v-for="platform in platforms" :key="platform.name" :sm="12/platforms.length" :lg="12/platforms.length">
+      <b-col v-for="platform in platforms" :key="platform.name" :sm="8/platforms.length" :lg="8/platforms.length">
         <b-card class="bg" no-body>
           <b-card-header>
             <router-link :to="platform.name.toLowerCase()" ><h4>{{platform.name}}</h4></router-link>
@@ -37,6 +37,18 @@
                 </div>
               </b-card-body>
             </b-card>
+          </b-card-body>
+        </b-card>
+      </b-col>
+      <b-col :sm="4" >
+        <b-card class="bg" no-body>
+          <b-card-header>
+            <h4>Links</h4>
+          </b-card-header>
+          <b-card-body>
+            <b-list-group v-for="resource in resources" :key="resource.name">
+              <b-list-group-item :href="resource.link">{{resource.name}}</b-list-group-item>
+            </b-list-group>
           </b-card-body>
         </b-card>
       </b-col>
@@ -148,6 +160,24 @@ export default {
           label: "Activity",
         },
       },
+      resources: [
+        {
+          name: "Coursera for Educators",
+          link: "https://blog.coursera.org/for-educators/",
+        },
+        {
+          name: "Resource 2",
+          link: "#",
+        },
+        {
+          name: "Resource 3",
+          link: "#",
+        },
+        {
+          name: "Resource 4",
+          link: "#",
+        },
+      ],
     };
   },
   methods: {},
