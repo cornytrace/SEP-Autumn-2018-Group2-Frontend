@@ -58,11 +58,11 @@
 
 <script>
 export default {
-  name: "Contact"
+  name: "Contact",
 };
 </script>
 
-<style>
+<style scoped>
 .begin-text {
   text-align: center;
   color: #00a9d4;
