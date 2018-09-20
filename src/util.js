@@ -60,7 +60,7 @@ export default {
 
   sendPasswordReset(email) {
     return axios
-      .post(this.apiUrl() + `/api/users/forgot_password`, {
+      .post(this.apiUrl() + `/api/users/forgot_password/`, {
         email: email,
       }, {
         headers: this.authHeader(),

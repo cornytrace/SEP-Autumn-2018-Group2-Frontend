@@ -17,7 +17,7 @@
                       dismissible
                       :show="showAlert"
                       @dismissed="showAlert=false">
-                    Login failed: {{errorReason}}.
+                    Password reset failed: {{errorReason}}.
                   </b-alert>
                   <b-row>
                     <b-col cols="6">
@@ -55,16 +55,29 @@ export default {
             this.$router.push("/pages/login");
           })
           .catch(error => {
-            this.errorReason = "";
-            for (var err in error.response.data) {
-              this.errorReason += error.response.data[err][0] + "\n";
+            if (this.isValidJSONString(error)) {
+              this.errorReason = "";
+              for (var err in error.response.data) {
+                this.errorReason += error.response.data[err][0] + "\n";
+              }
+              this.showAlert = true;
+            } else {
+              this.errorReason = "Server error";
+              this.showAlert = true;
             }
-            this.showAlert = true;
           });
       } else {
         this.showAlert = true;
         this.errorReason = "Please enter a valid email address.";
       }
+    },
+    isValidJSONString(str) {
+      try {
+        JSON.parse(str);
+      } catch (e) {
+        return false;
+      }
+      return true;
     },
   },
 };
