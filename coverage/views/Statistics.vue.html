@@ -519,14 +519,14 @@
       &lt;b-col sm="8" lg="6"&gt;
         &lt;b-card header="Conversion rate - Payments"&gt;
             &lt;div class="chart-wrapper"&gt;
-              &lt;bar-example chartId="chart-bar-01"/&gt;
+              &lt;bar-graph chartId="chart-bar-01"/&gt;
             &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
       &lt;b-col sm="8" lg="6"&gt;
         &lt;b-card header="Graduation percentage"&gt;
             &lt;div class="chart-wrapper"&gt;
-              &lt;bar-example chartId="chart-bar-01"/&gt;
+              &lt;bar-graph chartId="chart-bar-01"/&gt;
             &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
@@ -535,107 +535,107 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import BarExample from "./charts/BarExample";
+import BarGraph from "./charts/BarGraph";
 import { Callout } from "@coreui/vue";
 &nbsp;
 export default {
   name: "Statistics",
   components: {
-    BarExample,
-    Callout,
+    BarGraph,
+    Callout
   },
   data: function() {
     return {
       selected: "Month",
       tableItems: [
         {
-          avatar: { url: "img/avatars/1.jpg", status: "success", },
+          avatar: { url: "img/avatars/1.jpg", status: "success" },
           user: {
             name: "Yiorgos Avraamu",
             new: true,
-            registered: "Jan 1, 2015",
+            registered: "Jan 1, 2015"
           },
-          country: { name: "USA", flag: "us", },
-          usage: { value: 50, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Mastercard", icon: "fa fa-cc-mastercard", },
-          activity: "10 sec ago",
+          country: { name: "USA", flag: "us" },
+          usage: { value: 50, period: "Jun 11, 2015 - Jul 10, 2015" },
+          payment: { name: "Mastercard", icon: "fa fa-cc-mastercard" },
+          activity: "10 sec ago"
         },
         {
-          avatar: { url: "img/avatars/2.jpg", status: "danger", },
+          avatar: { url: "img/avatars/2.jpg", status: "danger" },
           user: {
             name: "Avram Tarasios",
             new: false,
-            registered: "Jan 1, 2015",
+            registered: "Jan 1, 2015"
           },
-          country: { name: "Brazil", flag: "br", },
-          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Visa", icon: "fa fa-cc-visa", },
-          activity: "5 minutes ago",
+          country: { name: "Brazil", flag: "br" },
+          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015" },
+          payment: { name: "Visa", icon: "fa fa-cc-visa" },
+          activity: "5 minutes ago"
         },
         {
-          avatar: { url: "img/avatars/3.jpg", status: "warning", },
-          user: { name: "Quintin Ed", new: true, registered: "Jan 1, 2015", },
-          country: { name: "India", flag: "in", },
-          usage: { value: 74, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Stripe", icon: "fa fa-cc-stripe", },
-          activity: "1 hour ago",
+          avatar: { url: "img/avatars/3.jpg", status: "warning" },
+          user: { name: "Quintin Ed", new: true, registered: "Jan 1, 2015" },
+          country: { name: "India", flag: "in" },
+          usage: { value: 74, period: "Jun 11, 2015 - Jul 10, 2015" },
+          payment: { name: "Stripe", icon: "fa fa-cc-stripe" },
+          activity: "1 hour ago"
         },
         {
-          avatar: { url: "img/avatars/4.jpg", status: "", },
-          user: { name: "Enéas Kwadwo", new: true, registered: "Jan 1, 2015", },
-          country: { name: "France", flag: "fr", },
-          usage: { value: 98, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "PayPal", icon: "fa fa-paypal", },
-          activity: "Last month",
+          avatar: { url: "img/avatars/4.jpg", status: "" },
+          user: { name: "Enéas Kwadwo", new: true, registered: "Jan 1, 2015" },
+          country: { name: "France", flag: "fr" },
+          usage: { value: 98, period: "Jun 11, 2015 - Jul 10, 2015" },
+          payment: { name: "PayPal", icon: "fa fa-paypal" },
+          activity: "Last month"
         },
         {
-          avatar: { url: "img/avatars/5.jpg", status: "success", },
+          avatar: { url: "img/avatars/5.jpg", status: "success" },
           user: {
             name: "Agapetus Tadeáš",
             new: true,
-            registered: "Jan 1, 2015",
+            registered: "Jan 1, 2015"
           },
-          country: { name: "Spain", flag: "es", },
-          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Google Wallet", icon: "fa fa-google-wallet", },
-          activity: "Last week",
+          country: { name: "Spain", flag: "es" },
+          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015" },
+          payment: { name: "Google Wallet", icon: "fa fa-google-wallet" },
+          activity: "Last week"
         },
         {
-          avatar: { url: "img/avatars/6.jpg", status: "danger", },
+          avatar: { url: "img/avatars/6.jpg", status: "danger" },
           user: {
             name: "Friderik Dávid",
             new: true,
-            registered: "Jan 1, 2015",
+            registered: "Jan 1, 2015"
           },
-          country: { name: "Poland", flag: "pl", },
-          usage: { value: 43, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Amex", icon: "fa fa-cc-amex", },
-          activity: "Last week",
-        },
+          country: { name: "Poland", flag: "pl" },
+          usage: { value: 43, period: "Jun 11, 2015 - Jul 10, 2015" },
+          payment: { name: "Amex", icon: "fa fa-cc-amex" },
+          activity: "Last week"
+        }
       ],
       tableFields: {
         avatar: {
           label: '&lt;i class="icon-people"&gt;&lt;/i&gt;',
-          class: "text-center",
+          class: "text-center"
         },
         user: {
-          label: "User",
+          label: "User"
         },
         country: {
           label: "Country",
-          class: "text-center",
+          class: "text-center"
         },
         usage: {
-          label: "Usage",
+          label: "Usage"
         },
         payment: {
           label: "Payment method",
-          class: "text-center",
+          class: "text-center"
         },
         activity: {
-          label: "Activity",
-        },
-      },
+          label: "Activity"
+        }
+      }
     };
   },
   methods: {
@@ -656,7 +656,7 @@ export default {
     // flag(value) {
     //   return "flag-icon flag-icon-" + value;
     // },
-  },
+  }
 };
 &lt;/script&gt;
 &nbsp;
@@ -673,7 +673,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 20 2018 07:59:00 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 20 2018 13:44:13 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

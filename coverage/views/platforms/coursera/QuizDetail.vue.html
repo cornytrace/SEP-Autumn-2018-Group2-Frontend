@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for views/platforms/coursera/QuizDetail.vue</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">views/platforms/coursera</a> QuizDetail.vue
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.91% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>10/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.91% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>10/11</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+  &lt;div class="animated fadeIn"&gt;
+    &lt;!--First row--&gt;
+    &lt;b-row&gt;
+          &lt;b-col sm="12" md="6" lg="3"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="enrolled-learners"&gt;6.3&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Average grade&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm="12" md="6" lg="3"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="leaving-learners"&gt;107&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Number of attempts&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm="12" md="6" lg="3"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-check icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="finished-learners"&gt;437&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Number of likes&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm="12" md="6" lg="3"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-video-camera icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="no-videos"&gt;114&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Number of comments&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm="12" md="6" lg="3"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;0.83&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Passing ratio&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm="12" md="6" lg="3" v-if="this.$store.state.user.role === 'qdt'"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;0.65&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Like/dislike ratio&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm="12" md="6" lg="3" v-if="this.$store.state.user.role === 'qdt'"&gt;
+            &lt;b-card :no-body="true"&gt;
+              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;7.4&lt;/div&gt;
+                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Average score of last attempt&lt;/div&gt;
+              &lt;/b-card-body&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+        &lt;/b-row&gt;
+    &lt;!--Second row--&gt;
+    &lt;b-row&gt;
+      &lt;b-col md="4"&gt;
+        &lt;b-card id="progr-fin" header="Distribution of number of attempts"&gt;
+          &lt;div class="chart-wrapper"&gt;
+            &lt;bar-graph chartId="chart-bar-01" :data=attemptDistributionData :labels=attemptDistributionLabels /&gt;
+          &lt;/div&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col md="4"&gt;
+        &lt;b-card id="dist-eval" header="Grade distribution"&gt;
+          &lt;div class="chart-wrapper" &gt;
+            &lt;bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels /&gt;
+          &lt;/div&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col md="4" v-if="this.$store.state.user.role === 'qdt'"&gt;
+        &lt;b-card id="progr-fin" header="Distribution of number of attempts"&gt;
+          &lt;div class="chart-wrapper"&gt;
+            &lt;bar-graph chartId="chart-bar-01" :data=questionRatioData :labels=questionLabels /&gt;
+          &lt;/div&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+    &lt;/b-row&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&nbsp;
+&lt;script&gt;
+import LineGraph from "@/views/charts/LineGraph";
+import ScatterGraph from "@/views/charts/ScatterGraph";
+import BarGraph from "@/views/charts/BarGraph";
+import DoughnutGraph from "@/views/charts/DoughnutGraph";
+import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
+import RadarGraph from "@/views/charts/RadarGraph";
+&nbsp;
+export default {
+  name: "QuizDetail",
+  data: function() {
+    return {
+      show: true,
+      course: this.$route.params.courseid,
+&nbsp;
+      gradeDistributionLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
+&nbsp;
+      attemptDistributionLabels: [1, 2, 3, 4,],
+      attemptDistributionData: [
+        {
+          label: "Number of attempts",
+          backgroundColor: "#f87979",
+          data: [121, 41, 5, 3,],
+        },
+      ],
+&nbsp;
+      questionLabels: ["q1", "q2", "q3", "q4",],
+      questionRatioData: [
+        {
+          label: "Ratio of correct answers",
+          backgroundColor: "#5391f4",
+          data: [0.83, 0.41, 0.5, 0.3,],
+        },
+      ],
+&nbsp;
+      gradeDistributionLastAttemptLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
+      gradeDistributionLastAttemptData: [
+        {
+          label: "Grade distribution",
+          backgroundColor: "#5391f4",
+          data: [3, 4, 5, 3, 8, 3, 5, 9, 6, 4,],
+        },
+      ],
+    };
+  },
+  beforeMount() {
+    console.log();
+<span class="missing-if-branch" title="if path not taken" >I</span>    if (this.$store.state.user.role === "qdt") {
+<span class="cstat-no" title="statement not covered" >      this.gradeDistributionData = [</span>
+        {
+          label: "Grade distribution",
+          backgroundColor: "#5391f4",
+          data: [3, 4, 5, 3, 8, 7, 5, 9, 3, 4,],
+        },
+        {
+          label: "Grade distribution Last attempt",
+          backgroundColor: "#134e8c",
+          data: [3, 3, 5, 3, 8, 3, 5, 9, 6, 4,],
+        },
+      ];
+    } else {
+      this.gradeDistributionData = [
+        {
+          label: "Grade distribution",
+          backgroundColor: "#5391f4",
+          data: [3, 4, 5, 3, 8, 7, 5, 9, 3, 4,],
+        },
+      ];
+    }
+  },
+  components: {
+    LineGraph,
+    ScatterGraph,
+    BarGraph,
+    DoughnutGraph,
+    PolarAreaGraph,
+    RadarGraph,
+  },
+};
+&lt;/script&gt;
+&nbsp;
+&lt;style scoped&gt;
+.fade-enter-active {
+  transition: all 0.3s ease;
+}
+.fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+&nbsp;
+.align-data {
+  text-align: right;
+}
+&nbsp;
+.text-font-size {
+  font-size: 10px;
+}
+&nbsp;
+.icon-color {
+  color: #ffffff;
+  background-color: #00a9d4;
+}
+&nbsp;
+.text-color {
+  color: #00a9d4;
+}
+&lt;/style&gt;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 20 2018 13:44:13 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
