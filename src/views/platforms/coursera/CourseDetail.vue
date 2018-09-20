@@ -97,7 +97,7 @@
       <b-col md="6">
         <b-card id="progr-fin" header="Progression of finished learners">
           <div class="chart-wrapper">
-            <line-graph chartId="chart-bar-01"/>
+            <line-graph chartId="chart-bar-01" :data=lineGraphData :labels=lineGraphLabel />
           </div>
         </b-card>
       </b-col>
@@ -136,6 +136,7 @@ import BarGraph from "@/views/charts/BarGraph";
 import DoughnutGraph from "@/views/charts/DoughnutGraph";
 import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
 import RadarGraph from "@/views/charts/RadarGraph";
+import { hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
 
 export default {
   name: "CourseDetail",
@@ -143,8 +144,20 @@ export default {
     return {
       show: true,
       course: this.$route.params.courseid,
-      lineGraphData: [0.6, 0.6, 1.55, 5.5, 0.4, 0.35, 1.0, 1.4, 1.6, 0.5],
-      lineGraphLabel: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      lineGraphData: [
+        {
+          label: "Grade distribution",
+          backgroundColor: hexToRgba("#00D8FF", 90),
+          data: [0.6, 0.6, 1.55, 5.5, 0.4, 0.35, 1.0, 1.4, 1.6, 0.5,],
+        },
+        {
+          label: "Grade distribution 2",
+          backgroundColor: hexToRgba("#f20c23", 90),
+          data: [0.6, 1.6, 1.0, 4.5, 1.4, 0.35, 1.0, 1.4, 1.6, 1.2,],
+        },
+      ],
+
+      lineGraphLabel: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
     };
   },
   components: {
@@ -153,8 +166,8 @@ export default {
     BarGraph,
     DoughnutGraph,
     PolarAreaGraph,
-    RadarGraph
-  }
+    RadarGraph,
+  },
 };
 </script>
 
