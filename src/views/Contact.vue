@@ -100,6 +100,7 @@ export default {
 .logo-style {
   width: 100%;
   margin-top: 20px;
+  margin-left: 0pt;
 }
 
 #cursor-change {
