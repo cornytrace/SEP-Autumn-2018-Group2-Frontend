@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>2/2</span>
       </div>
     </div>
   </div>
@@ -177,8 +177,24 @@
 132
 133
 134
-135</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,6 +321,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -327,7 +361,7 @@
           &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix"&gt;
                 &lt;i class="fa fa-play bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;div class="h5 text-primary mb-0 pt-3"&gt;482&lt;/div&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;{{plays}}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Total Plays&lt;/div&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
@@ -340,7 +374,7 @@
            &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix"&gt;
                 &lt;i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;div class="h5 text-primary mb-0 pt-3"&gt;236&lt;/div&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;{{full_plays}}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Complete Plays&lt;/div&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
@@ -354,7 +388,7 @@
           &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix"&gt;
                 &lt;i class="fa fa-thumbs-up bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;div class="h5 text-primary mb-0 pt-3"&gt;53&lt;/div&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;{{likes}}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Likes&lt;/div&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
@@ -367,7 +401,7 @@
            &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix"&gt;
                 &lt;i class="fa fa-comment bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;div class="h5 text-primary mb-0 pt-3"&gt;12&lt;/div&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;{{comments}}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Comments&lt;/div&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
@@ -381,7 +415,7 @@
           &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix"&gt;
                 &lt;i class="fa fa-thumbs-down bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;div class="h5 text-primary mb-0 pt-3"&gt;482&lt;/div&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;{{dislikes}}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Dislikes&lt;/div&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
@@ -394,7 +428,7 @@
            &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix"&gt;
                 &lt;i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;div class="h5 text-primary mb-0 pt-3"&gt;236&lt;/div&gt;
+                &lt;div class="h5 text-primary mb-0 pt-3"&gt;{{ratio}}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold font-xs"&gt;Like/Dislike Ratio&lt;/div&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
@@ -411,34 +445,51 @@
           &lt;a href="#" class="card-link"&gt;Go to video&lt;/a&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
-    
-      &lt;!-- Page bottom half --&gt;
     &lt;/b-row&gt;
-    &lt;b-row&gt;
-      &lt;b-col sm="6"&gt;
-        &lt;b-card title="Graph 1"&gt;
+      &lt;!-- Page bottom half --&gt;
+    
+    &lt;b-row class="graph" &gt;
+      &lt;b-col&gt;
+        &lt;b-card title="Graph 1" &gt;
+        &lt;/b-card&gt;
+     &lt;b-row&gt;
+    &lt;b-col md="12"&gt;
+        &lt;b-card header="Grade distribution"&gt;
+          &lt;div class="chart-wrapper"&gt;
+            &lt;line-example :data= chart_data :maintainAspectRatio=false :labels= chart_labels&gt;&lt;/line-example&gt;
+          &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
-&nbsp;
-      &lt;b-col sm="6"&gt;
-        &lt;b-card title="Graph 2"&gt;
-&nbsp;
-          
-        &lt;/b-card&gt;
+      &lt;/b-row&gt;
       &lt;/b-col&gt;
     &lt;/b-row&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
+import LineExample from "@/views/charts/LineExample";
+&nbsp;
 export default {
   name: "VideoDetail",
   data: function() {
     return {
       qdt: true,
       video_title: "Video Title",
-      input_text: "",
+      likes: 64,
+      dislikes: 21,
+      plays: 592,
+      full_plays: 263,
+      ratio: 3,
+      comments: 23,
+&nbsp;
+      nextvid: "#",
+&nbsp;
+      chart_data: [0.3, 0.8, 0.3, 0.5, 0.1, 2, 1, 1, 1, 1, 1, 0.2,],
+      chart_labels: [0.9, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,],
     };
+  },
+  components: {
+    LineExample,
   },
 };
 &lt;/script&gt;
@@ -451,7 +502,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 20 2018 07:30:45 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 20 2018 07:59:00 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
