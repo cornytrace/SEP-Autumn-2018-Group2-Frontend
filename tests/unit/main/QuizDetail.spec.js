@@ -1,7 +1,5 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import {
-  shallowMount,
   mount,
   createLocalVue
 } from '@vue/test-utils'

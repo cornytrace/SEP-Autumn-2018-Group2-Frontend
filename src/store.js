@@ -16,7 +16,9 @@ export default new Vuex.Store({
     courses: [],
     resetToken: "",
     resetId: "",
-    user: {},
+    user: {
+      courses: [],
+    },
   },
   getters: {
 

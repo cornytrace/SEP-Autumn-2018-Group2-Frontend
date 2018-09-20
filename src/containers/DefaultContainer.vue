@@ -106,15 +106,19 @@ export default {
       selectedCourse: settings.course_default,
       // Mock
       courses: {
-        coursera: [
-          { name: "Coursera course 1", description: "description course 1", },
-          { name: "Coursera course 2", description: "description course 2", },
-        ],
+        coursera: [],
       },
     };
   },
   beforeMount() {
     this.testCount = 2;
+    for (var course of this.$store.state.user.courses) {
+      this.courses.coursera.push({
+        name: course.course_name,
+        description: "",
+        slug: course.couse_slug,
+      });
+    }
     util
       .testAuth()
       .then(() => {
