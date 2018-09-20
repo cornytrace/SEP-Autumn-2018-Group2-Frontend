@@ -36,6 +36,15 @@ export default {
         datasets: this.data,
       },
       {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
         responsive: true,
         maintainAspectRatio: this.maintainAspectRatio,
         tooltips: {
