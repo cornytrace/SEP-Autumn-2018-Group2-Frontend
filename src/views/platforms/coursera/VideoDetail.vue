@@ -126,7 +126,7 @@ export default {
   name: "VideoDetail",
   data: function() {
     return {
-      qdt: true,
+      qdt: this.$store.state.user.role === "qdt",
       video_title: "Video Title",
       likes: 64,
       dislikes: 21,
@@ -137,13 +137,19 @@ export default {
 
       nextvid: "#",
 
-      chart_data: [0.3, 0.8, 0.3, 0.5, 0.1, 2, 1, 1, 1, 1, 1, 0.2],
-      chart_labels: [0.9, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+      chart_data: [
+        {
+          label: "Video plays distribution",
+
+          data: [560, 530, 500, 420, 480, 410, 312, 221, 180, 222, 280,],
+        },
+      ],
+      chart_labels: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50,],
     };
   },
   components: {
-    LineGraph
-  }
+    LineGraph,
+  },
 };
 </script>
 
