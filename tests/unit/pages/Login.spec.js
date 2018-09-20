@@ -9,8 +9,12 @@ import Login from '@/views/pages/Login'
 import {
   doesNotReject
 } from 'assert';
+import axios from 'axios'
+import moxios from 'moxios'
 
 import mockUtils from '../mockUtils'
+
+import util from '@/util'
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
@@ -19,8 +23,13 @@ localVue.use(Vuex)
 describe('Login.vue', () => {
   let store
 
-  beforeEach(() => {
+  beforeEach(function () {
     store = mockUtils.mockStore()
+    moxios.install()
+  })
+
+  afterEach(function () {
+    moxios.uninstall()
   })
 
   it('has a name', () => {
@@ -79,14 +88,12 @@ describe('Login.vue', () => {
       expect(push).toHaveBeenCalledWith("/")
     })
   })
-  it('login then if ', () => {
+  it('login then if ', (done) => {
     const push = jest.fn()
     const wrapper = mount(Login, {
       localVue,
+      store,
       mocks: {
-        $store: {
-          dispatch: jest.fn().mockResolvedValue(),
-        },
         $route: {
           query: {
             redirect: "/test",
@@ -101,20 +108,28 @@ describe('Login.vue', () => {
       username: 'admin',
       password: '1234',
     })
+    moxios.stubRequest(util.apiUrl() + '/api/users/', {
+      status: 200,
+      response: {
+        pk: 1,
+        email: "test@test.nl",
+        role: "",
+        courses: [],
+      },
+    })
     wrapper.find('#loginbutton').trigger('click')
-    return wrapper.vm.$nextTick().then(() => {
+    moxios.wait(function () {
       expect(push).toHaveBeenCalledWith("/test")
+      done()
     })
   })
 
-  it('login then else if ', () => {
+  it('login then else if ', (done) => {
     const push = jest.fn()
     const wrapper = mount(Login, {
       localVue,
+      store,
       mocks: {
-        $store: {
-          dispatch: jest.fn().mockResolvedValue(),
-        },
         $route: {
           query: {
             redirect: undefined,
@@ -129,9 +144,19 @@ describe('Login.vue', () => {
       username: 'admin',
       password: '1234',
     })
+    moxios.stubRequest(util.apiUrl() + '/api/users/', {
+      status: 200,
+      response: {
+        pk: 1,
+        email: "test@test.nl",
+        role: "",
+        courses: [],
+      },
+    })
     wrapper.find('#loginbutton').trigger('click')
-    return wrapper.vm.$nextTick().then(() => {
+    moxios.wait(function () {
       expect(push).toHaveBeenCalledWith("/admin")
+      done()
     })
   })
 
@@ -139,10 +164,8 @@ describe('Login.vue', () => {
     const push = jest.fn()
     const wrapper = mount(Login, {
       localVue,
+      store,
       mocks: {
-        $store: {
-          dispatch: jest.fn().mockResolvedValue(),
-        },
         $route: {
           query: {
             redirect: undefined,
@@ -157,8 +180,17 @@ describe('Login.vue', () => {
       username: 'notadmin',
       password: '1234',
     })
+    moxios.stubRequest(util.apiUrl() + '/api/users/', {
+      status: 200,
+      response: {
+        pk: 1,
+        email: "test@test.nl",
+        role: "",
+        courses: [],
+      },
+    })
     wrapper.find('#loginbutton').trigger('click')
-    return wrapper.vm.$nextTick().then(() => {
+    moxios.wait(function () {
       expect(push).toHaveBeenCalledWith("/")
     })
   })
