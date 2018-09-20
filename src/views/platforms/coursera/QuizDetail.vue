@@ -47,24 +47,45 @@
               </b-card-body>
             </b-card>
           </b-col>
+          <b-col sm="12" md="6" lg="3" v-if="this.$store.state.user.role === 'qdt'">
+            <b-card :no-body="true">
+              <b-card-body class="p-0 clearfix align-data mr-3">
+                <i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"></i>
+                <div class="h5 text-color mb-0 pt-3" id="no-quizzes">0.65</div>
+                <div class="text-muted text-uppercase font-weight-bold text-font-size">Like/dislike ratio</div>
+              </b-card-body>
+            </b-card>
+          </b-col>
+          <b-col sm="12" md="6" lg="3" v-if="this.$store.state.user.role === 'qdt'">
+            <b-card :no-body="true">
+              <b-card-body class="p-0 clearfix align-data mr-3">
+                <i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"></i>
+                <div class="h5 text-color mb-0 pt-3" id="no-quizzes">7.4</div>
+                <div class="text-muted text-uppercase font-weight-bold text-font-size">Average score of last attempt</div>
+              </b-card-body>
+            </b-card>
+          </b-col>
         </b-row>
     <!--Second row-->
     <b-row>
-      <b-col md="12">
-        
-      </b-col>
-
-      <b-col md="6">
+      <b-col md="4">
         <b-card id="progr-fin" header="Distribution of number of attempts">
           <div class="chart-wrapper">
             <bar-graph chartId="chart-bar-01" :data=attemptDistributionData :labels=attemptDistributionLabels />
           </div>
         </b-card>
       </b-col>
-      <b-col md="6">
+      <b-col md="4">
         <b-card id="dist-eval" header="Grade distribution">
           <div class="chart-wrapper" >
             <bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels />
+          </div>
+        </b-card>
+      </b-col>
+      <b-col md="4" v-if="this.$store.state.user.role === 'qdt'">
+        <b-card id="progr-fin" header="Distribution of number of attempts">
+          <div class="chart-wrapper">
+            <bar-graph chartId="chart-bar-01" :data=questionRatioData :labels=questionLabels />
           </div>
         </b-card>
       </b-col>
@@ -88,13 +109,6 @@ export default {
       course: this.$route.params.courseid,
 
       gradeDistributionLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
-      gradeDistributionData: [
-        {
-          label: "Grade distribution",
-          backgroundColor: "#5391f4",
-          data: [3, 4, 5, 3, 8, 7, 5, 9, 3, 4,],
-        },
-      ],
 
       attemptDistributionLabels: [1, 2, 3, 4,],
       attemptDistributionData: [
@@ -104,7 +118,50 @@ export default {
           data: [121, 41, 5, 3,],
         },
       ],
+
+      questionLabels: ["q1", "q2", "q3", "q4",],
+      questionRatioData: [
+        {
+          label: "Ratio of correct answers",
+          backgroundColor: "#5391f4",
+          data: [0.83, 0.41, 0.5, 0.3,],
+        },
+      ],
+
+      gradeDistributionLastAttemptLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,],
+      gradeDistributionLastAttemptData: [
+        {
+          label: "Grade distribution",
+          backgroundColor: "#5391f4",
+          data: [3, 4, 5, 3, 8, 3, 5, 9, 6, 4,],
+        },
+      ],
     };
+  },
+  beforeMount() {
+    console.log();
+    if (this.$store.state.user.role === "qdt") {
+      this.gradeDistributionData = [
+        {
+          label: "Grade distribution",
+          backgroundColor: "#5391f4",
+          data: [3, 4, 5, 3, 8, 7, 5, 9, 3, 4,],
+        },
+        {
+          label: "Grade distribution Last attempt",
+          backgroundColor: "#134e8c",
+          data: [3, 3, 5, 3, 8, 3, 5, 9, 6, 4,],
+        },
+      ];
+    } else {
+      this.gradeDistributionData = [
+        {
+          label: "Grade distribution",
+          backgroundColor: "#5391f4",
+          data: [3, 4, 5, 3, 8, 7, 5, 9, 3, 4,],
+        },
+      ];
+    }
   },
   components: {
     LineGraph,
