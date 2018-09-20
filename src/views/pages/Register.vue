@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     doRegister() {
-      if (this.validEmail(this.email)) {
+      if (util.validEmail(this.email)) {
         var courses = [];
         for (var course of this.selectedCourses) {
           courses.push(this.getCourse(course));
@@ -99,16 +99,6 @@ export default {
     },
     getCourse(courseId) {
       return this.courses.find(course => course.pk === courseId);
-    },
-    validEmail(email) {
-      if (
-        email === "" ||
-        email.indexOf("@") === -1 ||
-        email.indexOf(".") === -1
-      ) {
-        return false;
-      }
-      return true;
     },
   },
 };

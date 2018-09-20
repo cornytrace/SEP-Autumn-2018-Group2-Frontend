@@ -14,7 +14,7 @@
 import {
   asideMenuCssClasses,
   validBreakpoints,
-  checkBreakpoint,
+  checkBreakpoint
 } from "../../shared/classes";
 import toggleClasses from "../../shared/toggle-classes";
 export default {

@@ -52,14 +52,33 @@ export default {
   },
 
   updateUser(user) {
-    console.log(user);
     return axios
       .put(this.apiUrl() + `/api/users/${user.pk}/`, user, {
         headers: this.authHeader(),
       })
   },
 
+  sendPasswordReset(email) {
+    return axios
+      .post(this.apiUrl() + `/api/users/forgot_password`, {
+        email: email,
+      }, {
+        headers: this.authHeader(),
+      })
+  },
+
   toUrl(x) {
     return x.replace(/\s+/g, "-").toLowerCase()
+  },
+
+  validEmail(email) {
+    if (
+      email === "" ||
+      email.indexOf("@") === -1 ||
+      email.indexOf(".") === -1
+    ) {
+      return false;
+    }
+    return true;
   },
 }

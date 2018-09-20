@@ -28,7 +28,7 @@
                       <b-button variant="primary" id="loginbutton" class="px-4" @click="doLogin">Login</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
-                      <b-button variant="link" class="px-0">Forgot password?</b-button>
+                      <b-button @click="forgotPassword" variant="link" class="px-0">Forgot password?</b-button>
                     </b-col>
                   </b-row>
                 </b-form>
@@ -83,6 +83,9 @@ export default {
             console.dir(response);
           }
         });
+    },
+    forgotPassword() {
+      this.$router.push("/pages/forgotpassword");
     },
   },
   data: function() {
