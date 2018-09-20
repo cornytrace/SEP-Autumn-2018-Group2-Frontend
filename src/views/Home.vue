@@ -64,8 +64,8 @@ import settings from "@/settings";
 export default {
   name: "home",
   components: {
-    BarGrpah,
-    Callout
+    BarGraph,
+    Callout,
   },
   data: function() {
     return {
@@ -73,114 +73,114 @@ export default {
       selected: "Month",
       tableItems: [
         {
-          avatar: { url: "img/avatars/1.jpg", status: "success" },
+          avatar: { url: "img/avatars/1.jpg", status: "success", },
           user: {
             name: "Yiorgos Avraamu",
             new: true,
-            registered: "Jan 1, 2015"
+            registered: "Jan 1, 2015",
           },
-          country: { name: "USA", flag: "us" },
-          usage: { value: 50, period: "Jun 11, 2015 - Jul 10, 2015" },
-          payment: { name: "Mastercard", icon: "fa fa-cc-mastercard" },
-          activity: "10 sec ago"
+          country: { name: "USA", flag: "us", },
+          usage: { value: 50, period: "Jun 11, 2015 - Jul 10, 2015", },
+          payment: { name: "Mastercard", icon: "fa fa-cc-mastercard", },
+          activity: "10 sec ago",
         },
         {
-          avatar: { url: "img/avatars/2.jpg", status: "danger" },
+          avatar: { url: "img/avatars/2.jpg", status: "danger", },
           user: {
             name: "Avram Tarasios",
             new: false,
-            registered: "Jan 1, 2015"
+            registered: "Jan 1, 2015",
           },
-          country: { name: "Brazil", flag: "br" },
-          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015" },
-          payment: { name: "Visa", icon: "fa fa-cc-visa" },
-          activity: "5 minutes ago"
+          country: { name: "Brazil", flag: "br", },
+          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015", },
+          payment: { name: "Visa", icon: "fa fa-cc-visa", },
+          activity: "5 minutes ago",
         },
         {
-          avatar: { url: "img/avatars/3.jpg", status: "warning" },
-          user: { name: "Quintin Ed", new: true, registered: "Jan 1, 2015" },
-          country: { name: "India", flag: "in" },
-          usage: { value: 74, period: "Jun 11, 2015 - Jul 10, 2015" },
-          payment: { name: "Stripe", icon: "fa fa-cc-stripe" },
-          activity: "1 hour ago"
+          avatar: { url: "img/avatars/3.jpg", status: "warning", },
+          user: { name: "Quintin Ed", new: true, registered: "Jan 1, 2015", },
+          country: { name: "India", flag: "in", },
+          usage: { value: 74, period: "Jun 11, 2015 - Jul 10, 2015", },
+          payment: { name: "Stripe", icon: "fa fa-cc-stripe", },
+          activity: "1 hour ago",
         },
         {
-          avatar: { url: "img/avatars/4.jpg", status: "" },
-          user: { name: "Enéas Kwadwo", new: true, registered: "Jan 1, 2015" },
-          country: { name: "France", flag: "fr" },
-          usage: { value: 98, period: "Jun 11, 2015 - Jul 10, 2015" },
-          payment: { name: "PayPal", icon: "fa fa-paypal" },
-          activity: "Last month"
+          avatar: { url: "img/avatars/4.jpg", status: "", },
+          user: { name: "Enéas Kwadwo", new: true, registered: "Jan 1, 2015", },
+          country: { name: "France", flag: "fr", },
+          usage: { value: 98, period: "Jun 11, 2015 - Jul 10, 2015", },
+          payment: { name: "PayPal", icon: "fa fa-paypal", },
+          activity: "Last month",
         },
         {
-          avatar: { url: "img/avatars/5.jpg", status: "success" },
+          avatar: { url: "img/avatars/5.jpg", status: "success", },
           user: {
             name: "Agapetus Tadeáš",
             new: true,
-            registered: "Jan 1, 2015"
+            registered: "Jan 1, 2015",
           },
-          country: { name: "Spain", flag: "es" },
-          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015" },
-          payment: { name: "Google Wallet", icon: "fa fa-google-wallet" },
-          activity: "Last week"
+          country: { name: "Spain", flag: "es", },
+          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015", },
+          payment: { name: "Google Wallet", icon: "fa fa-google-wallet", },
+          activity: "Last week",
         },
         {
-          avatar: { url: "img/avatars/6.jpg", status: "danger" },
+          avatar: { url: "img/avatars/6.jpg", status: "danger", },
           user: {
             name: "Friderik Dávid",
             new: true,
-            registered: "Jan 1, 2015"
+            registered: "Jan 1, 2015",
           },
-          country: { name: "Poland", flag: "pl" },
-          usage: { value: 43, period: "Jun 11, 2015 - Jul 10, 2015" },
-          payment: { name: "Amex", icon: "fa fa-cc-amex" },
-          activity: "Last week"
-        }
+          country: { name: "Poland", flag: "pl", },
+          usage: { value: 43, period: "Jun 11, 2015 - Jul 10, 2015", },
+          payment: { name: "Amex", icon: "fa fa-cc-amex", },
+          activity: "Last week",
+        },
       ],
       tableFields: {
         avatar: {
           label: '<i class="icon-people"></i>',
-          class: "text-center"
+          class: "text-center",
         },
         user: {
-          label: "User"
+          label: "User",
         },
         country: {
           label: "Country",
-          class: "text-center"
+          class: "text-center",
         },
         usage: {
-          label: "Usage"
+          label: "Usage",
         },
         payment: {
           label: "Payment method",
-          class: "text-center"
+          class: "text-center",
         },
         activity: {
-          label: "Activity"
-        }
+          label: "Activity",
+        },
       },
       resources: [
         {
           name: "Coursera for Educators",
-          link: "https://blog.coursera.org/for-educators/"
+          link: "https://blog.coursera.org/for-educators/",
         },
         {
           name: "Resource 2",
-          link: "#"
+          link: "#",
         },
         {
           name: "Resource 3",
-          link: "#"
+          link: "#",
         },
         {
           name: "Resource 4",
-          link: "#"
-        }
-      ]
+          link: "#",
+        },
+      ],
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 
