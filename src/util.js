@@ -67,6 +67,13 @@ export default {
       })
   },
 
+  getUser() {
+    return axios
+      .get(this.apiUrl() + `/api/users/`, {
+        headers: this.authHeader(),
+      })
+  },
+
   toUrl(x) {
     return x.replace(/\s+/g, "-").toLowerCase()
   },
