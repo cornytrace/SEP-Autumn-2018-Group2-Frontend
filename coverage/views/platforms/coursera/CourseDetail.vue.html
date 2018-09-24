@@ -300,7 +300,52 @@
 255
 256
 257
-258</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -432,18 +477,63 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -566,7 +656,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;span class="iconsquare"&gt;
+                  &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="enrolled-learners"&gt;{{ enrolledStudents }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Enrolled learners&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -575,7 +667,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="leaving-learners"&gt;{{ leavingLearners }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Leaving learners&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -586,7 +680,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-check icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="finished-learners"&gt;{{ finishedLearners }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Finished learners&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -595,7 +691,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-video-camera icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="no-videos"&gt;{{ numberOfVideos }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Videos&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -606,7 +704,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;{{ numberOfQuizzes }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Quizzes&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -615,7 +715,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-pencil icon-color p-4 font-2xl mr-0 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="no-assignments"&gt;{{ numberOfAssignments }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Assignments&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -626,7 +728,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-th-list icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="no-modules"&gt;{{ numberOfModules }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Modules&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -635,7 +739,9 @@
           &lt;b-col sm="12" md="6" lg="6"&gt;
             &lt;b-card :no-body="true"&gt;
               &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                &lt;span class="iconsquare"&gt;
                 &lt;i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                &lt;/span&gt;
                 &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ numberOfCohorts }}&lt;/div&gt;
                 &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Cohorts&lt;/div&gt;
               &lt;/b-card-body&gt;
@@ -684,6 +790,18 @@
           &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt; 
+    &lt;/b-row&gt;
+    &lt;!-- QDT Analytics --&gt;
+    &lt;b-row v-if="this.$store.state.user.role === 'qdt'"&gt;
+      &lt;b-col md="6"&gt;
+        &lt;b-card id="avg-time-in-mod" header="Tend of following courses"&gt;
+          &lt;div class="chart-wrapper"&gt;
+            &lt;bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels /&gt;
+          &lt;/div&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col md="6"&gt;
+      &lt;/b-col&gt;
     &lt;/b-row&gt;
   &lt;/div&gt;
 &lt;/template&gt;
@@ -765,12 +883,21 @@ export default {
           data: [28, 11, 30, 56]
         }
       ],
-      AvgTimeModLabels: [1, 2, 3, 4]
+      AvgTimeModLabels: [1, 2, 3, 4],
 &nbsp;
       /*
        * QDT member analytics 
        * not yet implemented 
        */
+      //
+      tendFolCourData: [
+        {
+          label: "The tend learners follow the course",
+          backgroundColor: "#f81919",
+          data: [28, 11, 30, 44]
+        }
+      ],
+      tendFolCourLabels: [1, 2, 3, 4]
     };
   },
   components: {
@@ -806,12 +933,20 @@ export default {
 }
 &nbsp;
 .icon-color {
+  width: 100%;
   color: #ffffff;
-  background-color: #00a9d4;
 }
 &nbsp;
 .text-color {
   color: #00a9d4;
+}
+&nbsp;
+.iconsquare {
+  float: left;
+  background-color: #00a9d4;
+  height: 100%;
+  width: 75px;
+  text-align: center;
 }
 &lt;/style&gt;
 &nbsp;</pre></td></tr>
@@ -820,7 +955,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 20 2018 13:44:13 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 07:23:40 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
