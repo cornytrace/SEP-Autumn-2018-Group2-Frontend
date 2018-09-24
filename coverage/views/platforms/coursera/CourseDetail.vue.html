@@ -328,42 +328,7 @@
 283
 284
 285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+286</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -647,160 +612,143 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="animated fadeIn"&gt;
     &lt;!--First row--&gt;
     &lt;b-row&gt;
-      &lt;b-col xs="12" sm="12" md="12" lg="6"&gt;
-        &lt;b-row&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                  &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="enrolled-learners"&gt;{{ enrolledStudents }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Enrolled learners&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="leaving-learners"&gt;{{ leavingLearners }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Leaving learners&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-        &lt;/b-row&gt;
-        &lt;b-row&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-check icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="finished-learners"&gt;{{ finishedLearners }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Finished learners&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-video-camera icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="no-videos"&gt;{{ numberOfVideos }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Videos&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-        &lt;/b-row&gt;
-        &lt;b-row&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;{{ numberOfQuizzes }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Quizzes&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-pencil icon-color p-4 font-2xl mr-0 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="no-assignments"&gt;{{ numberOfAssignments }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Assignments&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-        &lt;/b-row&gt;
-        &lt;b-row&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-th-list icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="no-modules"&gt;{{ numberOfModules }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Modules&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-          &lt;b-col sm="12" md="6" lg="6"&gt;
-            &lt;b-card :no-body="true"&gt;
-              &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
-                &lt;span class="iconsquare"&gt;
-                &lt;i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
-                &lt;/span&gt;
-                &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ numberOfCohorts }}&lt;/div&gt;
-                &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Cohorts&lt;/div&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
-        &lt;/b-row&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="enrolled-learners"&gt;{{ enrolledStudents }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Enrolled learners&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
       &lt;/b-col&gt;
-      &lt;b-col xs="12" sm="12" md="12" lg="6"&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="leaving-learners"&gt;{{ leavingLearners }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Leaving learners&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-check icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="finished-learners"&gt;{{ finishedLearners }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Finished learners&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-video-camera icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="no-videos"&gt;{{ numberOfVideos }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Videos&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;{{ numberOfQuizzes }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Quizzes&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-pencil icon-color p-4 font-2xl mr-0 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="no-assignments"&gt;{{ numberOfAssignments }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Assignments&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-th-list icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="no-modules"&gt;{{ numberOfModules }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Modules&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+      &lt;b-col sm="12" md="6" lg="3"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+            &lt;span class="iconsquare"&gt;
+              &lt;i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ numberOfCohorts }}&lt;/div&gt;
+            &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Cohorts&lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+    &lt;/b-row&gt;
+    &lt;!--Second row--&gt;
+    &lt;b-row&gt;
+      &lt;b-col lg="6" xl="4"&gt;
         &lt;b-card id="dist-eval" header="Distribution of evaluation rating"&gt;
           &lt;div class="chart-wrapper" &gt;
             &lt;bar-graph chartId="chart-line-02" :data=distEvalRateData :labels=distEvalRateLabels /&gt;
           &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
-    &lt;/b-row&gt;
-    &lt;!--Second row--&gt;
-    &lt;b-row&gt;
-      &lt;b-col md="6"&gt;
+      &lt;b-col lg="6" xl="4"&gt;
         &lt;b-card id="progr-fin" header="Progression of finished learners"&gt;
           &lt;div class="chart-wrapper"&gt;
             &lt;line-graph chartId="chart-bar-01" :data=progFinLearData :labels=progFinLearLabels /&gt;
           &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
-      &lt;b-col md="6"&gt;
+      &lt;b-col lg="6" xl="4"&gt;
         &lt;b-card id="leav-per-mod" header="Leaving learners per module"&gt;
           &lt;div class="chart-wrapper"&gt;
             &lt;doughnut-graph chartId="chart-doughnut-01" :data=leavLearModData :labels=leavLearModLabels /&gt;
           &lt;/div&gt;
-        &lt;/b-card&gt;
+        &lt;/b-card&gt; 
       &lt;/b-col&gt;
-    &lt;/b-row&gt;
-    &lt;!--Thirth row--&gt;
-    &lt;b-row&gt;
-      &lt;b-col md="6"&gt;
+      &lt;b-col lg="6" xl="4"&gt;
         &lt;b-card id="avg-time-in-course" header="Average time spend in course by learners"&gt;
           &lt;div class="chart-wrapper"&gt;
             &lt;bar-graph chartId="chart-scatter-01" :data=avgTimeCourData :labels=avgTimeCourLabels /&gt;
           &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
-      &lt;b-col md="6"&gt;
+      &lt;b-col lg="6" xl="4"&gt;
         &lt;b-card id="avg-time-in-mod" header="Average time spend per module by learners"&gt;
           &lt;div class="chart-wrapper"&gt;
             &lt;bar-graph chartId="chart-polar-01" :data=avgTimeModData :labels=AvgTimeModLabels /&gt;
           &lt;/div&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt; 
-    &lt;/b-row&gt;
-    &lt;!-- QDT Analytics --&gt;
-    &lt;b-row v-if="this.$store.state.user.role === 'qdt'"&gt;
-      &lt;b-col md="6"&gt;
-        &lt;b-card id="avg-time-in-mod" header="Order in which the course is followed most"&gt;
+      &lt;b-col lg="6" xl="4"&gt;
+        &lt;b-card id="avg-time-in-mod" header="Order in which the course is followed most" v-if="qdt"&gt;
           &lt;div class="chart-wrapper"&gt;
             &lt;bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels /&gt;
           &lt;/div&gt;
         &lt;/b-card&gt;
-      &lt;/b-col&gt;
-      &lt;b-col md="6"&gt;
       &lt;/b-col&gt;
     &lt;/b-row&gt;
   &lt;/div&gt;
@@ -819,6 +767,7 @@ export default {
   name: "CourseDetail",
   data: function() {
     return {
+      qdt: this.$store.state.user.role === "qdt",
       show: true,
       course: this.$route.params.courseid,
 &nbsp;
@@ -955,7 +904,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 08:04:11 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 08:19:21 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
