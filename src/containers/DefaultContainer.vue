@@ -151,8 +151,10 @@ export default {
       var routes = [];
       var path = "";
       for (var subroute of this.$route.path.split("/")) {
-        path += subroute + "/";
-        routes.push({ text: subroute, to: path, });
+        if (subroute !== "home") {
+          path += subroute + "/";
+          routes.push({ text: subroute, to: path, });
+        }
       }
       routes[0].text = "Home";
       return routes;

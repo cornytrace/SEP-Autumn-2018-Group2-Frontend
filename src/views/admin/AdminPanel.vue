@@ -5,6 +5,7 @@
         <h4>Admin dashboard</h4>
       </b-link>
       <router-link to="register"><b-button>Add user</b-button></router-link>
+      <b-button @click="doLogout">Logout</b-button>
     </AppHeader>
     <div class="app-body">
       <main class="main">
@@ -21,8 +22,15 @@ import { Header as AppHeader } from "@coreui/vue";
 export default {
   name: "AdminPanel",
   components: {
-    AppHeader
-  }
+    AppHeader,
+  },
+  methods: {
+    doLogout() {
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/pages/login");
+      });
+    },
+  },
 };
 </script>
 

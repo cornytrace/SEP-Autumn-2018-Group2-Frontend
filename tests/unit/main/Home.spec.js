@@ -1,7 +1,7 @@
 import {
   shallowMount,
   mount,
-  createLocalVue,
+  createLocalVue
 } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
@@ -22,8 +22,6 @@ describe('Home.vue', () => {
   })
   it('sets the correct default data', () => {
     expect(typeof Home.data).toMatch('function')
-    const defaultData = Home.data()
-    expect(defaultData.selected).toMatch('Month')
   })
   it('is Vue instance', () => {
     const wrapper = shallowMount(Home, {

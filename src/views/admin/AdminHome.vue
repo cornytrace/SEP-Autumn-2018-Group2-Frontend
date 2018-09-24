@@ -14,14 +14,15 @@
                   </tr>
                 </table>
               </b-list-group-item>
-              <b-list-group-item id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk">
+              <b-list-group-item >
                 <table>
-                  <tr>
+                  <tr id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk">
                     <th id="pk-cell"><b>{{ user.pk }}</b></th>
                     <th id="email-cell">{{ user.email }}</th>
                     <th id="name-cell"></th>
                     <th id="role-cell">{{ user.role }}</th>
                     <th><span id="course" v-for="course in user.courses" :key="course.course_name">{{ course.course_name }}</span></th>
+                    <th id="button-cell"><button v-b-modal="'deleteModal'"><i class="cui-trash" /></button></th>
                   </tr>
                 </table>
               </b-list-group-item>
@@ -63,6 +64,9 @@
         </b-card>
       </b-col>
     </b-row>
+    <b-modal id="deleteModal" title="Are you sure?" @ok="handleOk">
+      <p class="my-4">Are you sure you want to delete this user? <br> {{ selectedEmail}}</p>
+    </b-modal>
     </div>
 </template>
 
@@ -98,6 +102,14 @@ export default {
       this.selectedEmail = user.email;
       this.selectedUser = user.pk;
       this.selectedRole = user.role;
+    },
+    deleteUser(id) {
+      util.deleteUser(id).then(response => {
+        this.getUsers();
+      });
+    },
+    handleOk() {
+      this.deleteUser(this.selectedUser);
     },
     save: function() {
       if (this.selectedUser !== "No user selected") {
@@ -209,5 +221,9 @@ table th {
 }
 th #course {
   margin-right: 10px;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0 1em;
 }
 </style>
