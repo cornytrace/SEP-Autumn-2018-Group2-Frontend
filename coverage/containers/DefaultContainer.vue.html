@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.68% </span>
+        <span class="strong">77.78% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>56/74</span>
+        <span class='fraction'>63/81</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">69.23% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>18/26</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.16% </span>
+        <span class="strong">61.11% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>12/19</span>
+        <span class='fraction'>11/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">77.14% </span>
+        <span class="strong">78.95% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>54/70</span>
+        <span class='fraction'>60/76</span>
       </div>
     </div>
   </div>
@@ -343,7 +343,12 @@
 298
 299
 300
-301</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+301
+302
+303
+304
+305
+306</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -492,10 +497,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -671,7 +681,7 @@
         &lt;SidebarMinimizer/&gt;
       &lt;/AppSidebar&gt;
       &lt;main class="main"&gt;
-        &lt;Breadcrumb :list="list" /&gt;
+        &lt;b-breadcrumb :items="list" /&gt;
         &lt;div class="container-fluid"&gt;
           &lt;router-view&gt;&lt;/router-view&gt;
         &lt;/div&gt;
@@ -733,7 +743,7 @@ export default {
     NotificationToggler,
     BottombarNav,
     TopbarNav,
-    BackButton
+    BackButton,
   },
   data() {
     return {
@@ -741,7 +751,7 @@ export default {
       isPrimary: false,
       level: 0,
       top_nav: [],
-      level_0: ["/home", "/settings", "/contact"],
+      level_0: ["/home", "/settings", "/contact",],
       platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
@@ -751,8 +761,8 @@ export default {
       selectedCourse: settings.course_default,
       // Mock
       courses: {
-        coursera: []
-      }
+        coursera: [],
+      },
     };
   },
   beforeMount() {
@@ -761,7 +771,7 @@ export default {
 <span class="cstat-no" title="statement not covered" >      this.courses.coursera.push({</span>
         name: course.course_name,
         description: "",
-        slug: course.course_slug
+        slug: course.course_slug,
       });
     }
 <span class="fstat-no" title="function not covered" >    util</span>
@@ -777,7 +787,7 @@ export default {
   },
   mounted() {
     this.platformOptions = [
-      { value: settings.platform_default, text: "Select platform" }
+      { value: settings.platform_default, text: "Select platform", },
     ];
 &nbsp;
     this.setPlatforms();
@@ -793,10 +803,15 @@ export default {
   },
   computed: {
     list() {
-      return this.$route.matched.filter(
-        route =&gt; route.meta.label || route.name
-      );
-    }
+      var routes = [];
+      var path = "";
+      for (var subroute of this.$route.path.split("/")) {
+        path += subroute + "/";
+        routes.push({ text: subroute, to: path, });
+      }
+      routes[0].text = "Home";
+      return routes;
+    },
   },
   methods: {
 <span class="fstat-no" title="function not covered" >    goUp: function() {</span>
@@ -856,8 +871,8 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: "Select course"
-        }
+          text: "Select course",
+        },
       ];
     },
     setPlatforms() {
@@ -865,17 +880,17 @@ export default {
       this.top_nav[0].push({
         name: "Home",
         icon: "cui-home",
-        url: "/home"
+        url: "/home",
       });
       for (var platform of this.platforms) {
         this.top_nav[0].push({
           name: platform.name,
           url: platform.url || "/" + util.toUrl(platform.name),
-          icon: "cui-dashboard"
+          icon: "cui-dashboard",
         });
         this.platformOptions.push({
           value: "/" + util.toUrl(platform.name),
-          text: platform.name
+          text: platform.name,
         });
       }
     },
@@ -883,21 +898,21 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: "Select course"
-        }
+          text: "Select course",
+        },
       ];
       this.top_nav[1] = [];
 <span class="cstat-no" title="statement not covered" >      for (var course of c) {</span>
         // Push to dropdown
 <span class="cstat-no" title="statement not covered" >        this.courseOptions.push({</span>
           value: platform + "/" + course.slug,
-          text: course.name
+          text: course.name,
         });
         // Push to navbar
 <span class="cstat-no" title="statement not covered" >        this.top_nav[1].push({</span>
           name: course.name,
           url: platform + "/" + course.slug,
-          icon: "cui-dashboard"
+          icon: "cui-dashboard",
         });
       }
     },
@@ -907,11 +922,11 @@ export default {
         this.top_nav[2].push({
           name: subpage.name,
           icon: subpage.icon,
-          url: path + "/" + util.toUrl(subpage.name)
+          url: path + "/" + util.toUrl(subpage.name),
         });
       }
-    }
-  }
+    },
+  },
 };
 &lt;/script&gt;
 &nbsp;
@@ -949,7 +964,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 08:19:21 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 09:24:41 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
