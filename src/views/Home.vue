@@ -7,36 +7,47 @@
             <router-link :to="platform.name.toLowerCase()" ><h4>{{platform.name}}</h4></router-link>
           </b-card-header>
           <b-card-body class="pb-0">
-            <b-card no-body>
-              <b-card-header class="bg-success">
-                Platform Information
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
-                <div class="chart-wrapper">
-                </div>
-              </b-card-body>
-            </b-card>
-            <b-card no-body>
-              <b-card-header class="bg-primary">
-                <router-link to="/course/automata-system-validation" class="link-light">Quantitative model checking</router-link>
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
-                <div class="chart-wrapper">
-                </div>
-              </b-card-body>
-            </b-card>
-            <b-card no-body>
-              <b-card-header class="bg-primary">
-                <router-link to="/course/automata-system-validation" class="link-light">Automata system</router-link>
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Number of courses: 2<br>Total enrolled student: 243,342<br>New enrolled student: 243,342<br>Course completers: 243,342<br>Payments: 243,342</p>
-                <div class="chart-wrapper">
-                </div>
-              </b-card-body>
-            </b-card>
+            <b-row>
+              <b-col v-for="statistic in statisticsCoursera" :key="statistic.name" :sm="3">
+                <b-card :no-body="true">
+                  <b-card-body class="p-0 clearfix">
+                    <i :class="statistic.icon" class="bg-success p-2 font-2xl mr-2 float-left"></i>
+                    <div class="h3 mb-0 text-success float-left mt-1">{{statistic.number}}</div>
+                    <div class="h6 mb-0 text-center float-left pl-2 mt-3 text-muted">{{statistic.name}}</div>
+                  </b-card-body>
+                </b-card>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col v-for="course in coursesCoursera" :key="course.name" :sm="4">
+                <b-card no-body>
+                  <b-card-header class="bg-primary">
+                    <router-link to="/course/automata-system-validation" class="link-light font-weight-bold">{{course.name}}</router-link>
+                  </b-card-header>
+                  <b-card-body no-body class="pb-0 pt-0 pl-3 pr-3">
+                    <b-row>
+                      <b-col class=" pt-3 pb-3 border borderdark border-top-0 border-left-0 text-center">
+                        <h2 class="text-primary">{{course.learnersEnrolled}}</h2>
+                        <h5 class="text-muted">enrolled</h5>
+                      </b-col>
+                      <b-col class=" pt-3 pb-3 border borderdark border-top-0 border-right-0 text-center">
+                        <h2 class="text-primary">{{course.learnersPaying}}</h2>
+                        <h5 class="text-muted">paying</h5>
+                      </b-col>
+                      <div class="w-100"></div>
+                      <b-col class=" pt-3 pb-3 border borderdark border-bottom-0 border-left-0 text-center">
+                        <h2 class="text-primary">{{course.learnersEnrolled}}</h2>
+                        <h5 class="text-muted">enrolled</h5>
+                      </b-col>
+                      <b-col class=" pt-3 pb-3 border borderdark border-bottom-0 border-right-0 text-center">
+                        <h2 class="text-primary">{{course.learnersPaying}}</h2>
+                        <h5 class="text-muted">paying</h5>
+                      </b-col>
+                    </b-row>
+                  </b-card-body>
+                </b-card>
+              </b-col>
+            </b-row>
           </b-card-body>
         </b-card>
       </b-col>
@@ -57,109 +68,13 @@
 </template>
 
 <script>
-import BarExample from "./charts/BarExample";
-import { Callout } from "@coreui/vue";
 import settings from "@/settings";
 
 export default {
   name: "home",
-  components: {
-    BarExample,
-    Callout,
-  },
   data: function() {
     return {
       platforms: settings.platforms,
-      selected: "Month",
-      tableItems: [
-        {
-          avatar: { url: "img/avatars/1.jpg", status: "success", },
-          user: {
-            name: "Yiorgos Avraamu",
-            new: true,
-            registered: "Jan 1, 2015",
-          },
-          country: { name: "USA", flag: "us", },
-          usage: { value: 50, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Mastercard", icon: "fa fa-cc-mastercard", },
-          activity: "10 sec ago",
-        },
-        {
-          avatar: { url: "img/avatars/2.jpg", status: "danger", },
-          user: {
-            name: "Avram Tarasios",
-            new: false,
-            registered: "Jan 1, 2015",
-          },
-          country: { name: "Brazil", flag: "br", },
-          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Visa", icon: "fa fa-cc-visa", },
-          activity: "5 minutes ago",
-        },
-        {
-          avatar: { url: "img/avatars/3.jpg", status: "warning", },
-          user: { name: "Quintin Ed", new: true, registered: "Jan 1, 2015", },
-          country: { name: "India", flag: "in", },
-          usage: { value: 74, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Stripe", icon: "fa fa-cc-stripe", },
-          activity: "1 hour ago",
-        },
-        {
-          avatar: { url: "img/avatars/4.jpg", status: "", },
-          user: { name: "Enéas Kwadwo", new: true, registered: "Jan 1, 2015", },
-          country: { name: "France", flag: "fr", },
-          usage: { value: 98, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "PayPal", icon: "fa fa-paypal", },
-          activity: "Last month",
-        },
-        {
-          avatar: { url: "img/avatars/5.jpg", status: "success", },
-          user: {
-            name: "Agapetus Tadeáš",
-            new: true,
-            registered: "Jan 1, 2015",
-          },
-          country: { name: "Spain", flag: "es", },
-          usage: { value: 22, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Google Wallet", icon: "fa fa-google-wallet", },
-          activity: "Last week",
-        },
-        {
-          avatar: { url: "img/avatars/6.jpg", status: "danger", },
-          user: {
-            name: "Friderik Dávid",
-            new: true,
-            registered: "Jan 1, 2015",
-          },
-          country: { name: "Poland", flag: "pl", },
-          usage: { value: 43, period: "Jun 11, 2015 - Jul 10, 2015", },
-          payment: { name: "Amex", icon: "fa fa-cc-amex", },
-          activity: "Last week",
-        },
-      ],
-      tableFields: {
-        avatar: {
-          label: '<i class="icon-people"></i>',
-          class: "text-center",
-        },
-        user: {
-          label: "User",
-        },
-        country: {
-          label: "Country",
-          class: "text-center",
-        },
-        usage: {
-          label: "Usage",
-        },
-        payment: {
-          label: "Payment method",
-          class: "text-center",
-        },
-        activity: {
-          label: "Activity",
-        },
-      },
       resources: [
         {
           name: "Coursera for Educators",
@@ -176,6 +91,60 @@ export default {
         {
           name: "Resource 4",
           link: "#",
+        },
+      ],
+      statisticsCoursera: [
+        {
+          name: "courses",
+          number: "3",
+          icon: "fa fa-book",
+        },
+        {
+          name: "learners",
+          number: "18",
+          icon: "fa fa-user",
+        },
+        {
+          name: "completers",
+          number: "6",
+          icon: "fa fa-check",
+        },
+        {
+          name: "paid users",
+          number: "12",
+          icon: "fa fa-money",
+        },
+      ],
+      coursesCoursera: [
+        {
+          name: "Python for Everybody",
+          learnersEnrolled: "15",
+          learnersPaying: "8",
+        },
+        {
+          name: "Data Science",
+          learnersEnrolled: "34",
+          learnersPaying: "5",
+        },
+        {
+          name: "Algorithms",
+          learnersEnrolled: "23",
+          learnersPaying: "18",
+        },
+        {
+          name: "Sequence Models",
+          learnersEnrolled: "86",
+          learnersPaying: "12",
+        },
+        {
+          name: "R Programming",
+          learnersEnrolled: "7",
+          learnersPaying: "0",
+        },
+        {
+          name: "Machine Learning",
+          learnersEnrolled: "65",
+          learnersPaying: "46",
         },
       ],
     };
