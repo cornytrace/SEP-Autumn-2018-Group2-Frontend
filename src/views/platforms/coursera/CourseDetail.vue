@@ -128,8 +128,11 @@
           </div>
         </b-card>
       </b-col> 
-      <b-col lg="6" xl="4">
-        <b-card id="avg-time-in-mod" header="Tend of following courses" v-if="qdt">
+    </b-row>
+    <!-- QDT Analytics -->
+    <b-row v-if="this.$store.state.user.role === 'qdt'">
+      <b-col md="6">
+        <b-card id="avg-time-in-mod" header="Order in which the course is followed most">
           <div class="chart-wrapper">
             <bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels />
           </div>
@@ -226,7 +229,7 @@ export default {
       //
       tendFolCourData: [
         {
-          label: "The tend learners follow the course",
+          label: "Yes we know this is the wrong graph type",
           backgroundColor: "#f81919",
           data: [28, 11, 30, 44,],
         },
