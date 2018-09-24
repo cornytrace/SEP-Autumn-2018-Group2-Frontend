@@ -2,7 +2,8 @@
   <div class="animated fadeIn">
     <b-row>
       <b-col sm="8" lg="6">
-        <b-card no-body header="Quiz 1" class="bg">
+        <b-card no-body class="bg">
+          <b-card-header><router-link :to="this.link + '/1'">Quiz 1</router-link></b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body class="bg-primary">
               <b-card-header>
@@ -14,7 +15,8 @@
             </b-card>
           </b-card-body>
         </b-card>
-        <b-card no-body header="Quiz 2" class="bg">
+        <b-card no-body class="bg">
+          <b-card-header><router-link :to="this.link + '/2'">Quiz 2</router-link></b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body class="bg-primary">
               <b-card-header>
@@ -34,5 +36,13 @@
 <script>
 export default {
   name: "Quizzes",
+  data: function() {
+    return {
+      link: "",
+    };
+  },
+  mounted() {
+    this.link = this.$route.path;
+  },
 };
 </script>

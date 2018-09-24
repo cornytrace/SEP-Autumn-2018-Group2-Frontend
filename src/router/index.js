@@ -90,7 +90,7 @@ const router = new VueRouter({
               component: coursera.Quizzes,
             },
             {
-              path: '/coursera/:courseid/quiz/:quizid',
+              path: '/coursera/:courseid/quizzes/:quizid',
               name: 'QuizDetail',
               component: coursera.QuizDetail,
               meta: {
