@@ -63,8 +63,8 @@ export default {
       .post(this.apiUrl() + `/api/users/forgot_password/`, {
         email: email,
       }, {
-        headers: this.authHeader(),
-      })
+          headers: this.authHeader(),
+        })
   },
 
   getUser() {
@@ -72,6 +72,11 @@ export default {
       .get(this.apiUrl() + `/api/users/me/`, {
         headers: this.authHeader(),
       })
+  },
+
+  deleteUser(id) {
+    return axios
+      .delete(this.apiUrl() + `/api/users/${id}/`, { headers: this.authHeader(), })
   },
 
   toUrl(x) {

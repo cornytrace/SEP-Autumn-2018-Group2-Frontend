@@ -149,7 +149,7 @@ describe('Login.vue', () => {
       response: {
         pk: 1,
         email: "test@test.nl",
-        role: "",
+        role: "admin",
         courses: [],
       },
     })
@@ -208,7 +208,7 @@ describe('Login.vue', () => {
           }),
         },
         $router: {
-          push: function () {},
+          push: function () { },
         },
         $route: {
           query: {
@@ -239,7 +239,7 @@ describe('Login.vue', () => {
           }),
         },
         $router: {
-          push: function () {},
+          push: function () { },
         },
         $route: {
           query: {

@@ -61,7 +61,7 @@ export default {
       }
 
       this.$store
-        .dispatch("login", { username: this.username, password: this.password })
+        .dispatch("login", { username: this.username, password: this.password, })
         // login successful
         .then(() => {
           util
@@ -69,13 +69,13 @@ export default {
             .then(response => {
               this.$store.commit("setUser", response.data);
               // if we have a redirect query, redirect to it, else redirect to home
-              if (
+              if (response.data.role == "admin") {
+                this.$router.push("/admin");
+              } else if (
                 this.$route.query &&
                 this.$route.query.redirect !== undefined
               ) {
                 this.$router.push(this.$route.query.redirect);
-              } else if (this.username == "admin") {
-                this.$router.push("/admin");
               } else {
                 this.$router.push("/");
               }
@@ -101,15 +101,15 @@ export default {
     },
     forgotPassword() {
       this.$router.push("/pages/forgotpassword");
-    }
+    },
   },
   data: function() {
     return {
       username: "",
       password: "",
       showAlert: false,
-      errorReason: ""
+      errorReason: "",
     };
-  }
+  },
 };
 </script>
