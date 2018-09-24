@@ -1,25 +1,45 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import {
-  shallowMount
+  shallowMount,
+  mount,
+  createLocalVue
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import VideoDetail from '@/views/platforms/coursera/VideoDetail'
 
-Vue.use(BootstrapVue)
+import mockUtils from '../mockUtils'
+import router from '@/router'
+
+const localVue = createLocalVue()
+localVue.use(BootstrapVue)
+localVue.use(Vuex)
 
 describe('VideoDetail.vue', () => {
+  mockUtils.initUtils()
+  let store
 
-  // TODO CONTENT
-
-  it('has a name', () => {
-    expect(VideoDetail.name).toMatch('VideoDetail')
+  beforeEach(function () {
+    store = mockUtils.mockStore()
   })
+
+  let mountComponent = () => {
+    return mount(VideoDetail, {
+      localVue,
+      store,
+      router,
+      stubs: ['LineGraph',
+
+      ],
+    })
+  }
+
   it('is Vue instance', () => {
-    const wrapper = shallowMount(VideoDetail)
+    const wrapper = mountComponent()
     expect(wrapper.isVueInstance()).toBe(true)
   })
-  it('is correct type', () => {
-    const wrapper = shallowMount(VideoDetail)
+  it('is Register', () => {
+    const wrapper = mountComponent()
     expect(wrapper.is(VideoDetail)).toBe(true)
   })
 })

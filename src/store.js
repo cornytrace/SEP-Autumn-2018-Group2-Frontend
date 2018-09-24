@@ -3,8 +3,6 @@ import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import axios from 'axios'
 
-import util from '@/util'
-
 Vue.use(Vuex)
 
 const vuexLocal = new VuexPersistence({
@@ -18,6 +16,9 @@ export default new Vuex.Store({
     courses: [],
     resetToken: "",
     resetId: "",
+    user: {
+      courses: [],
+    },
   },
   getters: {
 
@@ -37,6 +38,9 @@ export default new Vuex.Store({
     },
     setResetId(state, id) {
       state.resetId = id
+    },
+    setUser(state, user) {
+      state.user = user;
     },
   },
   actions: {

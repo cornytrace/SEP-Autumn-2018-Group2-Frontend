@@ -58,11 +58,11 @@
 
 <script>
 export default {
-  name: "Contact"
+  name: "Contact",
 };
 </script>
 
-<style>
+<style scoped>
 .begin-text {
   text-align: center;
   color: #00a9d4;
@@ -100,6 +100,7 @@ export default {
 .logo-style {
   width: 100%;
   margin-top: 20px;
+  margin-left: 0pt;
 }
 
 #cursor-change {

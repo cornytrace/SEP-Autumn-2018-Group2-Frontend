@@ -15,6 +15,7 @@ localVue.use(VueRouter)
 localVue.use(BootstrapVue)
 
 describe('DefaultContainer.vue', () => {
+  mockUtils.initUtils();
   let store
 
   beforeEach(() => {
@@ -22,6 +23,17 @@ describe('DefaultContainer.vue', () => {
   })
 
   let mountComponent = (components) => {
+    store.user = {
+      pk: 1,
+      email: "test@qdt.com",
+      role: "qdt",
+      courses: [{
+        course_id: "c2",
+        course_name: "Corse 2",
+        course_slug: "course2",
+        pk: 2,
+      }, ],
+    };
     return mount(DefaultContainer, {
       localVue,
       router,

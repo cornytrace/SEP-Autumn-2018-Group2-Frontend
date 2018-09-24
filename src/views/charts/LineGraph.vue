@@ -3,7 +3,17 @@ import { Line } from "vue-chartjs";
 import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
 import { hexToRgba } from "@coreui/coreui/dist/js/coreui-utilities";
 
+// Example code
+// [
+//           {
+//             label: "Grade distribution",
+//             backgroundColor: hexToRgba("#00D8FF", 90),
+//             data: this.data,
+//           },
+//         ],
+
 export default {
+  name: "LineGraph",
   components: {
     hexToRgba,
     CustomTooltips,
@@ -19,7 +29,6 @@ export default {
       type: Boolean,
       default: true,
     },
-
     labels: {
       type: Array,
       default: new Array(),
@@ -29,13 +38,7 @@ export default {
     this.renderChart(
       {
         labels: this.labels,
-        datasets: [
-          {
-            label: "Grade distribution",
-            backgroundColor: hexToRgba("#00D8FF", 90),
-            data: this.data,
-          },
-        ],
+        datasets: this.data,
       },
       {
         responsive: true,

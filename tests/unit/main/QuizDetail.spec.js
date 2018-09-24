@@ -1,22 +1,47 @@
-import Vue from 'vue'
+import Vuex from 'vuex'
 import {
-  shallowMount
+  mount,
+  createLocalVue
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import QuizDetail from '@/views/platforms/coursera/QuizDetail'
 
-Vue.use(BootstrapVue)
+import mockUtils from '../mockUtils'
+import router from '@/router'
+
+const localVue = createLocalVue()
+localVue.use(BootstrapVue)
+localVue.use(Vuex)
 
 describe('QuizDetail.vue', () => {
+  mockUtils.initUtils()
+  let store
 
-  // TODO
+  beforeEach(function () {
+    store = mockUtils.mockStore()
+  })
+
+  let mountComponent = () => {
+    return mount(QuizDetail, {
+      localVue,
+      store,
+      router,
+      stubs: ['LineGraph',
+        'ScatterGraph',
+        'BarGraph',
+        'DoughnutGraph',
+        'PolarAreaGraph',
+        'RadarGraph',
+      ],
+    })
+  }
 
   it('is Vue instance', () => {
-    const wrapper = shallowMount(QuizDetail)
+    const wrapper = mountComponent()
     expect(wrapper.isVueInstance()).toBe(true)
   })
   it('is Register', () => {
-    const wrapper = shallowMount(QuizDetail)
+    const wrapper = mountComponent()
     expect(wrapper.is(QuizDetail)).toBe(true)
   })
 })

@@ -26,7 +26,7 @@
         <SidebarMinimizer/>
       </AppSidebar>
       <main class="main">
-        <Breadcrumb :list="list" />
+        <b-breadcrumb :items="list" />
         <div class="container-fluid">
           <router-view></router-view>
         </div>
@@ -106,15 +106,19 @@ export default {
       selectedCourse: settings.course_default,
       // Mock
       courses: {
-        coursera: [
-          { name: "Coursera course 1", description: "description course 1", },
-          { name: "Coursera course 2", description: "description course 2", },
-        ],
+        coursera: [],
       },
     };
   },
   beforeMount() {
     this.testCount = 2;
+    for (var course of this.$store.state.user.courses) {
+      this.courses.coursera.push({
+        name: course.course_name,
+        description: "",
+        slug: course.course_slug,
+      });
+    }
     util
       .testAuth()
       .then(() => {
@@ -144,9 +148,14 @@ export default {
   },
   computed: {
     list() {
-      return this.$route.matched.filter(
-        route => route.meta.label || route.name
-      );
+      var routes = [];
+      var path = "";
+      for (var subroute of this.$route.path.split("/")) {
+        path += subroute + "/";
+        routes.push({ text: subroute, to: path, });
+      }
+      routes[0].text = "Home";
+      return routes;
     },
   },
   methods: {
@@ -241,13 +250,13 @@ export default {
       for (var course of c) {
         // Push to dropdown
         this.courseOptions.push({
-          value: platform + "/" + util.toUrl(course.name),
+          value: platform + "/" + course.slug,
           text: course.name,
         });
         // Push to navbar
         this.top_nav[1].push({
           name: course.name,
-          url: platform + "/" + util.toUrl(course.name),
+          url: platform + "/" + course.slug,
           icon: "cui-dashboard",
         });
       }

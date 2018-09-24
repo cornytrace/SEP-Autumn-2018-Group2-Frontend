@@ -28,7 +28,7 @@
                       <b-button variant="primary" id="loginbutton" class="px-4" @click="doLogin">Login</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
-                      <b-button variant="link" class="px-0">Forgot password?</b-button>
+                      <b-button @click="forgotPassword" variant="link" class="px-0">Forgot password?</b-button>
                     </b-col>
                   </b-row>
                 </b-form>
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import util from "@/util";
+
 export default {
   name: "Login",
   methods: {
@@ -59,17 +61,30 @@ export default {
       }
 
       this.$store
-        .dispatch("login", { username: this.username, password: this.password, })
+        .dispatch("login", { username: this.username, password: this.password })
         // login successful
         .then(() => {
-          // if we have a redirect query, redirect to it, else redirect to home
-          if (this.$route.query && this.$route.query.redirect !== undefined) {
-            this.$router.push(this.$route.query.redirect);
-          } else if (this.username == "admin") {
-            this.$router.push("/admin");
-          } else {
-            this.$router.push("/");
-          }
+          util
+            .getUser()
+            .then(response => {
+              this.$store.commit("setUser", response.data);
+              // if we have a redirect query, redirect to it, else redirect to home
+              if (
+                this.$route.query &&
+                this.$route.query.redirect !== undefined
+              ) {
+                this.$router.push(this.$route.query.redirect);
+              } else if (this.username == "admin") {
+                this.$router.push("/admin");
+              } else {
+                this.$router.push("/");
+              }
+            })
+            .catch(() => {
+              this.errorReason =
+                "a server error has occurred, please try again";
+              this.showAlert = true;
+            });
         })
         .catch(response => {
           // username or password is wrong
@@ -84,14 +99,17 @@ export default {
           }
         });
     },
+    forgotPassword() {
+      this.$router.push("/pages/forgotpassword");
+    }
   },
   data: function() {
     return {
       username: "",
       password: "",
       showAlert: false,
-      errorReason: "",
+      errorReason: ""
     };
-  },
+  }
 };
 </script>

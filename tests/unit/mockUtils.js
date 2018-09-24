@@ -17,6 +17,7 @@ export default {
         setToken: jest.fn(),
         setExpire: jest.fn(),
         setCourses: jest.fn(),
+        setUser: jest.fn(),
       },
     })
   },

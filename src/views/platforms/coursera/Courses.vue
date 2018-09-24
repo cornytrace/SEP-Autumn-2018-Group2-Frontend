@@ -3,8 +3,8 @@
     <b-row>
       <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
         <b-card :header="course.name">
-          {{course.description}}
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: util.toUrl(course.name)} }">Details...</router-link></div>
+          {{ course.description }}
+          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">Details...</router-link></div>
         </b-card>
       </b-col>
     </b-row><!--/.row-->

@@ -24,6 +24,7 @@ const Login = () => import('@/views/pages/Login')
 const Register = () => import('@/views/pages/Register')
 const ResetReferrer = () => import('@/views/pages/ResetReferrer')
 const ResetPassword = () => import('@/views/pages/ResetPassword')
+const ForgotPassword = () => import('@/views/pages/ForgotPassword')
 
 // Users
 const Users = () => import('@/views/users/Users')
@@ -89,7 +90,7 @@ const router = new VueRouter({
               component: coursera.Quizzes,
             },
             {
-              path: '/quiz/:quizid',
+              path: '/coursera/:courseid/quizzes/:quizid',
               name: 'QuizDetail',
               component: coursera.QuizDetail,
               meta: {
@@ -158,6 +159,11 @@ const router = new VueRouter({
           name: 'ResetPassword',
           component: ResetPassword,
         },
+        {
+          path: 'forgotpassword',
+          name: 'ForgotPassword',
+          component: ForgotPassword,
+        },
       ],
     },
     {
@@ -181,7 +187,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!util.isAuthenticated() && to.path !== "/pages/login") {
+  if (!util.isAuthenticated() && to.path !== "/pages/login" && to.path !== "/pages/forgotpassword" && !to.path.startsWith("/pages/resetpassword")) {
     next({
       path: "/pages/login",
       query: {
