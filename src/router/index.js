@@ -187,7 +187,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!util.isAuthenticated() && to.path !== "/pages/login" && to.path !== "/pages/forgotpassword") {
+  if (!util.isAuthenticated() && to.path !== "/pages/login" && to.path !== "/pages/forgotpassword" && !to.path.startsWith("/pages/resetpassword")) {
     next({
       path: "/pages/login",
       query: {
