@@ -67,7 +67,7 @@ export default {
           util
             .getUser()
             .then(response => {
-              this.$store.commit("setUser", response.data[0]);
+              this.$store.commit("setUser", response.data);
               // if we have a redirect query, redirect to it, else redirect to home
               if (
                 this.$route.query &&

@@ -69,7 +69,7 @@ export default {
 
   getUser() {
     return axios
-      .get(this.apiUrl() + `/api/users/`, {
+      .get(this.apiUrl() + `/api/users/me/`, {
         headers: this.authHeader(),
       })
   },
