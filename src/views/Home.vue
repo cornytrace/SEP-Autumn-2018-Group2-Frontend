@@ -19,10 +19,10 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col v-for="course in coursesCoursera" :key="course.name" :sm="4">
+              <b-col v-for="course in coursesCoursera" :key="course.course_name" :sm="4">
                 <b-card no-body>
                   <b-card-header class="bg-primary">
-                    <router-link to="/course/automata-system-validation" class="link-light font-weight-bold">{{course.name}}</router-link>
+                    <router-link :to="'/coursera/'+course.course_slug" class="link-light font-weight-bold">{{course.course_name}}</router-link>
                   </b-card-header>
                   <b-card-body no-body class="pb-0 pt-0 pl-3 pr-3">
                     <b-row>
@@ -115,7 +115,8 @@ export default {
           icon: "fa fa-money",
         },
       ],
-      coursesCoursera: [
+      coursesCoursera: [],
+      testdata: [
         {
           name: "Python for Everybody",
           learnersEnrolled: "15",
@@ -150,6 +151,15 @@ export default {
     };
   },
   methods: {},
+  beforeMount() {
+    this.coursesCoursera = Object.assign([], this.$store.state.user.courses);
+    var index = 0;
+    for (var course of this.coursesCoursera) {
+      course.learnersEnrolled = this.testdata[index].learnersEnrolled;
+      course.learnersPaying = this.testdata[index].learnersPaying;
+      index++;
+    }
+  },
 };
 </script>
 
