@@ -128,11 +128,8 @@
           </div>
         </b-card>
       </b-col> 
-    </b-row>
-    <!-- QDT Analytics -->
-    <b-row v-if="this.$store.state.user.role === 'qdt'">
-      <b-col md="6">
-        <b-card id="avg-time-in-mod" header="Order in which the course is followed most">
+      <b-col lg="6" xl="4">
+        <b-card id="avg-time-in-mod" header="Order in which the course is followed most" v-if="qdt">
           <div class="chart-wrapper">
             <bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels />
           </div>
