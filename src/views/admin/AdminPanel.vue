@@ -42,7 +42,7 @@ export default {
   padding-right: 20px;
 }
 
-button {
+header button {
   margin-right: 10px;
 }
 

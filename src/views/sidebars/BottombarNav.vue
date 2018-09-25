@@ -54,7 +54,7 @@ import {
   SidebarNavLink,
   SidebarNavTitle,
   SidebarNavItem,
-  SidebarNavLabel,
+  SidebarNavLabel
 } from "@coreui/vue";
 export default {
   name: "BottombarNav",

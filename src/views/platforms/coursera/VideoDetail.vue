@@ -1,119 +1,110 @@
 <template>
   <div class="animated fadeIn">
+
     <b-row>
-      <b-column>
+      <b-col class="title-col">
         <h2>{{video_title}}</h2>
-      </b-column>
+      </b-col>
     </b-row>
     <b-row>
-    
-      <!-- Basic analytics -->
-      <b-col sm="3">
-       <b-row>
-        <b-col>
-          <b-card :no-body="true">
+      <b-col md="10">
+        <b-row>
+          <!-- Basic analytics -->
+          <b-col lg="4" xl="3">
+            <b-card :no-body="true">
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-play bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{plays}}</div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs">Total Plays</div>
               </b-card-body>
             </b-card>
-        </b-col>
-       </b-row>
-      
+          </b-col>
 
-       <b-row>
-         <b-col>
-           <b-card :no-body="true">
+          <b-col lg="4" xl="3">
+            <b-card :no-body="true">
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{full_plays}}</div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs">Complete Plays</div>
               </b-card-body>
             </b-card>
-         </b-col>
-       </b-row>
-      </b-col>
+          </b-col>
 
-       <b-col sm="3">
-       <b-row>
-        <b-col>
-          <b-card :no-body="true">
+          <b-col lg="4" xl="3">
+            <b-card :no-body="true">
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-thumbs-up bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{likes}}</div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs">Likes</div>
               </b-card-body>
             </b-card>
-        </b-col>
-       </b-row>
-      
+          </b-col>
 
-       <b-row>
-         <b-col>
-           <b-card :no-body="true">
+          <b-col lg="4" xl="3">
+            <b-card :no-body="true">
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-comment bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{comments}}</div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs">Comments</div>
               </b-card-body>
             </b-card>
-         </b-col>
-       </b-row>
-      </b-col>
-       <!-- Extra QDT stats -->
-       <b-col v-if="qdt" sm="3">
-       <b-row>
-        <b-col>
-          <b-card :no-body="true">
+          </b-col>
+
+          <b-col v-if="qdt" lg="4" xl="3">
+            <b-card :no-body="true">
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-thumbs-down bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{dislikes}}</div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs">Dislikes</div>
               </b-card-body>
             </b-card>
-        </b-col>
-       </b-row>
-      
+          </b-col>
 
-       <b-row>
-         <b-col>
-           <b-card :no-body="true">
+          <b-col v-if="qdt" lg="4" xl="3">
+            <b-card :no-body="true">
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{ratio}}</div>
                 <div class="text-muted text-uppercase font-weight-bold font-xs">Like/Dislike Ratio</div>
               </b-card-body>
             </b-card>
-         </b-col>
-       </b-row>
+          </b-col>
+        </b-row>
+
+        <!-- Extra QDT stats -->
+        <b-row>
+
+        </b-row>
       </b-col>
 
-      <b-col>
-      </b-col>
       <!-- Link to next vid -->
-        <b-col sm="2">
-        <b-card title="Next Up:">
-          <p class="card-text">Title of next video</p>
-          <a href="#" class="card-link">Go to video</a>
-        </b-card>
+      <b-col md="2">
+        <router-link to="/coursera/capstone-recommender-systems/videos/2">
+          <b-card class="link-card">
+            <table>
+              <tr>
+                <th>
+                  <span class="next-vid-text">Next video</span>
+                  <span class="next-vid-subtext">Lecture 2</span>
+                </th>
+                <th class="icon-cell">
+                  <i class="fa fa-2x fa-chevron-right"></i>
+                </th>
+              </tr>
+            </table>
+          </b-card>
+        </router-link>
       </b-col>
     </b-row>
-      <!-- Page bottom half -->
-    
-    <b-row class="graph" >
-      <b-col>
-        <b-card title="Graph 1" >
-        </b-card>
-     <b-row>
-    <b-col md="12">
+    <!-- Page bottom half -->
+
+    <b-row>
+      <b-col md="12">
         <b-card header="Grade distribution">
           <div class="chart-wrapper">
-            <line-graph :data= chart_data :maintainAspectRatio=false :labels= chart_labels></line-graph>
+            <line-graph class="graph" :aspectRatio=maintainAspectRatio :beginAtZero=true :data=chart_data :labels=chart_labels></line-graph>
           </div>
         </b-card>
-      </b-col>
-      </b-row>
       </b-col>
     </b-row>
   </div>
@@ -128,20 +119,19 @@ export default {
   data: function() {
     return {
       qdt: this.$store.state.user.role === "qdt",
-      video_title: "Video Title",
+      video_title: "Lecture " + this.$route.params.videoid + " - 12/05/2018",
       likes: 64,
       dislikes: 21,
       plays: 592,
       full_plays: 263,
-      ratio: 3,
+      ratio: 0.83,
       comments: 23,
-
-      nextvid: "#",
-
+      maintainAspectRatio: false,
       chart_data: [
         {
           label: "Video plays distribution",
-          backgroundColor: colors.graphColor,
+          backgroundColor: colors.lightGrey,
+          borderColor: colors.blue,
           data: [560, 480, 465, 423, 403, 363, 386, 362, 321, 253, 98,],
         },
       ],
@@ -159,4 +149,54 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  color: #73818f;
+}
+.title-col {
+  margin-bottom: 10px;
+}
+.next-vid-text {
+  font-size: 0.9rem;
+  display: block;
+}
+.next-vid-subtext {
+  font-size: 0.7rem;
+  display: block;
+  font-weight: normal;
+}
+.link-card {
+  padding: 0;
+}
+.link-card .card-body {
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.link-card i {
+  float: right;
+}
+.link-card span {
+  color: #73818f !important;
+}
+.link-card:hover span {
+  color: #000;
+  text-decoration: #eee;
+}
+.link-card:hover {
+  background-color: #eee;
+}
+table {
+  width: 100%;
+}
+table .icon-cell {
+  vertical-align: center;
+  text-align: right;
+}
+.link-card a:hover {
+  text-decoration: none;
+}
+
+.graph {
+  max-height: 40vh;
+}
 </style>

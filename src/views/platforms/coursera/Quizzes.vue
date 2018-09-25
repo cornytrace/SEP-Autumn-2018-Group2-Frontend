@@ -41,7 +41,8 @@ export default {
       link: "",
     };
   },
-  mounted() {
+  // Set the link variable to the path of the current page.
+  beforeMount() {
     this.link = this.$route.path;
   },
 };

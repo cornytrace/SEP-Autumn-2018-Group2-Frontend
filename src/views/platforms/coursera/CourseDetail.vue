@@ -95,7 +95,7 @@
     <b-row>
       <b-col lg="6" xl="4">
         <b-card id="dist-eval" header="Distribution of evaluation rating">
-          <div class="chart-wrapper" >
+          <div class="chart-wrapper">
             <bar-graph chartId="chart-line-02" :data=distEvalRateData :labels=distEvalRateLabels />
           </div>
         </b-card>
@@ -110,9 +110,9 @@
       <b-col lg="6" xl="4">
         <b-card id="leav-per-mod" header="Leaving learners per module">
           <div class="chart-wrapper">
-            <doughnut-graph chartId="chart-doughnut-01" :data=leavLearModData :labels=leavLearModLabels />
+            <bar-graph chartId="chart-polar-01" :data=leavLearModData :labels=leavLearModLabels />
           </div>
-        </b-card> 
+        </b-card>
       </b-col>
       <b-col lg="6" xl="4">
         <b-card id="avg-time-in-course" header="Average time spend in course by learners">
@@ -127,7 +127,7 @@
             <bar-graph chartId="chart-polar-01" :data=avgTimeModData :labels=AvgTimeModLabels />
           </div>
         </b-card>
-      </b-col> 
+      </b-col>
       <b-col lg="6" xl="4">
         <b-card id="avg-time-in-mod" header="Order in which the course is followed most" v-if="qdt">
           <div class="chart-wrapper">
@@ -174,9 +174,9 @@ export default {
       distEvalRateData: [
         {
           label: "Distribution of evaluation rating",
-          backgroundColor: colors.barGraph,
-          data: [18, 6, 3, 56, 4, 25, 10, 9, 33, 3]
-        }
+          backgroundColor: colors.blue,
+          data: [18, 6, 3, 56, 4, 25, 10, 9, 33, 3,],
+        },
       ],
       distEvalRateLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 
@@ -184,9 +184,10 @@ export default {
       progFinLearData: [
         {
           label: "Progression of finished learners",
-          backgroundColor: colors.graphColor,
-          data: [1, 6, 3, 5, 4, 5, 10, 9, 6, 3]
-        }
+          backgroundColor: colors.lightGrey,
+          borderColor: colors.blue,
+          data: [1, 6, 3, 5, 4, 5, 10, 9, 6, 3,],
+        },
       ],
       progFinLearLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 
@@ -194,9 +195,9 @@ export default {
       leavLearModData: [
         {
           label: "Leaving learners per module",
-          backgroundColor: colors.shades,
-          data: [80, 120, 30, 60]
-        }
+          backgroundColor: colors.blue,
+          data: [80, 120, 30, 60,],
+        },
       ],
       leavLearModLabels: ["Module A", " Module B", "Module C", "Module D"],
 
@@ -204,9 +205,9 @@ export default {
       avgTimeCourData: [
         {
           label: "Average time spend in course by learners",
-          backgroundColor: colors.barGraph,
-          data: [38, 6, 5, 56, 44, 25]
-        }
+          backgroundColor: colors.blue,
+          data: [38, 6, 5, 56, 44, 25,],
+        },
       ],
       avgTimeCourLabels: [1, 4, 5, 7, 13, 25],
 
@@ -214,9 +215,9 @@ export default {
       avgTimeModData: [
         {
           label: "Average timr spend per module by learners",
-          backgroundColor: colors.barGraph,
-          data: [28, 11, 30, 56]
-        }
+          backgroundColor: colors.blue,
+          data: [28, 11, 30, 56,],
+        },
       ],
       AvgTimeModLabels: [1, 2, 3, 4],
 

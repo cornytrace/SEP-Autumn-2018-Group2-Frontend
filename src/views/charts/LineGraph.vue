@@ -25,13 +25,21 @@ export default {
       type: Array,
       default: new Array(),
     },
-    maintainAspectRatio: {
+    aspectRatio: {
       type: Boolean,
       default: true,
     },
     labels: {
       type: Array,
       default: new Array(),
+    },
+    beginAtZero: {
+      type: Boolean,
+      default: false,
+    },
+    hasLegend: {
+      type: Boolean,
+      default: false,
     },
   },
   mounted() {
@@ -41,8 +49,30 @@ export default {
         datasets: this.data,
       },
       {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: this.beginAtZero,
+              },
+              gridLines: {
+                display: true,
+              },
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: true,
+              },
+            },
+          ],
+        },
+        legend: {
+          display: this.hasLegend,
+        },
+        maintainAspectRatio: this.aspectRatio,
         responsive: true,
-        maintainAspectRatio: this.maintainAspectRatio,
         tooltips: {
           enabled: false,
           custom: CustomTooltips,

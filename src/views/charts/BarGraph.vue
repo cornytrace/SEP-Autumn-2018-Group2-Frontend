@@ -27,6 +27,14 @@ export default {
       type: Boolean,
       default: true,
     },
+    hasLegend: {
+      type: Boolean,
+      default: false,
+    },
+    beginAtZero: {
+      type: Boolean,
+      default: true,
+    },
   },
   mounted() {
     // Overwriting base render method with actual data.
@@ -40,10 +48,23 @@ export default {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true,
+                beginAtZero: this.beginAtZero,
+              },
+              gridLines: {
+                display: true,
               },
             },
           ],
+          xAxes: [
+            {
+              gridLines: {
+                display: true,
+              },
+            },
+          ],
+        },
+        legend: {
+          display: this.hasLegend,
         },
         responsive: true,
         maintainAspectRatio: this.maintainAspectRatio,
