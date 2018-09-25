@@ -4,12 +4,16 @@
       <i class="icon-user"></i>
     </template>
     <template slot="dropdown">
-      <b-dropdown-header tag="div" class="text-center"><strong>Account</strong></b-dropdown-header>
-      <!-- <b-dropdown-item><i class="fa fa-user" /> Profile</b-dropdown-item> -->
-      <b-dropdown-item @click="doSettings"><i class="fa fa-wrench" /> Settings</b-dropdown-item>
+      <b-dropdown-header tag="div" class="text-center">
+        <strong>Account</strong>
+      </b-dropdown-header>
+      <b-dropdown-item :disabled=true>{{ email }}</b-dropdown-item>
+      <b-dropdown-item @click="doSettings">
+        <i class="fa fa-wrench" /> Settings</b-dropdown-item>
       <!-- Example divider -->
       <!-- <b-dropdown-divider /> -->
-      <b-dropdown-item @click="doLogout"><i class="fa fa-lock" /> Logout</b-dropdown-item>
+      <b-dropdown-item @click="doLogout">
+        <i class="fa fa-lock" /> Logout</b-dropdown-item>
     </template>
   </AppHeaderDropdown>
 </template>
@@ -22,7 +26,13 @@ export default {
     AppHeaderDropdown,
   },
   data: () => {
-    return { itemsCount: 42, };
+    return {
+      itemsCount: 42,
+      email: "",
+    };
+  },
+  beforeMount() {
+    this.email = this.$store.state.user.email;
   },
   methods: {
     doLogout() {

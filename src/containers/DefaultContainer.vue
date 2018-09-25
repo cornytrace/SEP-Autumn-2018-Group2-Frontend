@@ -7,7 +7,7 @@
         <img src="../../public/img/logo.svg" alt="Logo" class="logo-style">
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
-      <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange"  :options="platformOptions"></b-form-select>
+      <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
       <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt/>
@@ -37,7 +37,7 @@
       </AppAside>
     </div>
     <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
-           API Status: {{apiStatus}}
+      API Status: {{apiStatus}}
     </TheFooter>
   </div>
 </template>
@@ -111,7 +111,6 @@ export default {
     };
   },
   beforeMount() {
-    this.testCount = 2;
     for (var course of this.$store.state.user.courses) {
       this.courses.coursera.push({
         name: course.course_name,
