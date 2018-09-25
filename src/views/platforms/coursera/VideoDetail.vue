@@ -121,6 +121,7 @@
 
 <script>
 import LineGraph from "@/views/charts/LineGraph";
+import colors from "@/colors";
 
 export default {
   name: "VideoDetail",
@@ -140,8 +141,8 @@ export default {
       chart_data: [
         {
           label: "Video plays distribution",
-
-          data: [560, 530, 500, 420, 480, 410, 312, 221, 180, 222, 280,],
+          backgroundColor: colors.graphColor,
+          data: [560, 480, 465, 423, 403, 363, 386, 362, 321, 253, 98,],
         },
       ],
       chart_labels: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50,],
@@ -149,6 +150,10 @@ export default {
   },
   components: {
     LineGraph,
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.video_title = "Lecture " + to.params.videoid + " - 12/05/2018";
+    next();
   },
 };
 </script>
