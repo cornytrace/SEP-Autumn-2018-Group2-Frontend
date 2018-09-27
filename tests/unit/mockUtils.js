@@ -11,7 +11,7 @@ export default {
       logout: jest.fn().mockResolvedValue(),
     }
     return new Vuex.Store({
-      state: store.state,
+      state: Object.assign([], store.state),
       actions,
       mutations: {
         setToken: jest.fn(),
