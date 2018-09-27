@@ -120,7 +120,10 @@
             </div>
           </b-card>
         </b-col>
-        <b-col lg="6" xl="4">
+
+        <!-- Not real data yet -->
+
+        <!-- <b-col lg="6" xl="4">
           <b-card id="avg-time-in-course" header="Average time spend in course by learners">
             <div class="chart-wrapper">
               <bar-graph chartId="chart-scatter-01" :data=avgTimeCourData :labels=avgTimeCourLabels />
@@ -140,7 +143,7 @@
               <bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels />
             </div>
           </b-card>
-        </b-col>
+        </b-col> -->
       </b-row>
     </div>
     <div class="loading-content" v-if="isLoading">
@@ -271,22 +274,25 @@ export default {
   methods: {
     getCourseData() {
       this.isLoading = true;
-      this.courseId = this.$store.state.user.courses.find(
+      var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
-      ).course_id;
-      util
-        .getDetailedCourseData(this.courseId)
-        .then(response => {
-          this.courseData = response.data;
-          this.setCourseData(response.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      );
+      if (currentCourse) {
+        this.courseId = currentCourse.course_id;
+        util
+          .getDetailedCourseData(this.courseId)
+          .then(response => {
+            this.courseData = response.data;
+            this.setCourseData(response.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     },
     setCourseData(data) {
       this.courseName = data.name;
-
+      console.log(data);
       this.enrolledStudents = data.enrolled_learners;
       this.leavingLearners = data.leaving_learners;
       this.finishedLearners = data.finished_learners;
@@ -309,6 +315,16 @@ export default {
         this.progFinLearLabels.push(finished[0]);
         this.progFinLearData[0].data.push(finished[1]);
       }
+
+      this.leavLearModData[0].data = [];
+      this.leavLearModLabels = [];
+      for (let x = 0; x < data.leaving_learners_per_module.length; x++) {
+        this.leavLearModLabels.push(x + 1);
+        this.leavLearModData[0].data.push(
+          data.leaving_learners_per_module[x][1]
+        );
+      }
+
       this.isLoading = false;
     },
   },

@@ -1,15 +1,10 @@
 import Vuex from 'vuex'
 import {
-  shallowMount,
   mount,
   createLocalVue
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Login from '@/views/pages/Login'
-import {
-  doesNotReject
-} from 'assert';
-import axios from 'axios'
 import moxios from 'moxios'
 
 import mockUtils from '../mockUtils'

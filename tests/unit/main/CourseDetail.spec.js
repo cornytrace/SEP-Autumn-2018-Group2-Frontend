@@ -1,7 +1,5 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import {
-  shallowMount,
   mount,
   createLocalVue
 } from '@vue/test-utils'
@@ -10,6 +8,7 @@ import CourseDetail from '@/views/platforms/coursera/CourseDetail'
 
 import mockUtils from '../mockUtils'
 import router from '@/router'
+import moxios from 'moxios'
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
@@ -21,7 +20,11 @@ describe('CourseDetail.vue', () => {
 
   beforeEach(function () {
     store = mockUtils.mockStore()
-    //store.state.user.courses = [{ course_slug: "c1", course_id: "1", },]
+    moxios.install()
+  })
+
+  afterEach(function () {
+    moxios.uninstall()
   })
 
   let mountComponent = () => {
@@ -41,6 +44,15 @@ describe('CourseDetail.vue', () => {
 
   it('has a name', () => {
     expect(CourseDetail.name).toMatch('CourseDetail')
+  })
+
+  it('sets the correct default data', () => {
+    const wrapper = mountComponent()
+    wrapper.setData({
+    })
+    expect(typeof CourseDetail.data).toMatch('function')
+    // const defaultData = CourseDetail.data()
+    // expect(defaultData.selected).toEqual("Month")
   })
 
   // it('is Vue instance', () => {
