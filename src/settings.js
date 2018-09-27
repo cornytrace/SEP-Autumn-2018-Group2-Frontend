@@ -2,23 +2,56 @@ export default {
   //Platform settings
   platforms: [{
     name: "Coursera",
-  }, ],
+    slug: "coursera",
+  },],
   course_pages: [{
-      name: "Videos",
-      icon: "fa fa-video-camera",
+    name: "Videos",
+    slug: "videos",
+    icon: "fa fa-video-camera",
+  },
+  {
+    name: "Quizzes",
+    slug: "quizzes",
+    icon: "fa fa-check",
+  },
+    // {
+    //   name: "Assignments",
+    //   slug: "assignments",
+    //   icon: "cui-calendar",
+    // }, {
+    //   name: "Lessons",
+    //   slug: "lessons",
+    //   icon: "cui-calendar",
+    // },
+  ],
+
+
+  // Mock 
+  videos: [
+    {
+      name: "Video 1",
+      id: "v1",
     },
     {
-      name: "Quizzes",
-      icon: "cui-check",
-    },
-    {
-      name: "Assignments",
-      icon: "cui-calendar",
-    }, {
-      name: "Lessons",
-      icon: "cui-calendar",
+      name: "Video 2",
+      id: "v2",
     },
   ],
+  quizzes: [
+    {
+      name: "Quiz 1",
+      id: "q1",
+    },
+    {
+      name: "Quiz 2",
+      id: "q2",
+    },
+    {
+      name: "Final exam",
+      id: "dslj",
+    },
+  ],
+
 
   // Constants
   course_default: "course-select",
@@ -32,5 +65,5 @@ export default {
   }, {
     name: "Admin",
     id: "admin",
-  }, ],
+  },],
 }

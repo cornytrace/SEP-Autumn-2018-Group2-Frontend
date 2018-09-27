@@ -43,53 +43,64 @@ export default {
     },
   },
   mounted() {
-    this.renderChart(
-      {
-        labels: this.labels,
-        datasets: this.data,
-      },
-      {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: this.beginAtZero,
-              },
-              gridLines: {
-                display: true,
-              },
-            },
-          ],
-          xAxes: [
-            {
-              gridLines: {
-                display: true,
-              },
-            },
-          ],
+    this.render();
+  },
+  watch: {
+    labels: function() {
+      this.render();
+    },
+  },
+  methods: {
+    render() {
+      this.renderChart(
+        {
+          labels: this.labels,
+          datasets: this.data,
         },
-        legend: {
-          display: this.hasLegend,
-        },
-        maintainAspectRatio: this.aspectRatio,
-        responsive: true,
-        tooltips: {
-          enabled: false,
-          custom: CustomTooltips,
-          intersect: true,
-          mode: "index",
-          position: "nearest",
-          callbacks: {
-            labelColor: function(tooltipItem, chart) {
-              return {
-                backgroundColor:
-                  chart.data.datasets[tooltipItem.datasetIndex].backgroundColor,
-              };
+        {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: this.beginAtZero,
+                },
+                gridLines: {
+                  display: true,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  display: true,
+                },
+              },
+            ],
+          },
+          legend: {
+            display: this.hasLegend,
+          },
+          maintainAspectRatio: this.aspectRatio,
+          responsive: true,
+          tooltips: {
+            enabled: false,
+            custom: CustomTooltips,
+            intersect: true,
+            mode: "index",
+            position: "nearest",
+            callbacks: {
+              labelColor: function(tooltipItem, chart) {
+                return {
+                  backgroundColor:
+                    chart.data.datasets[tooltipItem.datasetIndex]
+                      .backgroundColor,
+                };
+              },
             },
           },
-        },
-      }
-    );
+        }
+      );
+    },
   },
 };
 </script>

@@ -1,29 +1,18 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col sm="8" lg="6">
+      <b-col sm="4" lg="4" v-for="quiz of quizzes" :key="quiz.name">
         <b-card no-body class="bg">
-          <b-card-header><router-link :to="this.link + '/1'">Quiz 1</router-link></b-card-header>
+          <b-card-header>
+            <router-link :to="link + '/' + quiz.id">{{ quiz.name }}</router-link>
+          </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body class="bg-primary">
               <b-card-header>
-                Quiz 1 stat 
+                {{ quiz.name }} stat
               </b-card-header>
               <b-card-body class="pb-0">
-                <p>Data Quiz 1 stat</p>
-              </b-card-body>
-            </b-card>
-          </b-card-body>
-        </b-card>
-        <b-card no-body class="bg">
-          <b-card-header><router-link :to="this.link + '/2'">Quiz 2</router-link></b-card-header>
-          <b-card-body class="pb-0">
-            <b-card no-body class="bg-primary">
-              <b-card-header>
-                Quiz 2 stat
-              </b-card-header>
-              <b-card-body class="pb-0">
-                <p>Data Quiz 2 stat</p>
+                <p>Data {{ quiz.name }} stat</p>
               </b-card-body>
             </b-card>
           </b-card-body>
@@ -34,16 +23,22 @@
 </template>
 
 <script>
+import settings from "@/settings";
+
 export default {
   name: "Quizzes",
   data: function() {
     return {
       link: "",
+      quizzes: [],
     };
   },
   // Set the link variable to the path of the current page.
   beforeMount() {
     this.link = this.$route.path;
+    for (var quiz of settings.quizzes) {
+      this.quizzes.push({ id: quiz.id, name: quiz.name, });
+    }
   },
 };
 </script>

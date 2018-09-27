@@ -6,24 +6,24 @@
         <!-- <h4>DASH-IT</h4> -->
         <img src="../../public/img/logo.svg" alt="Logo" class="logo-style">
       </b-link>
-      <SidebarToggler class="d-md-down-none" display="lg" />
-      <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
-      <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
-      <b-navbar-nav class="custom-nav ml-auto">
-        <DefaultHeaderDropdownAccnt/>
-        <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
-      </b-navbar-nav>
-      <!--<AsideToggler class="d-lg-none" mobile />-->
+        <SidebarToggler class="d-md-down-none" display="lg" />
+        <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
+        <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
+        <b-navbar-nav class="custom-nav ml-auto">
+          <DefaultHeaderDropdownAccnt />
+          <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
+        </b-navbar-nav>
+        <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">
       <AppSidebar fixed>
-        <SidebarHeader/>
-        <SidebarForm/>
+        <SidebarHeader />
+        <SidebarForm />
         <BackButton v-if="level > 0" :callback=goUp></BackButton>
         <TopbarNav :navItems="top_nav[level]" :clickCallback=sideButtonClick></TopbarNav>
         <BottombarNav :navItems="bottom_nav"></BottombarNav>
-        <SidebarFooter/>
-        <SidebarMinimizer/>
+        <SidebarFooter />
+        <SidebarMinimizer />
       </AppSidebar>
       <main class="main">
         <b-breadcrumb :items="list" />
@@ -33,7 +33,7 @@
       </main>
       <AppAside fixed>
         <!--aside-->
-        <DefaultAside/>
+        <DefaultAside />
       </AppAside>
     </div>
     <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
@@ -104,6 +104,7 @@ export default {
       selectedPlatform: settings.platform_default,
       courseOptions: [],
       selectedCourse: settings.course_default,
+      selectedSubitem: "",
       // Mock
       courses: {
         coursera: [],
@@ -152,10 +153,14 @@ export default {
       for (var subroute of this.$route.path.split("/")) {
         if (subroute !== "home") {
           path += subroute + "/";
-          routes.push({ text: subroute, to: path, });
+          routes.push({
+            text: subroute,
+            to: path.substring(0, path.length - 1),
+          });
         }
       }
       routes[0].text = "Home";
+      routes[0].to = "/";
       return routes;
     },
   },
@@ -189,7 +194,13 @@ export default {
         this.$store.commit("setCourses", this.courses.coursera);
       } else if (this.level === 2) {
         // Course level
-        this.setSubPages(path);
+        this.setCoursePages(path);
+      } else if (this.level === 3) {
+        if (this.selectedSubitem === "videos") {
+          this.top_nav[3] = this.getVideos(path);
+        } else if (this.selectedSubitem === "quizzes") {
+          this.top_nav[3] = this.getQuizzes(path);
+        }
       }
     },
     // Dropdown listeners
@@ -211,7 +222,13 @@ export default {
       if (this.level_0.indexOf(path) !== -1) {
         return 0;
       }
-      return path.split("/").length - 1;
+      var split = path.split("/");
+      var level = split.length - 1;
+      if (level >= 3) {
+        this.selectedSubitem = split[3];
+        return 3;
+      }
+      return level;
     },
     initializeCourses: function() {
       this.courseOptions = [
@@ -231,11 +248,11 @@ export default {
       for (var platform of this.platforms) {
         this.top_nav[0].push({
           name: platform.name,
-          url: platform.url || "/" + util.toUrl(platform.name),
-          icon: "cui-dashboard",
+          url: platform.url || "/" + platform.slug,
+          icon: "fa fa-line-chart",
         });
         this.platformOptions.push({
-          value: "/" + util.toUrl(platform.name),
+          value: "/" + platform.slug,
           text: platform.name,
         });
       }
@@ -258,19 +275,42 @@ export default {
         this.top_nav[1].push({
           name: course.name,
           url: platform + "/" + course.slug,
-          icon: "cui-dashboard",
+          icon: "fa fa-line-chart",
         });
       }
     },
-    setSubPages(path) {
+    setCoursePages(path) {
       this.top_nav[2] = [];
-      for (var subpage of settings.course_pages) {
+      for (var coursepPage of settings.course_pages) {
         this.top_nav[2].push({
-          name: subpage.name,
-          icon: subpage.icon,
-          url: path + "/" + util.toUrl(subpage.name),
+          name: coursepPage.name,
+          icon: coursepPage.icon,
+          url: path + "/" + coursepPage.slug,
         });
       }
+    },
+    // Gets videos and puts them in the array
+    getVideos(currentPath) {
+      var videos = [];
+      for (var video of settings.videos) {
+        videos.push({
+          name: video.name,
+          url: currentPath + "/" + video.id,
+          icon: "fa fa-video-camera",
+        });
+      }
+      return videos;
+    },
+    getQuizzes(currentPath) {
+      var quizzes = [];
+      for (var quiz of settings.quizzes) {
+        quizzes.push({
+          name: quiz.name,
+          url: currentPath + "/" + quiz.id,
+          icon: "fa fa-check",
+        });
+      }
+      return quizzes;
     },
   },
 };

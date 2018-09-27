@@ -79,8 +79,9 @@ export default {
       .delete(this.apiUrl() + `/api/users/${id}/`, { headers: this.authHeader(), })
   },
 
-  toUrl(x) {
-    return x.replace(/\s+/g, "-").toLowerCase()
+  getDetailedCourseData(courseId) {
+    return axios
+      .get(this.apiUrl() + `/api/course-analytics/${courseId}/`, { headers: this.authHeader(), })
   },
 
   validEmail(email) {
