@@ -292,7 +292,7 @@ export default {
     },
     setCourseData(data) {
       this.courseName = data.name;
-      console.log(data);
+
       this.enrolledStudents = data.enrolled_learners;
       this.leavingLearners = data.leaving_learners;
       this.finishedLearners = data.finished_learners;

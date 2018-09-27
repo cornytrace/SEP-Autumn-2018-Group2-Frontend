@@ -139,7 +139,6 @@ export default {
     };
   },
   beforeMount() {
-    console.log();
     if (this.$store.state.user.role === "qdt") {
       this.gradeDistributionData = [
         {
