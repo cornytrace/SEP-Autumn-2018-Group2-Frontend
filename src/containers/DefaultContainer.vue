@@ -182,6 +182,8 @@ export default {
         var split = path.split("/");
         this.setCourses(this.courses.coursera, this.selectedPlatform);
         this.selectedCourse = "/" + split[1] + "/" + split[2];
+        this.$store.commit("setSelectedPlatform", this.selectedPlatform);
+        this.$store.commit("setSelectedCourse", this.selectedCourse);
       }
 
       // Set navigation based on the level.
@@ -197,9 +199,9 @@ export default {
         this.setCoursePages(path);
       } else if (this.level === 3) {
         if (this.selectedSubitem === "videos") {
-          this.top_nav[3] = this.getVideos(path);
+          this.top_nav[3] = this.getVideos();
         } else if (this.selectedSubitem === "quizzes") {
-          this.top_nav[3] = this.getQuizzes(path);
+          this.top_nav[3] = this.getQuizzes();
         }
       }
     },
@@ -290,23 +292,23 @@ export default {
       }
     },
     // Gets videos and puts them in the array
-    getVideos(currentPath) {
+    getVideos() {
       var videos = [];
       for (var video of settings.videos) {
         videos.push({
           name: video.name,
-          url: currentPath + "/" + video.id,
+          url: this.selectedCourse + "/videos/" + video.id,
           icon: "fa fa-video-camera",
         });
       }
       return videos;
     },
-    getQuizzes(currentPath) {
+    getQuizzes() {
       var quizzes = [];
       for (var quiz of settings.quizzes) {
         quizzes.push({
           name: quiz.name,
-          url: currentPath + "/" + quiz.id,
+          url: this.selectedCourse + "/quizzes/" + quiz.id,
           icon: "fa fa-check",
         });
       }
