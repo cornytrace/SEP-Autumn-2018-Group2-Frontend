@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.45% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>42/44</span>
+        <span class='fraction'>42/48</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.5% </span>
+        <span class="strong">73.68% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>14/16</span>
+        <span class='fraction'>14/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.12% </span>
+        <span class="strong">86.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/41</span>
+        <span class='fraction'>39/45</span>
       </div>
     </div>
   </div>
@@ -255,7 +255,27 @@
 210
 211
 212
-213</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -355,6 +375,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">14x</span>
@@ -467,6 +495,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
     &lt;div class="content"&gt;
         &lt;b-row&gt;
@@ -483,14 +515,15 @@
                   &lt;/tr&gt;
                 &lt;/table&gt;
               &lt;/b-list-group-item&gt;
-              &lt;b-list-group-item id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk"&gt;
+              &lt;b-list-group-item &gt;
                 &lt;table&gt;
-                  &lt;tr&gt;
+                  &lt;tr id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk"&gt;
                     &lt;th id="pk-cell"&gt;&lt;b&gt;{{ user.pk }}&lt;/b&gt;&lt;/th&gt;
                     &lt;th id="email-cell"&gt;{{ user.email }}&lt;/th&gt;
                     &lt;th id="name-cell"&gt;&lt;/th&gt;
                     &lt;th id="role-cell"&gt;{{ user.role }}&lt;/th&gt;
                     &lt;th&gt;&lt;span id="course" v-for="course in user.courses" :key="course.course_name"&gt;{{ course.course_name }}&lt;/span&gt;&lt;/th&gt;
+                    &lt;th id="button-cell"&gt;&lt;button v-b-modal="'deleteModal'"&gt;&lt;i class="cui-trash" /&gt;&lt;/button&gt;&lt;/th&gt;
                   &lt;/tr&gt;
                 &lt;/table&gt;
               &lt;/b-list-group-item&gt;
@@ -532,6 +565,9 @@
         &lt;/b-card&gt;
       &lt;/b-col&gt;
     &lt;/b-row&gt;
+    &lt;b-modal id="deleteModal" title="Are you sure?" @ok="handleOk"&gt;
+      &lt;p class="my-4"&gt;Are you sure you want to delete this user? &lt;br&gt; {{ selectedEmail}}&lt;/p&gt;
+    &lt;/b-modal&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
@@ -567,6 +603,14 @@ export default {
       this.selectedEmail = user.email;
       this.selectedUser = user.pk;
       this.selectedRole = user.role;
+    },
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    deleteUser(id) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      util.deleteUser(id).then(response =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.getUsers();</span>
+      });
+    },
+<span class="fstat-no" title="function not covered" >    handleOk() {</span>
+<span class="cstat-no" title="statement not covered" >      this.deleteUser(this.selectedUser);</span>
     },
     save: function() {
       if (this.selectedUser !== "No user selected") {
@@ -679,13 +723,17 @@ table th {
 th #course {
   margin-right: 10px;
 }
+table {
+  border-collapse: separate;
+  border-spacing: 0 1em;
+}
 &lt;/style&gt;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 09:24:41 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 27 2018 14:22:28 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

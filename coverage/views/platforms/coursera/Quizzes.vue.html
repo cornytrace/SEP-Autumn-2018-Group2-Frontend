@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">16.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/6</span>
       </div>
     </div>
   </div>
@@ -86,11 +86,7 @@
 41
 42
 43
-44
-45
-46
-47
-48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+44</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,16 +111,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,35 +121,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="animated fadeIn"&gt;
     &lt;b-row&gt;
-      &lt;b-col sm="8" lg="6"&gt;
+      &lt;b-col sm="4" lg="4" v-for="quiz of quizzes" :key="quiz.name"&gt;
         &lt;b-card no-body class="bg"&gt;
-          &lt;b-card-header&gt;&lt;router-link :to="this.link + '/1'"&gt;Quiz 1&lt;/router-link&gt;&lt;/b-card-header&gt;
+          &lt;b-card-header&gt;
+            &lt;router-link :to="link + '/' + quiz.id"&gt;{{ quiz.name }}&lt;/router-link&gt;
+          &lt;/b-card-header&gt;
           &lt;b-card-body class="pb-0"&gt;
             &lt;b-card no-body class="bg-primary"&gt;
               &lt;b-card-header&gt;
-                Quiz 1 stat 
+                {{ quiz.name }} stat
               &lt;/b-card-header&gt;
               &lt;b-card-body class="pb-0"&gt;
-                &lt;p&gt;Data Quiz 1 stat&lt;/p&gt;
-              &lt;/b-card-body&gt;
-            &lt;/b-card&gt;
-          &lt;/b-card-body&gt;
-        &lt;/b-card&gt;
-        &lt;b-card no-body class="bg"&gt;
-          &lt;b-card-header&gt;&lt;router-link :to="this.link + '/2'"&gt;Quiz 2&lt;/router-link&gt;&lt;/b-card-header&gt;
-          &lt;b-card-body class="pb-0"&gt;
-            &lt;b-card no-body class="bg-primary"&gt;
-              &lt;b-card-header&gt;
-                Quiz 2 stat
-              &lt;/b-card-header&gt;
-              &lt;b-card-body class="pb-0"&gt;
-                &lt;p&gt;Data Quiz 2 stat&lt;/p&gt;
+                &lt;p&gt;Data {{ quiz.name }} stat&lt;/p&gt;
               &lt;/b-card-body&gt;
             &lt;/b-card&gt;
           &lt;/b-card-body&gt;
@@ -173,15 +154,22 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
+import settings from "@/settings";
+&nbsp;
 export default {
   name: "Quizzes",
 <span class="fstat-no" title="function not covered" >  data: function() {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
       link: "",
+      quizzes: [],
     };
   },
-<span class="fstat-no" title="function not covered" >  mounted() {</span>
+  // Set the link variable to the path of the current page.
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  beforeMount() {</span></span>
 <span class="cstat-no" title="statement not covered" >    this.link = this.$route.path;</span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >    for (var quiz of settings.quizzes) {</span></span>
+<span class="cstat-no" title="statement not covered" >      this.quizzes.push({ id: quiz.id, name: quiz.name, });</span>
+    }
   },
 };
 &lt;/script&gt;</pre></td></tr>
@@ -190,7 +178,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 09:24:41 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 27 2018 14:22:28 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
