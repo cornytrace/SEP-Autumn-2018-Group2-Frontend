@@ -1,13 +1,13 @@
 <template>
   <div class="animated fadeIn">
-    <!--First row-->
-    <div class="course-stats" v-if="!isLoading">
+    <div class="stats-container" v-if="!isLoading">
       <b-row>
         <b-col class="title-col">
           <h1>{{ this.courseName }}</h1>
         </b-col>
       </b-row>
       <b-row>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -19,6 +19,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -30,6 +31,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -41,6 +43,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -52,6 +55,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -63,6 +67,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -74,6 +79,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -85,6 +91,7 @@
             </b-card-body>
           </b-card>
         </b-col>
+
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -96,9 +103,11 @@
             </b-card-body>
           </b-card>
         </b-col>
+
       </b-row>
-      <!--Second row-->
+
       <b-row>
+        <!-- Graphs -->
         <b-col lg="6" xl="4">
           <b-card id="dist-eval" header="Distribution of evaluation rating">
             <div class="chart-wrapper">
@@ -106,6 +115,7 @@
             </div>
           </b-card>
         </b-col>
+
         <b-col lg="6" xl="4">
           <b-card id="progr-fin" header="Progression of finished learners">
             <div class="chart-wrapper">
@@ -113,6 +123,7 @@
             </div>
           </b-card>
         </b-col>
+
         <b-col lg="6" xl="4">
           <b-card id="leav-per-mod" header="Leaving learners per module">
             <div class="chart-wrapper">
@@ -130,6 +141,7 @@
             </div>
           </b-card>
         </b-col>
+        
         <b-col lg="6" xl="4">
           <b-card id="avg-time-in-mod" header="Average time spend per module by learners">
             <div class="chart-wrapper">
@@ -137,6 +149,7 @@
             </div>
           </b-card>
         </b-col>
+
         <b-col lg="6" xl="4" v-if="qdt">
           <b-card id="avg-time-in-mod" header="Order in which the course is followed most">
             <div class="chart-wrapper">
@@ -144,8 +157,11 @@
             </div>
           </b-card>
         </b-col> -->
+
       </b-row>
     </div>
+
+    <!-- Loading screen -->
     <div class="loading-content" v-if="isLoading">
       <h2>Loading....</h2>
     </div>
@@ -368,14 +384,5 @@ export default {
   height: 100%;
   width: 75px;
   text-align: center;
-}
-
-.loading-content {
-  margin-top: 20vh;
-  text-align: center;
-}
-
-.loading-content h2 {
-  color: #00a9d4;
 }
 </style>
