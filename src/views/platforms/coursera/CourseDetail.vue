@@ -290,6 +290,7 @@ export default {
           });
       }
     },
+    // Set all fields with corresponding data.
     setCourseData(data) {
       this.courseName = data.name;
 
@@ -367,14 +368,6 @@ export default {
   height: 100%;
   width: 75px;
   text-align: center;
-}
-
-.title-col {
-  margin-bottom: 10px;
-}
-
-.title-col h1 {
-  color: #00a9d4;
 }
 
 .loading-content {

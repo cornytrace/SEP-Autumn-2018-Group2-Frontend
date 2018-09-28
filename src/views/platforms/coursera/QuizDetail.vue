@@ -1,7 +1,13 @@
 <template>
   <div class="animated fadeIn">
-    <!--First row-->
     <b-row>
+      <b-col class="title-col">
+        <h1>Quiz name</h1>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col md="9" lg="10">
+        <b-row>
           <b-col sm="12" md="6" lg="3">
             <b-card :no-body="true">
               <b-card-body class="p-0 clearfix align-data mr-3">
@@ -66,6 +72,45 @@
             </b-card>
           </b-col>
         </b-row>
+      </b-col>
+      <!-- Link to next vid -->
+      <b-col md="3" lg="2">
+        <div class="link-container">
+          <router-link to="/coursera/capstone-recommender-systems/videos/2">
+            <b-card class="link-card">
+              <table>
+                <tr>
+                  <th>
+                    <span class="link-card-text">Next quiz</span>
+                    <span class="link-card-subtext">Lecture 2</span>
+                  </th>
+                  <th class="icon-cell">
+                    <i class="fa fa-2x fa-chevron-right"></i>
+                  </th>
+                </tr>
+              </table>
+            </b-card>
+          </router-link>
+        </div>
+        <div class="link-container">
+          <router-link to="/coursera/capstone-recommender-systems/videos/2">
+            <b-card class="link-card">
+              <table>
+                <tr>
+                  <th>
+                    <span class="link-card-text">Next item</span>
+                    <span class="link-card-subtext">Video 2</span>
+                  </th>
+                  <th class="icon-cell">
+                    <i class="fa fa-2x fa-chevron-right"></i>
+                  </th>
+                </tr>
+              </table>
+            </b-card>
+          </router-link>
+        </div>
+      </b-col>
+    </b-row>
     <!--Second row-->
     <b-row>
       <b-col md="4">
@@ -77,7 +122,7 @@
       </b-col>
       <b-col md="4">
         <b-card id="dist-eval" header="Grade distribution">
-          <div class="chart-wrapper" >
+          <div class="chart-wrapper">
             <bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels />
           </div>
         </b-card>

@@ -54,6 +54,7 @@ export default {
 
 
   // Constants
+  max_nav_level: 3,
   course_default: "course-select",
   platform_default: "platform-select",
   roles: [{

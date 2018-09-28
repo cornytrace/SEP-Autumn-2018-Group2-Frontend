@@ -8,7 +8,7 @@
       </b-link>
         <SidebarToggler class="d-md-down-none" display="lg" />
         <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
-        <b-form-select class="header-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
+        <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
         <b-navbar-nav class="custom-nav ml-auto">
           <DefaultHeaderDropdownAccnt />
           <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
@@ -175,13 +175,13 @@ export default {
     setNavigation: function(path) {
       // Get level.
       this.level = this.getLevel(path);
+      var split = path.split("/");
 
       //Set dropdown menus to the correct value
       if (this.level >= 1) {
-        this.selectedPlatform = "/" + path.split("/")[1];
-        var split = path.split("/");
+        this.selectedPlatform = split[1];
         this.setCourses(this.courses.coursera, this.selectedPlatform);
-        this.selectedCourse = "/" + split[1] + "/" + split[2];
+        this.selectedCourse = split[2];
         this.$store.commit("setSelectedPlatform", this.selectedPlatform);
         this.$store.commit("setSelectedCourse", this.selectedCourse);
       }
@@ -198,6 +198,8 @@ export default {
         // Course level
         this.setCoursePages(path);
       } else if (this.level === 3) {
+        // Set subitem
+        this.selectedSubitem = split[3];
         if (this.selectedSubitem === "videos") {
           this.top_nav[3] = this.getVideos();
         } else if (this.selectedSubitem === "quizzes") {
@@ -208,27 +210,26 @@ export default {
     // Dropdown listeners
     platformChange(evt) {
       if (evt !== settings.platform_default) {
-        this.$router.push(evt);
+        this.$router.push("/" + evt);
       }
     },
     courseChange(evt) {
       if (evt !== settings.course_default) {
-        this.$router.push(evt);
+        this.$router.push("/" + this.selectedPlatform + "/" + evt);
       }
     },
     sideButtonClick(event) {
       this.setNavigation(event.srcElement.hash.substring(1));
     },
-    // Helper functions
+    // Get the level with a max of 3.
     getLevel(path) {
       if (this.level_0.indexOf(path) !== -1) {
         return 0;
       }
       var split = path.split("/");
       var level = split.length - 1;
-      if (level >= 3) {
-        this.selectedSubitem = split[3];
-        return 3;
+      if (level >= settings.max_nav_level) {
+        return settings.max_nav_level;
       }
       return level;
     },
@@ -254,12 +255,12 @@ export default {
           icon: "fa fa-line-chart",
         });
         this.platformOptions.push({
-          value: "/" + platform.slug,
+          value: platform.slug,
           text: platform.name,
         });
       }
     },
-    setCourses(c, platform) {
+    setCourses(c) {
       this.courseOptions = [
         {
           value: settings.course_default,
@@ -270,34 +271,45 @@ export default {
       for (var course of c) {
         // Push to dropdown
         this.courseOptions.push({
-          value: platform + "/" + course.slug,
+          value: course.slug,
           text: course.name,
         });
         // Push to navbar
         this.top_nav[1].push({
           name: course.name,
-          url: platform + "/" + course.slug,
+          url: "/" + this.selectedPlatform + "/" + course.slug,
           icon: "fa fa-line-chart",
         });
       }
     },
-    setCoursePages(path) {
+    setCoursePages() {
       this.top_nav[2] = [];
       for (var coursepPage of settings.course_pages) {
         this.top_nav[2].push({
           name: coursepPage.name,
           icon: coursepPage.icon,
-          url: path + "/" + coursepPage.slug,
+          url:
+            "/" +
+            this.selectedPlatform +
+            "/" +
+            this.selectedCourse +
+            "/" +
+            coursepPage.slug,
         });
       }
     },
-    // Gets videos and puts them in the array
     getVideos() {
       var videos = [];
       for (var video of settings.videos) {
         videos.push({
           name: video.name,
-          url: this.selectedCourse + "/videos/" + video.id,
+          url:
+            "/" +
+            this.selectedPlatform +
+            "/" +
+            this.selectedCourse +
+            "/videos/" +
+            video.id,
           icon: "fa fa-video-camera",
         });
       }
@@ -308,7 +320,13 @@ export default {
       for (var quiz of settings.quizzes) {
         quizzes.push({
           name: quiz.name,
-          url: this.selectedCourse + "/quizzes/" + quiz.id,
+          url:
+            "/" +
+            this.selectedPlatform +
+            "/" +
+            this.selectedCourse +
+            "/quizzes/" +
+            quiz.id,
           icon: "fa fa-check",
         });
       }
@@ -343,6 +361,10 @@ export default {
   width: 100%;
   margin-bottom: 0;
   margin-left: 15px;
+}
+
+#course-select {
+  width: 20%;
 }
 </style>
 

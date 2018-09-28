@@ -3,11 +3,11 @@
 
     <b-row>
       <b-col class="title-col">
-        <h2>{{video_title}}</h2>
+        <h1>{{video_title}}</h1>
       </b-col>
     </b-row>
     <b-row>
-      <b-col md="10">
+      <b-col md="9" lg="10">
         <b-row>
           <!-- Basic analytics -->
           <b-col lg="4" xl="3">
@@ -25,7 +25,7 @@
               <b-card-body class="p-0 clearfix">
                 <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
                 <div class="h5 text-primary mb-0 pt-3">{{full_plays}}</div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs">Complete Plays</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs">Full Plays</div>
               </b-card-body>
             </b-card>
           </b-col>
@@ -78,22 +78,41 @@
       </b-col>
 
       <!-- Link to next vid -->
-      <b-col md="2">
-        <router-link to="/coursera/capstone-recommender-systems/videos/2">
-          <b-card class="link-card">
-            <table>
-              <tr>
-                <th>
-                  <span class="next-vid-text">Next video</span>
-                  <span class="next-vid-subtext">Lecture 2</span>
-                </th>
-                <th class="icon-cell">
-                  <i class="fa fa-2x fa-chevron-right"></i>
-                </th>
-              </tr>
-            </table>
-          </b-card>
-        </router-link>
+      <b-col md="3" lg="2">
+        <div class="link-container">
+          <router-link to="/coursera/capstone-recommender-systems/videos/2">
+            <b-card class="link-card">
+              <table>
+                <tr>
+                  <th>
+                    <span class="link-card-text">Next video</span>
+                    <span class="link-card-subtext">Lecture 2</span>
+                  </th>
+                  <th class="icon-cell">
+                    <i class="fa fa-2x fa-chevron-right"></i>
+                  </th>
+                </tr>
+              </table>
+            </b-card>
+          </router-link>
+        </div>
+        <div class="link-container">
+          <router-link to="/coursera/capstone-recommender-systems/videos/2">
+            <b-card class="link-card">
+              <table>
+                <tr>
+                  <th>
+                    <span class="link-card-text">Next item</span>
+                    <span class="link-card-subtext">Quiz 2</span>
+                  </th>
+                  <th class="icon-cell">
+                    <i class="fa fa-2x fa-chevron-right"></i>
+                  </th>
+                </tr>
+              </table>
+            </b-card>
+          </router-link>
+        </div>
       </b-col>
     </b-row>
     <!-- Page bottom half -->
@@ -118,7 +137,8 @@ export default {
   name: "VideoDetail",
   data: function() {
     return {
-      qdt: this.$store.state.user.role === "qdt",
+      // qdt: this.$store.state.user.role === "qdt",
+      qdt: true,
       video_title: "Lecture " + this.$route.params.videoid + " - 12/05/2018",
       likes: 64,
       dislikes: 21,
@@ -149,53 +169,6 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  color: #73818f;
-}
-.title-col {
-  margin-bottom: 10px;
-}
-.next-vid-text {
-  font-size: 0.9rem;
-  display: block;
-}
-.next-vid-subtext {
-  font-size: 0.7rem;
-  display: block;
-  font-weight: normal;
-}
-.link-card {
-  padding: 0;
-}
-.link-card .card-body {
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.link-card i {
-  float: right;
-}
-.link-card span {
-  color: #73818f !important;
-}
-.link-card:hover span {
-  color: #000;
-  text-decoration: #eee;
-}
-.link-card:hover {
-  background-color: #eee;
-}
-table {
-  width: 100%;
-}
-table .icon-cell {
-  vertical-align: center;
-  text-align: right;
-}
-.link-card a:hover {
-  text-decoration: none;
-}
-
 .graph {
   max-height: 40vh;
 }
