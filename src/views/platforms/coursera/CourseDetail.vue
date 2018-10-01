@@ -104,6 +104,18 @@
           </b-card>
         </b-col>
 
+        <b-col sm="12" md="6" lg="3">
+          <b-card :no-body="true">
+            <b-card-body class="p-0 clearfix align-data mr-3">
+              <span class="iconsquare">
+                <i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"></i>
+              </span>
+              <div class="h5 text-color mb-0 pt-3" id="no-cohorts">{{ avgTime }}</div>
+              <div class="text-muted text-uppercase font-weight-bold text-font-size">Average time</div>
+            </b-card-body>
+          </b-card>
+        </b-col>
+
       </b-row>
 
       <b-row>
@@ -132,25 +144,17 @@
           </b-card>
         </b-col>
 
-        <!-- Not real data yet -->
-
-        <!-- <b-col lg="6" xl="4">
-          <b-card id="avg-time-in-course" header="Average time spend in course by learners">
-            <div class="chart-wrapper">
-              <bar-graph chartId="chart-scatter-01" :data=avgTimeCourData :labels=avgTimeCourLabels />
-            </div>
-          </b-card>
-        </b-col>
-        
         <b-col lg="6" xl="4">
-          <b-card id="avg-time-in-mod" header="Average time spend per module by learners">
+          <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
             <div class="chart-wrapper">
               <bar-graph chartId="chart-polar-01" :data=avgTimeModData :labels=AvgTimeModLabels />
             </div>
           </b-card>
         </b-col>
 
-        <b-col lg="6" xl="4" v-if="qdt">
+        <!-- SHOULD HAVE -->
+
+        <!-- <b-col lg="6" xl="4" v-if="qdt">
           <b-card id="avg-time-in-mod" header="Order in which the course is followed most">
             <div class="chart-wrapper">
               <bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels />
@@ -202,14 +206,15 @@ export default {
       numberOfAssignments: 0,
       numberOfModules: 0,
       numberOfCohorts: 0,
+      avgTime: 0,
 
       // data distribution of evaluation rating
       distEvalRateData: [
         {
           label: "Distribution of evaluation rating",
           backgroundColor: colors.blue,
-          data: [],
-        },
+          data: []
+        }
       ],
 
       distEvalRateLabels: [],
@@ -220,8 +225,8 @@ export default {
           label: "Progression of finished learners",
           backgroundColor: colors.lightGrey,
           borderColor: colors.blue,
-          data: [],
-        },
+          data: []
+        }
       ],
       progFinLearLabels: [],
 
@@ -230,30 +235,30 @@ export default {
         {
           label: "Leaving learners per module",
           backgroundColor: colors.blue,
-          data: [80, 120, 30, 60,],
-        },
+          data: [80, 120, 30, 60]
+        }
       ],
-      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D",],
+      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D"],
 
       // data average time spend in a course by learners
       avgTimeCourData: [
         {
           label: "Average time spend in course by learners",
           backgroundColor: colors.blue,
-          data: [38, 6, 5, 56, 44, 25,],
-        },
+          data: [38, 6, 5, 56, 44, 25]
+        }
       ],
-      avgTimeCourLabels: [1, 4, 5, 7, 13, 25,],
+      avgTimeCourLabels: [1, 4, 5, 7, 13, 25],
 
       // data average time spend per module by learners
       avgTimeModData: [
         {
           label: "Average timr spend per module by learners",
           backgroundColor: colors.blue,
-          data: [28, 11, 30, 56,],
-        },
+          data: []
+        }
       ],
-      AvgTimeModLabels: [1, 2, 3, 4,],
+      AvgTimeModLabels: [],
 
       /*
        * QDT member analytics 
@@ -264,10 +269,10 @@ export default {
         {
           label: "Yes we know this is the wrong graph type",
           backgroundColor: "#f81919",
-          data: [28, 11, 30, 44,],
-        },
+          data: [28, 11, 30, 44]
+        }
       ],
-      tendFolCourLabels: [1, 2, 3, 4,],
+      tendFolCourLabels: [1, 2, 3, 4]
     };
   },
   components: {
@@ -276,7 +281,7 @@ export default {
     BarGraph,
     DoughnutGraph,
     PolarAreaGraph,
-    RadarGraph,
+    RadarGraph
   },
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
@@ -342,9 +347,20 @@ export default {
         );
       }
 
+      this.avgTimeModData[0].data = [];
+      this.AvgTimeModLabels = [];
+      for (let x = 0; x < data.average_time_per_module.length; x++) {
+        this.AvgTimeModLabels.push(x + 1);
+        this.avgTimeModData[0].data.push(
+          parseFloat(data.average_time_per_module[x][1]) / (3600 * 24)
+        );
+      }
+
+      this.avgTime = (parseFloat(data.average_time) / (3600 * 24)).toFixed(1);
+
       this.isLoading = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
