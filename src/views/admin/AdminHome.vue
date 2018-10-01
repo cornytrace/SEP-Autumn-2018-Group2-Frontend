@@ -21,7 +21,11 @@
                 <th id="email-cell">{{ user.email }}</th>
                 <th id="name-cell"></th>
                 <th id="role-cell">{{ user.role }}</th>
-                <th><span id="course" v-for="course in user.courses" :key="course.course_name">{{ course.course_name }}</span></th>
+                <th id="course-cell">
+                  <ul>
+                    <li v-for="course in user.courses" :key="course.course_name"><span id="course">{{ course.course_name }}</span></li>
+                  </ul>
+                </th>
                 <th id="button-cell"><button v-b-modal="'deleteModal'"><i class="cui-trash" /></button></th>
               </tr>
             </table>
@@ -187,7 +191,7 @@ form {
 }
 #userelement:hover {
   cursor: pointer;
-  background-color: #f0f3f5;
+  background-color: #ccc;
 }
 table #pk-cell {
   width: 20px;
@@ -203,6 +207,12 @@ table #name-cell {
 }
 table #role-cell {
   width: 80px;
+}
+table #course {
+  display: block;
+}
+table #course-cell ul {
+  padding-left: 10px;
 }
 table th {
   font-weight: normal;
