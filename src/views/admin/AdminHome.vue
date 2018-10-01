@@ -1,65 +1,63 @@
 <template>
-    <div class="content">
-        <b-row>
-          <b-col sm="7">
-            <b-list-group>
-              <b-list-group-item class="first-row" id="userelement">
-                <table>
-                  <tr>
-                    <th id="pk-cell"><b>ID</b></th>
-                    <th id="email-cell">Email</th>
-                    <th id="name-cell">Display Name</th>
-                    <th id="role-cell">Role</th>
-                    <th>Courses</th>
-                  </tr>
-                </table>
-              </b-list-group-item>
-              <b-list-group-item >
-                <table>
-                  <tr id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk">
-                    <th id="pk-cell"><b>{{ user.pk }}</b></th>
-                    <th id="email-cell">{{ user.email }}</th>
-                    <th id="name-cell"></th>
-                    <th id="role-cell">{{ user.role }}</th>
-                    <th><span id="course" v-for="course in user.courses" :key="course.course_name">{{ course.course_name }}</span></th>
-                    <th id="button-cell"><button v-b-modal="'deleteModal'"><i class="cui-trash" /></button></th>
-                  </tr>
-                </table>
-              </b-list-group-item>
-            </b-list-group>
-          </b-col>
-        <b-col sm="5">
-        <b-card class="bg" no-body >
+  <div class="content">
+    <b-row>
+      <b-col sm="7">
+        <b-list-group>
+          <b-list-group-item class="first-row" id="userelement">
+            <table>
+              <tr>
+                <th id="pk-cell"><b>ID</b></th>
+                <th id="email-cell">Email</th>
+                <th id="name-cell">Display Name</th>
+                <th id="role-cell">Role</th>
+                <th>Courses</th>
+              </tr>
+            </table>
+          </b-list-group-item>
+          <b-list-group-item>
+            <table>
+              <tr id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk">
+                <th id="pk-cell"><b>{{ user.pk }}</b></th>
+                <th id="email-cell">{{ user.email }}</th>
+                <th id="name-cell"></th>
+                <th id="role-cell">{{ user.role }}</th>
+                <th><span id="course" v-for="course in user.courses" :key="course.course_name">{{ course.course_name }}</span></th>
+                <th id="button-cell"><button v-b-modal="'deleteModal'"><i class="cui-trash" /></button></th>
+              </tr>
+            </table>
+          </b-list-group-item>
+        </b-list-group>
+      </b-col>
+      <b-col sm="5">
+        <b-card class="bg" no-body>
           <b-card-header>
             <b>Selected user:</b> {{selectedUser}}
           </b-card-header>
           <b-card-body class="pb-0">
             <b-form>
-                <p class="text-muted">Edit user account</p>
-                <b-input-group class="mb-3">
-                  <b-input-group-prepend>
-                    <b-input-group-text>@</b-input-group-text>
-                  </b-input-group-prepend>
-                  <b-form-input v-model="selectedEmail" type="text" class="form-control" placeholder="Email" autocomplete="email" />
-                </b-input-group>
-                <b-input-group class="mb-3">
-                  <select class="form-control" v-model="selectedRole">
-                    <option v-for="role of settings.roles" :value="role.id" :key="role.id">{{role.name}}</option>
-                  </select>
-                </b-input-group>
-                <b-form-select v-model="selectedCourses" id="course-selector" multiple :select-size="4" :options="courses" text-field="course_name" value-field="pk" class="mb-3">
-                </b-form-select>
-                <p class="text-muted">Hold down CTRL to select multiple courses.</p>
-                <b-alert id="alertbox" variant="danger"
-                  dismissible :show="showAlert" @dismissed="showAlert=false">
-                    Update failed: {{errorReason}}.
-                  </b-alert>
-                  <b-alert id="successbox" variant="success"
-                  dismissible :show="showSuccess" @dismissed="showSuccess=false">
-                    Update success.
-                  </b-alert>
-                <b-button @click="save" id="savebutton" variant="success">Save</b-button>
-              </b-form>           
+              <p class="text-muted">Edit user account</p>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text>@</b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input v-model="selectedEmail" type="text" class="form-control" placeholder="Email" autocomplete="email" />
+              </b-input-group>
+              <b-input-group class="mb-3">
+                <select class="form-control" v-model="selectedRole">
+                  <option v-for="role of settings.roles" :value="role.id" :key="role.id">{{role.name}}</option>
+                </select>
+              </b-input-group>
+              <multi-select v-model="selectedCourses" id="course-selector" multiple :select-size="4" :options="courses" tf="course_name" vf="pk" class="mb-3">
+              </multi-select>
+              <p class="text-muted">Hold down CTRL to select multiple courses.</p>
+              <b-alert id="alertbox" variant="danger" dismissible :show="showAlert" @dismissed="showAlert=false">
+                Update failed: {{errorReason}}.
+              </b-alert>
+              <b-alert id="successbox" variant="success" dismissible :show="showSuccess" @dismissed="showSuccess=false">
+                Update success.
+              </b-alert>
+              <b-button @click="save" id="savebutton" variant="success">Save</b-button>
+            </b-form>
           </b-card-body>
         </b-card>
       </b-col>
@@ -67,15 +65,19 @@
     <b-modal id="deleteModal" title="Are you sure?" @ok="handleOk">
       <p class="my-4">Are you sure you want to delete this user? <br> {{ selectedEmail}}</p>
     </b-modal>
-    </div>
+  </div>
 </template>
 
 <script>
 import util from "@/util";
 import settings from "@/settings";
+import MultiSelect from "@/components/MultiSelect";
 
 export default {
   name: "AdminHome",
+  components: {
+    MultiSelect,
+  },
   data: function() {
     return {
       settings: settings,
@@ -95,10 +97,7 @@ export default {
       this.showSuccess = false;
       this.showAlert = false;
       var user = this.getUser(id);
-      this.selectedCourses = [];
-      for (var course of user.courses) {
-        this.selectedCourses.push(course.pk);
-      }
+      this.selectedCourses = user.courses;
       this.selectedEmail = user.email;
       this.selectedUser = user.pk;
       this.selectedRole = user.role;
@@ -113,15 +112,10 @@ export default {
     },
     save: function() {
       if (this.selectedUser !== "No user selected") {
-        // Get all course objects.
-        var courses = [];
-        for (var course of this.selectedCourses) {
-          courses.push(this.getCourse(course));
-        }
         // Use util function to update the user.
         util
           .updateUser({
-            courses: courses,
+            courses: this.selectedCourses,
             email: this.selectedEmail,
             pk: this.selectedUser,
             role: this.selectedRole,
