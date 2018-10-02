@@ -164,7 +164,9 @@ export default {
   components: {
     LineGraph,
   },
+
   beforeRouteUpdate(to, from, next) {
+    console.log(to);
     this.video_title = "Lecture " + to.params.videoid + " - 12/05/2018";
     next();
   },

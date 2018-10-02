@@ -3,7 +3,7 @@ import store from '@/store'
 
 export default {
   initUtils: () => {
-    Element.prototype.scrollTo = () => {}
+    Element.prototype.scrollTo = () => { }
   },
   mockStore: () => {
     let actions = {
@@ -11,7 +11,21 @@ export default {
       logout: jest.fn().mockResolvedValue(),
     }
     return new Vuex.Store({
-      state: Object.assign([], store.state),
+      state: {
+        user: {
+          courses: [{
+            course_name: "test",
+            course_slug: "test",
+            course_id: "1",
+            pk: 1,
+          }, {
+            course_name: "test2",
+            course_slug: "test2",
+            course_id: "2",
+            pk: 2,
+          },],
+        },
+      },
       actions,
       mutations: {
         setToken: jest.fn(),

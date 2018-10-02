@@ -167,7 +167,7 @@
 
     <!-- Loading screen -->
     <div class="loading-content" v-if="isLoading">
-      <h2>Loading....</h2>
+      <h2>{{ loadingText }}</h2>
     </div>
   </div>
 </template>
@@ -187,6 +187,7 @@ export default {
   data: function() {
     return {
       isLoading: false,
+      loadingText: "Loading...",
       qdt: this.$store.state.user.role === "qdt",
       show: true,
       courseSlug: "",
@@ -213,8 +214,8 @@ export default {
         {
           label: "Distribution of evaluation rating",
           backgroundColor: colors.blue,
-          data: []
-        }
+          data: [],
+        },
       ],
 
       distEvalRateLabels: [],
@@ -225,8 +226,8 @@ export default {
           label: "Progression of finished learners",
           backgroundColor: colors.lightGrey,
           borderColor: colors.blue,
-          data: []
-        }
+          data: [],
+        },
       ],
       progFinLearLabels: [],
 
@@ -235,28 +236,18 @@ export default {
         {
           label: "Leaving learners per module",
           backgroundColor: colors.blue,
-          data: [80, 120, 30, 60]
-        }
+          data: [80, 120, 30, 60,],
+        },
       ],
-      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D"],
-
-      // data average time spend in a course by learners
-      avgTimeCourData: [
-        {
-          label: "Average time spend in course by learners",
-          backgroundColor: colors.blue,
-          data: [38, 6, 5, 56, 44, 25]
-        }
-      ],
-      avgTimeCourLabels: [1, 4, 5, 7, 13, 25],
+      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D",],
 
       // data average time spend per module by learners
       avgTimeModData: [
         {
           label: "Average timr spend per module by learners",
           backgroundColor: colors.blue,
-          data: []
-        }
+          data: [],
+        },
       ],
       AvgTimeModLabels: [],
 
@@ -269,10 +260,10 @@ export default {
         {
           label: "Yes we know this is the wrong graph type",
           backgroundColor: "#f81919",
-          data: [28, 11, 30, 44]
-        }
+          data: [],
+        },
       ],
-      tendFolCourLabels: [1, 2, 3, 4]
+      tendFolCourLabels: [],
     };
   },
   components: {
@@ -281,7 +272,7 @@ export default {
     BarGraph,
     DoughnutGraph,
     PolarAreaGraph,
-    RadarGraph
+    RadarGraph,
   },
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
@@ -295,6 +286,7 @@ export default {
   methods: {
     getCourseData() {
       this.isLoading = true;
+      this.loadingText = "Loading...";
       var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
       );
@@ -307,6 +299,7 @@ export default {
             this.setCourseData(response.data);
           })
           .catch(err => {
+            this.loadingText = "Error occurred";
             console.log(err);
           });
       }
@@ -314,7 +307,7 @@ export default {
     // Set all fields with corresponding data.
     setCourseData(data) {
       this.courseName = data.name;
-
+      console.log(this.courseName);
       this.enrolledStudents = data.enrolled_learners;
       this.leavingLearners = data.leaving_learners;
       this.finishedLearners = data.finished_learners;
@@ -359,8 +352,8 @@ export default {
       this.avgTime = (parseFloat(data.average_time) / (3600 * 24)).toFixed(1);
 
       this.isLoading = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

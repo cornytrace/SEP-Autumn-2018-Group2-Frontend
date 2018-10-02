@@ -7,8 +7,9 @@ import BootstrapVue from 'bootstrap-vue'
 import CourseDetail from '@/views/platforms/coursera/CourseDetail'
 
 import mockUtils from '../mockUtils'
-import router from '@/router'
 import moxios from 'moxios'
+import util from '@/util'
+import { doesNotReject } from 'assert';
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
@@ -31,7 +32,13 @@ describe('CourseDetail.vue', () => {
     return mount(CourseDetail, {
       localVue,
       store,
-      router,
+      mocks: {
+        $route: {
+          params: {
+            courseid: "test",
+          },
+        },
+      },
       stubs: ['LineGraph',
         'ScatterGraph',
         'BarGraph',
@@ -47,26 +54,77 @@ describe('CourseDetail.vue', () => {
   })
 
   it('sets the correct default data', () => {
-    const wrapper = mountComponent()
-    wrapper.setData({
-    })
-    expect(typeof CourseDetail.data).toMatch('function')
-    // const defaultData = CourseDetail.data()
-    // expect(defaultData.selected).toEqual("Month")
+    expect(typeof CourseDetail.data).toMatch('function');
   })
 
-  // it('is Vue instance', () => {
-  //   const wrapper = mountComponent()
-  //   wrapper.setData({
-  //     courseSlug: "c1",
-  //   })
-  //   expect(wrapper.isVueInstance()).toBe(true)
-  // })
-  // it('is Register', () => {
-  //   const wrapper = mountComponent()
-  //   wrapper.setData({
-  //     courseSlug: "c1",
-  //   })
-  //   expect(wrapper.is(CourseDetail)).toBe(true)
-  // })
+  it('sets the correct default data', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/course-analytics/1/', {
+      status: 200,
+      response: {
+        test: "test",
+        name: "test_name",
+        ratings: [[1, 0,], [2, 10,], [3, 14,],],
+        finished_learners_over_time: [[1, 0,], [2, 10,], [3, 14,],],
+        leaving_learners_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        average_time_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        average_time: 348923048,
+      },
+    });
+    const wrapper = mountComponent();
+    moxios.wait(function () {
+      expect(wrapper.vm.courseName).toBe("test_name")
+      done();
+    })
+  })
+
+  it('test bad request', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/course-analytics/1/', {
+      status: 403,
+      response: {
+        test: "test",
+        name: "test_name",
+        ratings: [[1, 0,], [2, 10,], [3, 14,],],
+        finished_learners_over_time: [[1, 0,], [2, 10,], [3, 14,],],
+        leaving_learners_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        average_time_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        average_time: 348923048,
+      },
+    });
+    const wrapper = mountComponent();
+    moxios.wait(function () {
+      expect(wrapper.html()).toContain("Error")
+      done();
+    })
+  })
+
+  it('test router update', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/course-analytics/1/', {
+      status: 200,
+      response: {
+        test: "test",
+        name: "test_name",
+        ratings: [[1, 0,], [2, 10,], [3, 14,],],
+        finished_learners_over_time: [[1, 0,], [2, 10,], [3, 14,],],
+        leaving_learners_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        average_time_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        average_time: 348923048,
+      },
+    });
+
+    const wrapper = mountComponent();
+
+    moxios.wait(function () {
+      expect(wrapper.vm.courseName).toBe("test_name")
+      done();
+    })
+
+    let next = jest.fn();
+    wrapper.vm.$options.beforeRouteUpdate.call(wrapper.vm, {
+      params: {
+        courseid: 2,
+      },
+    }, {}, next)
+
+    // TODO ADD TEST AFTER ROUTER UPDATE
+  })
 })
