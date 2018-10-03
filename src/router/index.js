@@ -26,10 +26,6 @@ const ResetReferrer = () => import('@/views/pages/ResetReferrer')
 const ResetPassword = () => import('@/views/pages/ResetPassword')
 const ForgotPassword = () => import('@/views/pages/ForgotPassword')
 
-// Users
-const Users = () => import('@/views/users/Users')
-const User = () => import('@/views/users/User')
-
 import * as coursera from '@/views/platforms/coursera'
 
 Vue.use(VueRouter)

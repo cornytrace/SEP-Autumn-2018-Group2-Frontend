@@ -103,7 +103,7 @@ describe('Login.vue', () => {
       username: 'admin',
       password: '1234',
     })
-    moxios.stubRequest(util.apiUrl() + '/api/users/me/', {
+    moxios.stubRequest(util.apiUrl() + '/users/me/', {
       status: 200,
       response: {
         pk: 1,
@@ -139,7 +139,7 @@ describe('Login.vue', () => {
       username: 'admin',
       password: '1234',
     })
-    moxios.stubRequest(util.apiUrl() + '/api/users/me/', {
+    moxios.stubRequest(util.apiUrl() + '/users/me/', {
       status: 200,
       response: {
         pk: 1,
@@ -175,7 +175,7 @@ describe('Login.vue', () => {
       username: 'notadmin',
       password: '1234',
     })
-    moxios.stubRequest(util.apiUrl() + '/api/users/me/', {
+    moxios.stubRequest(util.apiUrl() + '/users/me/', {
       status: 200,
       response: {
         pk: 1,
