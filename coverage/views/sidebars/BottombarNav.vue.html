@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>4/4</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -210,7 +210,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,13 +222,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,47 +252,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;nav class="sidebar-nav"&gt;
     &lt;VuePerfectScrollbar class="scroll-area" :settings="psSettings" @ps-scroll-y="scrollHandle"&gt;
-    &lt;ul class="nav"&gt;
-      &lt;template v-for="(item, index) in navItems"&gt;
-        &lt;template v-if="item.title"&gt;
-          &lt;SidebarNavTitle :key="index" :name="item.name" :classes="item.class" :wrapper="item.wrapper"/&gt;
-        &lt;/template&gt;
-        &lt;template v-else-if="item.divider"&gt;
-          &lt;SidebarNavDivider :key="index" :classes="item.class"/&gt;
-        &lt;/template&gt;
-        &lt;template v-else-if="item.label"&gt;
-          &lt;SidebarNavLabel :key="index" :name="item.name" :url="item.url" :icon="item.icon" :label="item.label" :classes="item.class"/&gt;
-        &lt;/template&gt;
-        &lt;template v-else&gt;
-          &lt;template v-if="item.children"&gt;
-            &lt;!-- First level dropdown --&gt;
-            &lt;SidebarNavDropdown :key="index" :name="item.name" :url="item.url" :icon="item.icon"&gt;
-              &lt;template v-for="(childL1, index1) in item.children"&gt;
-                &lt;template v-if="childL1.children"&gt;
-                  &lt;!-- Second level dropdown --&gt;
-                  &lt;SidebarNavDropdown :key="index1" :name="childL1.name" :url="childL1.url" :icon="childL1.icon"&gt;
-                    &lt;li :key="index2" class="nav-item" v-for="(childL2, index2) in childL1.children"&gt;
-                      &lt;SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="item.variant"/&gt;
-                    &lt;/li&gt;
-                  &lt;/SidebarNavDropdown&gt;
-                &lt;/template&gt;
-                &lt;template v-else&gt;
-                  &lt;SidebarNavItem :key="index1" :classes="item.class"&gt;
-                    &lt;SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="item.variant"/&gt;
-                  &lt;/SidebarNavItem&gt;
-                &lt;/template&gt;
-              &lt;/template&gt;
-            &lt;/SidebarNavDropdown&gt;
+      &lt;ul class="nav"&gt;
+        &lt;template v-for="(item, index) in navItems"&gt;
+          &lt;template v-if="item.title"&gt;
+            &lt;SidebarNavTitle :key="index" :name="item.name" :classes="item.class" :wrapper="item.wrapper" /&gt;
+          &lt;/template&gt;
+          &lt;template v-else-if="item.divider"&gt;
+            &lt;SidebarNavDivider :key="index" :classes="item.class" /&gt;
+          &lt;/template&gt;
+          &lt;template v-else-if="item.label"&gt;
+            &lt;SidebarNavLabel :key="index" :name="item.name" :url="item.url" :icon="item.icon" :label="item.label" :classes="item.class" /&gt;
           &lt;/template&gt;
           &lt;template v-else&gt;
-            &lt;SidebarNavItem :key="index" :classes="item.class"&gt;
-              &lt;SidebarNavLink :name="item.name" :url="item.url" :icon="item.icon" :badge="item.badge" :variant="item.variant"/&gt;
-            &lt;/SidebarNavItem&gt;
+            &lt;template v-if="item.children"&gt;
+              &lt;!-- First level dropdown --&gt;
+              &lt;SidebarNavDropdown :key="index" :name="item.name" :url="item.url" :icon="item.icon"&gt;
+                &lt;template v-for="(childL1, index1) in item.children"&gt;
+                  &lt;template v-if="childL1.children"&gt;
+                    &lt;!-- Second level dropdown --&gt;
+                    &lt;SidebarNavDropdown :key="index1" :name="childL1.name" :url="childL1.url" :icon="childL1.icon"&gt;
+                      &lt;li :key="index2" class="nav-item" v-for="(childL2, index2) in childL1.children"&gt;
+                        &lt;SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="item.variant" /&gt;
+                      &lt;/li&gt;
+                    &lt;/SidebarNavDropdown&gt;
+                  &lt;/template&gt;
+                  &lt;template v-else&gt;
+                    &lt;SidebarNavItem :key="index1" :classes="item.class"&gt;
+                      &lt;SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="item.variant" /&gt;
+                    &lt;/SidebarNavItem&gt;
+                  &lt;/template&gt;
+                &lt;/template&gt;
+              &lt;/SidebarNavDropdown&gt;
+            &lt;/template&gt;
+            &lt;template v-else&gt;
+              &lt;SidebarNavItem :key="index" :classes="item.class"&gt;
+                &lt;SidebarNavLink :name="item.name" :url="item.url" :icon="item.icon" :badge="item.badge" :variant="item.variant" /&gt;
+              &lt;/SidebarNavItem&gt;
+            &lt;/template&gt;
           &lt;/template&gt;
         &lt;/template&gt;
-      &lt;/template&gt;
-    &lt;/ul&gt;
-    &lt;slot&gt;&lt;/slot&gt;
+      &lt;/ul&gt;
+      &lt;slot&gt;&lt;/slot&gt;
     &lt;/VuePerfectScrollbar&gt;
   &lt;/nav&gt;
 &lt;/template&gt;
@@ -313,7 +313,7 @@ export default {
     navItems: {
       type: Array,
       required: true,
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      default: () =&gt; [],</span></span>
+      default: new Array(),
     },
   },
   components: {
@@ -332,12 +332,12 @@ export default {
         minScrollbarLength: 40,
         suppressScrollX: true,
         wheelPropagation: false,
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        interceptRailY: styles =&gt; ({ ...styles, height: 0, }),</span></span>
+        interceptRailY: styles =&gt; ({ ...styles, height: 0, }),
       },
     };
   },
   methods: {
-<span class="fstat-no" title="function not covered" >    scrollHandle() {},</span>
+    scrollHandle() {},
   },
 };
 &lt;/script&gt;
@@ -358,7 +358,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 27 2018 14:22:28 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 03 2018 13:13:43 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
