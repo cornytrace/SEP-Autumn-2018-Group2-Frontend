@@ -84,6 +84,11 @@ export default {
       .get(this.apiUrl() + `/api/course-analytics/${courseId}/`, { headers: this.authHeader(), })
   },
 
+  getVideoDetails(courseId, videoId) {
+    return axios
+      .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/`, { headers: this.authHeader(), })
+  },
+
   validEmail(email) {
     if (
       email === "" ||
