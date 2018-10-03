@@ -2,18 +2,18 @@
   <div class="app flex-row align-items-center">
     <div class="container">
       <b-row class="justify-content-center">
-        <b-col md="6" sm="8">
+        <b-col md="8" sm="10">
           <b-card no-body class="mx-4">
             <b-card-body class="p-4">
               <b-form>
                 <h1>Register</h1>
                 <p class="text-muted">Create a user account</p>
-              
+
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
                     <b-input-group-text>@</b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input v-model="email" type="text" class="form-control" placeholder="Email" autocomplete="email" required/>
+                  <b-form-input v-model="email" type="text" class="form-control" placeholder="Email" autocomplete="email" required />
                 </b-input-group>
 
                 <b-input-group class="mb-3">
@@ -22,11 +22,10 @@
                   </select>
                 </b-input-group>
 
-                
-                <b-form-select v-model="selectedCourses" id="course-selector" multiple :select-size="4" :options="courses" text-field="course_name" value-field="pk" class="mb-3">
-                </b-form-select>
-                <span id="info-text">Hold down CTRL to select multiple courses.</span>
+                <multi-select v-model="selectedCourses" id="course-selector" multiple :select-size="4" :options="courses" tf="course_name" vf="pk" class="mb-3">
+                </multi-select>
 
+                <span id="info-text">Hold down CTRL to select multiple courses.</span>
 
                 <b-alert v-bind:class="{ hidden: isHidden }" id="email-warning" show variant="danger">{{warningText}}</b-alert>
 
@@ -43,9 +42,13 @@
 <script>
 import util from "@/util";
 import settings from "@/settings";
+import MultiSelect from "@/components/MultiSelect";
 
 export default {
   name: "Register",
+  components: {
+    MultiSelect,
+  },
   data: function() {
     return {
       email: "",
@@ -70,16 +73,11 @@ export default {
   methods: {
     doRegister() {
       if (util.validEmail(this.email)) {
-        var courses = [];
-        for (var course of this.selectedCourses) {
-          courses.push(this.getCourse(course));
-        }
-
         util
           .createUser({
             email: this.email,
             role: this.role,
-            courses: courses,
+            courses: this.selectedCourses,
           })
           .then(response => {
             this.$emit("update:users", response.data);
