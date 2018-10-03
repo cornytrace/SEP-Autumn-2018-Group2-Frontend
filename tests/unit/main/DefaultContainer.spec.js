@@ -33,17 +33,6 @@ describe('DefaultContainer.vue', () => {
   })
 
   let mountComponent = (components) => {
-    store.user = {
-      pk: 1,
-      email: "test@qdt.com",
-      role: "qdt",
-      courses: [{
-        course_id: "c2",
-        course_name: "Corse 2",
-        course_slug: "course2",
-        pk: 2,
-      },],
-    };
     return mount(DefaultContainer, {
       localVue,
       router,
@@ -82,6 +71,7 @@ describe('DefaultContainer.vue', () => {
     expect(wrapper.vm.setNavigation).toHaveBeenCalled()
   })
 
+  // Check different levels
   it('Check level 0 platform default', () => {
     const wrapper = mountComponent()
     wrapper.setData({
@@ -93,6 +83,33 @@ describe('DefaultContainer.vue', () => {
     expect(wrapper.vm.selectedPlatform).toBe(settings.platform_default)
   })
 
+  it('Check videos in nav', () => {
+    moxios.stubRequest(util.apiUrl() + '/api/video-analytics/1/', {
+      status: 200,
+      response: [{ name: "video1", item_id: "id1", },],
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test/videos")
+    // TODO EXPECT
+  })
+
+  it('Check videos rejected', () => {
+    // For coverability, nothing is done here, nav remains empty
+    moxios.stubRequest(util.apiUrl() + '/api/video-analytics/1/', {
+      status: 403,
+      response: { "Error": "Error occurred", },
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test/videos")
+  })
+
+  it('Check quizzes in nav', () => {
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test/quizzes")
+    expect(wrapper.vm.top_nav[3].length).not.toBe(0)
+    // TODO FINALIZE
+  })
+
   it('Check over max level', () => {
     const wrapper = mountComponent()
     // Add router that is 3 longer than the max nav level
@@ -100,7 +117,6 @@ describe('DefaultContainer.vue', () => {
     for (var i = 0; i < settings.max_nav_level + 3; i++) {
       x += "/a";
     }
-    console.log(x);
     wrapper.vm.setNavigation(x)
     expect(wrapper.vm.level).toBe(settings.max_nav_level)
   })
