@@ -181,13 +181,14 @@ import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
 import RadarGraph from "@/views/charts/RadarGraph";
 import colors from "@/colors";
 import util from "@/util";
+import strings from "@/settings";
 
 export default {
   name: "CourseDetail",
   data: function() {
     return {
       isLoading: false,
-      loadingText: "Loading...",
+      loadingText: strings.loading,
       qdt: this.$store.state.user.role === "qdt",
       show: true,
       courseSlug: "",
@@ -286,7 +287,7 @@ export default {
   methods: {
     getCourseData() {
       this.isLoading = true;
-      this.loadingText = "Loading...";
+      this.loadingText = strings.loading;
       var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
       );

@@ -9,6 +9,11 @@ import DefaultContainer from '@/containers/DefaultContainer'
 import router from '@/router'
 import mockUtils from '../mockUtils'
 
+import settings from '@/settings'
+import util from '@/util'
+import strings from '@/strings'
+import moxios from 'moxios'
+
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 
@@ -20,6 +25,11 @@ describe('DefaultContainer.vue', () => {
 
   beforeEach(() => {
     store = mockUtils.mockStore()
+    moxios.install();
+  })
+
+  afterEach(function () {
+    moxios.uninstall()
   })
 
   let mountComponent = (components) => {
@@ -32,7 +42,7 @@ describe('DefaultContainer.vue', () => {
         course_name: "Corse 2",
         course_slug: "course2",
         pk: 2,
-      }, ],
+      },],
     };
     return mount(DefaultContainer, {
       localVue,
@@ -70,5 +80,95 @@ describe('DefaultContainer.vue', () => {
     wrapper.vm.setNavigation = jest.fn()
     wrapper.vm.$router.push("/coursera")
     expect(wrapper.vm.setNavigation).toHaveBeenCalled()
+  })
+
+  it('Check level 0 platform default', () => {
+    const wrapper = mountComponent()
+    wrapper.setData({
+      level_0: [
+        "/home",
+      ],
+    });
+    wrapper.vm.setNavigation("/home");
+    expect(wrapper.vm.selectedPlatform).toBe(settings.platform_default)
+  })
+
+  it('Check over max level', () => {
+    const wrapper = mountComponent()
+    // Add router that is 3 longer than the max nav level
+    var x = ""
+    for (var i = 0; i < settings.max_nav_level + 3; i++) {
+      x += "/a";
+    }
+    console.log(x);
+    wrapper.vm.setNavigation(x)
+    expect(wrapper.vm.level).toBe(settings.max_nav_level)
+  })
+
+  // Dropdowns
+  it('Platform dropdown', () => {
+    const wrapper = mountComponent()
+    const push = jest.fn();
+    wrapper.vm.$router.push = push;
+    wrapper.find("#platform-select").setValue("coursera");
+    return wrapper.vm.$nextTick().then(function () {
+      expect(push).toHaveBeenCalled();
+    })
+  })
+
+  it('Course dropdown', () => {
+    const wrapper = mountComponent()
+    const push = jest.fn();
+    wrapper.vm.$router.push = push;
+    wrapper.find("#platform-select").setValue("coursera");
+    wrapper.find("#course-select").setValue("course-1");
+
+    return wrapper.vm.$nextTick().then(function () {
+      expect(push).toHaveBeenCalled();
+    })
+  })
+
+  // Level switching
+  it('GoUp function works', () => {
+    const wrapper = mountComponent()
+    wrapper.setData({
+      level: 2,
+    })
+    wrapper.vm.goUp();
+    expect(wrapper.vm.level).toBe(1)
+  })
+
+  it('GoDown function works', () => {
+    const wrapper = mountComponent()
+    wrapper.setData({
+      level: 1,
+    })
+    wrapper.vm.goDown();
+    expect(wrapper.vm.level).toBe(2)
+  })
+
+  // Connection bar
+  it('Test auth', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/testview/', {
+      status: 200,
+      response: { "success": "You have a valid access token", },
+    });
+    const wrapper = mountComponent()
+    moxios.wait(function () {
+      expect(wrapper.vm.apiStatus).toBe(strings.ok)
+      done()
+    });
+  })
+
+  it('Test auth decline', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/testview/', {
+      status: 403,
+      response: {},
+    });
+    const wrapper = mountComponent()
+    moxios.wait(function () {
+      expect(wrapper.vm.apiStatus).toBe(strings.connection_error)
+      done()
+    });
   })
 })

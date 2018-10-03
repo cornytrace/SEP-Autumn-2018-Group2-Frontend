@@ -7,7 +7,7 @@
         <img src="../../public/img/logo.svg" alt="Logo" class="logo-style">
       </b-link>
         <SidebarToggler class="d-md-down-none" display="lg" />
-        <b-form-select class="header-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
+        <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
         <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
         <b-navbar-nav class="custom-nav ml-auto">
           <DefaultHeaderDropdownAccnt />
@@ -45,6 +45,7 @@
 <script>
 import nav from "@/nav";
 import settings from "@/settings";
+import strings from "@/strings";
 import {
   Header as AppHeader,
   SidebarToggler,
@@ -92,7 +93,7 @@ export default {
   },
   data() {
     return {
-      apiStatus: "Connecting...",
+      apiStatus: strings.connecting,
       isPrimary: false,
       level: 0,
       top_nav: [],
@@ -122,17 +123,16 @@ export default {
     util
       .testAuth()
       .then(() => {
-        console.log("ok");
-        this.apiStatus = "OK";
+        this.apiStatus = strings.ok;
         this.isPrimary = true;
       })
       .catch(() => {
-        this.apiStatus = "Connection Error";
+        this.apiStatus = strings.connection_error;
       });
   },
   mounted() {
     this.platformOptions = [
-      { value: settings.platform_default, text: "Select platform", },
+      { value: settings.platform_default, text: strings.select_platform, },
     ];
 
     this.setPlatforms();
@@ -151,7 +151,7 @@ export default {
       var routes = [];
       var path = "";
       for (var subroute of this.$route.path.split("/")) {
-        if (subroute !== "home") {
+        if (subroute !== strings.home) {
           path += subroute + "/";
           routes.push({
             text: subroute,
@@ -159,7 +159,7 @@ export default {
           });
         }
       }
-      routes[0].text = "Home";
+      routes[0].text = strings.home;
       routes[0].to = "/";
       return routes;
     },
@@ -168,7 +168,7 @@ export default {
     goUp: function() {
       this.level--;
     },
-    doDown: function() {
+    goDown: function() {
       this.level++;
     },
     // Update the navigation menus.
@@ -237,14 +237,14 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: "Select course",
+          text: strings.select_course,
         },
       ];
     },
     setPlatforms() {
       this.top_nav[0] = [];
       this.top_nav[0].push({
-        name: "Home",
+        name: strings.home,
         icon: "cui-home",
         url: "/home",
       });
@@ -264,7 +264,7 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: "Select course",
+          text: strings.select_course,
         },
       ];
       this.top_nav[1] = [];

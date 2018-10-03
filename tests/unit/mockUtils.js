@@ -32,6 +32,8 @@ export default {
         setExpire: jest.fn(),
         setCourses: jest.fn(),
         setUser: jest.fn(),
+        setSelectedPlatform: jest.fn(),
+        setSelectedCourse: jest.fn(),
       },
     })
   },
