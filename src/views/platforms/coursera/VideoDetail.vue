@@ -127,7 +127,7 @@
 
     <!-- Loading screen -->
     <div class="loading-content" v-if="isLoading">
-      <h2>Loading....</h2>
+      <h2>{{loadingText}}</h2>
     </div>
   </div>
 </template>
@@ -135,40 +135,90 @@
 <script>
 import LineGraph from "@/views/charts/LineGraph";
 import colors from "@/colors";
+import util from "@/util";
 
 export default {
   name: "VideoDetail",
   data: function() {
     return {
+      courseSlug: "",
+      videoData: {},
+      videoId: "",
+      videoName: "",
+      courseId: "",
+
       qdt: this.$store.state.user.role === "qdt",
       isLoading: false,
-      video_title: "Lecture " + this.$route.params.videoid + " - 12/05/2018",
-      likes: 64,
-      dislikes: 21,
-      plays: 592,
-      full_plays: 263,
-      ratio: 0.83,
-      comments: 23,
+      loadingText: "Loading...",
+      video_title: "",
+      likes: 0,
+      dislikes: 0,
+      plays: 0,
+      full_plays: 0,
+      ratio: 0,
+      comments: 0,
       maintainAspectRatio: false,
       chart_data: [
         {
           label: "Video plays distribution",
           backgroundColor: colors.lightGrey,
           borderColor: colors.blue,
-          data: [560, 480, 465, 423, 403, 363, 386, 362, 321, 253, 98,],
+          data: [],
         },
       ],
-      chart_labels: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50,],
+      chart_labels: [],
     };
   },
   components: {
     LineGraph,
   },
+  beforeMount() {
+    this.courseSlug = this.$route.params.courseid;
+    this.videoId = this.$route.params.videoid;
+    this.getVideoData();
+  },
 
   beforeRouteUpdate(to, from, next) {
-    console.log(to);
-    this.video_title = "Lecture " + to.params.videoid + " - 12/05/2018";
+    // this.video_title = "Lecture " + to.params.videoid + " - 12/05/2018";
+    this.courseSlug = to.params.courseid;
+    this.videoId = to.params.videoid;
+    this.getVideoData();
     next();
+  },
+
+  methods: {
+    getVideoData() {
+      this.isLoading = true;
+      var currentCourse = this.$store.state.user.courses.find(
+        x => x.course_slug === this.courseSlug
+      );
+      if (currentCourse) {
+        this.courseId = currentCourse.course_id;
+        util
+          .getVideoDetails(this.courseId, this.videoId)
+          .then(response => {
+            this.videoData = response.data;
+            this.setVideoData();
+          })
+          .catch(err => {
+            console.log(err);
+            this.loadingText = "Oh no! Something went wrong";
+          });
+      }
+    },
+    setVideoData() {
+      console.log(this.videoData);
+      this.likes = this.videoData.video_likes;
+      (this.video_title = this.videoData.name),
+        (this.dislikes = this.videoData.video_dislikes),
+        (this.plays = this.videoData.watched_video),
+        (this.full_plays = this.videoData.finsihed_video),
+        (this.ratio =
+          (this.videoData.video_likes * 100) /
+          (this.videoData.video_likes + this.videoData.video_dislikes)),
+        (this.comments = this.videoData.video_comments),
+        (this.isLoading = false);
+    },
   },
 };
 </script>
