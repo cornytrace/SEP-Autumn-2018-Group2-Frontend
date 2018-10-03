@@ -35,4 +35,14 @@ describe('BottombarNav.vue', () => {
     const wrapper = mountComponent()
     expect(wrapper.is(BottombarNav)).toBe(true)
   })
+  it('Coverability unused functions', () => {
+    const wrapper = mountComponent({
+      propsData: {
+        navItems: null,
+      },
+    })
+    // Coverability, functions are unused but needed.
+    wrapper.vm.psSettings.interceptRailY();
+    wrapper.vm.scrollHandle();
+  })
 })

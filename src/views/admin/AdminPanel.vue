@@ -5,8 +5,10 @@
         <h4>Admin dashboard</h4>
       </b-link>
       <b-navbar-nav>
-      <router-link to="register"><b-button><i class="fa fa-plus"></i>Add user</b-button></router-link>
-      <b-button @click="doLogout"><i class="fa fa-sign-out"></i>Logout</b-button>
+        <router-link to="register">
+          <b-button><i class="fa fa-plus"></i>Add user</b-button>
+        </router-link>
+        <b-button @click="doLogout" id="logout-button"><i class="fa fa-sign-out"></i>Logout</b-button>
       </b-navbar-nav>
     </AppHeader>
     <div class="app-body">
