@@ -1,5 +1,5 @@
 <template>
-  <nav class="sidebar-nav">
+  <nav class="sidebar-nav sidebar-nav-bottom">
     <VuePerfectScrollbar class="scroll-area" :settings="psSettings" @ps-scroll-y="scrollHandle">
       <ul class="nav">
         <template v-for="(item, index) in navItems">
@@ -93,12 +93,17 @@ export default {
 
 <style scoped lang="css">
 .scroll-area {
-  position: absolute;
-  height: 100%;
+  position: relative;
   margin: auto;
 }
 .nav {
   flex-direction: column;
   justify-content: flex-end;
+}
+.sidebar-nav {
+  flex: 1 1 auto;
+}
+.sidebar-nav-bottom {
+  flex: 0 1 auto;
 }
 </style>
