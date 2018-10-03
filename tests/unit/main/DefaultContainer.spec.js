@@ -149,7 +149,7 @@ describe('DefaultContainer.vue', () => {
 
   // Connection bar
   it('Test auth', (done) => {
-    moxios.stubRequest(util.apiUrl() + '/api/testview/', {
+    moxios.stubRequest(util.apiUrl() + '/testview/', {
       status: 200,
       response: { "success": "You have a valid access token", },
     });
@@ -161,7 +161,7 @@ describe('DefaultContainer.vue', () => {
   })
 
   it('Test auth decline', (done) => {
-    moxios.stubRequest(util.apiUrl() + '/api/testview/', {
+    moxios.stubRequest(util.apiUrl() + '/testview/', {
       status: 403,
       response: {},
     });

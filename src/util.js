@@ -18,7 +18,7 @@ export default {
 
   testAuth() {
     return axios
-      .get(this.apiUrl() + "/api/testview/", {
+      .get(this.apiUrl() + "/testview/", {
         headers: this.authHeader(),
       })
   },
