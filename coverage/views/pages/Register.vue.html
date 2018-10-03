@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.67% </span>
+        <span class="strong">85% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>22/24</span>
+        <span class='fraction'>17/20</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">55.56% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/9</span>
+        <span class='fraction'>5/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90.91% </span>
+        <span class="strong">85% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/22</span>
+        <span class='fraction'>17/20</span>
       </div>
     </div>
   </div>
@@ -157,10 +157,7 @@
 112
 113
 114
-115
-116
-117</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+115</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,6 +201,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -230,12 +231,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,7 +255,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -279,18 +275,18 @@
   &lt;div class="app flex-row align-items-center"&gt;
     &lt;div class="container"&gt;
       &lt;b-row class="justify-content-center"&gt;
-        &lt;b-col md="6" sm="8"&gt;
+        &lt;b-col md="8" sm="10"&gt;
           &lt;b-card no-body class="mx-4"&gt;
             &lt;b-card-body class="p-4"&gt;
               &lt;b-form&gt;
                 &lt;h1&gt;Register&lt;/h1&gt;
                 &lt;p class="text-muted"&gt;Create a user account&lt;/p&gt;
-              
+&nbsp;
                 &lt;b-input-group class="mb-3"&gt;
                   &lt;b-input-group-prepend&gt;
                     &lt;b-input-group-text&gt;@&lt;/b-input-group-text&gt;
                   &lt;/b-input-group-prepend&gt;
-                  &lt;b-form-input v-model="email" type="text" class="form-control" placeholder="Email" autocomplete="email" required/&gt;
+                  &lt;b-form-input v-model="email" type="text" class="form-control" placeholder="Email" autocomplete="email" required /&gt;
                 &lt;/b-input-group&gt;
 &nbsp;
                 &lt;b-input-group class="mb-3"&gt;
@@ -299,11 +295,10 @@
                   &lt;/select&gt;
                 &lt;/b-input-group&gt;
 &nbsp;
-                
-                &lt;b-form-select v-model="selectedCourses" id="course-selector" multiple :select-size="4" :options="courses" text-field="course_name" value-field="pk" class="mb-3"&gt;
-                &lt;/b-form-select&gt;
-                &lt;span id="info-text"&gt;Hold down CTRL to select multiple courses.&lt;/span&gt;
+                &lt;multi-select v-model="selectedCourses" id="course-selector" multiple :select-size="4" :options="courses" tf="course_name" vf="pk" class="mb-3"&gt;
+                &lt;/multi-select&gt;
 &nbsp;
+                &lt;span id="info-text"&gt;Hold down CTRL to select multiple courses.&lt;/span&gt;
 &nbsp;
                 &lt;b-alert v-bind:class="{ hidden: isHidden }" id="email-warning" show variant="danger"&gt;{{warningText}}&lt;/b-alert&gt;
 &nbsp;
@@ -320,9 +315,13 @@
 &lt;script&gt;
 import util from "@/util";
 import settings from "@/settings";
+import MultiSelect from "@/components/MultiSelect";
 &nbsp;
 export default {
   name: "Register",
+  components: {
+    MultiSelect,
+  },
   data: function() {
     return {
       email: "",
@@ -347,16 +346,11 @@ export default {
   methods: {
     doRegister() {
       if (util.validEmail(this.email)) {
-        var courses = [];
-        for (var course of this.selectedCourses) {
-          courses.push(this.getCourse(course));
-        }
-&nbsp;
         util
           .createUser({
             email: this.email,
             role: this.role,
-            courses: courses,
+            courses: this.selectedCourses,
           })
           .then(response =&gt; {
             this.$emit("update:users", response.data);
@@ -374,8 +368,8 @@ export default {
         this.isHidden = false;
       }
     },
-    getCourse(courseId) {
-<span class="fstat-no" title="function not covered" >      return this.courses.find(course =&gt; course.pk === courseId);</span>
+<span class="fstat-no" title="function not covered" >    getCourse(courseId) {</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.courses.find(course =&gt; course.pk === courseId);</span></span>
     },
   },
 };
@@ -397,7 +391,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 03 2018 13:13:43 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 03 2018 13:39:55 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
