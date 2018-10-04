@@ -212,10 +212,12 @@ export default {
       (this.video_title = this.videoData.name),
         (this.dislikes = this.videoData.video_dislikes),
         (this.plays = this.videoData.watched_video),
-        (this.full_plays = this.videoData.finsihed_video),
+        (this.full_plays = this.videoData.finished_video),
         (this.ratio =
-          (this.videoData.video_likes * 100) /
-          (this.videoData.video_likes + this.videoData.video_dislikes)),
+          Math.round(
+            (this.videoData.video_likes * 100) /
+              (this.videoData.video_likes + this.videoData.video_dislikes + 1)
+          ) / 100),
         (this.comments = this.videoData.video_comments),
         (this.isLoading = false);
     },

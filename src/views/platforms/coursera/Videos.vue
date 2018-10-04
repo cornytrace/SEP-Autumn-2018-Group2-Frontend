@@ -4,7 +4,7 @@
       <b-col sm="4" lg="4" v-for="video of videos" :key="video.name">
         <b-card no-body class="bg">
           <b-card-header>
-            <router-link :to="link + '/' + video.id">{{ video.name }}</router-link>
+            <router-link :to="link + '/' + video.item_id">{{ video.name }}</router-link>
           </b-card-header>
           <b-card-body class="pb-0">
             <b-card no-body class="bg-primary">
@@ -23,24 +23,45 @@
 </template>
 
 <script>
-import settings from "@/settings";
+//import settings from "@/settings";
+import util from "@/util";
 
 export default {
   name: "Videos",
   data() {
     return {
-      link: "",
+      courseId: "",
+      courseSlug: "",
       videos: [],
+      link: this.$route.fullPath,
     };
   },
   // Set the link variable to the path of the current page.
   beforeMount() {
-    this.link = this.$route.path;
+    this.courseSlug = this.$route.params.courseid;
+    this.getVideos();
+  },
+  methods: {
+    getVideos() {
+      var currentCourse = this.$store.state.user.courses.find(
+        x => x.course_slug === this.courseSlug
+      );
+      if (currentCourse) {
+        this.courseId = currentCourse.course_id;
+        console.log(currentCourse.course_id);
+        util
+          .getVideos(this.courseId)
+          .then(response => {
+            console.log(response.data);
+            this.videos = response.data;
+          })
+          .catch(err => {
+            console.log(err);
+          });
 
-    // Mock function, should be replaced with the proper videos
-    for (var video of settings.videos) {
-      this.videos.push({ id: video.id, name: video.name, });
-    }
+        console.log(this.videos);
+      }
+    },
   },
 };
 </script>
