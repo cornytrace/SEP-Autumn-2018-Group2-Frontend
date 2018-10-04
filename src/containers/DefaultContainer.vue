@@ -4,7 +4,7 @@
       <SidebarToggler class="d-lg-none" display="md" mobile />
       <b-link class="nav-brand logo-link" to="/">
         <!-- <h4>DASH-IT</h4> -->
-        <img src="../../public/img/logo.svg" alt="Logo" class="logo-style">
+        <img src="../../public/img/logo.png" alt="Logo" class="logo-style">
       </b-link>
         <SidebarToggler class="d-md-down-none" display="lg" />
         <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
@@ -358,9 +358,10 @@ export default {
 }
 
 .logo-style {
-  width: 100%;
   margin-bottom: 0;
   margin-left: 15px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #course-select {
