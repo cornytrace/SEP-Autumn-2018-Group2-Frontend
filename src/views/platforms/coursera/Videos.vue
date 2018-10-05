@@ -39,7 +39,7 @@ export default {
   // Set the link variable to the path of the current page.
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
-    console.log(this.$route.params.courseid);
+
     this.getVideos();
   },
   methods: {
