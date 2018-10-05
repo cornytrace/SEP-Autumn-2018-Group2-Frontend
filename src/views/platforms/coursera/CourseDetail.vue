@@ -155,7 +155,7 @@
         <b-col lg="6" xl="4">
           <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
             <div class="chart-wrapper">
-              <plotly-graph :data=plotlyData></plotly-graph>
+              <chart :data=plotlyData></chart>
             </div>
           </b-card>
         </b-col>
@@ -181,7 +181,7 @@
 </template>
 
 <script>
-import PlotlyGraph from "@/views/charts/PlotlyGraph";
+import Chart from "@/views/charts/Chart";
 import LineGraph from "@/views/charts/LineGraph";
 import ScatterGraph from "@/views/charts/ScatterGraph";
 import BarGraph from "@/views/charts/BarGraph";
@@ -190,7 +190,7 @@ import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
 import RadarGraph from "@/views/charts/RadarGraph";
 import colors from "@/colors";
 import util from "@/util";
-import strings from "@/settings";
+import strings from "@/strings";
 
 export default {
   name: "CourseDetail",
@@ -278,7 +278,7 @@ export default {
     };
   },
   components: {
-    PlotlyGraph,
+    Chart,
     LineGraph,
     ScatterGraph,
     BarGraph,

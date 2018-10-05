@@ -9,14 +9,12 @@
           </div>
         </b-card>
       </b-col>
-      <plotly-graph></plotly-graph>
     </b-row>
   </div>
 </template>
 
 <script>
 import util from "@/util";
-import PlotlyGraph from "@/views/charts/PlotlyGraph";
 
 export default {
   name: "Courses",
@@ -30,9 +28,6 @@ export default {
   mounted: function() {
     console.log(this.$store.state.user);
     this.courses = this.$store.state.courses;
-  },
-  components: {
-    PlotlyGraph,
   },
 };
 </script>

@@ -116,9 +116,10 @@
       <b-row>
         <!-- Graphs -->
         <b-col md="12">
-          <b-card header="Grade distribution">
+          <b-card header="Video views over time">
             <div class="chart-wrapper">
-              <line-graph class="graph" :aspectRatio=maintainAspectRatio :beginAtZero=true :data=chart_data :labels=chart_labels></line-graph>
+              <!-- <line-graph class="graph" :aspectRatio=maintainAspectRatio :beginAtZero=true :data=chart_data :labels=chart_labels></line-graph> -->
+              <chart :data=chart_data :layout=chartLayout></chart>
             </div>
           </b-card>
         </b-col>
@@ -136,6 +137,7 @@
 import LineGraph from "@/views/charts/LineGraph";
 import colors from "@/colors";
 import util from "@/util";
+import Chart from "@/views/charts/Chart";
 
 export default {
   name: "VideoDetail",
@@ -158,19 +160,13 @@ export default {
       ratio: 0,
       comments: 0,
       maintainAspectRatio: false,
-      chart_data: [
-        {
-          label: "Video plays distribution",
-          backgroundColor: colors.lightGrey,
-          borderColor: colors.blue,
-          data: [],
-        },
-      ],
-      chart_labels: [],
+      chart_data: [],
+      chartLayout: {},
     };
   },
   components: {
     LineGraph,
+    Chart,
   },
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
@@ -207,19 +203,81 @@ export default {
       }
     },
     setVideoData() {
-      console.log(this.videoData);
       this.likes = this.videoData.video_likes;
-      (this.video_title = this.videoData.name),
-        (this.dislikes = this.videoData.video_dislikes),
-        (this.plays = this.videoData.watched_video),
-        (this.full_plays = this.videoData.finished_video),
-        (this.ratio =
+      this.video_title = this.videoData.name;
+      this.dislikes = this.videoData.video_dislikes;
+      this.plays = this.videoData.watched_video;
+      this.full_plays = this.videoData.finished_video;
+      if (
+        this.videoData.video_likes !== 0 ||
+        this.videoData.video_dislikes !== 0
+      ) {
+        this.ratio =
           Math.round(
             (this.videoData.video_likes * 100) /
               (this.videoData.video_likes + this.videoData.video_dislikes + 1)
-          ) / 100),
-        (this.comments = this.videoData.video_comments),
-        (this.isLoading = false);
+          ) / 100;
+      } else {
+        this.ratio = 0;
+      }
+
+      this.chart_data[0] = {};
+      this.chart_data[0].x = [];
+      this.chart_data[0].y = [];
+      this.chartLayout = {};
+      this.chartLayout.shapes = [];
+      let high = 0;
+      let highx = -1;
+      let low = Infinity;
+      let lowx = -1;
+      for (let view of this.videoData.views_over_runtime) {
+        if (view[1] > high) {
+          high = view[1];
+          highx = view[0];
+        }
+        if (view[1] <= low) {
+          low = view[1];
+          lowx = view[0];
+        }
+        this.chart_data[0].x.push(view[0]);
+        this.chart_data[0].y.push(view[1]);
+      }
+      if (highx !== -1) {
+        this.chartLayout.shapes.push({
+          type: "line",
+          // x-reference is assigned to the x-values
+          xref: "x",
+          // y-reference is assigned to the plot paper [0,1]
+          yref: "paper",
+          x0: highx,
+          y0: 0,
+          x1: highx,
+          y1: 1,
+          line: {
+            color: colors.green,
+            width: 2,
+          },
+        });
+      }
+      if (lowx !== -1) {
+        this.chartLayout.shapes.push({
+          type: "line",
+          // x-reference is assigned to the x-values
+          xref: "x",
+          // y-reference is assigned to the plot paper [0,1]
+          yref: "paper",
+          x0: lowx,
+          y0: 0,
+          x1: lowx,
+          y1: 1,
+          line: {
+            color: colors.red,
+            width: 2,
+          },
+        });
+      }
+      this.comments = this.videoData.video_comments;
+      this.isLoading = false;
     },
   },
 };
