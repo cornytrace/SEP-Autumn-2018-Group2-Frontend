@@ -8,7 +8,7 @@ import mockUtils from '../mockUtils'
 import BootstrapVue from 'bootstrap-vue'
 import CourseDetail from '@/views/platforms/coursera/CourseDetail'
 
-
+import strings from '@/strings'
 import moxios from 'moxios'
 import util from '@/util'
 
@@ -125,7 +125,7 @@ describe('CourseDetail.vue', () => {
     });
     const wrapper = mountComponent();
     moxios.wait(function () {
-      expect(wrapper.html()).toContain("Error")
+      expect(wrapper.html()).toContain(strings.connection_error)
       done();
     })
   })

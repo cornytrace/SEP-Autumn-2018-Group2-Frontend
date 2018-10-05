@@ -303,7 +303,7 @@ export default {
             this.setCourseData(response.data);
           })
           .catch(err => {
-            this.loadingText = "Error occurred";
+            this.loadingText = strings.connection_error;
             console.log(err);
           });
       }
