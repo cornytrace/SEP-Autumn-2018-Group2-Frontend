@@ -306,7 +306,7 @@ export default {
     },
     getVideos() {
       util
-        .getAllVideos(this.currentCourse.course_id)
+        .getVideos(this.currentCourse.course_id)
         .then(response => {
           this.top_nav[3] = [];
           for (var video of response.data) {
