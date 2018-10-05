@@ -7,6 +7,7 @@ import {
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Videos from '@/views/platforms/coursera/Videos'
+import moxios from 'moxios'
 
 import mockUtils from '../mockUtils'
 
@@ -19,6 +20,11 @@ describe('Video.vue', () => {
 
   beforeEach(function () {
     store = mockUtils.mockStore()
+    moxios.install()
+  })
+
+  afterEach(function () {
+    moxios.uninstall()
   })
 
   // TODO CONTENT
@@ -30,9 +36,6 @@ describe('Video.vue', () => {
       stubs: [],
     })
   }
-
-
-
 
   it('has a name', () => {
     expect(Videos.name).toMatch('Videos')

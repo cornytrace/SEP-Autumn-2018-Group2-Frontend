@@ -240,7 +240,7 @@ export default {
         this.ratio =
           Math.round(
             (this.videoData.video_likes * 100) /
-              (this.videoData.video_likes + this.videoData.video_dislikes + 1)
+              (this.videoData.video_likes + this.videoData.video_dislikes)
           ) / 100;
       } else {
         this.ratio = 0;
