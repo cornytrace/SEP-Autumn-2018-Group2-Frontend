@@ -76,7 +76,7 @@
 
         <!-- Link to next vid -->
         <b-col md="3" lg="2">
-          <div class="link-container">
+          <!-- <div class="link-container">
             <router-link to="/coursera/capstone-recommender-systems/videos/2">
               <b-card class="link-card">
                 <table>
@@ -92,15 +92,15 @@
                 </table>
               </b-card>
             </router-link>
-          </div>
+          </div> -->
           <div class="link-container">
-            <router-link to="/coursera/capstone-recommender-systems/videos/2">
+            <router-link :to=nextItemUrl>
               <b-card class="link-card">
                 <table>
                   <tr>
                     <th>
                       <span class="link-card-text">Next item</span>
-                      <span class="link-card-subtext">Quiz 2</span>
+                      <span class="link-card-subtext">{{ nextItemType }}</span>
                     </th>
                     <th class="icon-cell">
                       <i class="fa fa-2x fa-chevron-right"></i>
@@ -162,6 +162,8 @@ export default {
       maintainAspectRatio: false,
       chart_data: [],
       chartLayout: {},
+      nextItemUrl: "",
+      nextItemType: "",
     };
   },
   components: {
@@ -203,6 +205,27 @@ export default {
       }
     },
     setVideoData() {
+      console.log(this.videoData);
+      let type = this.videoData.next_item.type;
+      if (type === 1) {
+        this.nextItemType = "Quiz";
+        this.nextItemUrl =
+          "/" +
+          this.$store.state.selectedPlatform +
+          "/" +
+          this.$store.state.selectedCourse +
+          "/quizzes/" +
+          this.videoData.next_item.item_id;
+      } else if (type === 5) {
+        this.nextItemType = "Video";
+        this.nextItemUrl =
+          "/" +
+          this.$store.state.selectedPlatform +
+          "/" +
+          this.$store.state.selectedCourse +
+          "/videos/" +
+          this.videoData.next_item.item_id;
+      }
       this.likes = this.videoData.video_likes;
       this.video_title = this.videoData.name;
       this.dislikes = this.videoData.video_dislikes;

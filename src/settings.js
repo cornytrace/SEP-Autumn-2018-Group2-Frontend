@@ -30,6 +30,8 @@ export default {
   ],
 
   // Constants
+  quiz_id: 5,
+  video_id: 1,
   max_nav_level: 3,
   course_default: "course-select",
   platform_default: "platform-select",

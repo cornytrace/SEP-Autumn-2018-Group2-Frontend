@@ -152,14 +152,6 @@
           </b-card>
         </b-col>
 
-        <b-col lg="6" xl="4">
-          <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
-            <div class="chart-wrapper">
-              <chart :data=plotlyData></chart>
-            </div>
-          </b-card>
-        </b-col>
-
         <!-- SHOULD HAVE -->
 
         <!-- <b-col lg="6" xl="4" v-if="qdt">
