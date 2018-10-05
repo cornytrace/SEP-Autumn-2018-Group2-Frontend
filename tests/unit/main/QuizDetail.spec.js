@@ -1,7 +1,8 @@
 import Vuex from 'vuex'
 import {
   mount,
-  createLocalVue
+  createLocalVue,
+  shallowMount
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import QuizDetail from '@/views/platforms/coursera/QuizDetail'
@@ -32,6 +33,7 @@ describe('QuizDetail.vue', () => {
         'DoughnutGraph',
         'PolarAreaGraph',
         'RadarGraph',
+        'Chart',
       ],
     })
   }

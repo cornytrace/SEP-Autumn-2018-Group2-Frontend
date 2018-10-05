@@ -5,7 +5,7 @@
 
 
 <script>
-import Plotly from "plotly.js-dist";
+import Plotly from "plotly.js";
 
 export default {
   props: {

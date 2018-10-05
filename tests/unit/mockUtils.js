@@ -4,6 +4,11 @@ import store from '@/store'
 export default {
   initUtils: () => {
     Element.prototype.scrollTo = () => { }
+    function noOp() { }
+
+    if (typeof window.URL.createObjectURL === 'undefined') {
+      Object.defineProperty(window.URL, 'createObjectURL', { value: noOp, })
+    }
   },
   mockStore: () => {
     let actions = {

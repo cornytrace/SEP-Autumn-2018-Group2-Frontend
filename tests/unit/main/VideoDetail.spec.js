@@ -1,22 +1,21 @@
-import Vue from 'vue'
+import mockUtils from '../mockUtils'
+mockUtils.initUtils()
 import Vuex from 'vuex'
 import {
-  shallowMount,
   mount,
   createLocalVue
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import VideoDetail from '@/views/platforms/coursera/VideoDetail'
-
-import mockUtils from '../mockUtils'
 import router from '@/router'
+
+const Plotly = jest.mock('plotly.js')
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
 localVue.use(Vuex)
 
 describe('VideoDetail.vue', () => {
-  mockUtils.initUtils()
   let store
 
   beforeEach(function () {
@@ -29,7 +28,7 @@ describe('VideoDetail.vue', () => {
       store,
       router,
       stubs: ['LineGraph',
-
+        'Chart',
       ],
     })
   }

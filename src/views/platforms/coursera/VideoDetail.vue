@@ -205,7 +205,7 @@ export default {
       }
     },
     setVideoData() {
-      console.log(this.videoData);
+      // Set url to the next item
       let type = this.videoData.next_item.type;
       if (type === 1) {
         this.nextItemType = "Quiz";
@@ -226,6 +226,8 @@ export default {
           "/videos/" +
           this.videoData.next_item.item_id;
       }
+
+      // Set all statistics
       this.likes = this.videoData.video_likes;
       this.video_title = this.videoData.name;
       this.dislikes = this.videoData.video_dislikes;
@@ -268,9 +270,7 @@ export default {
       if (highx !== -1) {
         this.chartLayout.shapes.push({
           type: "line",
-          // x-reference is assigned to the x-values
           xref: "x",
-          // y-reference is assigned to the plot paper [0,1]
           yref: "paper",
           x0: highx,
           y0: 0,
@@ -285,9 +285,7 @@ export default {
       if (lowx !== -1) {
         this.chartLayout.shapes.push({
           type: "line",
-          // x-reference is assigned to the x-values
           xref: "x",
-          // y-reference is assigned to the plot paper [0,1]
           yref: "paper",
           x0: lowx,
           y0: 0,

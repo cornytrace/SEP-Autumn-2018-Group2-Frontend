@@ -3,20 +3,21 @@ import {
   mount,
   createLocalVue
 } from '@vue/test-utils'
+import mockUtils from '../mockUtils'
+
+mockUtils.initUtils()
 import BootstrapVue from 'bootstrap-vue'
 import CourseDetail from '@/views/platforms/coursera/CourseDetail'
 
-import mockUtils from '../mockUtils'
+
 import moxios from 'moxios'
 import util from '@/util'
-import { doesNotReject } from 'assert';
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)
 localVue.use(Vuex)
 
 describe('CourseDetail.vue', () => {
-  mockUtils.initUtils()
   let store
 
   beforeEach(function () {
@@ -45,6 +46,7 @@ describe('CourseDetail.vue', () => {
         'DoughnutGraph',
         'PolarAreaGraph',
         'RadarGraph',
+        'Chart',
       ],
     })
   }
