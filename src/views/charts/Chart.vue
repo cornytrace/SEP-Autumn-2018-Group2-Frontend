@@ -18,19 +18,23 @@ export default {
     },
   },
   mounted() {
-    this.layout.margin = {
+    let layoutTemp = new Object();
+    if (this.layout) {
+      layoutTemp = this.layout;
+    }
+    layoutTemp.margin = {
       l: 30,
       r: 30,
       b: 30,
       t: 30,
       pad: 4,
     };
-    this.layout.yaxis = {
+    layoutTemp.yaxis = {
       rangemode: "tozero",
       showline: true,
       zeroline: true,
     };
-    Plotly.newPlot("graph-area", this.data, this.layout, {
+    Plotly.newPlot("graph-area", this.data, layoutTemp, {
       displaylogo: false,
     });
   },
