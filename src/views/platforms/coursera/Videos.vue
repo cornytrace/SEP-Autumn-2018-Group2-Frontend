@@ -1,5 +1,6 @@
 <template>
   <div class="animated fadeIn">
+    <div class="stats-container" v-if="!isLoading">
     <b-row>
       <b-col sm="4" lg="4" v-for="video of videos" :key="video.name">
         <b-card no-body class="bg">
@@ -19,18 +20,25 @@
         </b-card>
       </b-col>
     </b-row>
+    </div>
+    <div class="loading-content" v-if="isLoading">
+      <h2>{{loadingText}}</h2>
+    </div>
   </div>
 </template>
 
 <script>
 //import settings from "@/settings";
 import util from "@/util";
+import strings from "@/strings";
 
 export default {
   name: "Videos",
   data() {
     return {
       courseId: "",
+      loadingText: strings.loading,
+      isLoading: false,
       courseSlug: "",
       videos: [],
       link: this.$route.fullPath,
@@ -39,7 +47,7 @@ export default {
   // Set the link variable to the path of the current page.
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
-
+    this.isLoading = true;
     this.getVideos();
   },
   methods: {
@@ -52,10 +60,12 @@ export default {
         util
           .getVideos(this.courseId)
           .then(response => {
+            this.isLoading = false;
             this.videos = response.data;
           })
           .catch(err => {
             console.log(err);
+            this.loadingText = strings.connection_error;
           });
       }
     },

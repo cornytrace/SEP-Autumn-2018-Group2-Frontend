@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import strings from "@/strings";
 import LineGraph from "@/views/charts/LineGraph";
 import colors from "@/colors";
 import util from "@/util";
@@ -200,7 +201,7 @@ export default {
           })
           .catch(err => {
             console.log(err);
-            this.loadingText = "Oh no! Something went wrong";
+            this.loadingText = strings.connection_error;
           });
       }
     },
