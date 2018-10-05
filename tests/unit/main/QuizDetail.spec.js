@@ -15,7 +15,6 @@ localVue.use(BootstrapVue)
 localVue.use(Vuex)
 
 describe('QuizDetail.vue', () => {
-  mockUtils.initUtils()
   let store
 
   beforeEach(function () {

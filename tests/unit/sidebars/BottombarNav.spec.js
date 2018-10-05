@@ -11,7 +11,6 @@ import mockUtils from '../mockUtils'
 Vue.use(BootstrapVue)
 
 describe('BottombarNav.vue', () => {
-  mockUtils.initUtils()
 
   let mountComponent = (components) => {
     return mount(BottombarNav, {

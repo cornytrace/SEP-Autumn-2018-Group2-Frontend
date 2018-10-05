@@ -39,4 +39,5 @@ module.exports = {
     "!**/src/*.js",
   ],
   coverageReporters: ["html", "text-summary", ],
+  setupTestFrameworkScriptFile: "<rootDir>/tests/setupTests.js",
 }

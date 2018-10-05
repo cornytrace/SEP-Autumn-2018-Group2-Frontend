@@ -12,7 +12,6 @@ localVue.use(VueRouter)
 const router = new VueRouter()
 
 localVue.use(BootstrapVue)
-mockUtils.initUtils();
 let store
 
 beforeEach(() => {

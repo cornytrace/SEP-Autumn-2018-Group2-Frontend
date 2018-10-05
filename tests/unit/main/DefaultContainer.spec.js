@@ -20,7 +20,6 @@ localVue.use(VueRouter)
 localVue.use(BootstrapVue)
 
 describe('DefaultContainer.vue', () => {
-  mockUtils.initUtils();
   let store
 
   beforeEach(() => {
@@ -86,7 +85,10 @@ describe('DefaultContainer.vue', () => {
   it('Check videos in nav', () => {
     moxios.stubRequest(util.apiUrl() + '/api/video-analytics/1/', {
       status: 200,
-      response: [{ name: "video1", item_id: "id1", },],
+      response: [{
+        name: "video1",
+        item_id: "id1",
+      }, ],
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/videos")
@@ -97,7 +99,9 @@ describe('DefaultContainer.vue', () => {
     // For coverability, nothing is done here, nav remains empty
     moxios.stubRequest(util.apiUrl() + '/api/video-analytics/1/', {
       status: 403,
-      response: { "Error": "Error occurred", },
+      response: {
+        "Error": "Error occurred",
+      },
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/videos")
@@ -167,7 +171,9 @@ describe('DefaultContainer.vue', () => {
   it('Test auth', (done) => {
     moxios.stubRequest(util.apiUrl() + '/testview/', {
       status: 200,
-      response: { "success": "You have a valid access token", },
+      response: {
+        "success": "You have a valid access token",
+      },
     });
     const wrapper = mountComponent()
     moxios.wait(function () {

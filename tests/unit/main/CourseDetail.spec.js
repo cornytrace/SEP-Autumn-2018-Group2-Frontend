@@ -5,7 +5,6 @@ import {
 } from '@vue/test-utils'
 import mockUtils from '../mockUtils'
 
-mockUtils.initUtils()
 import BootstrapVue from 'bootstrap-vue'
 import CourseDetail from '@/views/platforms/coursera/CourseDetail'
 
@@ -65,10 +64,26 @@ describe('CourseDetail.vue', () => {
       response: {
         test: "test",
         name: "test_name",
-        ratings: [[1, 0,], [2, 10,], [3, 14,],],
-        finished_learners_over_time: [[1, 0,], [2, 10,], [3, 14,],],
-        leaving_learners_per_module: [[1, 0,], [2, 10,], [3, 14,],],
-        average_time_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        ratings: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        finished_learners_over_time: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        leaving_learners_per_module: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        average_time_per_module: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
         average_time: 348923048,
       },
     });
@@ -85,10 +100,26 @@ describe('CourseDetail.vue', () => {
       response: {
         test: "test",
         name: "test_name",
-        ratings: [[1, 0,], [2, 10,], [3, 14,],],
-        finished_learners_over_time: [[1, 0,], [2, 10,], [3, 14,],],
-        leaving_learners_per_module: [[1, 0,], [2, 10,], [3, 14,],],
-        average_time_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        ratings: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        finished_learners_over_time: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        leaving_learners_per_module: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        average_time_per_module: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
         average_time: 348923048,
       },
     });
@@ -105,10 +136,26 @@ describe('CourseDetail.vue', () => {
       response: {
         test: "test",
         name: "test_name",
-        ratings: [[1, 0,], [2, 10,], [3, 14,],],
-        finished_learners_over_time: [[1, 0,], [2, 10,], [3, 14,],],
-        leaving_learners_per_module: [[1, 0,], [2, 10,], [3, 14,],],
-        average_time_per_module: [[1, 0,], [2, 10,], [3, 14,],],
+        ratings: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        finished_learners_over_time: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        leaving_learners_per_module: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
+        average_time_per_module: [
+          [1, 0, ],
+          [2, 10, ],
+          [3, 14, ],
+        ],
         average_time: 348923048,
       },
     });

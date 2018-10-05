@@ -2,14 +2,6 @@ import Vuex from 'vuex'
 import store from '@/store'
 
 export default {
-  initUtils: () => {
-    Element.prototype.scrollTo = () => { }
-    function noOp() { }
-
-    if (typeof window.URL.createObjectURL === 'undefined') {
-      Object.defineProperty(window.URL, 'createObjectURL', { value: noOp, })
-    }
-  },
   mockStore: () => {
     let actions = {
       login: jest.fn().mockResolvedValue(),
@@ -28,7 +20,7 @@ export default {
             course_slug: "test2",
             course_id: "2",
             pk: 2,
-          },],
+          }, ],
         },
       },
       actions,

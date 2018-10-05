@@ -14,8 +14,6 @@ import mockUtils from '../mockUtils'
 Vue.use(BootstrapVue)
 
 describe('Register.vue', () => {
-  mockUtils.initUtils()
-
   let store
 
   beforeEach(() => {

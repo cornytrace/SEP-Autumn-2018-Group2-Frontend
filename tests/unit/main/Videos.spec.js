@@ -15,7 +15,6 @@ localVue.use(BootstrapVue)
 localVue.use(Vuex)
 
 describe('Video.vue', () => {
-  mockUtils.initUtils()
   let store
 
   beforeEach(function () {

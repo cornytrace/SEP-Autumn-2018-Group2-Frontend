@@ -12,7 +12,6 @@ import mockUtils from '../mockUtils'
 Vue.use(BootstrapVue)
 
 describe('ForgotPassword.vue', () => {
-  mockUtils.initUtils()
   let store
 
   beforeEach(() => {

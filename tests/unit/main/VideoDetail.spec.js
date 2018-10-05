@@ -1,5 +1,4 @@
 import mockUtils from '../mockUtils'
-mockUtils.initUtils()
 import Vuex from 'vuex'
 import {
   mount,
