@@ -103,6 +103,7 @@ export default {
       testCount: 5,
       platformOptions: [],
       selectedPlatform: settings.platform_default,
+      currentCourse: {},
       courseOptions: [],
       selectedCourse: settings.course_default,
       selectedSubitem: "",
@@ -185,6 +186,11 @@ export default {
         this.$store.commit("setSelectedPlatform", this.selectedPlatform);
         this.$store.commit("setSelectedCourse", this.selectedCourse);
       }
+      if (this.level >= 2) {
+        this.currentCourse = this.$store.state.user.courses.find(
+          x => x.course_slug === this.selectedCourse
+        );
+      }
 
       // Set navigation based on the level.
       if (this.level === 0) {
@@ -201,7 +207,7 @@ export default {
         // Set subitem
         this.selectedSubitem = split[3];
         if (this.selectedSubitem === "videos") {
-          this.top_nav[3] = this.getVideos();
+          this.getVideos();
         } else if (this.selectedSubitem === "quizzes") {
           this.top_nav[3] = this.getQuizzes();
         }
@@ -299,21 +305,27 @@ export default {
       }
     },
     getVideos() {
-      var videos = [];
-      for (var video of settings.videos) {
-        videos.push({
-          name: video.name,
-          url:
-            "/" +
-            this.selectedPlatform +
-            "/" +
-            this.selectedCourse +
-            "/videos/" +
-            video.id,
-          icon: "fa fa-video-camera",
+      util
+        .getAllVideos(this.currentCourse.course_id)
+        .then(response => {
+          this.top_nav[3] = [];
+          for (var video of response.data) {
+            this.top_nav[3].push({
+              name: video.name,
+              url:
+                "/" +
+                this.selectedPlatform +
+                "/" +
+                this.selectedCourse +
+                "/videos/" +
+                video.item_id,
+              icon: "fa fa-video-camera",
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
         });
-      }
-      return videos;
     },
     getQuizzes() {
       var quizzes = [];

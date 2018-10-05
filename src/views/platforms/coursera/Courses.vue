@@ -4,15 +4,19 @@
       <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
         <b-card :header="course.name">
           {{ course.description }}
-          <div slot="footer"><router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">Details...</router-link></div>
+          <div slot="footer">
+            <router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">Details...</router-link>
+          </div>
         </b-card>
       </b-col>
-    </b-row><!--/.row-->
+      <plotly-graph></plotly-graph>
+    </b-row>
   </div>
 </template>
 
 <script>
 import util from "@/util";
+import PlotlyGraph from "@/views/charts/PlotlyGraph";
 
 export default {
   name: "Courses",
@@ -24,7 +28,11 @@ export default {
     };
   },
   mounted: function() {
+    console.log(this.$store.state.user);
     this.courses = this.$store.state.courses;
+  },
+  components: {
+    PlotlyGraph,
   },
 };
 </script>

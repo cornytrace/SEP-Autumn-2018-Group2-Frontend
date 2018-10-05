@@ -25,33 +25,9 @@ export default {
     // },
   ],
 
-
-  // Mock 
-  videos: [
-    {
-      name: "Video 1",
-      id: "v1",
-    },
-    {
-      name: "Video 2",
-      id: "v2",
-    },
-  ],
   quizzes: [
-    {
-      name: "Quiz 1",
-      id: "q1",
-    },
-    {
-      name: "Quiz 2",
-      id: "q2",
-    },
-    {
-      name: "Final exam",
-      id: "dslj",
-    },
+    { name: "quiz 1", id: 1, },
   ],
-
 
   // Constants
   max_nav_level: 3,

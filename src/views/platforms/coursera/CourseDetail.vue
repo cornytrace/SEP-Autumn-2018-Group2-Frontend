@@ -152,6 +152,14 @@
           </b-card>
         </b-col>
 
+        <b-col lg="6" xl="4">
+          <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
+            <div class="chart-wrapper">
+              <plotly-graph :data=plotlyData></plotly-graph>
+            </div>
+          </b-card>
+        </b-col>
+
         <!-- SHOULD HAVE -->
 
         <!-- <b-col lg="6" xl="4" v-if="qdt">
@@ -173,6 +181,7 @@
 </template>
 
 <script>
+import PlotlyGraph from "@/views/charts/PlotlyGraph";
 import LineGraph from "@/views/charts/LineGraph";
 import ScatterGraph from "@/views/charts/ScatterGraph";
 import BarGraph from "@/views/charts/BarGraph";
@@ -195,6 +204,7 @@ export default {
       courseId: "",
       courseData: {},
       courseName: "",
+      plotlyData: [],
 
       /*
        * Teacher analytics 
@@ -268,6 +278,7 @@ export default {
     };
   },
   components: {
+    PlotlyGraph,
     LineGraph,
     ScatterGraph,
     BarGraph,
@@ -327,10 +338,17 @@ export default {
 
       this.progFinLearData[0].data = [];
       this.progFinLearLabels = [];
+      this.plotlyData[0] = {};
+      this.plotlyData[0].x = [];
+      this.plotlyData[0].y = [];
+
       for (let finished of data.finished_learners_over_time) {
         this.progFinLearLabels.push(finished[0]);
         this.progFinLearData[0].data.push(finished[1]);
+        this.plotlyData[0].x.push(finished[0]);
+        this.plotlyData[0].y.push(finished[1]);
       }
+      this.plotlyData[0].type = "scatter";
 
       this.leavLearModData[0].data = [];
       this.leavLearModLabels = [];
