@@ -196,6 +196,7 @@ export default {
         util
           .getVideoDetails(this.courseId, this.videoId)
           .then(response => {
+            console.log(response.data);
             this.videoData = response.data;
             this.setVideoData();
           })
