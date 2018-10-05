@@ -305,7 +305,6 @@ export default {
       }
     },
     getVideos() {
-      console.log("getting videos", this.currentCourse.course_id);
       util
         .getVideos(this.currentCourse.course_id)
         .then(response => {

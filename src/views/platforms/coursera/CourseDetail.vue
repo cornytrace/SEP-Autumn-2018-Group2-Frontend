@@ -311,7 +311,7 @@ export default {
     // Set all fields with corresponding data.
     setCourseData(data) {
       this.courseName = data.name;
-      console.log(this.courseName);
+
       this.enrolledStudents = data.enrolled_learners;
       this.leavingLearners = data.leaving_learners;
       this.finishedLearners = data.finished_learners;
