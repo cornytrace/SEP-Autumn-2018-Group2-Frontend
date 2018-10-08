@@ -36,7 +36,7 @@ export default {
       zeroline: true,
     };
     if (this.layout) {
-      Object.assign(this.layout, layoutTemp);
+      Object.assign(layoutTemp, this.layout);
     }
     Plotly.newPlot(this.id, this.data, layoutTemp, {
       displaylogo: false,

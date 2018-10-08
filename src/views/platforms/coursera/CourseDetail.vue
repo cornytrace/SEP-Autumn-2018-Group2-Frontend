@@ -123,7 +123,7 @@
         <b-col lg="6" xl="4">
           <b-card id="dist-eval" header="Distribution of evaluation rating">
             <div class="chart-wrapper">
-              <chart :data=distEvalRateData id="graph-1"></chart>
+              <chart :data=distEvalRateData :layout=distEvalLayout id="graph-1"></chart>
             </div>
           </b-card>
         </b-col>
@@ -139,7 +139,7 @@
         <b-col lg="6" xl="4">
           <b-card id="leav-per-mod" header="Leaving learners per module">
             <div class="chart-wrapper">
-              <chart :data=leavLearModData id="graph-3"></chart>
+              <chart :data=leavLearModData :layout=leavLearLayout id="graph-3"></chart>
             </div>
           </b-card>
         </b-col>
@@ -147,7 +147,7 @@
         <b-col lg="6" xl="4">
           <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
             <div class="chart-wrapper">
-              <chart :data=avgTimeModData id="graph-4"></chart>
+              <chart :data=avgTimeModData :layout=avgTimeLayout id="graph-4"></chart>
             </div>
           </b-card>
         </b-col>
@@ -207,15 +207,18 @@ export default {
 
       // data distribution of evaluation rating
       distEvalRateData: [],
+      distEvalLayout: {},
 
       // data progression of finished learners
       progFinLearData: [],
 
       // data leaving learners per module
       leavLearModData: [],
+      leavLearLayout: {},
 
       // data average time spend per module by learners
       avgTimeModData: [],
+      avgTimeLayout: {},
 
       /*
        * QDT member analytics 
@@ -272,6 +275,7 @@ export default {
       this.numberOfCohorts = data.cohorts;
 
       // Distribution of evaluation rating.
+      // Set data
       this.distEvalRateData[0] = {};
       this.distEvalRateData[0].x = [];
       this.distEvalRateData[0].y = [];
@@ -281,11 +285,17 @@ export default {
         this.distEvalRateData[0].x.push(rating[0]);
         this.distEvalRateData[0].y.push(rating[1]);
       }
+      // Set layout
+      this.distEvalLayout = {};
+      this.distEvalLayout.xaxis = {};
+      this.distEvalLayout.xaxis.nticks = this.distEvalRateData[0].x.length * 2;
 
       // Progression of finished learners.
       this.progFinLearData[0] = {};
       this.progFinLearData[0].x = [];
       this.progFinLearData[0].y = [];
+      this.progFinLearData[0].fill = "tonexty";
+      this.progFinLearData[0].fillcolor = colors.lightGrey;
       this.progFinLearData[0].marker = { color: colors.blue, };
       this.progFinLearData[0].type = "scatter";
       for (let finished of data.finished_learners_over_time) {
@@ -294,6 +304,7 @@ export default {
       }
 
       // Leaving leareners per module.
+      // Set data
       this.leavLearModData[0] = {};
       this.leavLearModData[0].x = [];
       this.leavLearModData[0].y = [];
@@ -303,8 +314,13 @@ export default {
         this.leavLearModData[0].x.push(x + 1);
         this.leavLearModData[0].y.push(data.leaving_learners_per_module[x][1]);
       }
+      // Set layout
+      this.leavLearLayout = {};
+      this.leavLearLayout.xaxis = {};
+      this.leavLearLayout.xaxis.nticks = this.leavLearModData[0].x.length * 2;
 
       // Average time per module.
+      // Set data
       this.avgTimeModData[0] = {};
       this.avgTimeModData[0].x = [];
       this.avgTimeModData[0].y = [];
@@ -316,6 +332,10 @@ export default {
           parseFloat(data.average_time_per_module[x][1]) / (3600 * 24)
         );
       }
+      // Set layout
+      this.avgTimeLayout = {};
+      this.avgTimeLayout.xaxis = {};
+      this.avgTimeLayout.xaxis.nticks = this.avgTimeModData[0].x.length * 2;
 
       this.avgTime = (parseFloat(data.average_time) / (3600 * 24)).toFixed(1);
 
