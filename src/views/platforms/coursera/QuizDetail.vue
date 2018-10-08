@@ -133,7 +133,7 @@
         <b-col md="4">
           <b-card id="progr-fin" header="Distribution of number of attempts">
             <div class="chart-wrapper">
-              <bar-graph chartId="chart-bar-01" :data=attemptDistributionData :labels=attemptDistributionLabels />
+              <!-- <bar-graph chartId="chart-bar-01" :data=attemptDistributionData :labels=attemptDistributionLabels /> -->
             </div>
           </b-card>
         </b-col>
@@ -141,7 +141,7 @@
         <b-col md="4">
           <b-card id="dist-eval" header="Grade distribution">
             <div class="chart-wrapper">
-              <bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels />
+              <!-- <bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels /> -->
             </div>
           </b-card>
         </b-col>
@@ -149,7 +149,7 @@
         <b-col md="4" v-if="this.$store.state.user.role === 'qdt'">
           <b-card id="progr-fin" header="Distribution of number of attempts">
             <div class="chart-wrapper">
-              <bar-graph chartId="chart-bar-01" :data=questionRatioData :labels=questionLabels />
+              <!-- <bar-graph chartId="chart-bar-01" :data=questionRatioData :labels=questionLabels /> -->
             </div>
           </b-card>
         </b-col>
@@ -165,13 +165,6 @@
 </template>
 
 <script>
-import LineGraph from "@/views/charts/LineGraph";
-import ScatterGraph from "@/views/charts/ScatterGraph";
-import BarGraph from "@/views/charts/BarGraph";
-import DoughnutGraph from "@/views/charts/DoughnutGraph";
-import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
-import RadarGraph from "@/views/charts/RadarGraph";
-
 export default {
   name: "QuizDetail",
   data: function() {
@@ -234,14 +227,7 @@ export default {
       ];
     }
   },
-  components: {
-    LineGraph,
-    ScatterGraph,
-    BarGraph,
-    DoughnutGraph,
-    PolarAreaGraph,
-    RadarGraph,
-  },
+  components: {},
 };
 </script>
 

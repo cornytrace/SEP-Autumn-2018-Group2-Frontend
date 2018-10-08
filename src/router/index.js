@@ -14,9 +14,6 @@ const AdminPanel = () => import('@/views/admin/AdminPanel')
 const AdminHome = () => import('@/views/admin/AdminHome')
 const Platform = () => import('@/views/platforms/Platform')
 
-// Mockup pages
-const Statistics = () => import('@/views/Statistics')
-
 // Views - Pages
 const Page404 = () => import('@/views/pages/Page404')
 const Page500 = () => import('@/views/pages/Page500')
@@ -39,146 +36,141 @@ const router = new VueRouter({
     y: 0,
   }),
   routes: [{
-      path: '/',
-      name: 'Home',
-      redirect: '/home',
-      component: DefaultContainer,
-      props: {
-        level: level,
-      },
-      children: [{
-          path: '/home',
-          component: Home,
-        },
-        {
-          path: '/coursera',
-          redirect: '/coursera',
-          name: 'Coursera',
-          component: Platform,
-          children: [{
-              path: '/coursera',
-              name: '',
-              component: coursera.Courses,
-            }, {
-              path: '/coursera/:courseid',
-              name: 'CourseDetail',
-              component: coursera.CourseDetail,
-              meta: {
-                label: "Course Details",
-              },
-            },
-            {
-              path: '/coursera/:courseid/videos',
-              name: 'Videos',
-              component: coursera.Videos,
-            },
-            {
-              path: '/coursera/:courseid/videos/:videoid',
-              name: 'VideoDetail',
-              component: coursera.VideoDetail,
-              meta: {
-                label: "Video Details",
-              },
-            },
-            {
-              path: '/coursera/:courseid/quizzes',
-              name: 'Quizzes',
-              component: coursera.Quizzes,
-            },
-            {
-              path: '/coursera/:courseid/quizzes/:quizid',
-              name: 'QuizDetail',
-              component: coursera.QuizDetail,
-              meta: {
-                label: "Quiz Details",
-              },
-            },
-            {
-              path: '/coursera/:courseid/assignments',
-              name: 'Assignments',
-              component: coursera.Assignments,
-            },
-            {
-              path: '/coursera/:courseid/lessons',
-              name: 'Lessons',
-              component: coursera.Lessons,
-            },
-          ],
-        }, {
-          path: '/settings',
-          name: 'Settings',
-          component: Settings,
-        },
-        {
-          path: '/contact',
-          name: 'Contact',
-          component: Contact,
-        },
-        {
-          path: '/mockup',
-          name: "mockup graphs",
-          component: Statistics,
-        },
-      ],
+    path: '/',
+    name: 'Home',
+    redirect: '/home',
+    component: DefaultContainer,
+    props: {
+      level: level,
+    },
+    children: [{
+      path: '/home',
+      component: Home,
     },
     {
-      path: '/pages',
-      redirect: '/pages/404',
-      name: 'Pages',
-      component: {
-        render(c) {
-          return c('router-view')
+      path: '/coursera',
+      redirect: '/coursera',
+      name: 'Coursera',
+      component: Platform,
+      children: [{
+        path: '/coursera',
+        name: '',
+        component: coursera.Courses,
+      }, {
+        path: '/coursera/:courseid',
+        name: 'CourseDetail',
+        component: coursera.CourseDetail,
+        meta: {
+          label: "Course Details",
         },
       },
-      children: [{
-          path: '404',
-          name: 'Page404',
-          component: Page404,
+      {
+        path: '/coursera/:courseid/videos',
+        name: 'Videos',
+        component: coursera.Videos,
+      },
+      {
+        path: '/coursera/:courseid/videos/:videoid',
+        name: 'VideoDetail',
+        component: coursera.VideoDetail,
+        meta: {
+          label: "Video Details",
         },
-        {
-          path: '500',
-          name: 'Page500',
-          component: Page500,
+      },
+      {
+        path: '/coursera/:courseid/quizzes',
+        name: 'Quizzes',
+        component: coursera.Quizzes,
+      },
+      {
+        path: '/coursera/:courseid/quizzes/:quizid',
+        name: 'QuizDetail',
+        component: coursera.QuizDetail,
+        meta: {
+          label: "Quiz Details",
         },
-        {
-          path: 'login',
-          name: 'Login',
-          component: Login,
-        },
-        {
-          path: 'resetpassword/:token/:id',
-          name: 'ResetPasswordReferrer',
-          component: ResetReferrer,
-        },
-        {
-          path: 'resetpassword',
-          name: 'ResetPassword',
-          component: ResetPassword,
-        },
-        {
-          path: 'forgotpassword',
-          name: 'ForgotPassword',
-          component: ForgotPassword,
-        },
+      },
+      {
+        path: '/coursera/:courseid/assignments',
+        name: 'Assignments',
+        component: coursera.Assignments,
+      },
+      {
+        path: '/coursera/:courseid/lessons',
+        name: 'Lessons',
+        component: coursera.Lessons,
+      },
       ],
+    }, {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
     },
     {
-      path: '/admin',
-      name: 'Admin',
-      component: AdminPanel,
-      redirect: 'admin/home',
-      children: [{
-          path: 'home',
-          name: 'AdminHome',
-          component: AdminHome,
-        },
-        {
-          path: 'register',
-          name: 'Register',
-          component: Register,
-        },
-      ],
+      path: '/contact',
+      name: 'Contact',
+      component: Contact,
     },
+    ],
+  },
+  {
+    path: '/pages',
+    redirect: '/pages/404',
+    name: 'Pages',
+    component: {
+      render(c) {
+        return c('router-view')
+      },
+    },
+    children: [{
+      path: '404',
+      name: 'Page404',
+      component: Page404,
+    },
+    {
+      path: '500',
+      name: 'Page500',
+      component: Page500,
+    },
+    {
+      path: 'login',
+      name: 'Login',
+      component: Login,
+    },
+    {
+      path: 'resetpassword/:token/:id',
+      name: 'ResetPasswordReferrer',
+      component: ResetReferrer,
+    },
+    {
+      path: 'resetpassword',
+      name: 'ResetPassword',
+      component: ResetPassword,
+    },
+    {
+      path: 'forgotpassword',
+      name: 'ForgotPassword',
+      component: ForgotPassword,
+    },
+    ],
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: AdminPanel,
+    redirect: 'admin/home',
+    children: [{
+      path: 'home',
+      name: 'AdminHome',
+      component: AdminHome,
+    },
+    {
+      path: 'register',
+      name: 'Register',
+      component: Register,
+    },
+    ],
+  },
   ],
 })
 

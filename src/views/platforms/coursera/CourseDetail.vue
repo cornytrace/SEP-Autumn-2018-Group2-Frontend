@@ -123,7 +123,7 @@
         <b-col lg="6" xl="4">
           <b-card id="dist-eval" header="Distribution of evaluation rating">
             <div class="chart-wrapper">
-              <bar-graph chartId="chart-line-02" :data=distEvalRateData :labels=distEvalRateLabels />
+              <chart :data=distEvalRateData id="graph-1"></chart>
             </div>
           </b-card>
         </b-col>
@@ -131,7 +131,7 @@
         <b-col lg="6" xl="4">
           <b-card id="progr-fin" header="Progression of finished learners">
             <div class="chart-wrapper">
-              <line-graph chartId="chart-bar-01" :data=progFinLearData :labels=progFinLearLabels />
+              <chart :data=progFinLearData id="graph-2"></chart>
             </div>
           </b-card>
         </b-col>
@@ -139,7 +139,7 @@
         <b-col lg="6" xl="4">
           <b-card id="leav-per-mod" header="Leaving learners per module">
             <div class="chart-wrapper">
-              <bar-graph chartId="chart-polar-01" :data=leavLearModData :labels=leavLearModLabels />
+              <chart :data=leavLearModData id="graph-3"></chart>
             </div>
           </b-card>
         </b-col>
@@ -147,7 +147,7 @@
         <b-col lg="6" xl="4">
           <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
             <div class="chart-wrapper">
-              <bar-graph chartId="chart-polar-01" :data=avgTimeModData :labels=AvgTimeModLabels />
+              <chart :data=avgTimeModData id="graph-4"></chart>
             </div>
           </b-card>
         </b-col>
@@ -173,16 +173,10 @@
 </template>
 
 <script>
-import Chart from "@/views/charts/Chart";
-import LineGraph from "@/views/charts/LineGraph";
-import ScatterGraph from "@/views/charts/ScatterGraph";
-import BarGraph from "@/views/charts/BarGraph";
-import DoughnutGraph from "@/views/charts/DoughnutGraph";
-import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
-import RadarGraph from "@/views/charts/RadarGraph";
-import colors from "@/colors";
+import Chart from "@/components/Chart";
 import util from "@/util";
 import strings from "@/strings";
+import colors from "@/colors";
 
 export default {
   name: "CourseDetail",
@@ -196,7 +190,6 @@ export default {
       courseId: "",
       courseData: {},
       courseName: "",
-      plotlyData: [],
 
       /*
        * Teacher analytics 
@@ -213,70 +206,27 @@ export default {
       avgTime: 0,
 
       // data distribution of evaluation rating
-      distEvalRateData: [
-        {
-          label: "Distribution of evaluation rating",
-          backgroundColor: colors.blue,
-          data: [],
-        },
-      ],
-
-      distEvalRateLabels: [],
+      distEvalRateData: [],
 
       // data progression of finished learners
-      progFinLearData: [
-        {
-          label: "Progression of finished learners",
-          backgroundColor: colors.lightGrey,
-          borderColor: colors.blue,
-          data: [],
-        },
-      ],
-      progFinLearLabels: [],
+      progFinLearData: [],
 
       // data leaving learners per module
-      leavLearModData: [
-        {
-          label: "Leaving learners per module",
-          backgroundColor: colors.blue,
-          data: [80, 120, 30, 60,],
-        },
-      ],
-      leavLearModLabels: ["Module A", " Module B", "Module C", "Module D",],
+      leavLearModData: [],
 
       // data average time spend per module by learners
-      avgTimeModData: [
-        {
-          label: "Average timr spend per module by learners",
-          backgroundColor: colors.blue,
-          data: [],
-        },
-      ],
-      AvgTimeModLabels: [],
+      avgTimeModData: [],
 
       /*
        * QDT member analytics 
        * not yet implemented 
        */
       //
-      tendFolCourData: [
-        {
-          label: "Yes we know this is the wrong graph type",
-          backgroundColor: "#f81919",
-          data: [],
-        },
-      ],
-      tendFolCourLabels: [],
+      tendFolCourData: [],
     };
   },
   components: {
     Chart,
-    LineGraph,
-    ScatterGraph,
-    BarGraph,
-    DoughnutGraph,
-    PolarAreaGraph,
-    RadarGraph,
   },
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
@@ -321,41 +271,48 @@ export default {
       this.numberOfModules = data.modules;
       this.numberOfCohorts = data.cohorts;
 
-      this.distEvalRateData[0].data = [];
-      this.distEvalRateLabels = [];
+      // Distribution of evaluation rating.
+      this.distEvalRateData[0] = {};
+      this.distEvalRateData[0].x = [];
+      this.distEvalRateData[0].y = [];
+      this.distEvalRateData[0].marker = { color: colors.blue, };
+      this.distEvalRateData[0].type = "bar";
       for (let rating of data.ratings) {
-        this.distEvalRateLabels.push(rating[0]);
-        this.distEvalRateData[0].data.push(rating[1]);
+        this.distEvalRateData[0].x.push(rating[0]);
+        this.distEvalRateData[0].y.push(rating[1]);
       }
 
-      this.progFinLearData[0].data = [];
-      this.progFinLearLabels = [];
-      this.plotlyData[0] = {};
-      this.plotlyData[0].x = [];
-      this.plotlyData[0].y = [];
-
+      // Progression of finished learners.
+      this.progFinLearData[0] = {};
+      this.progFinLearData[0].x = [];
+      this.progFinLearData[0].y = [];
+      this.progFinLearData[0].marker = { color: colors.blue, };
+      this.progFinLearData[0].type = "scatter";
       for (let finished of data.finished_learners_over_time) {
-        this.progFinLearLabels.push(finished[0]);
-        this.progFinLearData[0].data.push(finished[1]);
-        this.plotlyData[0].x.push(finished[0]);
-        this.plotlyData[0].y.push(finished[1]);
+        this.progFinLearData[0].x.push(finished[0]);
+        this.progFinLearData[0].y.push(finished[1]);
       }
-      this.plotlyData[0].type = "scatter";
 
-      this.leavLearModData[0].data = [];
-      this.leavLearModLabels = [];
+      // Leaving leareners per module.
+      this.leavLearModData[0] = {};
+      this.leavLearModData[0].x = [];
+      this.leavLearModData[0].y = [];
+      this.leavLearModData[0].marker = { color: colors.blue, };
+      this.leavLearModData[0].type = "bar";
       for (let x = 0; x < data.leaving_learners_per_module.length; x++) {
-        this.leavLearModLabels.push(x + 1);
-        this.leavLearModData[0].data.push(
-          data.leaving_learners_per_module[x][1]
-        );
+        this.leavLearModData[0].x.push(x + 1);
+        this.leavLearModData[0].y.push(data.leaving_learners_per_module[x][1]);
       }
 
-      this.avgTimeModData[0].data = [];
-      this.AvgTimeModLabels = [];
+      // Average time per module.
+      this.avgTimeModData[0] = {};
+      this.avgTimeModData[0].x = [];
+      this.avgTimeModData[0].y = [];
+      this.avgTimeModData[0].marker = { color: colors.blue, };
+      this.avgTimeModData[0].type = "bar";
       for (let x = 0; x < data.average_time_per_module.length; x++) {
-        this.AvgTimeModLabels.push(x + 1);
-        this.avgTimeModData[0].data.push(
+        this.avgTimeModData[0].x.push(x + 1);
+        this.avgTimeModData[0].y.push(
           parseFloat(data.average_time_per_module[x][1]) / (3600 * 24)
         );
       }

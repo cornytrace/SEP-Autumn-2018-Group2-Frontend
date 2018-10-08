@@ -135,10 +135,9 @@
 
 <script>
 import strings from "@/strings";
-import LineGraph from "@/views/charts/LineGraph";
 import colors from "@/colors";
 import util from "@/util";
-import Chart from "@/views/charts/Chart";
+import Chart from "@/components/Chart";
 
 export default {
   name: "VideoDetail",
@@ -168,7 +167,6 @@ export default {
     };
   },
   components: {
-    LineGraph,
     Chart,
   },
   beforeMount() {
@@ -196,7 +194,6 @@ export default {
         util
           .getVideoDetails(this.courseId, this.videoId)
           .then(response => {
-            console.log(response.data);
             this.videoData = response.data;
             this.setVideoData();
           })
@@ -251,6 +248,7 @@ export default {
       this.chart_data[0] = {};
       this.chart_data[0].x = [];
       this.chart_data[0].y = [];
+      this.chart_data[0].marker = { color: colors.blue, };
       this.chartLayout = {};
       this.chartLayout.shapes = [];
       let high = 0;

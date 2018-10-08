@@ -1,5 +1,5 @@
 <template>
-  <div id="graph-area">
+  <div :id=id>
   </div>
 </template>
 
@@ -9,6 +9,10 @@ import Plotly from "plotly.js";
 
 export default {
   props: {
+    id: {
+      type: String,
+      default: "graph-area",
+    },
     data: {
       type: Array,
       default: new Array(),
@@ -19,9 +23,6 @@ export default {
   },
   mounted() {
     let layoutTemp = new Object();
-    if (this.layout) {
-      layoutTemp = this.layout;
-    }
     layoutTemp.margin = {
       l: 30,
       r: 30,
@@ -34,8 +35,22 @@ export default {
       showline: true,
       zeroline: true,
     };
-    Plotly.newPlot("graph-area", this.data, layoutTemp, {
+    if (this.layout) {
+      Object.assign(this.layout, layoutTemp);
+    }
+    Plotly.newPlot(this.id, this.data, layoutTemp, {
       displaylogo: false,
+      displayModeBar: true,
+      modeBarButtonsToRemove: [
+        "resetScale2d",
+        "zoom2d",
+        "lasso2d",
+        "select2d",
+        "hoverClosestCartesian",
+        "hoverCompareCartesian",
+        "sendDataToCloud",
+      ],
+      responsive: true,
     });
   },
 };
