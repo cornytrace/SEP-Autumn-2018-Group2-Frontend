@@ -6,14 +6,14 @@
         <!-- <h4>DASH-IT</h4> -->
         <img src="../../public/img/logo.png" alt="Logo" class="logo-style">
       </b-link>
-        <SidebarToggler class="d-md-down-none" display="lg" />
-        <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
-        <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
-        <b-navbar-nav class="custom-nav ml-auto">
-          <DefaultHeaderDropdownAccnt />
-          <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
-        </b-navbar-nav>
-        <!--<AsideToggler class="d-lg-none" mobile />-->
+      <SidebarToggler class="d-md-down-none" display="lg" />
+      <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
+      <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
+      <b-navbar-nav class="custom-nav ml-auto">
+        <DefaultHeaderDropdownAccnt />
+        <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
+      </b-navbar-nav>
+      <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">
       <AppSidebar fixed>
@@ -321,6 +321,7 @@ export default {
                 video.item_id,
               icon: "fa fa-video-camera",
             });
+            this.$forceUpdate();
           }
         })
         .catch(err => {
