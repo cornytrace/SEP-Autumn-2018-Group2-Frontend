@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/10</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/10</span>
+        <span class='fraction'>3/4</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -306,21 +306,7 @@
 261
 262
 263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+264</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -486,13 +472,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -548,13 +527,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -732,7 +704,7 @@
         &lt;b-col md="4"&gt;
           &lt;b-card id="progr-fin" header="Distribution of number of attempts"&gt;
             &lt;div class="chart-wrapper"&gt;
-              &lt;bar-graph chartId="chart-bar-01" :data=attemptDistributionData :labels=attemptDistributionLabels /&gt;
+              &lt;!-- &lt;bar-graph chartId="chart-bar-01" :data=attemptDistributionData :labels=attemptDistributionLabels /&gt; --&gt;
             &lt;/div&gt;
           &lt;/b-card&gt;
         &lt;/b-col&gt;
@@ -740,7 +712,7 @@
         &lt;b-col md="4"&gt;
           &lt;b-card id="dist-eval" header="Grade distribution"&gt;
             &lt;div class="chart-wrapper"&gt;
-              &lt;bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels /&gt;
+              &lt;!-- &lt;bar-graph chartId="chart-line-02" :data=gradeDistributionData :labels=gradeDistributionLabels /&gt; --&gt;
             &lt;/div&gt;
           &lt;/b-card&gt;
         &lt;/b-col&gt;
@@ -748,7 +720,7 @@
         &lt;b-col md="4" v-if="this.$store.state.user.role === 'qdt'"&gt;
           &lt;b-card id="progr-fin" header="Distribution of number of attempts"&gt;
             &lt;div class="chart-wrapper"&gt;
-              &lt;bar-graph chartId="chart-bar-01" :data=questionRatioData :labels=questionLabels /&gt;
+              &lt;!-- &lt;bar-graph chartId="chart-bar-01" :data=questionRatioData :labels=questionLabels /&gt; --&gt;
             &lt;/div&gt;
           &lt;/b-card&gt;
         &lt;/b-col&gt;
@@ -764,13 +736,6 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import LineGraph from "@/views/charts/LineGraph";
-import ScatterGraph from "@/views/charts/ScatterGraph";
-import BarGraph from "@/views/charts/BarGraph";
-import DoughnutGraph from "@/views/charts/DoughnutGraph";
-import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
-import RadarGraph from "@/views/charts/RadarGraph";
-&nbsp;
 export default {
   name: "QuizDetail",
   data: function() {
@@ -833,14 +798,7 @@ export default {
       ];
     }
   },
-  components: {
-    LineGraph,
-    ScatterGraph,
-    BarGraph,
-    DoughnutGraph,
-    PolarAreaGraph,
-    RadarGraph,
-  },
+  components: {},
 };
 &lt;/script&gt;
 &nbsp;
@@ -880,7 +838,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 08 2018 08:27:31 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 08 2018 09:09:17 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
