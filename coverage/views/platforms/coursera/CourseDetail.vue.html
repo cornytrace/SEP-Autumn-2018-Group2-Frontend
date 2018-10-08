@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>62/62</span>
+        <span class='fraction'>68/68</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>60/60</span>
+        <span class='fraction'>66/66</span>
       </div>
     </div>
   </div>
@@ -441,7 +441,17 @@
 396
 397
 398
-399</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -612,24 +622,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -751,7 +764,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -770,10 +783,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -1014,6 +1034,7 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
+import Chart from "@/views/charts/Chart";
 import LineGraph from "@/views/charts/LineGraph";
 import ScatterGraph from "@/views/charts/ScatterGraph";
 import BarGraph from "@/views/charts/BarGraph";
@@ -1022,7 +1043,7 @@ import PolarAreaGraph from "@/views/charts/PolarAreaGraph";
 import RadarGraph from "@/views/charts/RadarGraph";
 import colors from "@/colors";
 import util from "@/util";
-import strings from "@/settings";
+import strings from "@/strings";
 &nbsp;
 export default {
   name: "CourseDetail",
@@ -1036,6 +1057,7 @@ export default {
       courseId: "",
       courseData: {},
       courseName: "",
+      plotlyData: [],
 &nbsp;
       /*
        * Teacher analytics 
@@ -1109,6 +1131,7 @@ export default {
     };
   },
   components: {
+    Chart,
     LineGraph,
     ScatterGraph,
     BarGraph,
@@ -1141,7 +1164,7 @@ export default {
             this.setCourseData(response.data);
           })
           .catch(err =&gt; {
-            this.loadingText = "Error occurred";
+            this.loadingText = strings.connection_error;
             console.log(err);
           });
       }
@@ -1149,7 +1172,7 @@ export default {
     // Set all fields with corresponding data.
     setCourseData(data) {
       this.courseName = data.name;
-      console.log(this.courseName);
+&nbsp;
       this.enrolledStudents = data.enrolled_learners;
       this.leavingLearners = data.leaving_learners;
       this.finishedLearners = data.finished_learners;
@@ -1168,10 +1191,17 @@ export default {
 &nbsp;
       this.progFinLearData[0].data = [];
       this.progFinLearLabels = [];
+      this.plotlyData[0] = {};
+      this.plotlyData[0].x = [];
+      this.plotlyData[0].y = [];
+&nbsp;
       for (let finished of data.finished_learners_over_time) {
         this.progFinLearLabels.push(finished[0]);
         this.progFinLearData[0].data.push(finished[1]);
+        this.plotlyData[0].x.push(finished[0]);
+        this.plotlyData[0].y.push(finished[1]);
       }
+      this.plotlyData[0].type = "scatter";
 &nbsp;
       this.leavLearModData[0].data = [];
       this.leavLearModLabels = [];
@@ -1243,7 +1273,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 04 2018 14:00:53 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 08 2018 08:27:31 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
