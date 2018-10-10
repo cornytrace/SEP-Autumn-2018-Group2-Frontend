@@ -47,7 +47,7 @@
         <datepicker v-model="fromDate"></datepicker>
         <div id="spacer"></div>
         <datepicker v-model="toDate"></datepicker>
-        <b-form-select value-field="id" text-field="name" v-model="selectedCohort" :options=cohorts>
+        <b-form-select disabled value-field="id" text-field="name" v-model="selectedCohort" :options=cohorts>
         </b-form-select>
       </div>
       <!-- <h3>Geography filter</h3>
@@ -168,6 +168,12 @@ export default {
     };
   },
   beforeMount() {
+    if (this.$store.state.filters.from !== null) {
+      this.fromDate = new Date(Date.parse(this.$store.state.filters.from));
+    }
+    if (this.$store.state.filters.to !== null) {
+      this.toDate = new Date(Date.parse(this.$store.state.filters.to));
+    }
     for (var course of this.$store.state.user.courses) {
       this.courses.coursera.push({
         name: course.course_name,
@@ -228,20 +234,30 @@ export default {
       if (
         this.fromDate !== null &&
         this.toDate !== null &&
-        this.fromDate.getTime() < this.toDate.getTime()
+        this.fromDate.getTime() > this.toDate.getTime()
       ) {
-        // Do setting logic
-        this.filters = {
-          from: this.fromDate.toISOString().substring(0, 10),
-          to: this.toDate.toISOString().substring(0, 10),
-        };
-        this.$store.commit("setFilters", this.filters);
-        console.log(this.fromDate.toISOString());
+        this.showAlert = true;
+      } else {
+        this.setFilterData();
         this.showAlert = false;
         this.showFilterModal = false;
-      } else {
-        this.showAlert = true;
       }
+    },
+    setFilterData() {
+      this.filters = {};
+      if (this.fromDate === null) {
+        this.filters.from = null;
+      } else {
+        this.filters.from = this.fromDate.toISOString().substring(0, 10);
+      }
+
+      if (this.toDate === null) {
+        this.filters.to = null;
+      } else {
+        this.filters.to = this.toDate.toISOString().substring(0, 10);
+      }
+
+      this.$store.commit("setFilters", this.filters);
     },
     goUp: function() {
       this.level--;
