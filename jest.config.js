@@ -40,4 +40,8 @@ module.exports = {
   ],
   coverageReporters: ["html", "text-summary", ],
   setupTestFrameworkScriptFile: "<rootDir>/tests/setupTests.js",
+  reporters: [
+    "default",
+    "./node_modules/jest-latex-generator",
+  ],
 }
