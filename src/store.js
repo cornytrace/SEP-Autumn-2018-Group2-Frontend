@@ -21,6 +21,7 @@ export default new Vuex.Store({
     },
     selectedPlatform: "",
     selectedCourse: "",
+    filters: {},
   },
   getters: {
 
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     setSelectedCourse(state, course) {
       state.selectedCourse = course;
+    },
+    setFilters(state, filters) {
+      state.filters = filters;
     },
   },
   actions: {

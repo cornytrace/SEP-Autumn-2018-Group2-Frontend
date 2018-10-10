@@ -9,6 +9,7 @@
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
       <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
+      <b-button @click="showFilterModal=true">Filters</b-button>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt />
         <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
@@ -39,6 +40,31 @@
     <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
       API Status: {{apiStatus}}
     </TheFooter>
+    <b-modal v-model="showFilterModal" id="deleteModal" title="Filters" @ok="handleOk">
+      <h3 id="first-title">Timespan</h3>
+      <div class="timespan-area">
+        <b-alert v-if=showAlert variant="danger" show>{{ dangerMessage }}</b-alert>
+        <datepicker v-model="fromDate"></datepicker>
+        <div id="spacer"></div>
+        <datepicker v-model="toDate"></datepicker>
+        <b-form-select value-field="id" text-field="name" v-model="selectedCohort" :options=cohorts>
+        </b-form-select>
+      </div>
+      <!-- <h3>Geography filter</h3>
+      <multi-select optionsTitle="" selectedTitle="" v-model="selectedCountries" :options=countries tf="name" vf="id"></multi-select>
+      <h3>Payment status filter</h3>
+      <b-form-select v-model="selectedFilter" :options=filterOptions text-field="text" value-field="id">
+      </b-form-select> -->
+      <div slot="modal-footer" class="w-100">
+        <b-button @click="resetTimeFilter" class="float-left" variant="danger">Reset filters</b-button>
+        <b-btn @click="handleOk" class="float-right" variant="primary">
+          Save
+        </b-btn>
+        <b-btn @click="showFilterModal=false" class="float-right" id="cancel-button" variant="secondary">
+          Cancel
+        </b-btn>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -66,6 +92,8 @@ import NotificationToggler from "../views/buttons/NotificationToggler";
 import BottombarNav from "../views/sidebars/BottombarNav";
 import TopbarNav from "../views/sidebars/TopbarNav";
 import BackButton from "../views/sidebars/sidebaritems/BackButton";
+import MultiSelect from "@/components/MultiSelect";
+import Datepicker from "vuejs-datepicker";
 
 import util from "@/util";
 
@@ -90,6 +118,8 @@ export default {
     BottombarNav,
     TopbarNav,
     BackButton,
+    MultiSelect,
+    Datepicker,
   },
   data() {
     return {
@@ -103,8 +133,32 @@ export default {
       testCount: 5,
       platformOptions: [],
       selectedPlatform: settings.platform_default,
+      showFilterModal: false,
+
+      // Filters
+      filters: {},
+      dangerMessage: "From date not before to date!",
+      showAlert: false,
+      fromDate: null,
+      toDate: null,
       currentCourse: {},
       courseOptions: [],
+      selectedFilter: "no_filter",
+      filterOptions: [
+        {
+          text: "No filter",
+          id: "no_filter",
+        },
+        {
+          text: "Has paid only",
+          id: "has_paid",
+        },
+      ],
+      cohorts: [{ name: "Cohorts not yet implemented", id: "no_cohort", },],
+      selectedCohort: "no_cohort",
+
+      countries: [{ name: "Netherlands", id: 1, }, { name: "Germany", id: 2, },],
+      selectedCountries: [],
       selectedCourse: settings.course_default,
       selectedSubitem: "",
       // Mock
@@ -166,6 +220,29 @@ export default {
     },
   },
   methods: {
+    resetTimeFilter() {
+      this.fromDate = null;
+      this.toDate = null;
+    },
+    handleOk() {
+      if (
+        this.fromDate !== null &&
+        this.toDate !== null &&
+        this.fromDate.getTime() < this.toDate.getTime()
+      ) {
+        // Do setting logic
+        this.filters = {
+          from: this.fromDate.toISOString().substring(0, 10),
+          to: this.toDate.toISOString().substring(0, 10),
+        };
+        this.$store.commit("setFilters", this.filters);
+        console.log(this.fromDate.toISOString());
+        this.showAlert = false;
+        this.showFilterModal = false;
+      } else {
+        this.showAlert = true;
+      }
+    },
     goUp: function() {
       this.level--;
     },
@@ -379,6 +456,46 @@ export default {
 
 #course-select {
   width: 20%;
+}
+
+.modal-body h3 {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #00a9d4;
+}
+.modal-body #first-title {
+  margin-top: 0px;
+}
+.modal-body .vdp-datepicker {
+  width: 47.5%;
+  display: inline-block;
+}
+
+.modal-body .vdp-datepicker input {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(228, 231, 234);
+  border-radius: 0.25rem;
+  height: calc(2.0625rem + 2px);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  color: rgb(92, 104, 115);
+}
+.modal-body .timespan-area #spacer {
+  width: 5%;
+  display: inline-block;
+}
+
+.modal-body .timespan-area select {
+  margin-top: 10px;
+}
+
+.modal-body #reset-button {
+  margin-top: 20px;
+}
+
+.modal-footer #cancel-button {
+  margin-right: 10px;
 }
 </style>
 

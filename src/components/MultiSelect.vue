@@ -77,7 +77,7 @@ export default {
       for (let selected of this.selectedSelected) {
         let item = this.selected.find(x => x[this.vf] === selected);
         this.selected = this.selected.filter(function(el) {
-          return el.pk !== item.pk;
+          return el[this.vf] !== item[this.vf];
         });
       }
       // Reset selected values for both lists
@@ -85,9 +85,9 @@ export default {
       this.selectedSelected = [];
       this.$emit("input", this.selected);
     },
-    hasPK(array, pk) {
+    hasValue(array, value) {
       for (let item of array) {
-        if (item.pk === pk) {
+        if (item[this.vf] === value) {
           return true;
         }
       }
@@ -96,13 +96,13 @@ export default {
   },
   computed: {
     filteredRight() {
-      return this.selected.filter(el => el.course_name.toLowerCase().includes(this.search2.toLowerCase())
+      return this.selected.filter(el => el[this.tf].toLowerCase().includes(this.search2.toLowerCase())
       );
     },
     nonSelectedOptions() {
       return this.options.filter(
-        el => !this.hasPK(this.selected, el.pk) &&
-          el.course_name.toLowerCase().includes(this.search1.toLowerCase())
+        el => !this.hasValue(this.selected, el[this.vf]) &&
+          el[this.tf].toLowerCase().includes(this.search1.toLowerCase())
       );
     },
   },

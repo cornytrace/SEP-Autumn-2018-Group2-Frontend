@@ -334,8 +334,13 @@ export default {
       }
       // Set layout
       this.avgTimeLayout = {};
-      this.avgTimeLayout.xaxis = {};
-      this.avgTimeLayout.xaxis.nticks = this.avgTimeModData[0].x.length * 2;
+      this.avgTimeLayout.xaxis = {
+        nticks: this.avgTimeModData[0].x.length * 2,
+        title: "Module",
+      };
+      this.avgTimeLayout.yaxis = {
+        title: "Average time",
+      };
 
       this.avgTime = (parseFloat(data.average_time) / (3600 * 24)).toFixed(1);
 
