@@ -3,13 +3,13 @@
     <b-row class="begin-text">
       <b-col sm="12">
         <b-card class="border-0">
-          <h1>It is easy to contact us, try!</h1>
+          <h1>It is easy to contact us, try it!</h1>
         </b-card>
       </b-col>
     </b-row>
     <b-row>
       <b-col sm="6" md="6" lg="6">
-        <b-card class="border-0">
+        <b-card class="bg" no-body>
           <b-card-header class="border-contact header-text"><h2>Contact</h2></b-card-header>
           <b-card-body>
               <form>
@@ -21,13 +21,13 @@
                 <input class="form" type="email" name="email"><br><br>
                 <div class="text-color"><h6>Message</h6></div>
                 <textarea class="form" name="message" cols="30" rows="7"></textarea><br><br>
-                <input class="text-color" type="button" value="Send" onclick="alert('Sending not yet imlemented!')">    
+                <input class="text-color" type="button" value="Send" onclick="alert('Sending not yet implemented!')">    
               </form> 
           </b-card-body>
         </b-card>
       </b-col>
       <b-col sm="6" md="6" lg="6"> 
-        <b-card class="border-0 ">
+        <b-card class="bg" no-body>
           <b-card-header class="border-contact header-text"><h2>Details</h2></b-card-header>
           <b-card-body class="border-contact">
             <div class="text-color">
@@ -42,9 +42,9 @@
           </b-card-body>
           <b-card-body class="border-contact border-top">
             <div class="align-icons">
-              <img id="cursor-change" src="../../public/img/social/fbicon.png" alt="Facebook" class="icons-style" onclick="alert('Facebook not yet imlemented!')">
-              <img id="cursor-change" src="../../public/img/social/twicon.png" alt="Twitter" class="icons-style" onclick="alert('Twitter not yet imlemented!')">
-              <img id="cursor-change" src="../../public/img/social/instaicon.png" alt="Instagram," class="icons-style" onclick="alert('Instagram not yet imlemented!')">
+              <img id="cursor-change" src="../../public/img/social/fbicon.png" alt="Facebook" class="icons-style" onclick="alert('Facebook not yet implemented!')">
+              <img id="cursor-change" src="../../public/img/social/twicon.png" alt="Twitter" class="icons-style" onclick="alert('Twitter not yet implemented!')">
+              <img id="cursor-change" src="../../public/img/social/instaicon.png" alt="Instagram," class="icons-style" onclick="alert('Instagram not yet implemented!')">
             </div>
             <div>
               <img src="../../public/img/logo.svg" alt="DASH-IT" class="logo-style">
@@ -65,22 +65,10 @@ export default {
 <style scoped>
 .begin-text {
   text-align: center;
-  color: #00a9d4;
-}
-
-.text-color {
-  color: #00a9d4;
 }
 
 .header-text {
   text-align: left;
-  color: #00a9d4;
-}
-
-.border-contact {
-  border-color: #00a9d4 !important;
-  border-top-color: #00a9d4;
-  border-bottom-color: #00a9d4;
 }
 
 .form {
