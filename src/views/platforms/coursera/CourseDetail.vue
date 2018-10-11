@@ -250,7 +250,7 @@ export default {
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
         util
-          .getDetailedCourseData(this.courseId)
+          .getDetailedCourseData(this.courseId, this.$store.state.filters)
           .then(response => {
             this.courseData = response.data;
             this.setCourseData(response.data);
@@ -334,8 +334,13 @@ export default {
       }
       // Set layout
       this.avgTimeLayout = {};
-      this.avgTimeLayout.xaxis = {};
-      this.avgTimeLayout.xaxis.nticks = this.avgTimeModData[0].x.length * 2;
+      this.avgTimeLayout.xaxis = {
+        nticks: this.avgTimeModData[0].x.length * 2,
+        title: "Module",
+      };
+      this.avgTimeLayout.yaxis = {
+        title: "Average time",
+      };
 
       this.avgTime = (parseFloat(data.average_time) / (3600 * 24)).toFixed(1);
 

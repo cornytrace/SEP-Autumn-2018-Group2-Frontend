@@ -58,8 +58,9 @@ export default {
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
         util
-          .getVideos(this.courseId)
+          .getVideos(this.courseId, this.$store.state.filters)
           .then(response => {
+            console.log(response.data);
             this.isLoading = false;
             this.videos = response.data;
           })
