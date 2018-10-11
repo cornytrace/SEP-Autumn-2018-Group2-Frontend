@@ -2,20 +2,69 @@ import store from '@/store'
 import axios from 'axios'
 
 export default {
+  // Utility functions
   isAuthenticated() {
     return store.state.apiToken !== "" && store.state.apiExpire > Date.now()
   },
 
+  /**
+   * Return the root API url.
+   */
   apiUrl() {
     return process.env.VUE_APP_ROOT_API;
   },
 
+  /**
+   * Sets the headers to include the API token
+   * which is used for API call authentication.
+   * 
+   * @param {} headers headers to include besides
+   * API token.
+   */
   authHeader(headers = {}) {
     return Object.assign({}, headers, {
       Authorization: "Bearer " + store.state.apiToken,
     });
   },
 
+  /**
+   * Returns all query parameters stored in the 
+   * store as a formatted string to be used
+   * in API calls.
+   */
+  getQueryParams(filters) {
+    var params = [];
+    if (filters.from !== null && filters.from !== undefined) {
+      params.push(["from", filters.from,]);
+    }
+    if (filters.to !== null && filters.to !== undefined) {
+      params.push(["to", filters.to,]);
+    }
+    var queryString = new URLSearchParams(params).toString();
+    if (queryString === "") {
+      return queryString;
+    }
+    return "?" + queryString;
+  },
+
+  /**
+   * Utility function to check if a valid email
+   * is given.
+   * 
+   * @param {} email the email to check.
+   */
+  validEmail(email) {
+    if (
+      email === "" ||
+      email.indexOf("@") === -1 ||
+      email.indexOf(".") === -1
+    ) {
+      return false;
+    }
+    return true;
+  },
+
+  // Test authentication call
   testAuth() {
     return axios
       .get(this.apiUrl() + "/testview/", {
@@ -23,6 +72,7 @@ export default {
       })
   },
 
+  // User API calls
   getUsers() {
     return axios
       .get(this.apiUrl() + "/users/", {
@@ -40,13 +90,6 @@ export default {
   resetPassword(id, data) {
     return axios
       .put(this.apiUrl() + `/users/${id}/password_reset/`, data, {
-        headers: this.authHeader(),
-      })
-  },
-
-  getCourses() {
-    return axios
-      .get(this.apiUrl() + "/courses/", {
         headers: this.authHeader(),
       })
   },
@@ -79,31 +122,29 @@ export default {
       .delete(this.apiUrl() + `/users/${id}/`, { headers: this.authHeader(), })
   },
 
-  getDetailedCourseData(courseId) {
+  // Course API calls
+  getCourses() {
     return axios
-      .get(this.apiUrl() + `/api/course-analytics/${courseId}/`, { headers: this.authHeader(), })
-  },
-
-  getVideos(courseId) {
-    return axios
-      .get(this.apiUrl() + `/api/video-analytics/${courseId}/`, {
+      .get(this.apiUrl() + "/courses/", {
         headers: this.authHeader(),
       })
   },
 
-  getVideoDetails(courseId, videoId) {
+  getDetailedCourseData(courseId, filters) {
     return axios
-      .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/`, { headers: this.authHeader(), })
+      .get(this.apiUrl() + `/api/course-analytics/${courseId}/` + this.getQueryParams(filters), { headers: this.authHeader(), })
   },
 
-  validEmail(email) {
-    if (
-      email === "" ||
-      email.indexOf("@") === -1 ||
-      email.indexOf(".") === -1
-    ) {
-      return false;
-    }
-    return true;
+  // Video API calls
+  getVideos(courseId, filters) {
+    return axios
+      .get(this.apiUrl() + `/api/video-analytics/${courseId}/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
+  },
+
+  getVideoDetails(courseId, videoId, filters) {
+    return axios
+      .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/` + this.getQueryParams(filters), { headers: this.authHeader(), })
   },
 }

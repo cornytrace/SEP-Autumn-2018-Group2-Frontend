@@ -192,7 +192,11 @@ export default {
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
         util
-          .getVideoDetails(this.courseId, this.videoId)
+          .getVideoDetails(
+            this.courseId,
+            this.videoId,
+            this.$store.state.filters
+          )
           .then(response => {
             this.videoData = response.data;
             this.setVideoData();

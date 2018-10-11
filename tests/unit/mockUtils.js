@@ -20,7 +20,11 @@ export default {
             course_slug: "test2",
             course_id: "2",
             pk: 2,
-          }, ],
+          },],
+        },
+        filters: {
+          from: null,
+          to: null,
         },
       },
       actions,
@@ -31,6 +35,7 @@ export default {
         setUser: jest.fn(),
         setSelectedPlatform: jest.fn(),
         setSelectedCourse: jest.fn(),
+        setFilters: jest.fn(),
       },
     })
   },

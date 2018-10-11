@@ -32,7 +32,9 @@ describe('MultiSelect.vue', () => {
           course_slug: "capstone",
           course_id: "sdjflkds",
           pk: 1,
-        }, ],
+        },],
+        vf: "pk",
+        tf: "course_name",
       },
       store,
     })
@@ -54,18 +56,20 @@ describe('MultiSelect.vue', () => {
     const wrapper = mount(MultiSelect, {
       propsData: {
         options: [{
-            course_name: "Capstone",
-            course_slug: "capstone",
-            course_id: "sdjflkds",
-            pk: 1,
-          },
-          {
-            course_name: "Course",
-            course_slug: "couse2",
-            course_id: "dfas",
-            pk: 2,
-          },
+          course_name: "Capstone",
+          course_slug: "capstone",
+          course_id: "sdjflkds",
+          pk: 1,
+        },
+        {
+          course_name: "Course",
+          course_slug: "couse2",
+          course_id: "dfas",
+          pk: 2,
+        },
         ],
+        vf: "pk",
+        tf: "course_name",
       },
       store,
     })
@@ -91,7 +95,9 @@ describe('MultiSelect.vue', () => {
         course_slug: "couse2",
         course_id: "dfas",
         pk: 2,
-      }, ],
+      },],
+      vf: "pk",
+      tf: "course_name",
     });
     // One course should be removed so length should not be 2 anymore
     wrapper.find('#selected-search').setValue("cap");
@@ -109,7 +115,7 @@ describe('MultiSelect.vue', () => {
           course_slug: "couse2",
           course_id: "dfas",
           pk: 1,
-        }, ],
+        },],
         vf: "pk",
         tf: "course_name",
       },
@@ -117,7 +123,7 @@ describe('MultiSelect.vue', () => {
     })
     // Add course to the selected array
     wrapper.setData({
-      selectedOptions: [1, ],
+      selectedOptions: [1,],
     });
     wrapper.find("#move-right-button").trigger("click");
 
@@ -136,7 +142,7 @@ describe('MultiSelect.vue', () => {
           course_slug: "couse2",
           course_id: "dfas",
           pk: 1,
-        }, ],
+        },],
         vf: "pk",
         tf: "course_name",
       },
@@ -150,8 +156,10 @@ describe('MultiSelect.vue', () => {
         course_slug: "couse2",
         course_id: "dfas",
         pk: 1,
-      }, ],
-      selectedSelected: [1, ],
+      },],
+      vf: "pk",
+      tf: "course_name",
+      selectedSelected: [1,],
     });
 
     wrapper.find("#move-left-button").trigger("click");
