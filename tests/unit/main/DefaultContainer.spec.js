@@ -82,20 +82,25 @@ describe('DefaultContainer.vue', () => {
     expect(wrapper.vm.selectedPlatform).toBe(settings.platform_default)
   })
 
-  it('Check videos in nav', () => {
+  it('Check videos in nav', (done) => {
     moxios.stubRequest(util.apiUrl() + '/api/video-analytics/1/', {
       status: 200,
       response: [{
         name: "video1",
         item_id: "id1",
-      }, ],
+      },],
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/videos")
-    // TODO EXPECT
+
+    moxios.wait(function () {
+      expect(wrapper.vm.top_nav[3].length).not.toBe(0)
+      expect(wrapper.vm.top_nav[3][0].name).toContain("video1")
+      done();
+    })
   })
 
-  it('Check videos rejected', () => {
+  it('Check videos rejected', (done) => {
     // For coverability, nothing is done here, nav remains empty
     moxios.stubRequest(util.apiUrl() + '/api/video-analytics/1/', {
       status: 403,
@@ -105,13 +110,46 @@ describe('DefaultContainer.vue', () => {
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/videos")
+
+    moxios.wait(function () {
+      expect(wrapper.vm.top_nav[3].length).toBe(0)
+      done();
+    })
   })
 
-  it('Check quizzes in nav', () => {
+  it('Check quizzes in nav', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/quiz-analytics/1/', {
+      status: 200,
+      response: [{
+        name: "quiz 1",
+        base_id: "id1",
+        version: 1,
+      },],
+    });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/quizzes")
-    expect(wrapper.vm.top_nav[3].length).not.toBe(0)
-    // TODO FINALIZE
+
+    moxios.wait(function () {
+      expect(wrapper.vm.top_nav[3].length).not.toBe(0)
+      expect(wrapper.vm.top_nav[3][0].name).toContain("quiz 1")
+      done();
+    })
+  })
+
+  it('Check quizzes rejected', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/quiz-analytics/1/', {
+      status: 403,
+      response: {
+        "Error": "Error occurred",
+      },
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test/quizzes")
+
+    moxios.wait(function () {
+      expect(wrapper.vm.top_nav[3].length).toBe(0)
+      done();
+    })
   })
 
   it('Navigation check over max level', () => {

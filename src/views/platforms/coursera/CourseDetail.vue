@@ -131,7 +131,7 @@
         <b-col lg="6" xl="4">
           <b-card id="progr-fin" header="Progression of finished learners">
             <div class="chart-wrapper">
-              <chart :data=progFinLearData id="graph-2"></chart>
+              <chart :data=progFinLearData :layout=progFinLearLayout id="graph-2"></chart>
             </div>
           </b-card>
         </b-col>
@@ -211,6 +211,7 @@ export default {
 
       // data progression of finished learners
       progFinLearData: [],
+      progFinLearLayout: {},
 
       // data leaving learners per module
       leavLearModData: [],
@@ -289,6 +290,8 @@ export default {
       this.distEvalLayout = {};
       this.distEvalLayout.xaxis = {};
       this.distEvalLayout.xaxis.nticks = this.distEvalRateData[0].x.length * 2;
+      this.distEvalLayout.xaxis.title = "Rating";
+      this.distEvalLayout.yaxis = { title: "Amount", };
 
       // Progression of finished learners.
       this.progFinLearData[0] = {};
@@ -302,6 +305,15 @@ export default {
         this.progFinLearData[0].x.push(finished[0]);
         this.progFinLearData[0].y.push(finished[1]);
       }
+
+      this.progFinLearLayout = {
+        xaxis: {
+          title: "Time",
+        },
+        yaxis: {
+          title: "Number of learners",
+        },
+      };
 
       // Leaving leareners per module.
       // Set data
@@ -318,6 +330,10 @@ export default {
       this.leavLearLayout = {};
       this.leavLearLayout.xaxis = {};
       this.leavLearLayout.xaxis.nticks = this.leavLearModData[0].x.length * 2;
+      this.leavLearLayout.xaxis.title = "Module";
+      this.leavLearLayout.yaxis = {
+        title: "Leaving learners",
+      };
 
       // Average time per module.
       // Set data

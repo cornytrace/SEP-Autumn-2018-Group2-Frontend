@@ -24,9 +24,9 @@ export default {
   mounted() {
     let layoutTemp = new Object();
     layoutTemp.margin = {
-      l: 30,
+      l: 50,
       r: 30,
-      b: 30,
+      b: 50,
       t: 30,
       pad: 4,
     };

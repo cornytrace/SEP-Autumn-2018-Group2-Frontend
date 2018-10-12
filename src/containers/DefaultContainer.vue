@@ -302,7 +302,7 @@ export default {
         if (this.selectedSubitem === "videos") {
           this.getVideos();
         } else if (this.selectedSubitem === "quizzes") {
-          this.top_nav[3] = this.getQuizzes();
+          this.getQuizzes();
         }
       }
     },
@@ -418,25 +418,36 @@ export default {
           }
         })
         .catch(err => {
+          this.top_nav[3] = [];
           console.log(err);
         });
     },
     getQuizzes() {
-      var quizzes = [];
-      for (var quiz of settings.quizzes) {
-        quizzes.push({
-          name: quiz.name,
-          url:
-            "/" +
-            this.selectedPlatform +
-            "/" +
-            this.selectedCourse +
-            "/quizzes/" +
-            quiz.id,
-          icon: "fa fa-check",
+      util
+        .getQuizzes(this.currentCourse.course_id)
+        .then(response => {
+          this.top_nav[3] = [];
+          for (var quiz of response.data) {
+            this.top_nav[3].push({
+              name: quiz.name,
+              url:
+                "/" +
+                this.selectedPlatform +
+                "/" +
+                this.selectedCourse +
+                "/quizzes/" +
+                quiz.base_id +
+                "-" +
+                quiz.version,
+              icon: "fa fa-check   ",
+            });
+            this.$forceUpdate();
+          }
+        })
+        .catch(err => {
+          this.top_nav[3] = [];
+          console.log(err);
         });
-      }
-      return quizzes;
     },
   },
 };
