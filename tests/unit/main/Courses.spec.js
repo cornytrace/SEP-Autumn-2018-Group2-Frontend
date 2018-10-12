@@ -5,7 +5,7 @@ import {
 import BootstrapVue from 'bootstrap-vue'
 import Courses from '@/views/platforms/coursera/Courses'
 
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 Vue.use(BootstrapVue)
 

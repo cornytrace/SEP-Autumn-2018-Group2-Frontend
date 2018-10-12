@@ -4,7 +4,7 @@ import {
 } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Page404 from '@/views/pages/Page404'
-import mockUtils from '../mockUtils';
+import * as mockUtils from '../mockUtils';
 
 Vue.use(BootstrapVue)
 

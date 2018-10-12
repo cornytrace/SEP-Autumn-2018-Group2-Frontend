@@ -6,7 +6,7 @@ import {
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import Home from '@/views/Home'
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)

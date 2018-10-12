@@ -9,7 +9,7 @@ import Register from '@/views/pages/Register'
 import util from '@/util'
 
 jest.mock('@/util')
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 Vue.use(BootstrapVue)
 

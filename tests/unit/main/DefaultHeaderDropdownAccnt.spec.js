@@ -6,7 +6,7 @@ import {
 import BootstrapVue from 'bootstrap-vue'
 import DefaultHeaderDropdownAccnt from '@/containers/DefaultHeaderDropdownAccnt'
 
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 const localVue = createLocalVue()
 localVue.use(BootstrapVue)

@@ -8,7 +8,7 @@ import BootstrapVue from 'bootstrap-vue'
 import Videos from '@/views/platforms/coursera/Videos'
 import moxios from 'moxios'
 
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 import strings from "@/strings"
 
 const localVue = createLocalVue()

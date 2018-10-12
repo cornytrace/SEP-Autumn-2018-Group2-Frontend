@@ -3,7 +3,7 @@ import {
   mount,
   createLocalVue
 } from '@vue/test-utils'
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 import BootstrapVue from 'bootstrap-vue'
 import CourseDetail from '@/views/platforms/coursera/CourseDetail'

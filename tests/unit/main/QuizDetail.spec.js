@@ -7,7 +7,7 @@ import {
 import BootstrapVue from 'bootstrap-vue'
 import QuizDetail from '@/views/platforms/coursera/QuizDetail'
 
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 import router from '@/router'
 
 const localVue = createLocalVue()
