@@ -147,4 +147,21 @@ export default {
     return axios
       .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/` + this.getQueryParams(filters), { headers: this.authHeader(), })
   },
+
+  getQuizzes(courseId) {
+    return axios
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/`, {
+        headers: this.authHeader(),
+      })
+  },
+
+  getQuizVersions(courseId, baseId) {
+    return axios
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/`, { headers: this.authHeader(), })
+  },
+
+  getQuizDetails(courseId, baseId, version) {
+    return axios
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/`, { headers: this.authHeader(), })
+  },
 }

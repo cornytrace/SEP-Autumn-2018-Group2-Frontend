@@ -93,7 +93,7 @@
               </b-card>
             </router-link>
           </div> -->
-          <div class="link-container">
+          <div v-if="hasNextItem" class="link-container">
             <router-link :to=nextItemUrl>
               <b-card class="link-card">
                 <table>
@@ -101,6 +101,7 @@
                     <th>
                       <span class="link-card-text">Next item</span>
                       <span class="link-card-subtext">{{ nextItemType }}</span>
+                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
                     </th>
                     <th class="icon-cell">
                       <i class="fa fa-2x fa-chevron-right"></i>
@@ -164,6 +165,9 @@ export default {
       chartLayout: {},
       nextItemUrl: "",
       nextItemType: "",
+      showNextItemPassingFraction: false,
+      hasNextItem: false,
+      nextItemPassingFraction: 0,
     };
   },
   components: {
@@ -209,9 +213,14 @@ export default {
     },
     setVideoData() {
       // Set url to the next item
-      let type = this.videoData.next_item.type;
-      if (type === 1) {
+      let category = this.videoData.next_item.category;
+      if (category === "quiz") {
+        this.hasNextItem = true;
         this.nextItemType = "Quiz";
+        this.nextItemPassingFraction = parseFloat(
+          this.videoData.next_item.passing_fraction
+        ).toFixed(2);
+        this.showNextItemPassingFraction = true;
         this.nextItemUrl =
           "/" +
           this.$store.state.selectedPlatform +
@@ -219,7 +228,9 @@ export default {
           this.$store.state.selectedCourse +
           "/quizzes/" +
           this.videoData.next_item.item_id;
-      } else if (type === 5) {
+      } else if (category === "lecture") {
+        this.showNextItemPassingFraction = false;
+        this.hasNextItem = true;
         this.nextItemType = "Video";
         this.nextItemUrl =
           "/" +
@@ -228,6 +239,8 @@ export default {
           this.$store.state.selectedCourse +
           "/videos/" +
           this.videoData.next_item.item_id;
+      } else {
+        this.hasNextItem = false;
       }
 
       // Set all statistics

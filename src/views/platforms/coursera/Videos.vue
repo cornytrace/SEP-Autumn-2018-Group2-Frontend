@@ -60,7 +60,6 @@ export default {
         util
           .getVideos(this.courseId, this.$store.state.filters)
           .then(response => {
-            console.log(response.data);
             this.isLoading = false;
             this.videos = response.data;
           })
