@@ -6,7 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 import MultiSelect from '@/components/MultiSelect'
 
 jest.mock('@/util')
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 Vue.use(BootstrapVue)
 

@@ -7,7 +7,7 @@ import VueRouter from 'vue-router'
 import DefaultContainer from '@/containers/DefaultContainer'
 
 import router from '@/router'
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 import settings from '@/settings'
 import util from '@/util'
@@ -114,7 +114,7 @@ describe('DefaultContainer.vue', () => {
     // TODO FINALIZE
   })
 
-  it('Check over max level', () => {
+  it('Navigation check over max level', () => {
     const wrapper = mountComponent()
     // Add router that is 3 longer than the max nav level
     var x = ""
@@ -126,7 +126,7 @@ describe('DefaultContainer.vue', () => {
   })
 
   // Dropdowns
-  it('Platform dropdown', () => {
+  it('Platform dropdown select changes page', () => {
     const wrapper = mountComponent()
     const push = jest.fn();
     wrapper.vm.$router.push = push;
@@ -136,7 +136,7 @@ describe('DefaultContainer.vue', () => {
     })
   })
 
-  it('Course dropdown', () => {
+  it('Course dropdown select changes page', () => {
     const wrapper = mountComponent()
     const push = jest.fn();
     wrapper.vm.$router.push = push;
@@ -168,7 +168,7 @@ describe('DefaultContainer.vue', () => {
   })
 
   // Connection bar
-  it('Test auth', (done) => {
+  it('Test authentication', (done) => {
     moxios.stubRequest(util.apiUrl() + '/testview/', {
       status: 200,
       response: {
@@ -182,7 +182,7 @@ describe('DefaultContainer.vue', () => {
     });
   })
 
-  it('Test auth decline', (done) => {
+  it('Test authentication decline', (done) => {
     moxios.stubRequest(util.apiUrl() + '/testview/', {
       status: 403,
       response: {},
@@ -192,5 +192,85 @@ describe('DefaultContainer.vue', () => {
       expect(wrapper.vm.apiStatus).toBe(strings.connection_error)
       done()
     });
+  })
+
+  it('filter button click shows filter modal', () => {
+    const wrapper = mountComponent()
+    expect(wrapper.vm.showFilterModal).toBe(false)
+    expect(wrapper.find("#filterModal").isVisible()).toBe(false)
+    wrapper.find("#filterButton").trigger('click')
+    expect(wrapper.vm.showFilterModal).toBe(true)
+    return wrapper.vm.$nextTick().then(() => {
+      expect(wrapper.find("#filterModal").isVisible()).toBe(true)
+    })
+  })
+
+  it('filter modal cancel button hides the modal', () => {
+    const wrapper = mountComponent()
+    wrapper.vm.showFilterModal = true;
+    return wrapper.vm.$nextTick().then(() => {
+      wrapper.find("#filter-cancel-button").trigger("click");
+      expect(wrapper.vm.showFilterModal).toBe(false);
+    })
+  })
+
+  it('filter modal save button hides the modal', () => {
+    const wrapper = mountComponent()
+    wrapper.vm.showFilterModal = true;
+    return wrapper.vm.$nextTick().then(() => {
+      wrapper.find("#filter-save-button").trigger("click");
+      expect(wrapper.vm.showFilterModal).toBe(false);
+    })
+  })
+
+  it('filter modal save updates date state', () => {
+    const wrapper = mountComponent();
+    const curdate = new Date(Date.now());
+    curdate.setMilliseconds(0);
+    wrapper.vm.showFilterModal = true;
+    wrapper.vm.fromDate = curdate;
+    wrapper.vm.toDate = curdate;
+    wrapper.find("#filter-save-button").trigger("click");
+    return wrapper.vm.$nextTick().then(() => {
+      expect(mockUtils.mutations.setFilters).toHaveBeenCalled();
+    })
+  })
+
+  it('filter modal cancel doesn\'t update date state', () => {
+    const wrapper = mountComponent();
+    const curdate = new Date(Date.now());
+    wrapper.vm.showFilterModal = true;
+    const dateArray = wrapper.findAll(".vdp-datepicker")
+    dateArray.setProps({
+      value: curdate,
+    })
+    wrapper.find("#filter-cancel-button").trigger("click");
+    return wrapper.vm.$nextTick().then(() => {
+      expect(store.state.filters.from).toBe(null);
+      expect(store.state.filters.to).toBe(null);
+    })
+  })
+
+  it('filter modal loads existing state', () => {
+    const curdate = new Date(Date.now());
+    curdate.setMilliseconds(0);
+    store.state.filters.from = curdate;
+    store.state.filters.to = curdate;
+    const wrapper = mountComponent();
+    wrapper.vm.showFilterModal = true;
+    expect(wrapper.vm.fromDate.toUTCString()).toBe(curdate.toUTCString());
+    expect(wrapper.vm.toDate.toUTCString()).toBe(curdate.toUTCString());
+  })
+
+  it('filter modal reset button resets state', () => {
+    const curdate = new Date(Date.now());
+    curdate.setMilliseconds(0);
+    store.state.filters.from = curdate;
+    store.state.filters.to = curdate;
+    const wrapper = mountComponent();
+    wrapper.vm.showFilterModal = true;
+    wrapper.find("#filter-reset-button").trigger("click");
+    expect(wrapper.vm.fromDate).toBe(null);
+    expect(wrapper.vm.toDate).toBe(null);
   })
 })

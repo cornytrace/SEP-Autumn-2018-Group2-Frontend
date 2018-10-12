@@ -1,4 +1,4 @@
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 import Vuex from 'vuex'
 import {
   mount,

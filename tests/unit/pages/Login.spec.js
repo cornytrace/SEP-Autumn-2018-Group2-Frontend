@@ -7,7 +7,7 @@ import BootstrapVue from 'bootstrap-vue'
 import Login from '@/views/pages/Login'
 import moxios from 'moxios'
 
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 import util from '@/util'
 

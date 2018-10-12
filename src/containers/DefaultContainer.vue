@@ -9,7 +9,7 @@
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
       <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
-      <b-button @click="showFilterModal=true">Filters</b-button>
+      <b-button id="filterButton" @click="showFilterModal=true">Filters</b-button>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt />
         <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
@@ -40,7 +40,7 @@
     <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
       API Status: {{apiStatus}}
     </TheFooter>
-    <b-modal v-model="showFilterModal" id="deleteModal" title="Filters" @ok="handleOk">
+    <b-modal v-model="showFilterModal" id="filterModal" title="Filters" @ok="handleOk">
       <h3 id="first-title">Timespan</h3>
       <div class="timespan-area">
         <b-alert v-if=showAlert variant="danger" show>{{ dangerMessage }}</b-alert>
@@ -56,11 +56,11 @@
       <b-form-select v-model="selectedFilter" :options=filterOptions text-field="text" value-field="id">
       </b-form-select> -->
       <div slot="modal-footer" class="w-100">
-        <b-button @click="resetTimeFilter" class="float-left" variant="danger">Reset filters</b-button>
-        <b-btn @click="handleOk" class="float-right" variant="primary">
+        <b-button @click="resetTimeFilter" class="float-left" id="filter-reset-button" variant="danger">Reset filters</b-button>
+        <b-btn @click="handleOk" class="float-right" id="filter-save-button" variant="primary">
           Save
         </b-btn>
-        <b-btn @click="showFilterModal=false" class="float-right" id="cancel-button" variant="secondary">
+        <b-btn @click="showFilterModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
           Cancel
         </b-btn>
       </div>
@@ -244,20 +244,20 @@ export default {
       }
     },
     setFilterData() {
-      this.filters = {};
+      let filters = {};
       if (this.fromDate === null) {
-        this.filters.from = null;
+        filters.from = null;
       } else {
-        this.filters.from = this.fromDate.toISOString().substring(0, 10);
+        filters.from = this.fromDate.toISOString().substring(0, 10);
       }
 
       if (this.toDate === null) {
-        this.filters.to = null;
+        filters.to = null;
       } else {
-        this.filters.to = this.toDate.toISOString().substring(0, 10);
+        filters.to = this.toDate.toISOString().substring(0, 10);
       }
 
-      this.$store.commit("setFilters", this.filters);
+      this.$store.commit("setFilters", filters);
     },
     goUp: function() {
       this.level--;
@@ -510,7 +510,7 @@ export default {
   margin-top: 20px;
 }
 
-.modal-footer #cancel-button {
+.modal-footer #filter-cancel-button {
   margin-right: 10px;
 }
 </style>

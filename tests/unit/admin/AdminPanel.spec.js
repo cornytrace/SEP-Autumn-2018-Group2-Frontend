@@ -5,7 +5,7 @@ import {
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import AdminPanel from '@/views/admin/AdminPanel'
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)

@@ -6,7 +6,7 @@ import {
 import BootstrapVue from 'bootstrap-vue'
 import BottombarNav from '@/views/sidebars/BottombarNav'
 
-import mockUtils from '../mockUtils'
+import * as mockUtils from '../mockUtils'
 
 Vue.use(BootstrapVue)
 
