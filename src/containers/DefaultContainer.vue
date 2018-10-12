@@ -168,10 +168,10 @@ export default {
     };
   },
   beforeMount() {
-    if (this.$store.state.filters.from !== null) {
+    if (this.$store.state.filters.from) {
       this.fromDate = new Date(Date.parse(this.$store.state.filters.from));
     }
-    if (this.$store.state.filters.to !== null) {
+    if (this.$store.state.filters.to) {
       this.toDate = new Date(Date.parse(this.$store.state.filters.to));
     }
     for (var course of this.$store.state.user.courses) {
