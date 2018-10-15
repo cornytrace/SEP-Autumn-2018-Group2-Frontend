@@ -35,10 +35,10 @@ export default {
   getQueryParams(filters) {
     var params = [];
     if (filters.from !== null && filters.from !== undefined) {
-      params.push(["from", filters.from,]);
+      params.push(["from_date", filters.from,]);
     }
     if (filters.to !== null && filters.to !== undefined) {
-      params.push(["to", filters.to,]);
+      params.push(["to_date", filters.to,]);
     }
     var queryString = new URLSearchParams(params).toString();
     if (queryString === "") {
