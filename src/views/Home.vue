@@ -170,11 +170,17 @@ export default {
   width: 100%;
   height: 2px;
   border-radius: 1px;
-  background-color: #efefef;
+  background-color: rgba(240, 240, 240, 0.8);
   margin-bottom: 20px;
 }
 
 .useful-link a {
   color: #20a8d8;
+}
+
+.card-header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

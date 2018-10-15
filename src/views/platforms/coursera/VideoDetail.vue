@@ -14,8 +14,10 @@
             <!-- Number analytics -->
             <b-col lg="4" xl="3">
               <b-card :no-body="true">
-                <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-play bg-primary p-4 font-2xl mr-3 float-left icon-container"></i>
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-play bg-primary p-4 font-2xl"></i>
+                  </span>
                   <div class="h5 text-primary mb-0 pt-3">{{plays}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Total Plays</div>
                 </b-card-body>
@@ -24,8 +26,10 @@
 
             <b-col lg="4" xl="3">
               <b-card :no-body="true">
-                <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
+                  </span>
                   <div class="h5 text-primary mb-0 pt-3">{{full_plays}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Full Plays</div>
                 </b-card-body>
@@ -34,8 +38,10 @@
 
             <b-col lg="4" xl="3">
               <b-card :no-body="true">
-                <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-thumbs-up bg-primary p-4 font-2xl mr-3 float-left"></i>
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-thumbs-up bg-primary p-4 font-2xl float-left"></i>
+                  </span>
                   <div class="h5 text-primary mb-0 pt-3">{{likes}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Likes</div>
                 </b-card-body>
@@ -44,8 +50,10 @@
 
             <b-col lg="4" xl="3">
               <b-card :no-body="true">
-                <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-comment bg-primary p-4 font-2xl mr-3 float-left"></i>
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-comment bg-primary p-4 font-2xl "></i>
+                  </span>
                   <div class="h5 text-primary mb-0 pt-3">{{comments}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Comments</div>
                 </b-card-body>
@@ -54,8 +62,10 @@
 
             <b-col v-if="qdt" lg="4" xl="3">
               <b-card :no-body="true">
-                <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-thumbs-down bg-primary p-4 font-2xl mr-3 float-left"></i>
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-thumbs-down bg-primary p-4 font-2xl mr-3 float-left"></i>
+                  </span>
                   <div class="h5 text-primary mb-0 pt-3">{{dislikes}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Dislikes</div>
                 </b-card-body>
@@ -64,8 +74,10 @@
 
             <b-col v-if="qdt" lg="4" xl="3">
               <b-card :no-body="true">
-                <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
+                  </span>
                   <div class="h5 text-primary mb-0 pt-3">{{ratio}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Like/Dislike Ratio</div>
                 </b-card-body>

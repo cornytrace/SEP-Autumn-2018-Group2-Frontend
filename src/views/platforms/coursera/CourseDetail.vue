@@ -379,10 +379,6 @@ export default {
   opacity: 0;
 }
 
-.align-data {
-  text-align: right;
-}
-
 .text-font-size {
   font-size: 10px;
 }
@@ -394,13 +390,5 @@ export default {
 
 .text-color {
   color: #00a9d4;
-}
-
-.iconsquare {
-  float: left;
-  background-color: #00a9d4;
-  height: 100%;
-  width: 75px;
-  text-align: center;
 }
 </style>
