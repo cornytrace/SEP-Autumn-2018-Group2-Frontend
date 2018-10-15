@@ -167,11 +167,11 @@ export default {
       nextItemType: "",
       showNextItemPassingFraction: false,
       hasNextItem: false,
-      nextItemPassingFraction: 0,
+      nextItemPassingFraction: 0
     };
   },
   components: {
-    Chart,
+    Chart
   },
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
@@ -214,6 +214,7 @@ export default {
     setVideoData() {
       // Set url to the next item
       let category = this.videoData.next_item.category;
+      console.log(this.videoData.next_item);
       if (category === "quiz") {
         this.hasNextItem = true;
         this.nextItemType = "Quiz";
@@ -227,7 +228,9 @@ export default {
           "/" +
           this.$store.state.selectedCourse +
           "/quizzes/" +
-          this.videoData.next_item.item_id;
+          this.videoData.next_item.assessment_id +
+          "-" +
+          this.videoData.next_item.assessment_version;
       } else if (category === "lecture") {
         this.showNextItemPassingFraction = false;
         this.hasNextItem = true;
@@ -265,7 +268,7 @@ export default {
       this.chart_data[0] = {};
       this.chart_data[0].x = [];
       this.chart_data[0].y = [];
-      this.chart_data[0].marker = { color: colors.blue, };
+      this.chart_data[0].marker = { color: colors.blue };
       this.chartLayout = {};
       this.chartLayout.shapes = [];
       let high = 0;
@@ -295,8 +298,8 @@ export default {
           y1: 1,
           line: {
             color: colors.green,
-            width: 2,
-          },
+            width: 2
+          }
         });
       }
       if (lowx !== -1) {
@@ -310,14 +313,14 @@ export default {
           y1: 1,
           line: {
             color: colors.red,
-            width: 2,
-          },
+            width: 2
+          }
         });
       }
       this.comments = this.videoData.video_comments;
       this.isLoading = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
