@@ -3,6 +3,11 @@ import axios from 'axios'
 
 export default {
   // Utility functions
+
+  arrayColumn(arr, n) {
+    return arr.map(x => x[n])
+  },
+
   isAuthenticated() {
     return store.state.apiToken !== "" && store.state.apiExpire > Date.now()
   },
@@ -35,10 +40,10 @@ export default {
   getQueryParams(filters) {
     var params = [];
     if (filters.from !== null && filters.from !== undefined) {
-      params.push(["from_date", filters.from,]);
+      params.push(["from_date", filters.from, ]);
     }
     if (filters.to !== null && filters.to !== undefined) {
-      params.push(["to_date", filters.to,]);
+      params.push(["to_date", filters.to, ]);
     }
     var queryString = new URLSearchParams(params).toString();
     if (queryString === "") {
@@ -106,8 +111,8 @@ export default {
       .post(this.apiUrl() + `/users/forgot_password/`, {
         email: email,
       }, {
-          headers: this.authHeader(),
-        })
+        headers: this.authHeader(),
+      })
   },
 
   getUser() {
@@ -119,7 +124,9 @@ export default {
 
   deleteUser(id) {
     return axios
-      .delete(this.apiUrl() + `/users/${id}/`, { headers: this.authHeader(), })
+      .delete(this.apiUrl() + `/users/${id}/`, {
+        headers: this.authHeader(),
+      })
   },
 
   // Course API calls
@@ -132,7 +139,9 @@ export default {
 
   getDetailedCourseData(courseId, filters) {
     return axios
-      .get(this.apiUrl() + `/api/course-analytics/${courseId}/` + this.getQueryParams(filters), { headers: this.authHeader(), })
+      .get(this.apiUrl() + `/api/course-analytics/${courseId}/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
   },
 
   // Video API calls
@@ -145,7 +154,9 @@ export default {
 
   getVideoDetails(courseId, videoId, filters) {
     return axios
-      .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/` + this.getQueryParams(filters), { headers: this.authHeader(), })
+      .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
   },
 
   getQuizzes(courseId) {
@@ -157,11 +168,15 @@ export default {
 
   getQuizVersions(courseId, baseId) {
     return axios
-      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/`, { headers: this.authHeader(), })
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/`, {
+        headers: this.authHeader(),
+      })
   },
 
   getQuizDetails(courseId, baseId, version) {
     return axios
-      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/`, { headers: this.authHeader(), })
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/`, {
+        headers: this.authHeader(),
+      })
   },
 }

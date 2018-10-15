@@ -152,6 +152,14 @@
           </b-card>
         </b-col>
 
+        <b-col lg="12" xl="8">
+          <b-card id="geo-data" header="Geographical location of learners">
+            <div class="chart-wrapper">
+              <chart :data=geoData :layout=geoLayout id="graph-5"></chart>
+            </div>
+          </b-card>
+        </b-col>
+
         <!-- SHOULD HAVE -->
 
         <!-- <b-col lg="6" xl="4" v-if="qdt">
@@ -220,6 +228,9 @@ export default {
       // data average time spend per module by learners
       avgTimeModData: [],
       avgTimeLayout: {},
+
+      geoData: [],
+      geoLayout: {},
 
       /*
        * QDT member analytics 
@@ -359,6 +370,22 @@ export default {
       };
 
       this.avgTime = (parseFloat(data.average_time) / (3600 * 24)).toFixed(1);
+
+      this.geoData[0] = {
+        type: "choropleth",
+        locations: util.arrayColumn(data.geo_data, 0),
+        text: util.arrayColumn(data.geo_data, 1),
+        z: util.arrayColumn(data.geo_data, 2),
+        autocolorscale: true,
+      };
+
+      this.geoLayout = {
+        geo: {
+          projection: {
+            type: "robinson",
+          },
+        },
+      };
 
       this.isLoading = false;
     },
