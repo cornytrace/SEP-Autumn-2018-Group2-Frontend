@@ -24,6 +24,12 @@ export default {
     //   icon: "cui-calendar",
     // },
   ],
+  resources: [
+    {
+      name: "Coursera for Educators",
+      link: "https://blog.coursera.org/for-educators/",
+    },
+  ],
 
   quizzes: [
     { name: "quiz 1", id: 1, },

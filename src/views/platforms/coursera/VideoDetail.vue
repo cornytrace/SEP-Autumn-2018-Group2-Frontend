@@ -15,7 +15,7 @@
             <b-col lg="4" xl="3">
               <b-card :no-body="true">
                 <b-card-body class="p-0 clearfix">
-                  <i class="fa fa-play bg-primary p-4 font-2xl mr-3 float-left"></i>
+                  <i class="fa fa-play bg-primary p-4 font-2xl mr-3 float-left icon-container"></i>
                   <div class="h5 text-primary mb-0 pt-3">{{plays}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Total Plays</div>
                 </b-card-body>
@@ -75,7 +75,7 @@
         </b-col>
 
         <!-- Link to next vid -->
-        <b-col md="3" lg="2">
+        <b-col v-if="hasNextItem" md="3" lg="2">
           <!-- <div class="link-container">
             <router-link to="/coursera/capstone-recommender-systems/videos/2">
               <b-card class="link-card">
@@ -93,7 +93,7 @@
               </b-card>
             </router-link>
           </div> -->
-          <div v-if="hasNextItem" class="link-container">
+          <div class="link-container">
             <router-link :to=nextItemUrl>
               <b-card class="link-card">
                 <table>
@@ -167,11 +167,11 @@ export default {
       nextItemType: "",
       showNextItemPassingFraction: false,
       hasNextItem: false,
-      nextItemPassingFraction: 0
+      nextItemPassingFraction: 0,
     };
   },
   components: {
-    Chart
+    Chart,
   },
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
@@ -214,7 +214,7 @@ export default {
     setVideoData() {
       // Set url to the next item
       let category = this.videoData.next_item.category;
-      console.log(this.videoData.next_item);
+
       if (category === "quiz") {
         this.hasNextItem = true;
         this.nextItemType = "Quiz";
@@ -268,7 +268,7 @@ export default {
       this.chart_data[0] = {};
       this.chart_data[0].x = [];
       this.chart_data[0].y = [];
-      this.chart_data[0].marker = { color: colors.blue };
+      this.chart_data[0].marker = { color: colors.blue, };
       this.chartLayout = {};
       this.chartLayout.shapes = [];
       let high = 0;
@@ -298,8 +298,8 @@ export default {
           y1: 1,
           line: {
             color: colors.green,
-            width: 2
-          }
+            width: 2,
+          },
         });
       }
       if (lowx !== -1) {
@@ -313,19 +313,22 @@ export default {
           y1: 1,
           line: {
             color: colors.red,
-            width: 2
-          }
+            width: 2,
+          },
         });
       }
       this.comments = this.videoData.video_comments;
       this.isLoading = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .graph {
   max-height: 40vh;
+}
+
+.icon-container {
 }
 </style>
