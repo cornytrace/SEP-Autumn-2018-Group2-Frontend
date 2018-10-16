@@ -92,6 +92,16 @@
               </b-card>
             </b-col>
 
+            <b-col sm="12" md="6" lg="3">
+              <b-card :no-body="true">
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <i class="fa fa-bars icon-color p-4 font-2xl mr-3 float-left"></i>
+                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ questions }}</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of questions</div>
+                </b-card-body>
+              </b-card>
+            </b-col>
+
           </b-row>
         </b-col>
 
@@ -161,6 +171,7 @@ export default {
       likeDislikeRatio: 0,
       avgScoreLastAttempt: 0,
       version: 0,
+      questions: 0,
 
       // Graphs
       attemptsDistribution: [],
@@ -337,6 +348,8 @@ export default {
           this.quizData.correct_ratio_per_question[x][1]
         );
       }
+
+      this.questions = this.quizData.correct_ratio_per_question.length;
 
       this.questionRatioLayout = {};
       this.questionRatioLayout.yaxis = {};
