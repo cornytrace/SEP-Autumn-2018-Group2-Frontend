@@ -5,6 +5,25 @@
         <b-col class="title-col">
           <h1>{{ this.courseName }}</h1>
         </b-col>
+
+        <b-col sm="12" md="6" lg="2">
+          <div class="link-container">
+            <router-link :to=compareUrl>
+              <b-card class="link-card">
+                <table>
+                  <tr>
+                    <th>
+                      <span class="link-card-text">Compare to other course</span>
+                    </th>
+                    <th class="icon-cell">
+                      <i class="fa fa-2x fa-chevron-right"></i>
+                    </th>
+                  </tr>
+                </table>
+              </b-card>
+            </router-link>
+          </div>
+        </b-col>
       </b-row>
       <b-row>
 
@@ -111,7 +130,7 @@
                 <i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"></i>
               </span>
               <div class="h5 text-color mb-0 pt-3" id="no-cohorts">{{ avgTime }}</div>
-              <div class="text-muted text-uppercase font-weight-bold text-font-size">Average time</div>
+              <div class="text-muted text-uppercase font-weight-bold text-font-size">Average active timespan (in days)</div>
             </b-card-body>
           </b-card>
         </b-col>
@@ -198,6 +217,12 @@ export default {
       courseId: "",
       courseData: {},
       courseName: "",
+      compareUrl:
+        this.$route.path +
+        "/compare/" +
+        this.$store.state.user.courses.filter(
+          el => el.course_slug !== this.$route.params.courseid
+        )[0].course_slug,
 
       /*
        * Teacher analytics 

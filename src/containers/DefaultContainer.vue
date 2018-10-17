@@ -212,7 +212,7 @@ export default {
       var routes = [];
       var path = "";
       for (var subroute of this.$route.path.split("/")) {
-        if (subroute !== strings.home) {
+        if (subroute !== strings.home && subroute !== "compare") {
           path += subroute + "/";
           routes.push({
             text: subroute,
@@ -303,6 +303,8 @@ export default {
           this.getVideos();
         } else if (this.selectedSubitem === "quizzes") {
           this.getQuizzes();
+        } else {
+          this.level = 1;
         }
       }
     },

@@ -152,7 +152,7 @@ describe('DefaultContainer.vue', () => {
     })
   })
 
-  it('Navigation check over max level', () => {
+  it('Navigation check over max level without videos or quizzes', () => {
     const wrapper = mountComponent()
     // Add router that is 3 longer than the max nav level
     var x = ""
@@ -160,7 +160,7 @@ describe('DefaultContainer.vue', () => {
       x += "/a";
     }
     wrapper.vm.setNavigation(x)
-    expect(wrapper.vm.level).toBe(settings.max_nav_level)
+    expect(wrapper.vm.level).toBe(1)
   })
 
   // Dropdowns

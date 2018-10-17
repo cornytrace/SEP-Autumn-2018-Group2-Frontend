@@ -65,6 +65,14 @@ const router = new VueRouter({
         },
       },
       {
+        path: '/coursera/:courseid/compare/:course2id',
+        name: 'CourseComparison',
+        component: coursera.CourseComparison,
+        meta: {
+          label: "Course Compare",
+        },
+      },
+      {
         path: '/coursera/:courseid/videos',
         name: 'Videos',
         component: coursera.Videos,

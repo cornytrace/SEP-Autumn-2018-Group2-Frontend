@@ -1,39 +1,43 @@
 export {
   default as Courses
 }
-from './Courses'
+  from './Courses'
 
 export {
   default as CourseDetail
 }
-from './CourseDetail'
+  from './CourseDetail'
 
 export {
   default as Videos
 }
-from './Videos'
+  from './Videos'
 
 export {
   default as VideoDetail
 }
-from './VideoDetail'
+  from './VideoDetail'
 
 export {
   default as Quizzes
 }
-from './Quizzes'
+  from './Quizzes'
 
 export {
   default as QuizDetail
 }
-from './QuizDetail'
+  from './QuizDetail'
 
 export {
   default as Assignments
 }
-from './Assignments'
+  from './Assignments'
 
 export {
   default as Lessons
 }
-from './Lessons'
+  from './Lessons'
+export {
+  default as CourseComparison
+}
+  from './CourseComparison'
