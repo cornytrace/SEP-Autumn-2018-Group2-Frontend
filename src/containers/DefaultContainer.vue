@@ -10,6 +10,7 @@
       <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
       <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
       <b-button id="filterButton" @click="showFilterModal=true">Filters</b-button>
+      <b-button :disabled="level<2" id="actions-button" @click="showActionsModal=true">Changes</b-button>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt />
         <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
@@ -47,8 +48,8 @@
         <datepicker v-model="fromDate"></datepicker>
         <div id="spacer"></div>
         <datepicker v-model="toDate"></datepicker>
-        <b-form-select disabled value-field="id" text-field="name" v-model="selectedCohort" :options=cohorts>
-        </b-form-select>
+        <!-- <b-form-select disabled value-field="id" text-field="name" v-model="selectedCohort" :options=cohorts>
+        </b-form-select> -->
       </div>
       <!-- <h3>Geography filter</h3>
       <multi-select optionsTitle="" selectedTitle="" v-model="selectedCountries" :options=countries tf="name" vf="id"></multi-select>
@@ -62,6 +63,29 @@
         </b-btn>
         <b-btn @click="showFilterModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
           Cancel
+        </b-btn>
+      </div>
+    </b-modal>
+
+    <b-modal v-model="showActionsModal" id="actionsModal" title="Changes" @ok="handleOk">
+      <div v-if="!loadingActions">
+        <b-list-group>
+          <b-list-group-item v-for="action of actions" :key="action.name">
+            {{ action.title }}
+            <span class="action-date">{{ action.date }}</span>
+          </b-list-group-item>
+        </b-list-group>
+      </div>
+
+      <div v-if="loadingActions">
+        <p class="loading-text">{{ loadingActionsText }}</p>
+      </div>
+      <div slot="modal-footer" class="w-100">
+        <!-- <b-btn @click="handleOk" class="float-right" id="filter-save-button" variant="primary">
+          Save
+        </b-btn> -->
+        <b-btn @click="showActionsModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
+          Back
         </b-btn>
       </div>
     </b-modal>
@@ -134,6 +158,10 @@ export default {
       platformOptions: [],
       selectedPlatform: settings.platform_default,
       showFilterModal: false,
+      showActionsModal: false,
+      actions: [],
+      loadingActions: false,
+      loadingActionsText: strings.loading,
 
       // Filters
       filters: {},
@@ -230,6 +258,22 @@ export default {
       this.fromDate = null;
       this.toDate = null;
     },
+    getActions() {
+      if (this.currentCourse) {
+        util
+          .getActions("coursera", this.currentCourse.course_id)
+          .then(response => {
+            this.actions = response.data;
+            this.loadingActions = false;
+          })
+          .catch(err => {
+            console.log(err);
+            this.loadingActionsText = strings.connection_error;
+          });
+      } else {
+        this.loadingActionsText = strings.connection_error;
+      }
+    },
     handleOk() {
       if (
         this.fromDate !== null &&
@@ -268,6 +312,7 @@ export default {
     // Update the navigation menus.
     setNavigation: function(path) {
       // Get level.
+      this.loadingActions = true;
       this.level = this.getLevel(path);
       var split = path.split("/");
 
@@ -277,12 +322,13 @@ export default {
         this.setCourses(this.courses.coursera, this.selectedPlatform);
         this.selectedCourse = split[2];
         this.$store.commit("setSelectedPlatform", this.selectedPlatform);
-        this.$store.commit("setSelectedCourse", this.selectedCourse);
       }
       if (this.level >= 2) {
         this.currentCourse = this.$store.state.user.courses.find(
           x => x.course_slug === this.selectedCourse
         );
+        this.$store.commit("setSelectedCourse", this.selectedCourse);
+        this.getActions();
       }
 
       // Set navigation based on the level.
@@ -306,6 +352,7 @@ export default {
         } else {
           this.level = 1;
         }
+        console.log(this.level, this.$store.state.selectedCourse);
       }
     },
     // Dropdown listeners
@@ -525,6 +572,19 @@ export default {
 
 .modal-footer #filter-cancel-button {
   margin-right: 10px;
+}
+
+#actions-button {
+  margin-left: 10px;
+}
+
+.loading-text {
+  color: #00a9d4;
+}
+
+.action-date {
+  float: right;
+  font-size: 0.7rem;
 }
 </style>
 

@@ -40,10 +40,10 @@ export default {
   getQueryParams(filters) {
     var params = [];
     if (filters.from !== null && filters.from !== undefined) {
-      params.push(["from_date", filters.from, ]);
+      params.push(["from_date", filters.from,]);
     }
     if (filters.to !== null && filters.to !== undefined) {
-      params.push(["to_date", filters.to, ]);
+      params.push(["to_date", filters.to,]);
     }
     var queryString = new URLSearchParams(params).toString();
     if (queryString === "") {
@@ -111,8 +111,8 @@ export default {
       .post(this.apiUrl() + `/users/forgot_password/`, {
         email: email,
       }, {
-        headers: this.authHeader(),
-      })
+          headers: this.authHeader(),
+        })
   },
 
   getUser() {
@@ -176,6 +176,13 @@ export default {
   getQuizDetails(courseId, baseId, version) {
     return axios
       .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/`, {
+        headers: this.authHeader(),
+      })
+  },
+
+  getActions(platformId, courseId) {
+    return axios
+      .get(this.apiUrl() + `/actions/${platformId}/${courseId}/`, {
         headers: this.authHeader(),
       })
   },
