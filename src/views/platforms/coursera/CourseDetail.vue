@@ -147,6 +147,14 @@
           </b-card>
         </b-col>
 
+              <b-col lg="12" xl="8">
+          <b-card id="geo-data" header="Geographical location of learners">
+            <div class="chart-wrapper">
+              <chart :data=geoData :layout=geoLayout id="graph-5"></chart>
+            </div>
+          </b-card>
+        </b-col>
+
         <b-col lg="6" xl="4">
           <b-card id="progr-fin" header="Progression of finished learners">
             <div class="chart-wrapper">
@@ -171,13 +179,7 @@
           </b-card>
         </b-col>
 
-        <b-col lg="12" xl="8">
-          <b-card id="geo-data" header="Geographical location of learners">
-            <div class="chart-wrapper">
-              <chart :data=geoData :layout=geoLayout id="graph-5"></chart>
-            </div>
-          </b-card>
-        </b-col>
+  
 
         <!-- SHOULD HAVE -->
 

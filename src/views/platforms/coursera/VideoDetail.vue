@@ -19,7 +19,7 @@
                     <i class="fa fa-play bg-primary p-4 font-2xl"></i>
                   </span>
                   <div class="h5 text-primary mb-0 pt-3">{{plays}}</div>
-                  <div class="text-muted text-uppercase font-weight-bold font-xs">Total Plays</div>
+                  <div class="text-muted text-uppercase font-weight-bold font-xs">Watchers</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -31,7 +31,7 @@
                     <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
                   </span>
                   <div class="h5 text-primary mb-0 pt-3">{{full_plays}}</div>
-                  <div class="text-muted text-uppercase font-weight-bold font-xs">Full Plays</div>
+                  <div class="text-muted text-uppercase font-weight-bold font-xs">Completed</div>
                 </b-card-body>
               </b-card>
             </b-col>

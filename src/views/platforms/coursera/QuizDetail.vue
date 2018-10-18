@@ -5,7 +5,7 @@
         <b-col class="title-col">
           <h1>{{ name }} </h1>
           <div class="version-select">
-            <h4>Version:</h4>
+            <span class="version-title">Version:</span>
             <b-form-select id="version-dropdown" @change=versionChanged :options=versions text-field="version" value-field="version" v-model="selectedVersion"></b-form-select>
           </div>
         </b-col>
@@ -437,10 +437,12 @@ export default {
   float: right;
 }
 
-.title-col h4 {
+.title-col .version-title {
+  line-height: calc(2.0625rem + 14px);
   display: inline;
-  color: #00a9d4;
-  margin-right: 10px;
+  font-weight: normal;
+  color: #080808;
+  margin-right: 5px;
 }
 
 .title-col select {
