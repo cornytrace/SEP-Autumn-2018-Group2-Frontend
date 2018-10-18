@@ -143,7 +143,7 @@ export default {
     TopbarNav,
     BackButton,
     MultiSelect,
-    Datepicker,
+    Datepicker
   },
   data() {
     return {
@@ -151,7 +151,7 @@ export default {
       isPrimary: false,
       level: 0,
       top_nav: [],
-      level_0: ["/home", "/settings", "/contact",],
+      level_0: ["/home", "/settings", "/contact"],
       platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
@@ -175,24 +175,24 @@ export default {
       filterOptions: [
         {
           text: "No filter",
-          id: "no_filter",
+          id: "no_filter"
         },
         {
           text: "Has paid only",
-          id: "has_paid",
-        },
+          id: "has_paid"
+        }
       ],
-      cohorts: [{ name: "Cohorts not yet implemented", id: "no_cohort", },],
+      cohorts: [{ name: "Cohorts not yet implemented", id: "no_cohort" }],
       selectedCohort: "no_cohort",
 
-      countries: [{ name: "Netherlands", id: 1, }, { name: "Germany", id: 2, },],
+      countries: [{ name: "Netherlands", id: 1 }, { name: "Germany", id: 2 }],
       selectedCountries: [],
       selectedCourse: settings.course_default,
       selectedSubitem: "",
       // Mock
       courses: {
-        coursera: [],
-      },
+        coursera: []
+      }
     };
   },
   beforeMount() {
@@ -206,7 +206,7 @@ export default {
       this.courses.coursera.push({
         name: course.course_name,
         description: "",
-        slug: course.course_slug,
+        slug: course.course_slug
       });
     }
     util
@@ -221,7 +221,7 @@ export default {
   },
   mounted() {
     this.platformOptions = [
-      { value: settings.platform_default, text: strings.select_platform, },
+      { value: settings.platform_default, text: strings.select_platform }
     ];
 
     this.setPlatforms();
@@ -244,14 +244,14 @@ export default {
           path += subroute + "/";
           routes.push({
             text: subroute,
-            to: path.substring(0, path.length - 1),
+            to: path.substring(0, path.length - 1)
           });
         }
       }
       routes[0].text = strings.home;
       routes[0].to = "/";
       return routes;
-    },
+    }
   },
   methods: {
     resetTimeFilter() {
@@ -352,7 +352,6 @@ export default {
         } else {
           this.level = 1;
         }
-        console.log(this.level, this.$store.state.selectedCourse);
       }
     },
     // Dropdown listeners
@@ -385,8 +384,8 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: strings.select_course,
-        },
+          text: strings.select_course
+        }
       ];
     },
     setPlatforms() {
@@ -394,17 +393,17 @@ export default {
       this.top_nav[0].push({
         name: strings.home,
         icon: "cui-home",
-        url: "/home",
+        url: "/home"
       });
       for (var platform of this.platforms) {
         this.top_nav[0].push({
           name: platform.name,
           url: platform.url || "/" + platform.slug,
-          icon: "fa fa-line-chart",
+          icon: "fa fa-line-chart"
         });
         this.platformOptions.push({
           value: platform.slug,
-          text: platform.name,
+          text: platform.name
         });
       }
     },
@@ -412,21 +411,21 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: strings.select_course,
-        },
+          text: strings.select_course
+        }
       ];
       this.top_nav[1] = [];
       for (var course of c) {
         // Push to dropdown
         this.courseOptions.push({
           value: course.slug,
-          text: course.name,
+          text: course.name
         });
         // Push to navbar
         this.top_nav[1].push({
           name: course.name,
           url: "/" + this.selectedPlatform + "/" + course.slug,
-          icon: "fa fa-line-chart",
+          icon: "fa fa-line-chart"
         });
       }
     },
@@ -442,7 +441,7 @@ export default {
             "/" +
             this.selectedCourse +
             "/" +
-            coursepPage.slug,
+            coursepPage.slug
         });
       }
     },
@@ -461,7 +460,7 @@ export default {
                 this.selectedCourse +
                 "/videos/" +
                 video.item_id,
-              icon: "fa fa-video-camera",
+              icon: "fa fa-video-camera"
             });
             this.$forceUpdate();
           }
@@ -488,7 +487,7 @@ export default {
                 quiz.base_id +
                 "-" +
                 quiz.version,
-              icon: "fa fa-check   ",
+              icon: "fa fa-check   "
             });
             this.$forceUpdate();
           }
@@ -497,8 +496,8 @@ export default {
           this.top_nav[3] = [];
           console.log(err);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -6,7 +6,7 @@
           <h1>{{ this.courseName }}</h1>
         </b-col>
 
-        <b-col sm="12" md="6" lg="2">
+        <b-col v-if="showCompare" sm="12" md="6" lg="2">
           <div class="link-container">
             <router-link :to=compareUrl>
               <b-card class="link-card">
@@ -217,12 +217,8 @@ export default {
       courseId: "",
       courseData: {},
       courseName: "",
-      compareUrl:
-        this.$route.path +
-        "/compare/" +
-        this.$store.state.user.courses.filter(
-          el => el.course_slug !== this.$route.params.courseid
-        )[0].course_slug,
+      compareUrl: "",
+      showCompare: true,
 
       /*
        * Teacher analytics 
@@ -269,6 +265,15 @@ export default {
     Chart,
   },
   beforeMount() {
+    var otherCourses = this.$store.state.user.courses.filter(
+      el => el.course_slug !== this.$route.params.courseid
+    );
+    if (otherCourses[0]) {
+      this.compareUrl =
+        this.$route.path + "/compare/" + otherCourses[0].course_slug;
+    } else {
+      this.showCompare = false;
+    }
     this.courseSlug = this.$route.params.courseid;
     this.getCourseData();
   },
