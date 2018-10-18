@@ -193,4 +193,11 @@ export default {
         headers: this.authHeader(),
       })
   },
+
+  deleteAction(pk) {
+    return axios
+      .delete(this.apiUrl() + `/actions/${pk}`, {
+        headers: this.authHeader(),
+      })
+  },
 }

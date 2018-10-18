@@ -359,6 +359,44 @@ describe('DefaultContainer.vue', () => {
     });
   })
 
+  // Delete action modal
+  it('Add action modal is reachable', () => {
+    moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
+      status: 200,
+      response: [{
+        title: "action 1",
+        description: "description 1",
+      },],
+    });
+    moxios.stubRequest(util.apiUrl() + '/actions/', {
+      status: 200,
+      response: {},
+
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test");
+
+    moxios.wait(function (done) {
+      expect(wrapper.vm.showActionsModal).toBe(false)
+      expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
+      wrapper.find("#actions-button").trigger('click')
+      expect(wrapper.vm.showActionsModal).toBe(true)
+      wrapper.find("#action-delete-button").trigger("click")
+
+
+      return wrapper.vm.$nextTick().then(() => {
+        expect(wrapper.find("#deleteActionModal").isVisible()).toBe(true)
+        expect(wrapper.html()).toContain("action 1")
+        wrapper.find("#delete-save-button").trigger("click")
+        return wrapper.vm.$nextTick().then(() => {
+          expect(wrapper.find("#deleteActionModal").isVisible()).toBe(false)
+          done();
+
+        });
+      })
+    });
+  })
+
   // Filters modal
   it('filter button click shows filter modal', () => {
     const wrapper = mountComponent()

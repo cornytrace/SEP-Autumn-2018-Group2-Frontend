@@ -82,7 +82,8 @@
         <b-list-group>
           <b-list-group-item v-for="action of actions" :key="action.name">
             {{ action.title }}
-            <span class="action-date">{{ action.date }}</span>
+            <b-button id="action-delete-button" size="sm" @click="actionToDelete = action; showDeleteActionModal=true"><i class="fa fa-trash" /></b-button>
+            <span class="action-date mr-2">{{ action.date }}</span>
           </b-list-group-item>
         </b-list-group>
       </div>
@@ -115,6 +116,22 @@
         </b-btn>
         <b-btn @click="showAddActionModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
           Cancel
+        </b-btn>
+      </div>
+    </b-modal>
+
+    <!-- DELETE ACITON MODAL -->
+    <b-modal v-model="showDeleteActionModal" id="deleteActionModal" @ok="handleOk">
+      <div slot="modal-title" class="w-100">
+        Delete change
+      </div>
+      Are you sure you want to delete <b>{{actionToDelete.title }}</b>?
+      <div slot="modal-footer" class="w-100">
+        <b-btn @click="deleteAction" class="float-right" id="filter-save-button" variant="danger">
+          Yes
+        </b-btn>
+        <b-btn @click="showDeleteActionModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
+          No
         </b-btn>
       </div>
     </b-modal>
@@ -200,6 +217,9 @@ export default {
         title: "",
         description: "",
       },
+      actionToDelete: {},
+
+      showDeleteActionModal: false,
 
       // Filters
       filters: {},
@@ -322,11 +342,29 @@ export default {
           description: "",
         };
         this.showAddActionModal = false;
+        this.showActionsModal = true;
       } else {
         this.showAddActionAlert = true;
         this.addActionWarning =
           "Something went wrong, date and title are required!";
       }
+    },
+    deleteAction() {
+      this.loadingActions = true;
+      util.deleteAction(this.actionToDelete.pk).then(response => {
+        util
+          .getActions(
+            "coursera",
+            this.currentCourse.course_id,
+            this.$store.state.filters
+          )
+          .then(response => {
+            this.actions = response.data;
+            this.loadingActions = false;
+            this.showDeleteActionModal = false;
+            this.showActionsModal = true;
+          });
+      });
     },
     resetTimeFilter() {
       this.fromDate = null;
@@ -662,6 +700,10 @@ export default {
 .action-date {
   float: right;
   font-size: 0.7rem;
+}
+
+#action-delete-button {
+  float: right;
 }
 </style>
 

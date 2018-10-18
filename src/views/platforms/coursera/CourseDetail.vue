@@ -408,7 +408,14 @@ export default {
         locations: util.arrayColumn(data.geo_data, 0),
         text: util.arrayColumn(data.geo_data, 1),
         z: util.arrayColumn(data.geo_data, 2),
-        autocolorscale: true,
+        colorscale: [
+          [0, "rgba(0, 169, 212, 0)",],
+          [0.35, "rgba(0, 169, 212, 50)",],
+          [0.5, "rgba(0, 169, 212, 100)",],
+          [0.6, "rgba(0, 169, 212,150)",],
+          [0.7, "rgba(0, 169, 212, 200)",],
+          [1, "rgba(0, 169, 212, 255)",],
+        ],
       };
 
       this.geoLayout = {
