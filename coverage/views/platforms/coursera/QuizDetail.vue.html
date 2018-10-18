@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>99/99</span>
+        <span class='fraction'>100/100</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">90% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>97/97</span>
+        <span class='fraction'>98/98</span>
       </div>
     </div>
   </div>
@@ -467,7 +467,45 @@
 422
 423
 424
-425</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -620,6 +658,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -808,6 +847,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -843,6 +884,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -897,7 +947,10 @@
       &lt;b-row&gt;
         &lt;b-col class="title-col"&gt;
           &lt;h1&gt;{{ name }} &lt;/h1&gt;
-          &lt;b-form-select id="version-dropdown" @change=versionChanged :options=versions text-field="version" value-field="version" v-model="selectedVersion"&gt;&lt;/b-form-select&gt;
+          &lt;div class="version-select"&gt;
+            &lt;h4&gt;Version:&lt;/h4&gt;
+            &lt;b-form-select id="version-dropdown" @change=versionChanged :options=versions text-field="version" value-field="version" v-model="selectedVersion"&gt;&lt;/b-form-select&gt;
+          &lt;/div&gt;
         &lt;/b-col&gt;
       &lt;/b-row&gt;
       &lt;b-row&gt;
@@ -985,6 +1038,16 @@
               &lt;/b-card&gt;
             &lt;/b-col&gt;
 &nbsp;
+            &lt;b-col sm="12" md="6" lg="3"&gt;
+              &lt;b-card :no-body="true"&gt;
+                &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                  &lt;i class="fa fa-bars icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                  &lt;div class="h5 text-color mb-0 pt-3" id="no-quizzes"&gt;{{ questions }}&lt;/div&gt;
+                  &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Number of questions&lt;/div&gt;
+                &lt;/b-card-body&gt;
+              &lt;/b-card&gt;
+            &lt;/b-col&gt;
+&nbsp;
           &lt;/b-row&gt;
         &lt;/b-col&gt;
 &nbsp;
@@ -1054,6 +1117,7 @@ export default {
       likeDislikeRatio: 0,
       avgScoreLastAttempt: 0,
       version: 0,
+      questions: 0,
 &nbsp;
       // Graphs
       attemptsDistribution: [],
@@ -1231,6 +1295,8 @@ export default {
         );
       }
 &nbsp;
+      this.questions = this.quizData.correct_ratio_per_question.length;
+&nbsp;
       this.questionRatioLayout = {};
       this.questionRatioLayout.yaxis = {};
       this.questionRatioLayout.yaxis.dtick = 0.1;
@@ -1310,9 +1376,18 @@ export default {
   display: inline-block;
 }
 &nbsp;
-.title-col select {
-  width: 5%;
+.title-col .version-select {
   float: right;
+}
+&nbsp;
+.title-col h4 {
+  display: inline;
+  color: #00a9d4;
+  margin-right: 10px;
+}
+&nbsp;
+.title-col select {
+  width: 50px;
 }
 &lt;/style&gt;
 &nbsp;</pre></td></tr>
@@ -1321,7 +1396,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 15 2018 12:08:16 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 18 2018 09:21:19 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

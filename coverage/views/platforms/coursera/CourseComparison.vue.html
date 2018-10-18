@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for views/platforms/coursera/CourseComparison.vue</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">views/platforms/coursera</a> CourseComparison.vue
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>68/68</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>14/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>66/66</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+  &lt;div class="animated fadeIn"&gt;
+    &lt;b-row&gt;
+&nbsp;
+      &lt;b-col sm="12" md="6"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-header class="custom-header"&gt;
+            {{ this.course1.courseName }} &lt;/b-card-header&gt;
+          &lt;b-card-body class="p-0 clearfix mr-3 ml-3 mt-3"&gt;
+            &lt;div v-if="!loadingC1"&gt;
+              &lt;b-row&gt;
+                &lt;b-col sm="12" md="6" lg="6"&gt;
+                  &lt;b-card :no-body="true"&gt;
+                    &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                      &lt;span class="iconsquare"&gt;
+                        &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                      &lt;/span&gt;
+                      &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ this.course1.courseData.enrolled_learners }}&lt;/div&gt;
+                      &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Enrolled learners&lt;/div&gt;
+                    &lt;/b-card-body&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+                &lt;b-col sm="12" md="6" lg="6"&gt;
+                  &lt;b-card :no-body="true"&gt;
+                    &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                      &lt;span class="iconsquare"&gt;
+                        &lt;i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                      &lt;/span&gt;
+                      &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ this.course1.courseData.leaving_learners }}&lt;/div&gt;
+                      &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Leaving learners&lt;/div&gt;
+                    &lt;/b-card-body&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+              &lt;/b-row&gt;
+              &lt;b-row&gt;
+                &lt;b-col lg="12" xl="12"&gt;
+                  &lt;b-card id="dist-eval" header="Distribution of evaluation rating"&gt;
+                    &lt;div class="chart-wrapper"&gt;
+                      &lt;chart :data=course1.distEvalRateData :layout=course1.distEvalLayout id="graph-1"&gt;&lt;/chart&gt;
+                    &lt;/div&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+&nbsp;
+                &lt;b-col lg="12" xl="12"&gt;
+                  &lt;b-card id="progr-fin" header="Progression of finished learners"&gt;
+                    &lt;div class="chart-wrapper"&gt;
+                      &lt;chart :data=course1.progFinLearData :layout=course1.progFinLearLayout id="graph-2"&gt;&lt;/chart&gt;
+                    &lt;/div&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+              &lt;/b-row&gt;
+&nbsp;
+            &lt;/div&gt;
+            &lt;div class="loading-content comparison-loading" v-if="loadingC1"&gt;
+              &lt;h2&gt;{{ loadingC1Text }}&lt;/h2&gt;
+            &lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+&nbsp;
+      &lt;b-col sm="12" md="6"&gt;
+        &lt;b-card :no-body="true"&gt;
+          &lt;b-card-header&gt;
+            &lt;b-form-select id="course-selector" @change=changeCourse v-model=selectedCourse :options=courses value-field="course_slug" text-field="course_name"&gt;&lt;/b-form-select&gt;
+          &lt;/b-card-header&gt;
+          &lt;b-card-body class="p-0 clearfix ml-3 mt-3 mr-3"&gt;
+            &lt;div v-if="!loadingC2"&gt;
+              &lt;b-row&gt;
+                &lt;b-col sm="12" md="6" lg="6"&gt;
+                  &lt;b-card :no-body="true"&gt;
+                    &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                      &lt;span class="iconsquare"&gt;
+                        &lt;i class="fa fa-users icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                      &lt;/span&gt;
+                      &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ this.course2.courseData.enrolled_learners }}&lt;/div&gt;
+                      &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Enrolled learners&lt;/div&gt;
+                    &lt;/b-card-body&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+                &lt;b-col sm="12" md="6" lg="6"&gt;
+                  &lt;b-card :no-body="true"&gt;
+                    &lt;b-card-body class="p-0 clearfix align-data mr-3"&gt;
+                      &lt;span class="iconsquare"&gt;
+                        &lt;i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"&gt;&lt;/i&gt;
+                      &lt;/span&gt;
+                      &lt;div class="h5 text-color mb-0 pt-3" id="no-cohorts"&gt;{{ this.course2.courseData.leaving_learners }}&lt;/div&gt;
+                      &lt;div class="text-muted text-uppercase font-weight-bold text-font-size"&gt;Leaving learners&lt;/div&gt;
+                    &lt;/b-card-body&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+              &lt;/b-row&gt;
+              &lt;b-row&gt;
+                &lt;b-col lg="12" xl="12"&gt;
+                  &lt;b-card id="dist-eval-2" header="Distribution of evaluation rating"&gt;
+                    &lt;div class="chart-wrapper"&gt;
+                      &lt;chart :data=course2.distEvalRateData :layout=course2.distEvalLayout id="graph-3"&gt;&lt;/chart&gt;
+                    &lt;/div&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+&nbsp;
+                &lt;b-col lg="12" xl="12"&gt;
+                  &lt;b-card id="progr-fin" header="Progression of finished learners"&gt;
+                    &lt;div class="chart-wrapper"&gt;
+                      &lt;chart :data=course2.progFinLearData :layout=course2.progFinLearLayout id="graph-4"&gt;&lt;/chart&gt;
+                    &lt;/div&gt;
+                  &lt;/b-card&gt;
+                &lt;/b-col&gt;
+&nbsp;
+              &lt;/b-row&gt;
+&nbsp;
+            &lt;/div&gt;
+            &lt;div class="loading-content comparison-loading" v-if="loadingC2"&gt;
+              &lt;h2&gt;{{ loadingC2Text }}&lt;/h2&gt;
+            &lt;/div&gt;
+          &lt;/b-card-body&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+&nbsp;
+    &lt;/b-row&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&nbsp;
+&lt;script&gt;
+import Chart from "@/components/Chart";
+import util from "@/util";
+import strings from "@/strings";
+import colors from "@/colors";
+&nbsp;
+export default {
+  name: "CourseComparison",
+  data: function() {
+    return {
+      loadingC1: true,
+      loadingC1Text: strings.loading,
+      loadingC2: true,
+      loadingC2Text: strings.loading,
+      qdt: this.$store.state.user.role === "qdt",
+      show: true,
+      course1: {
+        courseSlug: "",
+        courseId: "",
+        courseData: {},
+        courseName: "Course 1",
+      },
+      course2: {
+        courseSlug: "",
+        courseId: "",
+        courseData: {},
+        courseName: "Course 2",
+      },
+      courses: [],
+      selectedCourse: "",
+    };
+  },
+  components: {
+    Chart,
+  },
+  beforeMount() {
+    this.course1.courseSlug = this.$route.params.courseid;
+    this.course2.courseSlug = this.$route.params.course2id;
+    this.getCourseData();
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.course1.courseSlug = to.params.courseid;
+    this.course2.courseSlug = to.params.course2id;
+    this.getCourseData();
+    next();
+  },
+  methods: {
+    changeCourse(evt) {
+      this.$router.push(
+        "/" +
+          this.$store.state.selectedPlatform +
+          "/" +
+          this.course1.courseSlug +
+          "/compare/" +
+          evt
+      );
+    },
+    getCourseData() {
+      this.loadingC1 = true;
+      this.loadingC2 = true;
+      this.loadingText = strings.loading;
+      var currentCourse1 = this.$store.state.user.courses.find(
+        x =&gt; x.course_slug === this.course1.courseSlug
+      );
+      var currentCourse2 = this.$store.state.user.courses.find(
+        x =&gt; x.course_slug === this.course2.courseSlug
+      );
+      if (currentCourse1) {
+        this.course1.courseId = currentCourse1.course_id;
+        this.courses = this.$store.state.user.courses.filter(el =&gt; {
+          return el.course_slug !== this.course1.courseSlug;
+        });
+        util
+          .getDetailedCourseData(
+            this.course1.courseId,
+            this.$store.state.filters
+          )
+          .then(response =&gt; {
+            this.course1.courseData = response.data;
+            this.setCourse1Data();
+          })
+          .catch(err =&gt; {
+            this.loadingC1Text = strings.connection_error;
+            console.log(err);
+          });
+      }
+      if (currentCourse2) {
+        this.course2.courseId = currentCourse2.course_id;
+        this.selectedCourse = this.course2.courseSlug;
+        util
+          .getDetailedCourseData(
+            this.course2.courseId,
+            this.$store.state.filters
+          )
+          .then(response =&gt; {
+            this.course2.courseData = response.data;
+            this.setCourse2Data();
+          })
+          .catch(err =&gt; {
+            this.loadingC2Text = strings.connection_error;
+            console.log(err);
+          });
+      }
+    },
+    // Set all fields with corresponding data.
+    setCourse1Data() {
+      this.course1.courseName = this.course1.courseData.name;
+&nbsp;
+      // // Distribution of evaluation rating.
+      // // Set data
+      this.course1.distEvalRateData = [
+        { x: [], y: [], marker: { color: colors.blue, }, type: "bar", },
+      ];
+      for (let rating of this.course1.courseData.ratings) {
+        this.course1.distEvalRateData[0].x.push(rating[0]);
+        this.course1.distEvalRateData[0].y.push(rating[1]);
+      }
+      // Set layout
+      this.course1.distEvalLayout = {
+        xaxis: {
+          nticks: this.course1.distEvalRateData[0].x.length * 2,
+          title: "Rating",
+        },
+        yaxis: {
+          title: "Amount",
+        },
+      };
+&nbsp;
+      // // Progression of finished learners.
+      this.course1.progFinLearData = [
+        {
+          x: [],
+          y: [],
+          fill: "tonexty",
+          fillcolor: colors.lightGrey,
+          marker: { color: colors.blue, },
+          type: "scatter",
+        },
+      ];
+      for (let finished of this.course1.courseData
+        .finished_learners_over_time) {
+        this.course1.progFinLearData[0].x.push(finished[0]);
+        this.course1.progFinLearData[0].y.push(finished[1]);
+      }
+&nbsp;
+      this.progFinLearLayout = {
+        xaxis: {
+          title: "Time",
+        },
+        yaxis: {
+          title: "Number of learners",
+        },
+      };
+&nbsp;
+      this.loadingC1 = false;
+    },
+    setCourse2Data() {
+      this.course2.courseName = this.course2.courseData.name;
+&nbsp;
+      // // Distribution of evaluation rating.
+      // // Set data
+      this.course2.distEvalRateData = [
+        { x: [], y: [], marker: { color: colors.blue, }, type: "bar", },
+      ];
+      for (let rating of this.course2.courseData.ratings) {
+        this.course2.distEvalRateData[0].x.push(rating[0]);
+        this.course2.distEvalRateData[0].y.push(rating[1]);
+      }
+      // Set layout
+      this.course2.distEvalLayout = {
+        xaxis: {
+          nticks: this.course2.distEvalRateData[0].x.length * 2,
+          title: "Rating",
+        },
+        yaxis: {
+          title: "Amount",
+        },
+      };
+&nbsp;
+      // // Progression of finished learners.
+      this.course2.progFinLearData = [
+        {
+          x: [],
+          y: [],
+          fill: "tonexty",
+          fillcolor: colors.lightGrey,
+          marker: { color: colors.blue, },
+          type: "scatter",
+        },
+      ];
+      for (let finished of this.course2.courseData
+        .finished_learners_over_time) {
+        this.course2.progFinLearData[0].x.push(finished[0]);
+        this.course2.progFinLearData[0].y.push(finished[1]);
+      }
+&nbsp;
+      this.progFinLearLayout = {
+        xaxis: {
+          title: "Time",
+        },
+        yaxis: {
+          title: "Number of learners",
+        },
+      };
+&nbsp;
+      this.loadingC2 = false;
+    },
+  },
+};
+&lt;/script&gt;
+&nbsp;
+&lt;style scoped&gt;
+.fade-enter-active {
+  transition: all 0.3s ease;
+}
+.fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+&nbsp;
+.align-data {
+  text-align: right;
+}
+&nbsp;
+.text-font-size {
+  font-size: 10px;
+}
+&nbsp;
+.icon-color {
+  width: 100%;
+  color: #ffffff;
+}
+&nbsp;
+.text-color {
+  color: #00a9d4;
+}
+&nbsp;
+.iconsquare {
+  float: left;
+  background-color: #00a9d4;
+  height: 100%;
+  width: 75px;
+  text-align: center;
+}
+&nbsp;
+.custom-header {
+  height: calc(2.0625rem + 27px);
+}
+&nbsp;
+.comparison-loading {
+  margin-bottom: 200px;
+}
+&lt;/style&gt;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 18 2018 09:21:19 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
