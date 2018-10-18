@@ -9,8 +9,8 @@
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-form-select class="header-select" id="platform-select" v-model="selectedPlatform" @change="platformChange" :options="platformOptions"></b-form-select>
       <b-form-select class="header-select" id="course-select" v-if="selectedPlatform !== 'platform-select'" @change="courseChange" v-model="selectedCourse" :options="courseOptions"></b-form-select>
-      <b-button id="filterButton" @click="showFilterModal=true">Filters</b-button>
-      <b-button :disabled="level<2" id="actions-button" @click="showActionsModal=true">Changes</b-button>
+      <b-button id="filterButton" @click="showFilterModal=true"><i class="fa fa-filter mr-1" />Filters</b-button>
+      <b-button :disabled="level<2" id="actions-button" @click="showActionsModal=true"><i class="fa fa-exchange mr-1" />Changes</b-button>
       <b-navbar-nav class="custom-nav ml-auto">
         <DefaultHeaderDropdownAccnt />
         <!-- <NotificationToggler :notificationCount=testCount class="d-none d-lg-block" /> -->
@@ -41,6 +41,8 @@
     <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
       API Status: {{apiStatus}}
     </TheFooter>
+
+    <!-- FILTER MODAL -->
     <b-modal v-model="showFilterModal" id="filterModal" title="Filters" @ok="handleOk">
       <h3 id="first-title">Timespan</h3>
       <div class="timespan-area">
@@ -67,7 +69,15 @@
       </div>
     </b-modal>
 
-    <b-modal v-model="showActionsModal" id="actionsModal" title="Changes" @ok="handleOk">
+    <!-- ACTIONS LIST MODAL -->
+    <b-modal v-model="showActionsModal" id="actionsModal" @ok="handleOk">
+      <div slot="modal-title" class="w-100">
+        Changes
+        <b-btn @click="showActionsModal=false; showAddActionModal=true" size="sm" class="float-right ml-3" id="add-action-button" variant="secondary">
+          <i class="fa fa-plus mr-1" />Add action
+        </b-btn>
+      </div>
+
       <div v-if="!loadingActions">
         <b-list-group>
           <b-list-group-item v-for="action of actions" :key="action.name">
@@ -81,11 +91,30 @@
         <p class="loading-text">{{ loadingActionsText }}</p>
       </div>
       <div slot="modal-footer" class="w-100">
-        <!-- <b-btn @click="handleOk" class="float-right" id="filter-save-button" variant="primary">
-          Save
-        </b-btn> -->
         <b-btn @click="showActionsModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
           Back
+        </b-btn>
+      </div>
+    </b-modal>
+
+    <!-- ADD ACTION MODAL -->
+    <b-modal v-model="showAddActionModal" id="addActionModal" @ok="handleOk">
+      <div slot="modal-title" class="w-100">
+        Add change
+      </div>
+      <b-form>
+        <b-form-input id="action-title" class="mb-2" type="text" v-model="action.title" required placeholder="Title" />
+        <b-form-textarea id="action-description" :rows="3" :max-rows="3" no-resize class="mb-2" type="text" v-model="action.description" required placeholder="Description" />
+        <datepicker placeholder="Date" v-model="action.date"></datepicker>
+      </b-form>
+      <b-alert v-if=showAddActionAlert class="mt-2" variant="danger" show>{{ addActionWarning }}</b-alert>
+
+      <div slot="modal-footer" class="w-100">
+        <b-btn @click="saveAction" class="float-right" id="filter-save-button" variant="primary">
+          Save
+        </b-btn>
+        <b-btn @click="showAddActionModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
+          Cancel
         </b-btn>
       </div>
     </b-modal>
@@ -143,7 +172,7 @@ export default {
     TopbarNav,
     BackButton,
     MultiSelect,
-    Datepicker
+    Datepicker,
   },
   data() {
     return {
@@ -151,7 +180,7 @@ export default {
       isPrimary: false,
       level: 0,
       top_nav: [],
-      level_0: ["/home", "/settings", "/contact"],
+      level_0: ["/home", "/settings", "/contact",],
       platforms: settings.platforms,
       bottom_nav: nav.bottom_items,
       testCount: 5,
@@ -159,9 +188,18 @@ export default {
       selectedPlatform: settings.platform_default,
       showFilterModal: false,
       showActionsModal: false,
+      showAddActionModal: false,
       actions: [],
       loadingActions: false,
       loadingActionsText: strings.loading,
+
+      showAddActionAlert: false,
+      addActionWarning: "",
+      action: {
+        date: null,
+        title: "",
+        description: "",
+      },
 
       // Filters
       filters: {},
@@ -175,24 +213,24 @@ export default {
       filterOptions: [
         {
           text: "No filter",
-          id: "no_filter"
+          id: "no_filter",
         },
         {
           text: "Has paid only",
-          id: "has_paid"
-        }
+          id: "has_paid",
+        },
       ],
-      cohorts: [{ name: "Cohorts not yet implemented", id: "no_cohort" }],
+      cohorts: [{ name: "Cohorts not yet implemented", id: "no_cohort", },],
       selectedCohort: "no_cohort",
 
-      countries: [{ name: "Netherlands", id: 1 }, { name: "Germany", id: 2 }],
+      countries: [{ name: "Netherlands", id: 1, }, { name: "Germany", id: 2, },],
       selectedCountries: [],
       selectedCourse: settings.course_default,
       selectedSubitem: "",
       // Mock
       courses: {
-        coursera: []
-      }
+        coursera: [],
+      },
     };
   },
   beforeMount() {
@@ -206,7 +244,7 @@ export default {
       this.courses.coursera.push({
         name: course.course_name,
         description: "",
-        slug: course.course_slug
+        slug: course.course_slug,
       });
     }
     util
@@ -221,12 +259,11 @@ export default {
   },
   mounted() {
     this.platformOptions = [
-      { value: settings.platform_default, text: strings.select_platform }
+      { value: settings.platform_default, text: strings.select_platform, },
     ];
 
     this.setPlatforms();
     this.initializeCourses();
-
     this.setNavigation(this.$route.path);
 
     // On every router change update
@@ -244,16 +281,53 @@ export default {
           path += subroute + "/";
           routes.push({
             text: subroute,
-            to: path.substring(0, path.length - 1)
+            to: path.substring(0, path.length - 1),
           });
         }
       }
       routes[0].text = strings.home;
       routes[0].to = "/";
       return routes;
-    }
+    },
   },
   methods: {
+    saveAction() {
+      if (
+        this.action.title !== "" &&
+        this.action.date !== null &&
+        this.currentCourse
+      ) {
+        this.action.date = this.action.date.toISOString().substring(0, 10);
+        this.action.course = this.currentCourse.course_id;
+        this.loadingActions = true;
+        util.saveAction(this.action).then(response => {
+          util
+            .getActions(
+              "coursera",
+              this.currentCourse.course_id,
+              this.$store.state.filters
+            )
+            .then(response => {
+              this.actions = response.data;
+              this.loadingActions = false;
+            })
+            .catch(err => {
+              console.log(err);
+              this.loadingActionsText = strings.connection_error;
+            });
+        });
+        this.action = {
+          date: null,
+          title: "",
+          description: "",
+        };
+        this.showAddActionModal = false;
+      } else {
+        this.showAddActionAlert = true;
+        this.addActionWarning =
+          "Something went wrong, date and title are required!";
+      }
+    },
     resetTimeFilter() {
       this.fromDate = null;
       this.toDate = null;
@@ -261,7 +335,11 @@ export default {
     getActions() {
       if (this.currentCourse) {
         util
-          .getActions("coursera", this.currentCourse.course_id)
+          .getActions(
+            "coursera",
+            this.currentCourse.course_id,
+            this.$store.state.filters
+          )
           .then(response => {
             this.actions = response.data;
             this.loadingActions = false;
@@ -384,8 +462,8 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: strings.select_course
-        }
+          text: strings.select_course,
+        },
       ];
     },
     setPlatforms() {
@@ -393,17 +471,17 @@ export default {
       this.top_nav[0].push({
         name: strings.home,
         icon: "cui-home",
-        url: "/home"
+        url: "/home",
       });
       for (var platform of this.platforms) {
         this.top_nav[0].push({
           name: platform.name,
           url: platform.url || "/" + platform.slug,
-          icon: "fa fa-line-chart"
+          icon: "fa fa-line-chart",
         });
         this.platformOptions.push({
           value: platform.slug,
-          text: platform.name
+          text: platform.name,
         });
       }
     },
@@ -411,21 +489,21 @@ export default {
       this.courseOptions = [
         {
           value: settings.course_default,
-          text: strings.select_course
-        }
+          text: strings.select_course,
+        },
       ];
       this.top_nav[1] = [];
       for (var course of c) {
         // Push to dropdown
         this.courseOptions.push({
           value: course.slug,
-          text: course.name
+          text: course.name,
         });
         // Push to navbar
         this.top_nav[1].push({
           name: course.name,
           url: "/" + this.selectedPlatform + "/" + course.slug,
-          icon: "fa fa-line-chart"
+          icon: "fa fa-line-chart",
         });
       }
     },
@@ -441,7 +519,7 @@ export default {
             "/" +
             this.selectedCourse +
             "/" +
-            coursepPage.slug
+            coursepPage.slug,
         });
       }
     },
@@ -460,7 +538,7 @@ export default {
                 this.selectedCourse +
                 "/videos/" +
                 video.item_id,
-              icon: "fa fa-video-camera"
+              icon: "fa fa-video-camera",
             });
             this.$forceUpdate();
           }
@@ -487,7 +565,7 @@ export default {
                 quiz.base_id +
                 "-" +
                 quiz.version,
-              icon: "fa fa-check   "
+              icon: "fa fa-check   ",
             });
             this.$forceUpdate();
           }
@@ -496,8 +574,8 @@ export default {
           this.top_nav[3] = [];
           console.log(err);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -541,7 +619,7 @@ export default {
 .modal-body #first-title {
   margin-top: 0px;
 }
-.modal-body .vdp-datepicker {
+#filterModal .vdp-datepicker {
   width: 47.5%;
   display: inline-block;
 }

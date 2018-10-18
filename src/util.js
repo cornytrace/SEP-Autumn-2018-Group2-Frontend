@@ -180,9 +180,16 @@ export default {
       })
   },
 
-  getActions(platformId, courseId) {
+  getActions(platformId, courseId, filters) {
     return axios
-      .get(this.apiUrl() + `/actions/${platformId}/${courseId}/`, {
+      .get(this.apiUrl() + `/actions/${platformId}/${courseId}/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
+  },
+
+  saveAction(action) {
+    return axios
+      .post(this.apiUrl() + `/actions/`, action, {
         headers: this.authHeader(),
       })
   },

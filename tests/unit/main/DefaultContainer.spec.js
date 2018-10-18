@@ -278,6 +278,87 @@ describe('DefaultContainer.vue', () => {
     });
   })
 
+  // Add action modal
+  it('Add action modal is reachable', () => {
+    moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
+      status: 200,
+      response: [{
+        title: "action 1",
+        description: "description 1",
+      },],
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test");
+
+    moxios.wait(function (done) {
+      expect(wrapper.vm.showActionsModal).toBe(false)
+      expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
+      wrapper.find("#actions-button").trigger('click')
+      expect(wrapper.vm.showActionsModal).toBe(true)
+      wrapper.find("#add-action-button").trigger("click")
+
+
+      return wrapper.vm.$nextTick().then(() => {
+        expect(wrapper.find("#addActionModal").isVisible()).toBe(true)
+        expect(wrapper.html()).toContain("action 1")
+        done();
+      })
+    });
+  })
+
+  it('Test if adding a action works', () => {
+    moxios.stubRequest(util.apiUrl() + '/actions/', {
+      status: 200,
+      response: { success: "success", },
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test");
+
+    moxios.wait(function (done) {
+      expect(wrapper.vm.showActionsModal).toBe(false)
+      expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
+      wrapper.find("#actions-button").trigger('click')
+      expect(wrapper.vm.showActionsModal).toBe(true)
+      return wrapper.vm.$nextTick().then(() => {
+        wrapper.vm.action = {
+          title: "title",
+          description: "",
+          date: "2018-10-10",
+        }
+        wrapper.find("#filter-save-button").trigger('click');
+        expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
+        done();
+      })
+    });
+  })
+
+  it('Test if adding an empty action shows an error message', () => {
+    moxios.stubRequest(util.apiUrl() + '/actions/', {
+      status: 200,
+      response: { success: "success", },
+    });
+    const wrapper = mountComponent()
+    wrapper.vm.setNavigation("/coursera/test");
+
+    moxios.wait(function (done) {
+      expect(wrapper.vm.showActionsModal).toBe(false)
+      expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
+      wrapper.find("#actions-button").trigger('click')
+      expect(wrapper.vm.showActionsModal).toBe(true)
+      return wrapper.vm.$nextTick().then(() => {
+        wrapper.vm.action = {
+          title: "",
+          description: "",
+          date: "",
+        }
+        wrapper.find("#filter-save-button").trigger('click');
+        expect(wrapper.find("#actionsModal").isVisible()).toBe(true)
+        expect(wrapper.html()).toContain("date and title are required")
+        done();
+      })
+    });
+  })
+
   // Filters modal
   it('filter button click shows filter modal', () => {
     const wrapper = mountComponent()
