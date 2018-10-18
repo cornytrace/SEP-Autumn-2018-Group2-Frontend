@@ -34,29 +34,29 @@
             <div class="divider">
             </div>
             <b-row>
-              <b-col v-for="course in coursesCoursera" :key="course.course_name" :md="12" :lg="6" :xl="4">
+              <b-col v-for="course in coursesCoursera" :key="course.name" :md="12" :lg="6" :xl="6">
                 <b-card no-body>
                   <b-card-header class="bg-primary">
-                    <router-link :to="'/coursera/'+course.course_slug" class="link-light font-weight-bold">{{ course.course_name }}</router-link>
+                    <router-link :to="'/coursera/'+course.slug" class="link-light font-weight-bold">{{ course.name }}</router-link>
                   </b-card-header>
                   <b-card-body no-body class="pb-0 pt-0 pl-3 pr-3">
                     <b-row>
                       <b-col class=" pt-3 pb-3 border borderdark border-top-0 border-left-0 text-center">
-                        <h2 class="text-primary">{{course.enrolled}}</h2>
+                        <h2 class="text-primary">{{course.enrolled_learners}}</h2>
                         <h5 class="text-muted">enrolled</h5>
                       </b-col>
                       <b-col class=" pt-3 pb-3 border borderdark border-top-0 border-right-0 text-center">
-                        <h2 class="text-primary">{{course.leavers}}</h2>
+                        <h2 class="text-primary">{{course.leaving_learners}}</h2>
                         <h5 class="text-muted">leavers</h5>
                       </b-col>
                       <div class="w-100"></div>
                       <b-col class=" pt-3 pb-3 border borderdark border-bottom-0 border-left-0 text-center">
-                        <h2 class="text-primary">{{course.ratings}}</h2>
-                        <h5 class="text-muted">ratings</h5>
+                        <h2 class="text-primary">{{course.finished_learners}}</h2>
+                        <h5 class="text-muted">finished</h5>
                       </b-col>
                       <b-col class=" pt-3 pb-3 border borderdark border-bottom-0 border-right-0 text-center">
-                        <h2 class="text-primary">{{course.average}}</h2>
-                        <h5 class="text-muted">average</h5>
+                        <h2 class="text-primary">{{Math.round(arrayWeightedAverage(course.ratings) * 100) / 100}}</h2>
+                        <h5 class="text-muted">rating</h5>
                       </b-col>
                     </b-row>
                   </b-card-body>
@@ -84,6 +84,7 @@
 
 <script>
 import settings from "@/settings";
+import util from "@/util";
 
 export default {
   name: "home",
@@ -120,16 +121,15 @@ export default {
       coursesCoursera: [],
     };
   },
-  methods: {},
+  methods: {
+    arrayWeightedAverage: util.arrayWeightedAverage,
+    arrayColumn: util.arrayColumn,
+  },
   beforeMount() {
     this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
-    this.coursesCoursera = Object.assign([], this.$store.state.user.courses);
-    for (var course of this.coursesCoursera) {
-      course.average = 0;
-      course.enrolled = 0;
-      course.leavers = 0;
-      course.ratings = 0;
-    }
+    util.getDetailedCourseData("", this.$store.state.filters).then(response => {
+      this.coursesCoursera = response.data;
+    });
   },
 };
 </script>

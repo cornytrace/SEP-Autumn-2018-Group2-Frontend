@@ -8,6 +8,19 @@ export default {
     return arr.map(x => x[n])
   },
 
+  arrayWeightedAverage(arr) {
+    let value = this.arrayColumn(arr, 0)
+    let weight = this.arrayColumn(arr, 1)
+    if (weight.length != value.length)
+      return null;
+    let result = 0;
+    for (let i = 0; i < weight.length; i++) {
+      result += weight[i] * value[i];
+    }
+    result = result / weight.reduce((a, b) => a + b, 0)
+    return result
+  },
+
   isAuthenticated() {
     return store.state.apiToken !== "" && store.state.apiExpire > Date.now()
   },
@@ -40,10 +53,10 @@ export default {
   getQueryParams(filters) {
     var params = [];
     if (filters.from !== null && filters.from !== undefined) {
-      params.push(["from_date", filters.from,]);
+      params.push(["from_date", filters.from, ]);
     }
     if (filters.to !== null && filters.to !== undefined) {
-      params.push(["to_date", filters.to,]);
+      params.push(["to_date", filters.to, ]);
     }
     var queryString = new URLSearchParams(params).toString();
     if (queryString === "") {
@@ -111,8 +124,8 @@ export default {
       .post(this.apiUrl() + `/users/forgot_password/`, {
         email: email,
       }, {
-          headers: this.authHeader(),
-        })
+        headers: this.authHeader(),
+      })
   },
 
   getUser() {
