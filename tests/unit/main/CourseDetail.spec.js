@@ -82,6 +82,11 @@ describe('CourseDetail.vue', () => {
         average_time: 348923048,
       },
     });
+
+    moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
+      status: 200,
+      response: [{ course: "1", date: "2017-02-06", description: "", title: "test action", pk: 1, },],
+    });
     const wrapper = mountComponent();
     moxios.wait(function () {
       expect(wrapper.vm.courseName).toBe("test_name")
@@ -118,6 +123,11 @@ describe('CourseDetail.vue', () => {
         average_time: 348923048,
       },
     });
+
+    moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
+      status: 403,
+      response: [{ course: "1", date: "2017-02-06", description: "", title: "test action", pk: 1, },],
+    });
     const wrapper = mountComponent();
     moxios.wait(function () {
       expect(wrapper.html()).toContain(strings.connection_error)
@@ -153,6 +163,11 @@ describe('CourseDetail.vue', () => {
         ],
         average_time: 348923048,
       },
+    });
+
+    moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
+      status: 200,
+      response: [{ course: "1", date: "2017-02-06", description: "", title: "test action", pk: 1, },],
     });
 
     const wrapper = mountComponent();

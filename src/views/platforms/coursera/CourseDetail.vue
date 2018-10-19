@@ -147,7 +147,7 @@
           </b-card>
         </b-col>
 
-              <b-col lg="12" xl="8">
+        <b-col lg="12" xl="8">
           <b-card id="geo-data" header="Geographical location of learners">
             <div class="chart-wrapper">
               <chart :data=geoData :layout=geoLayout id="graph-5"></chart>
@@ -178,8 +178,6 @@
             </div>
           </b-card>
         </b-col>
-
-  
 
         <!-- SHOULD HAVE -->
 
@@ -293,11 +291,13 @@ export default {
       );
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
-        util
-          .getDetailedCourseData(this.courseId, this.$store.state.filters)
+        Promise.all([
+          util.getActions("coursera", this.courseId, this.$store.state.filters),
+          util.getDetailedCourseData(this.courseId, this.$store.state.filters),
+        ])
           .then(response => {
-            this.courseData = response.data;
-            this.setCourseData(response.data);
+            this.courseData = response[1].data;
+            this.setCourseData(response[1].data, response[0].data);
           })
           .catch(err => {
             this.loadingText = strings.connection_error;
@@ -306,7 +306,7 @@ export default {
       }
     },
     // Set all fields with corresponding data.
-    setCourseData(data) {
+    setCourseData(data, actions) {
       this.courseName = data.name;
 
       this.enrolledStudents = data.enrolled_learners;
@@ -341,6 +341,7 @@ export default {
       this.progFinLearData[0].x = [];
       this.progFinLearData[0].y = [];
       this.progFinLearData[0].fill = "tonexty";
+      this.progFinLearData[0].name = "Progression of finished learners";
       this.progFinLearData[0].fillcolor = colors.lightGrey;
       this.progFinLearData[0].marker = { color: colors.blue, };
       this.progFinLearData[0].type = "scatter";
@@ -349,6 +350,13 @@ export default {
         this.progFinLearData[0].y.push(finished[1]);
       }
 
+      let minDate = new Date(Date.parse(this.progFinLearData[0].x[0]));
+      let maxDate = new Date(
+        Date.parse(
+          this.progFinLearData[0].x[this.progFinLearData[0].x.length - 1]
+        )
+      );
+
       this.progFinLearLayout = {
         xaxis: {
           title: "Time",
@@ -356,7 +364,36 @@ export default {
         yaxis: {
           title: "Number of learners",
         },
+        shapes: [],
+        showlegend: false,
       };
+      this.progFinLearData[1] = {
+        x: [],
+        y: [],
+        text: [],
+        mode: "markers+text",
+        type: "scatter",
+        name: "Changes",
+        textposition: "bottom",
+        marker: {
+          color: colors.purple,
+          size: 12,
+        },
+      };
+      for (let action of actions) {
+        let actionDate = new Date(action.date);
+        if (minDate < actionDate && actionDate < maxDate) {
+          this.progFinLearData[1].x.push(action.date);
+          this.progFinLearData[1].y.push(
+            this.interpolateY(
+              this.progFinLearData[0].x,
+              this.progFinLearData[0].y,
+              action.date
+            )
+          );
+          this.progFinLearData[1].text.push(action.title);
+        }
+      }
 
       // Leaving leareners per module.
       // Set data
@@ -427,6 +464,19 @@ export default {
       };
 
       this.isLoading = false;
+    },
+    interpolateY(dateArray, yArray, date) {
+      date = new Date(Date.parse(date));
+      for (var i = 0; i < dateArray.length; i++) {
+        var dateTop = new Date(Date.parse(dateArray[i]));
+        if (date.getTime() <= dateTop.getTime()) {
+          var dateBottom = new Date(Date.parse(dateArray[i - 1]));
+          var ratio =
+            (date.getTime() - dateBottom.getTime()) /
+            (dateTop.getTime() - dateBottom.getTime());
+          return parseInt(yArray[i - 1] + (yArray[i] - yArray[i - 1]) * ratio);
+        }
+      }
     },
   },
 };

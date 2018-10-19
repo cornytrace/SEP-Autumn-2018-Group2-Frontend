@@ -127,10 +127,10 @@
       </div>
       Are you sure you want to delete <b>{{actionToDelete.title }}</b>?
       <div slot="modal-footer" class="w-100">
-        <b-btn @click="deleteAction" class="float-right" id="filter-save-button" variant="danger">
+        <b-btn @click="deleteAction" class="float-right" id="delete-save-button" variant="danger">
           Yes
         </b-btn>
-        <b-btn @click="showDeleteActionModal=false" class="float-right" id="filter-cancel-button" variant="secondary">
+        <b-btn @click="showDeleteActionModal=false" class="float-right" id="delete-cancel-button" variant="secondary">
           No
         </b-btn>
       </div>

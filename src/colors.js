@@ -6,4 +6,5 @@ export default {
     lightGrey: hexToRgba("#686868", 10),
     red: hexToRgba("#f44242", 100),
     green: hexToRgba("#54ef39", 100),
+    purple: hexToRgba("#a311d8", 100),
 }

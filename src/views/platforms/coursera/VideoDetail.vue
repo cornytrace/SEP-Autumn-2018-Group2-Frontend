@@ -278,8 +278,29 @@ export default {
       }
 
       this.chart_data[0] = {};
+      this.chart_data[1] = {
+        x: [],
+        y: [],
+        text: [],
+        name: "Highs",
+        marker: {
+          color: colors.green,
+          size: 12,
+        },
+      };
+      this.chart_data[2] = {
+        x: [],
+        y: [],
+        text: [],
+        name: "Lows",
+        marker: {
+          color: colors.red,
+          size: 12,
+        },
+      };
       this.chart_data[0].x = [];
       this.chart_data[0].y = [];
+      this.chart_data[0].name = "Views over time";
       this.chart_data[0].marker = { color: colors.blue, };
       this.chartLayout = {};
       this.chartLayout.shapes = [];
@@ -300,35 +321,44 @@ export default {
         this.chart_data[0].y.push(view[1]);
       }
       if (highx !== -1) {
-        this.chartLayout.shapes.push({
-          type: "line",
-          xref: "x",
-          yref: "paper",
-          x0: highx,
-          y0: 0,
-          x1: highx,
-          y1: 1,
-          line: {
-            color: colors.green,
-            width: 2,
-          },
-        });
+        // this.chartLayout.shapes.push({
+        //   type: "line",
+        //   xref: "x",
+        //   yref: "paper",
+        //   x0: highx,
+        //   y0: 0,
+        //   x1: highx,
+        //   y1: 1,
+        //   line: {
+        //     color: colors.green,
+        //     width: 2
+        //   }
+        // });
+
+        this.chart_data[1].x.push(highx);
+        this.chart_data[1].y.push(high);
+        this.chart_data[1].text.push("High spot");
       }
       if (lowx !== -1) {
-        this.chartLayout.shapes.push({
-          type: "line",
-          xref: "x",
-          yref: "paper",
-          x0: lowx,
-          y0: 0,
-          x1: lowx,
-          y1: 1,
-          line: {
-            color: colors.red,
-            width: 2,
-          },
-        });
+        // this.chartLayout.shapes.push({
+        //   type: "line",
+        //   xref: "x",
+        //   yref: "paper",
+        //   x0: lowx,
+        //   y0: 0,
+        //   x1: lowx,
+        //   y1: 1,
+        //   line: {
+        //     color: colors.red,
+        //     width: 2,
+        //   },
+        // });
+
+        this.chart_data[2].x.push(lowx);
+        this.chart_data[2].y.push(low);
+        this.chart_data[2].text.push("Low spot");
       }
+      this.chartLayout.showlegend = false;
       this.comments = this.videoData.video_comments;
       this.isLoading = false;
     },
