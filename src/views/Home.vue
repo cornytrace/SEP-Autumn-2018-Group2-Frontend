@@ -21,7 +21,7 @@
                             <div class="h3 mb-0 text-success float-left mt-1">{{statistic.value}}</div>
                           </th>
                           <th>
-                            <div class="h6 mb-0 text-center float-left pl-2 mt-3 text-muted">{{statistic.text}}</div>
+                            <div class="h6 mb-0 text-center float-left pl-1 mt-3 text-muted">{{statistic.text}}</div>
                           </th>
                         </tr>
                       </table>
@@ -95,20 +95,32 @@ export default {
       learners: 0,
       completers: 0,
       paidUsers: 0,
-      statisticsCoursera: {
+      coursesCoursera: [],
+      resources: settings.resources,
+    };
+  },
+  computed: {
+    statisticsCoursera() {
+      return {
         courses: {
           text: "courses",
-          value: 0,
+          value: this.coursesCoursera.length,
           icon: "fa fa-book",
         },
         learners: {
           text: "learners",
-          value: 0,
+          value: this.coursesCoursera.reduce(
+            (a, b) => a + b.enrolled_learners,
+            0
+          ),
           icon: "fa fa-user",
         },
         completers: {
           text: "completers",
-          value: 0,
+          value: this.coursesCoursera.reduce(
+            (a, b) => a + b.finished_learners,
+            0
+          ),
           icon: "fa fa-check",
         },
         // paidUsers: {
@@ -116,17 +128,15 @@ export default {
         //   value: 0,
         //   icon: "fa fa-money",
         // },
-      },
-      resources: settings.resources,
-      coursesCoursera: [],
-    };
+      };
+    },
   },
   methods: {
     arrayWeightedAverage: util.arrayWeightedAverage,
     arrayColumn: util.arrayColumn,
   },
   beforeMount() {
-    this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
+    //this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
     util.getDetailedCourseData("", this.$store.state.filters).then(response => {
       this.coursesCoursera = response.data;
     });
