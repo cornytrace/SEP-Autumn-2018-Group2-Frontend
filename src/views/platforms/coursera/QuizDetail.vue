@@ -447,6 +447,6 @@ export default {
 }
 
 .title-col select {
-  width: 50px;
+  width: 60px;
 }
 </style>
