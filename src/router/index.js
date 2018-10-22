@@ -104,6 +104,11 @@ const router = new VueRouter({
         component: coursera.Assignments,
       },
       {
+        path: '/coursera/:courseid/assignments/:assignmentid',
+        name: 'Assignment Details',
+        component: coursera.AssignmentDetail,
+      },
+      {
         path: '/coursera/:courseid/lessons',
         name: 'Lessons',
         component: coursera.Lessons,

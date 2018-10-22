@@ -469,6 +469,8 @@ export default {
           this.getVideos();
         } else if (this.selectedSubitem === "quizzes") {
           this.getQuizzes();
+        } else if (this.selectedSubitem === "assignments") {
+          this.getAssignments();
         } else {
           this.level = 1;
         }
@@ -608,6 +610,31 @@ export default {
                 "-" +
                 quiz.version,
               icon: "fa fa-check   ",
+            });
+            this.$forceUpdate();
+          }
+        })
+        .catch(err => {
+          this.top_nav[3] = [];
+          console.log(err);
+        });
+    },
+    getAssignments() {
+      util
+        .getAssignments(this.currentCourse.course_id, this.$store.state.filters)
+        .then(response => {
+          this.top_nav[3] = [];
+          for (var assignment of response.data) {
+            this.top_nav[3].push({
+              name: assignment.name,
+              url:
+                "/" +
+                this.selectedPlatform +
+                "/" +
+                this.selectedCourse +
+                "/assignments/" +
+                assignment.item_id,
+              icon: "cui-calendar   ",
             });
             this.$forceUpdate();
           }

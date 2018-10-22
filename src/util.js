@@ -194,6 +194,21 @@ export default {
       })
   },
 
+  // Assignment API calls
+  getAssignments(courseId, filters) {
+    return axios
+      .get(this.apiUrl() + `/api/assignment-analytics/${courseId}/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
+  },
+
+  getAssignmentDetails(courseId, itemId, filters) {
+    return axios
+      .get(this.apiUrl() + `/api/assignment-analytics/${courseId}/${itemId}/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
+  },
+
   // Actions API calls
   getActions(platformId, courseId, filters) {
     return axios

@@ -34,6 +34,11 @@ export {
   from './Assignments'
 
 export {
+  default as AssignmentDetail
+}
+  from './AssignmentDetail'
+
+export {
   default as Lessons
 }
   from './Lessons'

@@ -14,11 +14,12 @@ export default {
     slug: "quizzes",
     icon: "fa fa-check",
   },
+  {
+    name: "Assignments",
+    slug: "assignments",
+    icon: "cui-calendar",
+  },
     // {
-    //   name: "Assignments",
-    //   slug: "assignments",
-    //   icon: "cui-calendar",
-    // }, {
     //   name: "Lessons",
     //   slug: "lessons",
     //   icon: "cui-calendar",
