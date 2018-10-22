@@ -204,6 +204,8 @@ import Chart from "@/components/Chart";
 import util from "@/util";
 import strings from "@/strings";
 import colors from "@/colors";
+import { EventBus } from "@/event-bus";
+import events from "@/events";
 
 export default {
   name: "CourseDetail",
@@ -281,6 +283,14 @@ export default {
     this.courseSlug = to.params.courseid;
     this.getCourseData();
     next();
+  },
+  mounted() {
+    EventBus.$on(events.refresh_component, data => {
+      this.getCourseData();
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off(events.refresh_component, null);
   },
   methods: {
     getCourseData() {

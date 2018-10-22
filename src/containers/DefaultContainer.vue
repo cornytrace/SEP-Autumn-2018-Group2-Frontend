@@ -164,6 +164,7 @@ import TopbarNav from "../views/sidebars/TopbarNav";
 import BackButton from "../views/sidebars/sidebaritems/BackButton";
 import MultiSelect from "@/components/MultiSelect";
 import Datepicker from "vuejs-datepicker";
+import { EventBus } from "@/event-bus";
 
 import util from "@/util";
 
@@ -330,6 +331,7 @@ export default {
             .then(response => {
               this.actions = response.data;
               this.loadingActions = false;
+              EventBus.$emit("refreshComponent", null);
             })
             .catch(err => {
               console.log(err);
@@ -363,6 +365,7 @@ export default {
             this.loadingActions = false;
             this.showDeleteActionModal = false;
             this.showActionsModal = true;
+            EventBus.$emit("refreshComponent", null);
           });
       });
     },
@@ -418,7 +421,7 @@ export default {
       }
 
       this.$store.commit("setFilters", filters);
-      // this.$router.go();
+      EventBus.$emit("refreshComponent", null);
     },
     goUp: function() {
       this.level--;

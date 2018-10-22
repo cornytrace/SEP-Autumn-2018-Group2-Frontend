@@ -151,6 +151,8 @@ import strings from "@/strings";
 import colors from "@/colors";
 import util from "@/util";
 import Chart from "@/components/Chart";
+import { EventBus } from "@/event-bus";
+import events from "@/events";
 
 export default {
   name: "VideoDetail",
@@ -198,7 +200,14 @@ export default {
     this.getVideoData();
     next();
   },
-
+  mounted() {
+    EventBus.$on(events.refresh_component, data => {
+      this.getVideoData();
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off(events.refresh_component, null);
+  },
   methods: {
     getVideoData() {
       this.isLoading = true;

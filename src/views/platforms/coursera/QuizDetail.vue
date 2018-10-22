@@ -159,6 +159,8 @@ import util from "@/util";
 import colors from "@/colors";
 import strings from "@/strings";
 import Chart from "@/components/Chart";
+import { EventBus } from "@/event-bus";
+import events from "@/events";
 
 export default {
   name: "QuizDetail",
@@ -226,6 +228,14 @@ export default {
     this.quizBaseId = urlParam.substring(0, urlParam.lastIndexOf("-"));
     this.courseSlug = this.$route.params.courseid;
     this.getData();
+  },
+  mounted() {
+    EventBus.$on(events.refresh_component, data => {
+      this.getData();
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off(events.refresh_component, null);
   },
   methods: {
     versionChanged(evt) {
