@@ -47,9 +47,9 @@
       <h3 id="first-title">Timespan</h3>
       <div class="timespan-area">
         <b-alert v-if=showAlert variant="danger" show>{{ dangerMessage }}</b-alert>
-        <datepicker v-model="fromDate"></datepicker>
+        <datepicker placeholder="Start date" v-model="fromDate"></datepicker>
         <div id="spacer"></div>
-        <datepicker v-model="toDate"></datepicker>
+        <datepicker placeholder="End date" v-model="toDate"></datepicker>
         <!-- <b-form-select disabled value-field="id" text-field="name" v-model="selectedCohort" :options=cohorts>
         </b-form-select> -->
       </div>

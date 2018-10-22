@@ -26,7 +26,9 @@
                     <li v-for="course in user.courses" :key="course.course_name"><span id="course">{{ course.course_name }}</span></li>
                   </ul>
                 </th>
-                <th id="button-cell"><button v-b-modal="'deleteModal'"><i class="cui-trash" /></button></th>
+                <th id="button-cell">
+                  <b-button v-b-modal="'deleteModal'"><i class="cui-trash" /></b-button>
+                </th>
               </tr>
             </table>
           </b-list-group-item>
