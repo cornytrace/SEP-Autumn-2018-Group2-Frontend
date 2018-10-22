@@ -74,7 +74,7 @@
       <div slot="modal-title" class="w-100">
         Changes
         <b-btn @click="showActionsModal=false; showAddActionModal=true" size="sm" class="float-right ml-3" id="add-action-button" variant="secondary">
-          <i class="fa fa-plus mr-1" />Add action
+          <i class="fa fa-plus mr-1" />Add change
         </b-btn>
       </div>
 
