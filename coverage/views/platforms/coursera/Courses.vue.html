@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>6/9</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -88,7 +88,39 @@
 43
 44
 45
-46</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,6 +136,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,7 +161,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,21 +199,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="animated fadeIn"&gt;
-    &lt;b-row&gt;
-      &lt;b-col sm="6" md="4" v-for="course in courses" :key="course.name"&gt;
-        &lt;b-card :header="course.name"&gt;
-          {{ course.description }}
-          &lt;div slot="footer"&gt;
-            &lt;router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }"&gt;Details...&lt;/router-link&gt;
-          &lt;/div&gt;
-        &lt;/b-card&gt;
-      &lt;/b-col&gt;
-    &lt;/b-row&gt;
+    &lt;div class="stats-container" v-if="!isLoading"&gt;
+      &lt;b-row&gt;
+        &lt;b-col sm="6" md="4" v-for="course in courses" :key="course.name"&gt;
+          &lt;b-card class="course-card" no-body :header="course.name"&gt;
+            &lt;b-card-body class="pb-0"&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;span class="li-title"&gt;Enrolled learners:&lt;/span&gt; {{ course.enrolled_learners }}&lt;/li&gt;
+                &lt;li&gt;&lt;span class="li-title"&gt;Finished learners:&lt;/span&gt; {{ course.finished_learners }}&lt;/li&gt;
+                &lt;li&gt;&lt;span class="li-title"&gt;Leaving learners:&lt;/span&gt; {{ course.leaving_learners }}&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/b-card-body&gt;
+            &lt;div slot="footer"&gt;
+              &lt;router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }"&gt;Details...&lt;/router-link&gt;
+            &lt;/div&gt;
+          &lt;/b-card&gt;
+        &lt;/b-col&gt;
+      &lt;/b-row&gt;
+    &lt;/div&gt;
+&nbsp;
+    &lt;div class="loading-content" v-if="isLoading"&gt;
+      &lt;h2&gt;{{loadingText}}&lt;/h2&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
 import util from "@/util";
+import strings from "@/strings";
 &nbsp;
 export default {
   name: "Courses",
@@ -158,10 +235,21 @@ export default {
       show: true,
       courses: [],
       util: util,
+      isLoading: false,
+      loadingText: strings.loading,
     };
   },
   mounted: function() {
-    this.courses = this.$store.state.courses;
+    this.isLoading = true;
+<span class="fstat-no" title="function not covered" >    util</span>
+      .getDetailedCourseData("", this.$store.state.filters)
+      .then(response =&gt; {
+<span class="cstat-no" title="statement not covered" >        this.isLoading = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.courses = response.data;</span>
+<span class="fstat-no" title="function not covered" >      })</span>
+      .catch(err =&gt; {
+<span class="cstat-no" title="statement not covered" >        this.loadingText = strings.connection_error;</span>
+      });
   },
 };
 &lt;/script&gt;
@@ -177,6 +265,14 @@ export default {
   transform: translateX(10px);
   opacity: 0;
 }
+.course-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+&nbsp;
+.course-card ul .li-title {
+  font-weight: bold;
+}
 &lt;/style&gt;-
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -184,7 +280,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 12:53:25 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 22 2018 10:23:38 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
