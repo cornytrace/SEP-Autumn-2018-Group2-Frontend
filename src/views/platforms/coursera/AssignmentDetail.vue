@@ -127,7 +127,6 @@ export default {
             this.$store.state.filters
           )
           .then(response => {
-            console.log(response.data);
             this.assignmentData = response.data;
             this.setAssignmentData();
           })
