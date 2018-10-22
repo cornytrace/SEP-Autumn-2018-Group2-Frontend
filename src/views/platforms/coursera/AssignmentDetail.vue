@@ -1,60 +1,60 @@
 <template>
-    <div class="animated fadeIn">
-        <div class="stats-container" v-if="!isLoading">
+  <div class="animated fadeIn">
+    <div class="stats-container" v-if="!isLoading">
 
-            <b-row>
-                <b-col class="title-col">
-                    <h1>{{assignment_title}}</h1>
-                </b-col>
-            </b-row>
-            <b-row>
+      <b-row>
+        <b-col class="title-col">
+          <h1>{{assignment_title}}</h1>
+        </b-col>
+      </b-row>
+      <b-row>
 
-                <!-- Number analytics -->
-                <b-col lg="4" xl="3">
-                    <b-card :no-body="true">
-                        <b-card-body class="p-0 clearfix align-data mr-3">
-                            <span class="iconsquare">
-                                <i class="fa fa-play bg-primary p-4 font-2xl"></i>
-                            </span>
-                            <div class="h5 text-primary mb-0 pt-3">{{submissions}}</div>
-                            <div class="text-muted text-uppercase font-weight-bold font-xs">Submissions</div>
-                        </b-card-body>
-                    </b-card>
-                </b-col>
+        <!-- Number analytics -->
+        <b-col lg="4" xl="3">
+          <b-card :no-body="true">
+            <b-card-body class="p-0 clearfix align-data mr-3">
+              <span class="iconsquare">
+                <i class="fa fa-upload bg-primary p-4 font-2xl"></i>
+              </span>
+              <div class="h5 text-primary mb-0 pt-3">{{submissions}}</div>
+              <div class="text-muted text-uppercase font-weight-bold font-xs">Submissions</div>
+            </b-card-body>
+          </b-card>
+        </b-col>
 
-                <b-col lg="4" xl="3">
-                    <b-card :no-body="true">
-                        <b-card-body class="p-0 clearfix align-data mr-3">
-                            <span class="iconsquare">
-                                <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
-                            </span>
-                            <div class="h5 text-primary mb-0 pt-3">{{submission_ratio}}</div>
-                            <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
-                        </b-card-body>
-                    </b-card>
-                </b-col>
+        <b-col lg="4" xl="3">
+          <b-card :no-body="true">
+            <b-card-body class="p-0 clearfix align-data mr-3">
+              <span class="iconsquare">
+                <i class="fa fa-upload bg-primary p-4 font-2xl float-left"></i>
+              </span>
+              <div class="h5 text-primary mb-0 pt-3">{{submission_ratio}}</div>
+              <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
+            </b-card-body>
+          </b-card>
+        </b-col>
 
-                <b-col lg="4" xl="3">
-                    <b-card :no-body="true">
-                        <b-card-body class="p-0 clearfix align-data mr-3">
-                            <span class="iconsquare">
-                                <i class="fa fa-thumbs-up bg-primary p-4 font-2xl float-left"></i>
-                            </span>
-                            <div class="h5 text-primary mb-0 pt-3">{{average}}</div>
-                            <div class="text-muted text-uppercase font-weight-bold font-xs">Average grade</div>
-                        </b-card-body>
-                    </b-card>
-                </b-col>
+        <b-col lg="4" xl="3">
+          <b-card :no-body="true">
+            <b-card-body class="p-0 clearfix align-data mr-3">
+              <span class="iconsquare">
+                <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
+              </span>
+              <div class="h5 text-primary mb-0 pt-3">{{average}}</div>
+              <div class="text-muted text-uppercase font-weight-bold font-xs">Average grade</div>
+            </b-card-body>
+          </b-card>
+        </b-col>
 
-            </b-row>
+      </b-row>
 
-        </div>
-
-        <!-- Loading screen -->
-        <div class="loading-content" v-if="isLoading">
-            <h2>{{loadingText}}</h2>
-        </div>
     </div>
+
+    <!-- Loading screen -->
+    <div class="loading-content" v-if="isLoading">
+      <h2>{{loadingText}}</h2>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -127,6 +127,7 @@ export default {
             this.$store.state.filters
           )
           .then(response => {
+            console.log(response.data);
             this.assignmentData = response.data;
             this.setAssignmentData();
           })
