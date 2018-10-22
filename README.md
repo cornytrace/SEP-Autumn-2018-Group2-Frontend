@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/cornytrace/SEP-Autumn-2018-Group2-Frontend.svg?token=ksRe83PxhypHvSJboCmE&branch=master)](https://travis-ci.com/cornytrace/SEP-Autumn-2018-Group2-Frontend)
 
 ## View the latest build of the site on:
-## https://cornytrace.github.io/SEP-Autumn-2018-Group2-Frontend
+## https://dashit.win.tue.nl/
 
 ## Installation
 
@@ -37,7 +37,7 @@ If you use another editor, follow their instructions to enable ESLint and to ena
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/cornytrace/SEP-Autumn-2018-Group2 eit-dash
+$ git clone https://github.com/cornytrace/SEP-Autumn-2018-Group2-Frontend eit-dash
 
 # go into app's directory
 $ cd eit-dash
@@ -47,8 +47,6 @@ $ cd eit-dash
 ## Frontend
 
 ``` bash
-cd frontend
-
 # install app's dependencies
 $ npm install
 ```
@@ -74,10 +72,6 @@ npm run test:e2e
 ```
 
 To bypass the frontend login use the username "test". This will use an invalid token, so requests to the backend will not work.
-
-## Backend
-
-TODO: Choose backend
 
 ## Documentation
 
