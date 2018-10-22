@@ -130,7 +130,7 @@
         <b-btn @click="deleteAction" class="float-right" id="delete-save-button" variant="danger">
           Yes
         </b-btn>
-        <b-btn @click="showDeleteActionModal=false" class="float-right" id="delete-cancel-button" variant="secondary">
+        <b-btn @click="showDeleteActionModal=false" class="float-right mr-3" id="delete-cancel-button" variant="secondary">
           No
         </b-btn>
       </div>
