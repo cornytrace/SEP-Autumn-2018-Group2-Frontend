@@ -45,8 +45,12 @@ export default {
     util
       .getDetailedCourseData("", this.$store.state.filters)
       .then(response => {
-        this.isLoading = false;
-        this.courses = response.data;
+        if (response.data.length > 0) {
+          this.isLoading = false;
+          this.courses = response.data;
+        } else {
+          this.loadingText = "No courses";
+        }
       })
       .catch(err => {
         this.loadingText = strings.connection_error;

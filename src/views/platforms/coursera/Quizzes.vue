@@ -56,8 +56,12 @@ export default {
         util
           .getQuizzes(this.courseId, this.$store.state.filters)
           .then(response => {
-            this.quizzes = response.data;
-            this.isLoading = false;
+            if (response.data.length > 0) {
+              this.quizzes = response.data;
+              this.isLoading = false;
+            } else {
+              this.loadingText = "No quizzes";
+            }
           })
           .catch(err => {
             console.log(err);

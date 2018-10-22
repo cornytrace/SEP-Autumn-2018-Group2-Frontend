@@ -33,7 +33,7 @@ export default {
       isLoading: false,
       courseSlug: "",
       assignments: [],
-      link: this.$route.fullPath
+      link: this.$route.fullPath,
     };
   },
   // Set the link variable to the path of the current page.
@@ -52,15 +52,19 @@ export default {
         util
           .getAssignments(this.courseId, this.$store.state.filters)
           .then(response => {
-            this.isLoading = false;
-            this.assignments = response.data;
+            if (response.data.length) {
+              this.isLoading = false;
+              this.assignments = response.data;
+            } else {
+              this.loadingText = "No assignments";
+            }
           })
           .catch(err => {
             console.log(err);
             this.loadingText = strings.connection_error;
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
