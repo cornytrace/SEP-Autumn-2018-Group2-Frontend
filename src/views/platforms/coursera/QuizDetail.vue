@@ -250,7 +250,8 @@ export default {
           .getQuizDetails(
             currentCourse.course_id,
             this.quizBaseId,
-            this.quizVersion
+            this.quizVersion,
+            this.$store.state.filters
           )
           .then(response => {
             this.quizData = response.data;

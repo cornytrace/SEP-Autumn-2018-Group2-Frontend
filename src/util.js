@@ -53,10 +53,10 @@ export default {
   getQueryParams(filters) {
     var params = [];
     if (filters.from !== null && filters.from !== undefined) {
-      params.push(["from_date", filters.from, ]);
+      params.push(["from_date", filters.from,]);
     }
     if (filters.to !== null && filters.to !== undefined) {
-      params.push(["to_date", filters.to, ]);
+      params.push(["to_date", filters.to,]);
     }
     var queryString = new URLSearchParams(params).toString();
     if (queryString === "") {
@@ -124,8 +124,8 @@ export default {
       .post(this.apiUrl() + `/users/forgot_password/`, {
         email: email,
       }, {
-        headers: this.authHeader(),
-      })
+          headers: this.authHeader(),
+        })
   },
 
   getUser() {
@@ -172,9 +172,10 @@ export default {
       })
   },
 
-  getQuizzes(courseId) {
+  // Quiz API calls
+  getQuizzes(courseId, filters) {
     return axios
-      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/`, {
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/` + this.getQueryParams(filters), {
         headers: this.authHeader(),
       })
   },
@@ -186,13 +187,14 @@ export default {
       })
   },
 
-  getQuizDetails(courseId, baseId, version) {
+  getQuizDetails(courseId, baseId, version, filters) {
     return axios
-      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/`, {
+      .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/` + this.getQueryParams(filters), {
         headers: this.authHeader(),
       })
   },
 
+  // Actions API calls
   getActions(platformId, courseId, filters) {
     return axios
       .get(this.apiUrl() + `/actions/${platformId}/${courseId}/` + this.getQueryParams(filters), {

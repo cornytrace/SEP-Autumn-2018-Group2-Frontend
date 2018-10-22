@@ -418,6 +418,7 @@ export default {
       }
 
       this.$store.commit("setFilters", filters);
+      // this.$router.go();
     },
     goUp: function() {
       this.level--;
@@ -588,7 +589,7 @@ export default {
     },
     getQuizzes() {
       util
-        .getQuizzes(this.currentCourse.course_id)
+        .getQuizzes(this.currentCourse.course_id, this.$store.state.filters)
         .then(response => {
           this.top_nav[3] = [];
           for (var quiz of response.data) {

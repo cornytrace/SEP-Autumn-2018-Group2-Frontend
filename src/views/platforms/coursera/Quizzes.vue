@@ -54,7 +54,7 @@ export default {
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
         util
-          .getQuizzes(this.courseId)
+          .getQuizzes(this.courseId, this.$store.state.filters)
           .then(response => {
             this.quizzes = response.data;
             this.isLoading = false;
