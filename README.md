@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/cornytrace/SEP-Autumn-2018-Group2-Frontend.svg?token=ksRe83PxhypHvSJboCmE&branch=master)](https://travis-ci.com/cornytrace/SEP-Autumn-2018-Group2-Frontend)
 
 ## View the latest build of the site on:
-## https://cornytrace.github.io/SEP-Autumn-2018-Group2-Frontend
+## https://dashit.win.tue.nl/
 
 ## Installation
 
@@ -74,10 +74,6 @@ npm run test:e2e
 ```
 
 To bypass the frontend login use the username "test". This will use an invalid token, so requests to the backend will not work.
-
-## Backend
-
-TODO: Choose backend
 
 ## Documentation
 
