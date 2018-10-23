@@ -79,7 +79,6 @@ describe('QuizDetail.vue', () => {
     const wrapper = mountComponent();
 
     moxios.wait(function () {
-      console.log(wrapper.html());
       const push = jest.fn();
       wrapper.vm.$router.push = push;
 

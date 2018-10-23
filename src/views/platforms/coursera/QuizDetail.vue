@@ -4,6 +4,7 @@
       <b-row>
         <b-col class="title-col">
           <h1>{{ name }} </h1>
+          <!-- Version selector -->
           <div class="version-select" id="version-select">
             <span class="version-title">Select version:</span>
             <b-form-select id="version-dropdown" @change=versionChanged :options=versions text-field="version" value-field="version" v-model="selectedVersion"></b-form-select>
@@ -214,7 +215,7 @@ export default {
       gradeDistributionLastAttemptData: [],
 
       lastAttemptGradeDistributionData: [],
-      lastAttemptGradeDistributionLayout: {},
+      lastAttemptGradeDistributionLayout: {}
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -248,6 +249,7 @@ export default {
     EventBus.$off(events.refresh_component, null);
   },
   methods: {
+    // Handler for changing the version dropdown.
     versionChanged(evt) {
       this.$router.push(
         "/" +
@@ -260,6 +262,7 @@ export default {
           evt
       );
     },
+    // Fetches the data from the API.
     getData() {
       this.isLoading = true;
       var currentCourse = this.$store.state.user.courses.find(
@@ -290,6 +293,7 @@ export default {
           .catch(err => console.log(err));
       }
     },
+    // Set all the data in the component.
     setData() {
       this.name = this.quizData.name;
 
@@ -332,24 +336,24 @@ export default {
       this.attemptsDistribution[0].x = [];
       this.attemptsDistribution[0].y = [];
       this.attemptsDistribution[0].type = "bar";
-      this.attemptsDistribution[0].marker = { color: colors.blue, };
+      this.attemptsDistribution[0].marker = { color: colors.blue };
       for (let view of this.quizData.number_of_attempts) {
         this.attemptsDistribution[0].x.push(view[0]);
         this.attemptsDistribution[0].y.push(view[1]);
       }
 
       this.attemptsDistributionLayout.yaxis = {
-        title: "Number of learners",
+        title: "Number of learners"
       };
       this.attemptsDistributionLayout.xaxis = {
         title: "Number of attempts",
-        dtick: 1,
+        dtick: 1
       };
 
       this.gradeDistributionData[0] = {};
       this.gradeDistributionData[0].x = [];
       this.gradeDistributionData[0].y = [];
-      this.gradeDistributionData[0].marker = { color: colors.blue, };
+      this.gradeDistributionData[0].marker = { color: colors.blue };
       this.gradeDistributionData[0].type = "bar";
       for (let rating of this.quizData.grade_distribution) {
         this.gradeDistributionData[0].x.push(rating[0]);
@@ -357,16 +361,16 @@ export default {
       }
       this.gradeDistributionLayout.xaxis = {
         dtick: 1 / (this.quizData.grade_distribution.length - 1),
-        title: "Grade",
+        title: "Grade"
       };
       this.gradeDistributionLayout.yaxis = {
-        title: "Number of learners",
+        title: "Number of learners"
       };
 
       this.questionRatioData[0] = {};
       this.questionRatioData[0].x = [];
       this.questionRatioData[0].y = [];
-      this.questionRatioData[0].marker = { color: colors.blue, };
+      this.questionRatioData[0].marker = { color: colors.blue };
       this.questionRatioData[0].type = "bar";
       for (
         let x = 0;
@@ -384,16 +388,16 @@ export default {
       this.questionRatioLayout = {};
       this.questionRatioLayout.yaxis = {};
       this.questionRatioLayout.yaxis.dtick = 0.1;
-      this.questionRatioLayout.yaxis.range = [0, 1,];
+      this.questionRatioLayout.yaxis.range = [0, 1];
       this.questionRatioLayout.yaxis.title = "Correct answer ratio";
       this.questionRatioLayout.xaxis = {
-        title: "Question",
+        title: "Question"
       };
 
       this.lastAttemptGradeDistributionData[0] = {};
       this.lastAttemptGradeDistributionData[0].x = [];
       this.lastAttemptGradeDistributionData[0].y = [];
-      this.lastAttemptGradeDistributionData[0].marker = { color: colors.blue, };
+      this.lastAttemptGradeDistributionData[0].marker = { color: colors.blue };
       this.lastAttemptGradeDistributionData[0].type = "bar";
       for (
         let x = 0;
@@ -413,15 +417,15 @@ export default {
       this.lastAttemptGradeDistributionLayout.yaxis.title =
         "Number of learners";
       this.lastAttemptGradeDistributionLayout.xaxis = {
-        title: "Grade",
+        title: "Grade"
       };
 
       this.isLoading = false;
-    },
+    }
   },
   components: {
-    Chart,
-  },
+    Chart
+  }
 };
 </script>
 

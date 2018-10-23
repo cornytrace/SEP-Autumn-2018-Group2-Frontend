@@ -5,7 +5,7 @@
         <b-col class="title-col">
           <h1>{{ this.courseName }}</h1>
         </b-col>
-
+        <!-- Course comparison button -->
         <b-col v-if="showCompare" sm="12" md="6" lg="2">
           <div class="link-container">
             <router-link :to=compareUrl>
@@ -26,7 +26,7 @@
         </b-col>
       </b-row>
       <b-row>
-
+        <!-- Number statistics -->
         <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
@@ -187,17 +187,6 @@
             </div>
           </b-card>
         </b-col>
-
-        <!-- SHOULD HAVE -->
-
-        <!-- <b-col lg="6" xl="4" v-if="qdt">
-          <b-card id="avg-time-in-mod" header="Order in which the course is followed most">
-            <div class="chart-wrapper">
-              <bar-graph chartId="chart-polar-01" :data=tendFolCourData :labels=tendFolCourLabels />
-            </div>
-          </b-card>
-        </b-col> -->
-
       </b-row>
     </div>
 
@@ -220,7 +209,13 @@ export default {
   name: "CourseDetail",
   data: function() {
     return {
+      // For using strings in html
       strings: strings,
+
+      // Show tooltips option
+      tooltips: this.$store.state.tooltips,
+
+      // General variables
       isLoading: false,
       loadingText: strings.loading,
       qdt: this.$store.state.user.role === "qdt",
@@ -231,7 +226,6 @@ export default {
       courseName: "",
       compareUrl: "",
       showCompare: true,
-      tooltips: this.$store.state.tooltips,
 
       /*
        * Teacher analytics 
@@ -486,6 +480,8 @@ export default {
 
       this.isLoading = false;
     },
+    // Helper function to interpolate values in
+    // a graph.
     interpolateY(dateArray, yArray, date) {
       date = new Date(Date.parse(date));
       for (var i = 0; i < dateArray.length; i++) {

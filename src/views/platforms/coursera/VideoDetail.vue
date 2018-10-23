@@ -98,23 +98,6 @@
 
         <!-- Link to next vid -->
         <b-col v-if="hasNextItem" md="3" lg="2">
-          <!-- <div class="link-container">
-            <router-link to="/coursera/capstone-recommender-systems/videos/2">
-              <b-card class="link-card">
-                <table>
-                  <tr>
-                    <th>
-                      <span class="link-card-text">Next video</span>
-                      <span class="link-card-subtext">Lecture 2</span>
-                    </th>
-                    <th class="icon-cell">
-                      <i class="fa fa-2x fa-chevron-right"></i>
-                    </th>
-                  </tr>
-                </table>
-              </b-card>
-            </router-link>
-          </div> -->
           <div class="link-container">
             <router-link :to=nextItemUrl>
               <b-card class="link-card">
