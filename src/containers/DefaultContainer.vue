@@ -424,7 +424,27 @@ export default {
       EventBus.$emit("refreshComponent", null);
     },
     goUp: function() {
-      this.level--;
+      // If course page route to home
+      if (
+        settings.platforms.filter(el => {
+          return el.slug === this.$route.path.replace("/", "");
+        }).length > 0
+      ) {
+        this.$router.push("home");
+      }
+      // Compare url, remove 2 elements
+      else if (this.$route.path.indexOf("compare") !== -1) {
+        var path = this.$route.path;
+        path = path.substring(0, path.lastIndexOf("/"));
+        path = path.substring(0, path.lastIndexOf("/"));
+        this.$router.push(path);
+      }
+      // Else push to page above
+      else {
+        this.$router.push(
+          this.$route.path.substring(0, this.$route.path.lastIndexOf("/"))
+        );
+      }
     },
     goDown: function() {
       this.level++;

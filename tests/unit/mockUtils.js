@@ -19,6 +19,8 @@ export const mutations = {
 export function mockStore() {
   return new Vuex.Store({
     state: {
+      apiToken: "test",
+      apiExpire: Date.now() + 10000,
       user: {
         courses: [{
           course_name: "test",

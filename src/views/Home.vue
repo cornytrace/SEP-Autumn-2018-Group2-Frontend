@@ -55,7 +55,7 @@
                         <h5 class="text-muted">finished</h5>
                       </b-col>
                       <b-col class=" pt-3 pb-3 border borderdark border-bottom-0 border-right-0 text-center">
-                        <h2 class="text-primary">{{Math.round(arrayWeightedAverage(course.ratings) * 100) / 100}}</h2>
+                        <h2 class="text-primary">{{course.ratings}}</h2>
                         <h5 class="text-muted">rating</h5>
                       </b-col>
                     </b-row>
@@ -139,6 +139,13 @@ export default {
     //this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
     util.getDetailedCourseData("", this.$store.state.filters).then(response => {
       this.coursesCoursera = response.data;
+      for (let course of this.coursesCoursera) {
+        course.ratings =
+          Math.round(this.arrayWeightedAverage(course.ratings) * 100) / 100;
+        if (isNaN(course.ratings)) {
+          course.ratings = "-";
+        }
+      }
     });
   },
 };

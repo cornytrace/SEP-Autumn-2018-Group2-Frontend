@@ -5,7 +5,7 @@
         <b-col class="title-col">
           <h1>{{ name }} </h1>
           <div class="version-select">
-            <span class="version-title">Version:</span>
+            <span class="version-title">Select version:</span>
             <b-form-select id="version-dropdown" @change=versionChanged :options=versions text-field="version" value-field="version" v-model="selectedVersion"></b-form-select>
           </div>
         </b-col>
@@ -89,8 +89,8 @@
               <b-card :no-body="true">
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-bars icon-color p-4 font-2xl mr-3 float-left"></i>
-                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ version }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Version</div>
+                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ questions }}</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of questions</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -99,8 +99,8 @@
               <b-card :no-body="true">
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-bars icon-color p-4 font-2xl mr-3 float-left"></i>
-                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ questions }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of questions</div>
+                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ graded }}</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Graded</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -177,6 +177,7 @@ export default {
       avgScoreLastAttempt: 0,
       version: 0,
       questions: 0,
+      graded: "-",
 
       // Graphs
       attemptsDistribution: [],
@@ -282,6 +283,12 @@ export default {
     },
     setData() {
       this.name = this.quizData.name;
+
+      if (this.quizData.graded) {
+        this.graded = "Yes";
+      } else {
+        this.graded = "No";
+      }
 
       if (this.quizData.passing_fraction) {
         this.passingRatio = this.quizData.passing_fraction;
