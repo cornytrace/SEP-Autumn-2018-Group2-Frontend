@@ -7,15 +7,11 @@
             <b-card-header>
               <router-link :to="link + '/' + video.item_id">{{ video.name }}</router-link>
             </b-card-header>
-            <b-card-body class="pb-0">
-              <b-card no-body class="bg-primary">
-                <b-card-header>
-                  {{ video.name }} stat
-                </b-card-header>
-                <b-card-body class="pb-0">
-                  <p>Data {{ video.name }} stat </p>
-                </b-card-body>
-              </b-card>
+            <b-card-body class="pb-0 video-card">
+              <ul>
+                <li v-if="video.optional"><span class="li-title">Optional:</span> yes</li>
+                <li v-if="!video.optional"><span class="li-title">Optional:</span> no</li>
+              </ul>
             </b-card-body>
           </b-card>
         </b-col>
@@ -60,6 +56,7 @@ export default {
         util
           .getVideos(this.courseId, this.$store.state.filters)
           .then(response => {
+            console.log(response.data);
             if (response.data.length > 0) {
               this.isLoading = false;
               this.videos = response.data;
@@ -76,3 +73,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.video-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.video-card ul .li-title {
+  font-weight: bold;
+}
+</style>
