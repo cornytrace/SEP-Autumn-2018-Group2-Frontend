@@ -8,7 +8,7 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col>
+        <b-col md="9" lg="10">
           <b-row>
             <!-- Number analytics -->
             <b-col lg="4" xl="3">
@@ -29,7 +29,7 @@
                   <span class="iconsquare">
                     <i class="fa fa-upload bg-primary p-4 font-2xl float-left"></i>
                   </span>
-                  <div class="h5 text-primary mb-0 pt-3">{{submission_ratio}}</div>
+                  <div class="h5 text-primary mb-0 pt-3">{{submission_ratio * 100}}%</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
                 </b-card-body>
               </b-card>
@@ -64,7 +64,7 @@
                     <th>
                       <span class="link-card-text">Next item</span>
                       <span class="link-card-subtext">{{ nextItemType }}</span>
-                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
+                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction * 100 }}%</span>
                     </th>
                     <th class="icon-cell">
                       <i class="fa fa-2x fa-chevron-right"></i>

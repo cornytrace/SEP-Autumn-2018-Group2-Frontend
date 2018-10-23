@@ -72,7 +72,7 @@ describe('AssignmentDetail.vue', () => {
             expect(wrapper.html()).toContain("testname");
             expect(wrapper.html()).toContain("0.87");
             expect(wrapper.html()).toContain("34");
-            expect(wrapper.html()).toContain("0.63");
+            expect(wrapper.html()).toContain("63");
             done();
         })
     })

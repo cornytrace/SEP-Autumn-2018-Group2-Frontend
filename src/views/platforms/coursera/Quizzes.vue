@@ -11,7 +11,7 @@
               <ul>
                 <li><span class="li-title">Version:</span> {{ quiz.version }}</li>
                 <li><span class="li-title">Type:</span> {{ quiz.type }}</li>
-                <li><span class="li-title">Passing ratio:</span> {{ quiz.passing_fraction }}</li>
+                <li><span class="li-title">Passing rate:</span> {{ quiz.passing_fraction * 100 }}%</li>
               </ul>
             </b-card-body>
           </b-card>

@@ -88,7 +88,7 @@
                   <span class="iconsquare">
                     <i class="fa fa-check bg-primary p-4 font-2xl mr-3 float-left"></i>
                   </span>
-                  <div class="h5 text-primary mb-0 pt-3">{{ratio}}</div>
+                  <div class="h5 text-primary mb-0 pt-3">{{ratio * 100}}%</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Like/Dislike Ratio</div>
                 </b-card-body>
               </b-card>
@@ -106,7 +106,7 @@
                     <th>
                       <span class="link-card-text">Next item</span>
                       <span class="link-card-subtext">{{ nextItemType }}</span>
-                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
+                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction * 100 }}%</span>
                     </th>
                     <th class="icon-cell">
                       <i class="fa fa-2x fa-chevron-right"></i>
@@ -138,10 +138,10 @@
       <b-row>
         <!-- Graphs -->
         <b-col md="12">
-          <b-card header="Video views over time" id="views-over-time-card">
+          <b-card header="Video views over video runtime" id="views-over-time-card">
             <div class="chart-wrapper">
-              <!-- <line-graph class="graph" :aspectRatio=maintainAspectRatio :beginAtZero=true :data=chart_data :labels=chart_labels></line-graph> -->
-              <chart :data=chart_data :layout=chartLayout></chart>
+              <!-- <line-graph class="graph" :aspectRatio=maintainAspectRatio :beginAtZero=true :data=chartData :labels=chart_labels></line-graph> -->
+              <chart :data=chartData :layout=chartLayout></chart>
             </div>
           </b-card>
 
@@ -195,7 +195,7 @@ export default {
       ratio: 0,
       comments: 0,
       maintainAspectRatio: false,
-      chart_data: [],
+      chartData: [],
       chartLayout: {},
 
       // Next item
@@ -311,8 +311,8 @@ export default {
         this.ratio = 0;
       }
 
-      this.chart_data[0] = {};
-      this.chart_data[1] = {
+      this.chartData[0] = {};
+      this.chartData[1] = {
         x: [],
         y: [],
         text: [],
@@ -322,7 +322,7 @@ export default {
           size: 12,
         },
       };
-      this.chart_data[2] = {
+      this.chartData[2] = {
         x: [],
         y: [],
         text: [],
@@ -332,11 +332,18 @@ export default {
           size: 12,
         },
       };
-      this.chart_data[0].x = [];
-      this.chart_data[0].y = [];
-      this.chart_data[0].name = "Views over time";
-      this.chart_data[0].marker = { color: colors.blue, };
-      this.chartLayout = {};
+      this.chartData[0].x = [];
+      this.chartData[0].y = [];
+      this.chartData[0].name = "Video views over video runtime";
+      this.chartData[0].marker = { color: colors.blue, };
+      this.chartLayout = {
+        xaxis: {
+          title: "Number of views",
+        },
+        yaxis: {
+          title: "Number of seconds",
+        },
+      };
       this.chartLayout.shapes = [];
       let high = 0;
       let highx = -1;
@@ -351,46 +358,20 @@ export default {
           low = view[1];
           lowx = view[0];
         }
-        this.chart_data[0].x.push(view[0]);
-        this.chart_data[0].y.push(view[1]);
+        this.chartData[0].x.push(view[0]);
+        this.chartData[0].y.push(view[1]);
       }
+      // Add high point to highs trace
       if (highx !== -1) {
-        // this.chartLayout.shapes.push({
-        //   type: "line",
-        //   xref: "x",
-        //   yref: "paper",
-        //   x0: highx,
-        //   y0: 0,
-        //   x1: highx,
-        //   y1: 1,
-        //   line: {
-        //     color: colors.green,
-        //     width: 2
-        //   }
-        // });
-
-        this.chart_data[1].x.push(highx);
-        this.chart_data[1].y.push(high);
-        this.chart_data[1].text.push("High spot");
+        this.chartData[1].x.push(highx);
+        this.chartData[1].y.push(high);
+        this.chartData[1].text.push("High");
       }
+      // Add low point to lows trace
       if (lowx !== -1) {
-        // this.chartLayout.shapes.push({
-        //   type: "line",
-        //   xref: "x",
-        //   yref: "paper",
-        //   x0: lowx,
-        //   y0: 0,
-        //   x1: lowx,
-        //   y1: 1,
-        //   line: {
-        //     color: colors.red,
-        //     width: 2,
-        //   },
-        // });
-
-        this.chart_data[2].x.push(lowx);
-        this.chart_data[2].y.push(low);
-        this.chart_data[2].text.push("Low spot");
+        this.chartData[2].x.push(lowx);
+        this.chartData[2].y.push(low);
+        this.chartData[2].text.push("Low");
       }
       this.chartLayout.showlegend = false;
       this.comments = this.videoData.video_comments;

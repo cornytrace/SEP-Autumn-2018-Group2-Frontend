@@ -34,7 +34,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="leaving-learners">{{ attempts }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of attempts</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Attempts</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -44,7 +44,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-thumbs-up icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="finished-learners">{{ likes }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of likes</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Likes</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -54,7 +54,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-comments icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="no-videos">{{ comments }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of comments</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Comments</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -64,7 +64,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-check icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ passingRatio }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Passing ratio</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Passing rate</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -73,7 +73,7 @@
               <b-card :no-body="true">
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-thumbs-down icon-color p-4 font-2xl mr-3 float-left"></i>
-                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ likeDislikeRatio }}</div>
+                  <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ likeDislikeRatio * 100 }}%</div>
                   <div class="text-muted text-uppercase font-weight-bold text-font-size">Like/dislike ratio</div>
                 </b-card-body>
               </b-card>
@@ -84,7 +84,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-question icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ avgScoreLastAttempt }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Average score of last attempt</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Avg. grade of last attempt</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -94,7 +94,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-bars icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="no-quizzes">{{ questions }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Number of questions</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Questions</div>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -122,7 +122,7 @@
                     <th>
                       <span class="link-card-text">Next item</span>
                       <span class="link-card-subtext">{{ nextItemType }}</span>
-                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
+                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction * 100 }}%</span>
                     </th>
                     <th class="icon-cell">
                       <i class="fa fa-2x fa-chevron-right"></i>
@@ -354,7 +354,7 @@ export default {
       }
 
       if (this.quizData.passing_fraction) {
-        this.passingRatio = this.quizData.passing_fraction;
+        this.passingRatio = this.quizData.passing_fraction * 100 + "%";
       } else {
         this.passingRatio = "-";
       }

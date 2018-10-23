@@ -349,7 +349,7 @@ export default {
       this.distEvalLayout.xaxis = {};
       this.distEvalLayout.xaxis.nticks = this.distEvalRateData[0].x.length * 2;
       this.distEvalLayout.xaxis.title = "Rating";
-      this.distEvalLayout.yaxis = { title: "Amount", };
+      this.distEvalLayout.yaxis = { title: "Number of ratings", };
 
       // Progression of finished learners.
       this.progFinLearData[0] = {};
