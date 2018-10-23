@@ -1,3 +1,8 @@
+<!--
+ This is the main container for the administration panel.
+ It contains the top bar and a router view containing the administration home page.
+-->
+
 <template>
   <div class="app sidebar-hidden">
     <AppHeader fixed>

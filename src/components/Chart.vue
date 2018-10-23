@@ -1,3 +1,7 @@
+<!--
+ This is the base class for all the graphs on the website.
+ To use it, include it as a component in your components, and pass plotly.js data and layout through the props.
+-->
 <template>
   <div :id=id>
   </div>

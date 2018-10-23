@@ -1,3 +1,9 @@
+<!-- 
+ This is the main vue components, which contains all other vue components.
+ The only thing inside this component is router-view, 
+ which displays the component in router/index.js which is mapped to the current url.
+-->
+
 <template>
   <router-view></router-view>
 </template>

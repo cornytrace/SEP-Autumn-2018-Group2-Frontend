@@ -290,7 +290,7 @@ export default {
     this.getData();
   },
   mounted() {
-    EventBus.$on(events.refresh_component, data => {
+    EventBus.$on(events.refresh_component, () => {
       this.getData();
     });
   },

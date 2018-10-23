@@ -10,7 +10,7 @@
           </b-card-header>
           <b-card-body class="pb-0">
             <b-row>
-              <b-col v-for="statistic in statisticsCoursera" :key="statistic.name" :lg="6" :xl="4">
+              <b-col v-for="statistic in statisticsCoursera" :key="statistic.name" :lg="6" :xl="4"> <!-- statistics list -->
                 <b-card :no-body="true">
                   <b-card-body class="p-0 clearfix stats-card">
                     <i :class="statistic.icon" class="bg-success p-2 font-2xl mr-2 float-left icon-container"></i>
@@ -35,6 +35,7 @@
             </div>
             <b-row>
               <b-col v-for="course in coursesCoursera" :key="course.name" :md="12" :lg="6" :xl="6">
+                <!-- list of courses + their statistics -->
                 <b-card no-body>
                   <b-card-header class="bg-primary">
                     <router-link :to="'/coursera/'+course.slug" class="link-light font-weight-bold">{{ course.name }}</router-link>
@@ -67,7 +68,7 @@
         </b-card>
       </b-col>
       <b-col :sm="4">
-        <b-card class="bg useful-link" no-body>
+        <b-card class="bg useful-link" no-body> <!-- useful links card -->
           <b-card-header>
             <h4>Useful links</h4>
           </b-card-header>

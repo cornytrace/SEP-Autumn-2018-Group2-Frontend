@@ -1,3 +1,8 @@
+<!--
+ This is the main container of the user-facing website.
+ The DefaultContainer contains the side-bar, the top-bar, the footer, and a router-view displaying the current page component.
+-->
+
 <template>
   <div class="app">
     <AppHeader fixed>

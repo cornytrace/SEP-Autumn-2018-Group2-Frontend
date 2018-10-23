@@ -1,3 +1,6 @@
+<!--
+ This contains the dropdown menu which is opened when you click on the user icon in the top right.
+-->
 <template>
   <AppHeaderDropdown right no-caret>
     <template slot="header">
