@@ -8,18 +8,18 @@
               <tr>
                 <th id="pk-cell"><b>ID</b></th>
                 <th id="email-cell">Email</th>
-                <th id="name-cell">Display Name</th>
+                <th id="name-cell">Organization</th>
                 <th id="role-cell">Role</th>
                 <th>Courses</th>
               </tr>
             </table>
           </b-list-group-item>
           <b-list-group-item>
-            <table>
+            <table id="user-table">
               <tr id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk">
                 <th id="pk-cell"><b>{{ user.pk }}</b></th>
                 <th id="email-cell">{{ user.email }}</th>
-                <th id="name-cell"></th>
+                <th id="name-cell">{{ user.organization }}</th>
                 <th id="role-cell">{{ user.role }}</th>
                 <th id="course-cell">
                   <ul>
@@ -47,6 +47,10 @@
                   <b-input-group-text>@</b-input-group-text>
                 </b-input-group-prepend>
                 <b-form-input v-model="selectedEmail" type="text" class="form-control" placeholder="Email" autocomplete="email" />
+              </b-input-group>
+
+              <b-input-group class="mb-3">
+                <b-form-input v-model="organization" type="text" class="form-control" placeholder="Organization name" />
               </b-input-group>
               <b-input-group class="mb-3">
                 <select class="form-control" v-model="selectedRole">
@@ -107,6 +111,7 @@ export default {
       this.selectedEmail = user.email;
       this.selectedUser = user.pk;
       this.selectedRole = user.role;
+      this.organization = user.organization;
     },
     deleteUser(id) {
       util.deleteUser(id).then(response => {
@@ -125,6 +130,7 @@ export default {
             email: this.selectedEmail,
             pk: this.selectedUser,
             role: this.selectedRole,
+            organization: this.organization,
           })
           .then(response => {
             this.showAlert = false;
@@ -215,6 +221,8 @@ table #course {
 }
 table #course-cell ul {
   padding-left: 10px;
+  margin-bottom: 0px;
+  list-style-type: square;
 }
 table th {
   font-weight: normal;
@@ -228,6 +236,7 @@ table th {
 th #course {
   margin-right: 10px;
 }
+
 table {
   border-collapse: separate;
   border-spacing: 0 1em;

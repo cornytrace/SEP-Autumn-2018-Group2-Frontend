@@ -17,6 +17,10 @@
                 </b-input-group>
 
                 <b-input-group class="mb-3">
+                  <b-form-input v-model="organization" type="text" class="form-control" placeholder="Organization name" />
+                </b-input-group>
+
+                <b-input-group class="mb-3">
                   <select class="form-control" v-model="role">
                     <option v-for="role of settings.roles" :value="role.id" :key="role.id">{{role.name}}</option>
                   </select>
@@ -52,6 +56,7 @@ export default {
   data: function() {
     return {
       email: "",
+      organization: null,
       settings: settings,
       role: settings.roles[0].id,
       courses: [],
@@ -78,6 +83,7 @@ export default {
             email: this.email,
             role: this.role,
             courses: this.selectedCourses,
+            organization: this.organization,
           })
           .then(response => {
             this.$emit("update:users", response.data);
