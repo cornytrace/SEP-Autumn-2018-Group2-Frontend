@@ -8,6 +8,7 @@ import DefaultContainer from '@/containers/DefaultContainer'
 
 import router from '@/router'
 import * as mockUtils from '../mockUtils'
+import util from '@/util'
 
 import settings from '@/settings'
 import strings from '@/strings'
