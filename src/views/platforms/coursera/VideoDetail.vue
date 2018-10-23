@@ -13,7 +13,7 @@
 
             <!-- Number analytics -->
             <b-col lg="4" xl="3">
-              <b-card :no-body="true">
+              <b-card :no-body="true" id="watchers-card">
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <span class="iconsquare">
                     <i class="fa fa-play bg-primary p-4 font-2xl"></i>
@@ -22,10 +22,15 @@
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Watchers</div>
                 </b-card-body>
               </b-card>
+
+              <!-- Tooltip -->
+              <b-tooltip v-if="tooltips" target="watchers-card">
+                {{ strings.watchers_text }}
+              </b-tooltip>
             </b-col>
 
             <b-col lg="4" xl="3">
-              <b-card :no-body="true">
+              <b-card :no-body="true" id="completers-card">
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <span class="iconsquare">
                     <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
@@ -34,6 +39,11 @@
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Completed</div>
                 </b-card-body>
               </b-card>
+
+              <!-- Tooltip -->
+              <b-tooltip v-if="tooltips" target="completers-card">
+                {{ strings.completers_text }}
+              </b-tooltip>
             </b-col>
 
             <b-col lg="4" xl="3">
@@ -129,12 +139,17 @@
       <b-row>
         <!-- Graphs -->
         <b-col md="12">
-          <b-card header="Video views over time">
+          <b-card header="Video views over time" id="views-over-time-card">
             <div class="chart-wrapper">
               <!-- <line-graph class="graph" :aspectRatio=maintainAspectRatio :beginAtZero=true :data=chart_data :labels=chart_labels></line-graph> -->
               <chart :data=chart_data :layout=chartLayout></chart>
             </div>
           </b-card>
+
+          <!-- Tooltip -->
+          <b-tooltip v-if="tooltips" target="views-over-time-card">
+            {{ strings.views_over_time_text }}
+          </b-tooltip>
         </b-col>
       </b-row>
     </div>
@@ -158,6 +173,12 @@ export default {
   name: "VideoDetail",
   data: function() {
     return {
+      // For using in html
+      strings: strings,
+
+      // Show tooltips option
+      tooltips: this.$store.state.tooltips,
+
       courseSlug: "",
       videoData: {},
       videoId: "",

@@ -4,10 +4,13 @@
       <b-row>
         <b-col class="title-col">
           <h1>{{ name }} </h1>
-          <div class="version-select">
+          <div class="version-select" id="version-select">
             <span class="version-title">Select version:</span>
             <b-form-select id="version-dropdown" @change=versionChanged :options=versions text-field="version" value-field="version" v-model="selectedVersion"></b-form-select>
           </div>
+          <b-tooltip v-if="tooltips" target="version-select">
+            {{ strings.version_text }}
+          </b-tooltip>
         </b-col>
       </b-row>
       <b-row>
@@ -166,6 +169,12 @@ export default {
   name: "QuizDetail",
   data: function() {
     return {
+      // For using in html
+      strings: strings,
+
+      // Show tooltips option
+      tooltips: this.$store.state.tooltips,
+
       // Stats
       name: "",
       avgGrade: 0,

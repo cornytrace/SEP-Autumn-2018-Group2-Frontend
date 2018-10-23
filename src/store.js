@@ -25,6 +25,7 @@ export default new Vuex.Store({
       fromDate: null,
       toDate: null,
     },
+    tooltips: true,
   },
   getters: {
 
@@ -57,6 +58,9 @@ export default new Vuex.Store({
     setFilters(state, filters) {
       state.filters = filters;
     },
+    setTooltips(state, tooltips) {
+      state.tooltips = tooltips;
+    },
   },
   actions: {
     login(context, {
@@ -65,14 +69,14 @@ export default new Vuex.Store({
     }) {
       return new Promise((resolve, reject) => {
         axios.post(
-            process.env.VUE_APP_ROOT_API + "/o/token/",
-            new URLSearchParams({
-              client_id: process.env.VUE_APP_CLIENT_ID,
-              grant_type: "password",
-              username: username,
-              password: password,
-            }),
-          )
+          process.env.VUE_APP_ROOT_API + "/o/token/",
+          new URLSearchParams({
+            client_id: process.env.VUE_APP_CLIENT_ID,
+            grant_type: "password",
+            username: username,
+            password: password,
+          }),
+        )
           .then(response => {
             context.commit('setToken', response.data.access_token);
             context.commit('setExpire', Date.now() + (response.data.expires_in * 1000));
@@ -96,5 +100,5 @@ export default new Vuex.Store({
       context.commit('setExpire', 0);
     },
   },
-  plugins: [vuexLocal.plugin, ],
+  plugins: [vuexLocal.plugin,],
 })

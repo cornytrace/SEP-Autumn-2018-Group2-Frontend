@@ -3,12 +3,15 @@
     <div class="stats-container" v-if="!isLoading">
       <b-row>
         <b-col sm="4" lg="4" v-for="assignment of assignments" :key="assignment.item_id">
-          <b-card no-body class="bg">
+          <b-card no-body class="bg assignment-card">
             <b-card-header>
               <router-link :to="link + '/' + assignment.item_id">{{ assignment.name }}</router-link>
             </b-card-header>
             <b-card-body class="pb-0">
-              -
+              <ul>
+                <li v-if="assignment.optional"><span class="li-title">Optional:</span> yes</li>
+                <li v-if="!assignment.optional"><span class="li-title">Optional:</span> no</li>
+              </ul>
             </b-card-body>
           </b-card>
         </b-col>
@@ -68,3 +71,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.assignment-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.assignment-card ul .li-title {
+  font-weight: bold;
+}
+</style>

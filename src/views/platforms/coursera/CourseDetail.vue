@@ -40,7 +40,7 @@
         </b-col>
 
         <b-col sm="12" md="6" lg="3">
-          <b-card :no-body="true">
+          <b-card :no-body="true" id="leaving-learners-card">
             <b-card-body class="p-0 clearfix align-data mr-3">
               <span class="iconsquare">
                 <i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"></i>
@@ -49,6 +49,9 @@
               <div class="text-muted text-uppercase font-weight-bold text-font-size">Leaving learners</div>
             </b-card-body>
           </b-card>
+          <b-tooltip v-if="tooltips" target="leaving-learners-card">
+            {{ strings.leaving_learners_text }}
+          </b-tooltip>
         </b-col>
 
         <b-col sm="12" md="6" lg="3">
@@ -112,7 +115,7 @@
         </b-col>
 
         <b-col sm="12" md="6" lg="3">
-          <b-card :no-body="true">
+          <b-card :no-body="true" id="cohort-card">
             <b-card-body class="p-0 clearfix align-data mr-3">
               <span class="iconsquare">
                 <i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"></i>
@@ -121,10 +124,13 @@
               <div class="text-muted text-uppercase font-weight-bold text-font-size">Cohorts</div>
             </b-card-body>
           </b-card>
+          <b-tooltip v-if="tooltips" target="cohort-card">
+            {{ strings.cohort_text }}
+          </b-tooltip>
         </b-col>
 
         <b-col sm="12" md="6" lg="3">
-          <b-card :no-body="true">
+          <b-card :no-body="true" id="timespan-card">
             <b-card-body class="p-0 clearfix align-data mr-3">
               <span class="iconsquare">
                 <i class="fa fa-calendar icon-color p-4 font-2xl mr-3 float-left"></i>
@@ -133,6 +139,9 @@
               <div class="text-muted text-uppercase font-weight-bold text-font-size">Average active timespan (in days)</div>
             </b-card-body>
           </b-card>
+          <b-tooltip v-if="tooltips" target="timespan-card">
+            {{ strings.timespan_text }}
+          </b-tooltip>
         </b-col>
 
       </b-row>
@@ -172,7 +181,7 @@
         </b-col>
 
         <b-col lg="6" xl="4">
-          <b-card id="avg-time-in-mod" header="Average time spend per module by learners (days)">
+          <b-card id="avg-time-in-mod" header="Average time spent per module by learners (days)">
             <div class="chart-wrapper">
               <chart :data=avgTimeModData :layout=avgTimeLayout id="graph-4"></chart>
             </div>
@@ -211,6 +220,7 @@ export default {
   name: "CourseDetail",
   data: function() {
     return {
+      strings: strings,
       isLoading: false,
       loadingText: strings.loading,
       qdt: this.$store.state.user.role === "qdt",
@@ -221,6 +231,7 @@ export default {
       courseName: "",
       compareUrl: "",
       showCompare: true,
+      tooltips: this.$store.state.tooltips,
 
       /*
        * Teacher analytics 

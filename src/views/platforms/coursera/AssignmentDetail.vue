@@ -23,7 +23,7 @@
         </b-col>
 
         <b-col lg="4" xl="3">
-          <b-card :no-body="true">
+          <b-card :no-body="true" id="submission-ratio-card">
             <b-card-body class="p-0 clearfix align-data mr-3">
               <span class="iconsquare">
                 <i class="fa fa-upload bg-primary p-4 font-2xl float-left"></i>
@@ -32,6 +32,11 @@
               <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
             </b-card-body>
           </b-card>
+
+          <!-- Tooltip -->
+          <b-tooltip v-if="tooltips" target="submission-ratio-card">
+            {{ strings.submission_ratio_text }}
+          </b-tooltip>
         </b-col>
 
         <b-col lg="4" xl="3">
@@ -68,6 +73,12 @@ export default {
   name: "AssignmentDetail",
   data: function() {
     return {
+      // For using in html
+      strings: strings,
+
+      // Show tooltips option
+      tooltips: this.$store.state.tooltips,
+
       courseSlug: "",
       assignmentData: {},
       assignmentId: "",
