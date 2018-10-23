@@ -97,8 +97,8 @@
         </b-col>
 
         <!-- Link to next vid -->
-        <b-col v-if="hasNextItem" md="3" lg="2">
-          <div class="link-container">
+        <b-col md="3" lg="2">
+          <div v-if="hasNextItem" class="link-container">
             <router-link :to=nextItemUrl>
               <b-card class="link-card">
                 <table>
@@ -107,6 +107,22 @@
                       <span class="link-card-text">Next item</span>
                       <span class="link-card-subtext">{{ nextItemType }}</span>
                       <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
+                    </th>
+                    <th class="icon-cell">
+                      <i class="fa fa-2x fa-chevron-right"></i>
+                    </th>
+                  </tr>
+                </table>
+              </b-card>
+            </router-link>
+          </div>
+          <div v-if="hasNextVideo" class="link-container">
+            <router-link :to=nextVideoUrl>
+              <b-card class="link-card">
+                <table>
+                  <tr>
+                    <th>
+                      <span class="link-card-text">Next video</span>
                     </th>
                     <th class="icon-cell">
                       <i class="fa fa-2x fa-chevron-right"></i>
@@ -181,11 +197,16 @@ export default {
       maintainAspectRatio: false,
       chart_data: [],
       chartLayout: {},
+
+      // Next item
       nextItemUrl: "",
       nextItemType: "",
       showNextItemPassingFraction: false,
       hasNextItem: false,
       nextItemPassingFraction: 0,
+      // Next video
+      nextVideoUrl: "",
+      hasNextVideo: false,
     };
   },
   components: {

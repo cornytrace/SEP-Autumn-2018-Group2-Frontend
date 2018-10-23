@@ -16,7 +16,7 @@
       </b-row>
       <b-row>
         <!-- Number statistics -->
-        <b-col md="12">
+        <b-col md="9" lg="10">
           <b-row>
 
             <b-col sm="12" md="6" lg="3">
@@ -110,6 +110,44 @@
             </b-col>
 
           </b-row>
+        </b-col>
+
+        <!-- Link to next vid -->
+        <b-col md="3" lg="2">
+          <div v-if="hasNextItem" class="link-container">
+            <router-link :to=nextItemUrl>
+              <b-card class="link-card">
+                <table>
+                  <tr>
+                    <th>
+                      <span class="link-card-text">Next item</span>
+                      <span class="link-card-subtext">{{ nextItemType }}</span>
+                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
+                    </th>
+                    <th class="icon-cell">
+                      <i class="fa fa-2x fa-chevron-right"></i>
+                    </th>
+                  </tr>
+                </table>
+              </b-card>
+            </router-link>
+          </div>
+          <div v-if="hasNextQuiz" class="link-container">
+            <router-link :to=nextQuizUrl>
+              <b-card class="link-card">
+                <table>
+                  <tr>
+                    <th>
+                      <span class="link-card-text">Next quiz</span>
+                    </th>
+                    <th class="icon-cell">
+                      <i class="fa fa-2x fa-chevron-right"></i>
+                    </th>
+                  </tr>
+                </table>
+              </b-card>
+            </router-link>
+          </div>
         </b-col>
 
       </b-row>
@@ -215,7 +253,18 @@ export default {
       gradeDistributionLastAttemptData: [],
 
       lastAttemptGradeDistributionData: [],
-      lastAttemptGradeDistributionLayout: {}
+      lastAttemptGradeDistributionLayout: {},
+
+      // Next item
+      nextItemUrl: "",
+      nextItemType: "",
+      showNextItemPassingFraction: false,
+      hasNextItem: false,
+      nextItemPassingFraction: 0,
+
+      // Next quiz
+      nextQuizUrl: "",
+      hasNextQuiz: false,
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -277,6 +326,7 @@ export default {
             this.$store.state.filters
           )
           .then(response => {
+            console.log(response.data);
             this.quizData = response.data;
             this.setData();
           })
@@ -336,24 +386,24 @@ export default {
       this.attemptsDistribution[0].x = [];
       this.attemptsDistribution[0].y = [];
       this.attemptsDistribution[0].type = "bar";
-      this.attemptsDistribution[0].marker = { color: colors.blue };
+      this.attemptsDistribution[0].marker = { color: colors.blue, };
       for (let view of this.quizData.number_of_attempts) {
         this.attemptsDistribution[0].x.push(view[0]);
         this.attemptsDistribution[0].y.push(view[1]);
       }
 
       this.attemptsDistributionLayout.yaxis = {
-        title: "Number of learners"
+        title: "Number of learners",
       };
       this.attemptsDistributionLayout.xaxis = {
         title: "Number of attempts",
-        dtick: 1
+        dtick: 1,
       };
 
       this.gradeDistributionData[0] = {};
       this.gradeDistributionData[0].x = [];
       this.gradeDistributionData[0].y = [];
-      this.gradeDistributionData[0].marker = { color: colors.blue };
+      this.gradeDistributionData[0].marker = { color: colors.blue, };
       this.gradeDistributionData[0].type = "bar";
       for (let rating of this.quizData.grade_distribution) {
         this.gradeDistributionData[0].x.push(rating[0]);
@@ -361,16 +411,16 @@ export default {
       }
       this.gradeDistributionLayout.xaxis = {
         dtick: 1 / (this.quizData.grade_distribution.length - 1),
-        title: "Grade"
+        title: "Grade",
       };
       this.gradeDistributionLayout.yaxis = {
-        title: "Number of learners"
+        title: "Number of learners",
       };
 
       this.questionRatioData[0] = {};
       this.questionRatioData[0].x = [];
       this.questionRatioData[0].y = [];
-      this.questionRatioData[0].marker = { color: colors.blue };
+      this.questionRatioData[0].marker = { color: colors.blue, };
       this.questionRatioData[0].type = "bar";
       for (
         let x = 0;
@@ -388,16 +438,16 @@ export default {
       this.questionRatioLayout = {};
       this.questionRatioLayout.yaxis = {};
       this.questionRatioLayout.yaxis.dtick = 0.1;
-      this.questionRatioLayout.yaxis.range = [0, 1];
+      this.questionRatioLayout.yaxis.range = [0, 1,];
       this.questionRatioLayout.yaxis.title = "Correct answer ratio";
       this.questionRatioLayout.xaxis = {
-        title: "Question"
+        title: "Question",
       };
 
       this.lastAttemptGradeDistributionData[0] = {};
       this.lastAttemptGradeDistributionData[0].x = [];
       this.lastAttemptGradeDistributionData[0].y = [];
-      this.lastAttemptGradeDistributionData[0].marker = { color: colors.blue };
+      this.lastAttemptGradeDistributionData[0].marker = { color: colors.blue, };
       this.lastAttemptGradeDistributionData[0].type = "bar";
       for (
         let x = 0;
@@ -417,15 +467,15 @@ export default {
       this.lastAttemptGradeDistributionLayout.yaxis.title =
         "Number of learners";
       this.lastAttemptGradeDistributionLayout.xaxis = {
-        title: "Grade"
+        title: "Grade",
       };
 
       this.isLoading = false;
-    }
+    },
   },
   components: {
-    Chart
-  }
+    Chart,
+  },
 };
 </script>
 

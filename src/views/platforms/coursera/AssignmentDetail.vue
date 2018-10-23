@@ -8,51 +8,90 @@
         </b-col>
       </b-row>
       <b-row>
+        <b-col>
+          <b-row>
+            <!-- Number analytics -->
+            <b-col lg="4" xl="3">
+              <b-card :no-body="true">
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-upload bg-primary p-4 font-2xl"></i>
+                  </span>
+                  <div class="h5 text-primary mb-0 pt-3">{{submissions}}</div>
+                  <div class="text-muted text-uppercase font-weight-bold font-xs">Submissions</div>
+                </b-card-body>
+              </b-card>
+            </b-col>
 
-        <!-- Number analytics -->
-        <b-col lg="4" xl="3">
-          <b-card :no-body="true">
-            <b-card-body class="p-0 clearfix align-data mr-3">
-              <span class="iconsquare">
-                <i class="fa fa-upload bg-primary p-4 font-2xl"></i>
-              </span>
-              <div class="h5 text-primary mb-0 pt-3">{{submissions}}</div>
-              <div class="text-muted text-uppercase font-weight-bold font-xs">Submissions</div>
-            </b-card-body>
-          </b-card>
+            <b-col lg="4" xl="3">
+              <b-card :no-body="true" id="submission-ratio-card">
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-upload bg-primary p-4 font-2xl float-left"></i>
+                  </span>
+                  <div class="h5 text-primary mb-0 pt-3">{{submission_ratio}}</div>
+                  <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
+                </b-card-body>
+              </b-card>
+
+              <!-- Tooltip -->
+              <b-tooltip v-if="tooltips" target="submission-ratio-card">
+                {{ strings.submission_ratio_text }}
+              </b-tooltip>
+            </b-col>
+
+            <b-col lg="4" xl="3">
+              <b-card :no-body="true">
+                <b-card-body class="p-0 clearfix align-data mr-3">
+                  <span class="iconsquare">
+                    <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
+                  </span>
+                  <div class="h5 text-primary mb-0 pt-3">{{average}}</div>
+                  <div class="text-muted text-uppercase font-weight-bold font-xs">Average grade</div>
+                </b-card-body>
+              </b-card>
+            </b-col>
+
+          </b-row>
         </b-col>
 
-        <b-col lg="4" xl="3">
-          <b-card :no-body="true" id="submission-ratio-card">
-            <b-card-body class="p-0 clearfix align-data mr-3">
-              <span class="iconsquare">
-                <i class="fa fa-upload bg-primary p-4 font-2xl float-left"></i>
-              </span>
-              <div class="h5 text-primary mb-0 pt-3">{{submission_ratio}}</div>
-              <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
-            </b-card-body>
-          </b-card>
-
-          <!-- Tooltip -->
-          <b-tooltip v-if="tooltips" target="submission-ratio-card">
-            {{ strings.submission_ratio_text }}
-          </b-tooltip>
+        <b-col md="3" lg="2">
+          <div v-if="hasNextItem" class="link-container">
+            <router-link :to=nextItemUrl>
+              <b-card class="link-card">
+                <table>
+                  <tr>
+                    <th>
+                      <span class="link-card-text">Next item</span>
+                      <span class="link-card-subtext">{{ nextItemType }}</span>
+                      <span v-if="showNextItemPassingFraction && qdt" class="link-card-subtext"><b>Passing fraction:</b> {{ nextItemPassingFraction }}</span>
+                    </th>
+                    <th class="icon-cell">
+                      <i class="fa fa-2x fa-chevron-right"></i>
+                    </th>
+                  </tr>
+                </table>
+              </b-card>
+            </router-link>
+          </div>
+          <div v-if="hasNextAssignment" class="link-container">
+            <router-link :to=nextAssignmentUrl>
+              <b-card class="link-card">
+                <table>
+                  <tr>
+                    <th>
+                      <span class="link-card-text">Next assignment</span>
+                    </th>
+                    <th class="icon-cell">
+                      <i class="fa fa-2x fa-chevron-right"></i>
+                    </th>
+                  </tr>
+                </table>
+              </b-card>
+            </router-link>
+          </div>
         </b-col>
-
-        <b-col lg="4" xl="3">
-          <b-card :no-body="true">
-            <b-card-body class="p-0 clearfix align-data mr-3">
-              <span class="iconsquare">
-                <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
-              </span>
-              <div class="h5 text-primary mb-0 pt-3">{{average}}</div>
-              <div class="text-muted text-uppercase font-weight-bold font-xs">Average grade</div>
-            </b-card-body>
-          </b-card>
-        </b-col>
-
       </b-row>
-
     </div>
 
     <!-- Loading screen -->
@@ -92,11 +131,17 @@ export default {
       submissions: 0,
       submission_ratio: 0,
       average: 0,
+
+      // Next item
       nextItemUrl: "",
       nextItemType: "",
       showNextItemPassingFraction: false,
       hasNextItem: false,
       nextItemPassingFraction: 0,
+
+      // Next quiz
+      nextAssignmentUrl: "",
+      hasNextAssignment: false,
     };
   },
   components: {
