@@ -77,7 +77,7 @@ export default {
           this.isLoading = false;
           this.courses = response.data;
         } else {
-          this.loadingText = "No courses";
+          this.loadingText = strings.no_courses;
         }
       })
       .catch(err => {

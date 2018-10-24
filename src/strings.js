@@ -10,6 +10,7 @@ export default {
   select_platform: "Select platform",
   select_course: "Select course",
   error_course_id: "Course not found!",
+  no_courses: "No courses",
   home: "Home",
 
   // Tooltips

@@ -33,6 +33,7 @@ module.exports = {
     "!**/shared/*.js",
     // referral page
     "!**/views/pages/resetreferrer.vue",
+    "!**/views/platforms/coursera/Lessons.vue",
     // Untestable js code.
     // If store.js gets used it should be tested.
     "!**/router/*.js",
