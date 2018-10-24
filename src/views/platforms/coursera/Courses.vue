@@ -6,8 +6,10 @@
           <b-card class="course-card" no-body :header="course.name">
             <b-card-body class="pb-0">
               <ul>
+                <li><span class="li-title">Level:</span> {{ course.level }}</li>
                 <li><span class="li-title">Enrolled learners:</span> {{ course.enrolled_learners }}</li>
                 <li><span class="li-title">Finished learners:</span> {{ course.finished_learners }}</li>
+                <li><span class="li-title">Paying learners:</span> {{ course.paying_learners }}</li>
                 <li><span class="li-title">Leaving learners:</span> {{ course.leaving_learners }}</li>
               </ul>
             </b-card-body>
@@ -45,6 +47,7 @@ export default {
     util
       .getDetailedCourseData("", this.$store.state.filters)
       .then(response => {
+        console.log(response.data);
         if (response.data.length > 0) {
           this.isLoading = false;
           this.courses = response.data;

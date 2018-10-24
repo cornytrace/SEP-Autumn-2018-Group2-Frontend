@@ -28,7 +28,7 @@
         <SidebarForm />
         <BackButton v-if="level > 0" :callback=goUp></BackButton>
         <TopbarNav :navItems="top_nav[level]" :clickCallback=sideButtonClick></TopbarNav>
-        <BottombarNav :navItems="bottom_nav"></BottombarNav>
+        <BottombarNav class="bottom-nav" :navItems="bottom_nav"></BottombarNav>
         <SidebarFooter />
         <SidebarMinimizer />
       </AppSidebar>
@@ -760,6 +760,10 @@ export default {
 
 #action-delete-button {
   float: right;
+}
+
+.bottom-nav {
+  border-top: 2px solid #dddddd33;
 }
 </style>
 
