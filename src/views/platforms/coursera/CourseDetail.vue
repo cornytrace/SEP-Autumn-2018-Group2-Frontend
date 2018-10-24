@@ -55,6 +55,18 @@
         </b-col>
 
         <b-col sm="12" md="6" lg="3">
+          <b-card :no-body="true" id="paying-card">
+            <b-card-body class="p-0 clearfix align-data mr-3">
+              <span class="iconsquare">
+                <i class="fa fa-money icon-color p-4 font-2xl mr-3 float-left"></i>
+              </span>
+              <div class="h5 text-color mb-0 pt-3" id="leaving-learners">{{ payingLearners }}</div>
+              <div class="text-muted text-uppercase font-weight-bold text-font-size">Paying learners</div>
+            </b-card-body>
+          </b-card>
+        </b-col>
+
+        <b-col sm="12" md="6" lg="3">
           <b-card :no-body="true">
             <b-card-body class="p-0 clearfix align-data mr-3">
               <span class="iconsquare">
@@ -233,6 +245,7 @@ export default {
       // number data
       enrolledStudents: 0,
       leavingLearners: 0,
+      payingLearners: 0,
       finishedLearners: 0,
       numberOfVideos: 0,
       numberOfQuizzes: 0,
@@ -326,6 +339,7 @@ export default {
 
       this.enrolledStudents = data.enrolled_learners;
       this.leavingLearners = data.leaving_learners;
+      this.payingLearners = data.paying_learners;
       this.finishedLearners = data.finished_learners;
       this.numberOfVideos = data.videos;
       this.numberOfQuizzes = data.quizzes;
