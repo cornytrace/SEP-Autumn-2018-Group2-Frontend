@@ -346,6 +346,58 @@ export default {
     setData() {
       this.name = this.quizData.name;
 
+      if (this.quizData.next_item && this.quizData.next_item.item_id != "") {
+        if (this.quizData.next_item.category === "quiz") {
+          this.hasNextItem = true;
+          this.nextItemType = "Quiz";
+          this.nextItemPassingFraction = parseFloat(
+            this.quizData.next_item.passing_fraction
+          ).toFixed(2);
+          this.showNextItemPassingFraction = true;
+          this.nextItemUrl =
+            "/" +
+            this.$store.state.selectedPlatform +
+            "/" +
+            this.$store.state.selectedCourse +
+            "/quizzes/" +
+            this.quizData.next_item.assessment_id +
+            "-" +
+            this.quizData.next_item.assessment_version;
+        } else if (this.quizData.next_item.category === "lecture") {
+          this.showNextItemPassingFraction = false;
+          this.hasNextItem = true;
+          this.nextItemType = "Video";
+          this.nextItemUrl =
+            "/" +
+            this.$store.state.selectedPlatform +
+            "/" +
+            this.$store.state.selectedCourse +
+            "/videos/" +
+            this.quizData.next_item.item_id;
+        } else {
+          this.hasNextItem = false;
+        }
+      }
+
+      if (
+        this.quizData.next_quiz &&
+        this.quizData.next_quiz.assessment_id &&
+        this.quizData.next_quiz.assessment_id != ""
+      ) {
+        this.hasNextQuiz = true;
+        this.nextQuizUrl =
+          "/" +
+          this.$store.state.selectedPlatform +
+          "/" +
+          this.$store.state.selectedCourse +
+          "/quizzes/" +
+          this.quizData.next_quiz.assessment_id +
+          "-" +
+          this.quizData.next_quiz.assessment_version;
+      } else {
+        this.hasNextQuiz = false;
+      }
+
       if (this.quizData.graded) {
         this.graded = "Yes";
       } else {
