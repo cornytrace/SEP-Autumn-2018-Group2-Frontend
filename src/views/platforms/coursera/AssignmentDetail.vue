@@ -161,7 +161,7 @@ export default {
     next();
   },
   mounted() {
-    EventBus.$on(events.refresh_component, data => {
+    EventBus.$on(events.refresh_component, () => {
       this.getAssignmentData();
     });
   },
@@ -203,37 +203,55 @@ export default {
         this.assignmentData.submission_ratio
       ).toFixed(2);
 
-      //  let category = this.assignmentData.next_item.category;
-      //   if (category === "quiz") {
-      //     this.hasNextItem = true;
-      //     this.nextItemType = "Quiz";
-      //     this.nextItemPassingFraction = parseFloat(
-      //       this.assignmentData.next_item.passing_fraction
-      //     ).toFixed(2);
-      //     this.showNextItemPassingFraction = true;
-      //     this.nextItemUrl =
-      //       "/" +
-      //       this.$store.state.selectedPlatform +
-      //       "/" +
-      //       this.$store.state.selectedCourse +
-      //       "/quizzes/" +
-      //       this.assignmentData.next_item.assessment_id +
-      //       "-" +
-      //       this.assignmentData.next_item.assessment_version;
-      //   } else if (category === "lecture") {
-      //     this.showNextItemPassingFraction = false;
-      //     this.hasNextItem = true;
-      //     this.nextItemType = "Video";
-      //     this.nextItemUrl =
-      //       "/" +
-      //       this.$store.state.selectedPlatform +
-      //       "/" +
-      //       this.$store.state.selectedCourse +
-      //       "/videos/" +
-      //       this.assignmentData.next_item.item_id;
-      //   } else {
-      //     this.hasNextItem = false;
-      //   }
+      if (
+        this.assignmentData.next_item &&
+        this.assignmentData.next_item.item_id != ""
+      ) {
+        let category = this.assignmentData.next_item.category;
+        if (category === "quiz") {
+          this.hasNextItem = true;
+          this.nextItemType = "Quiz";
+          this.nextItemUrl =
+            "/" +
+            this.$store.state.selectedPlatform +
+            "/" +
+            this.$store.state.selectedCourse +
+            "/quizzes/" +
+            this.assignmentData.next_item.assessment_id +
+            "-" +
+            this.assignmentData.next_item.assessment_version;
+        } else if (category === "lecture") {
+          this.showNextItemPassingFraction = false;
+          this.hasNextItem = true;
+          this.nextItemType = "Video";
+          this.nextItemUrl =
+            "/" +
+            this.$store.state.selectedPlatform +
+            "/" +
+            this.$store.state.selectedCourse +
+            "/videos/" +
+            this.assignmentData.next_item.item_id;
+        } else {
+          this.hasNextItem = false;
+        }
+      }
+
+      if (
+        this.assignmentData.next_assignment &&
+        this.assignmentData.next_assignment.item_id &&
+        this.assignmentData.next_assignment.item_id != ""
+      ) {
+        this.hasNextAssignment = true;
+        this.nextAssignmentUrl =
+          "/" +
+          this.$store.state.selectedPlatform +
+          "/" +
+          this.$store.state.selectedCourse +
+          "/assignments/" +
+          this.assignmentData.next_assignment.item_id;
+      } else {
+        this.hasNextAssignment = false;
+      }
 
       this.isLoading = false;
     },
