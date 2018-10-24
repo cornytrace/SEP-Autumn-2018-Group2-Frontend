@@ -52,28 +52,47 @@ describe('Home.vue', () => {
     const wrapper = mountComponent();
     expect(wrapper.is(Home)).toBe(true)
   })
-  it('should render correct content', (done) => {
-    moxios.stubRequest(util.apiUrl() + '/api/course-analytics/', {
+  it('Test if the homepage shows correct statistics for separate courses, and combined statistics are correct.', (done) => {
+    moxios.stubRequest(util.apiUrl() + '/api/course-analytics//', {
       status: 200,
       response: [{
-        enrolled_learners: 453,
-        finished_learners: 4364,
+        enrolled_learners: 6,
+        finished_learners: 4,
+        leaving_learners: 234,
+        name: "test_name",
+        // Not shown on homepage
+        paying_learners: 324,
+        slug: "test-name",
+        ratings: [[8.45, 4,],],
+      },
+      {
+        enrolled_learners: 7,
+        finished_learners: 5,
         leaving_learners: 43253,
         name: "test_name",
         paying_learners: 324,
         slug: "test-name",
-        ratings: 8.45,
+        ratings: [[1, 0,],],
       },],
     });
     const wrapper = mountComponent();
     moxios.wait(function () {
       return wrapper.vm.$nextTick().then(() => {
-        expect(wrapper.vm.courseName).toBe("test_name")
         expect(wrapper.html()).toContain('Coursera')
-        expect(wrapper.html()).toContain("453")
-        expect(wrapper.html()).toContain("4364")
+        expect(wrapper.html()).toContain('test_name')
+        // Test enrolled learner separate and combined.
+        expect(wrapper.html()).toContain("6")
+        expect(wrapper.html()).toContain("7")
+        expect(wrapper.html()).toContain("13")
+
+        // Test finished learner separate and combined.
+        expect(wrapper.html()).toContain("4")
+        expect(wrapper.html()).toContain("5")
+        expect(wrapper.html()).toContain("9")
+
+
+        expect(wrapper.html()).toContain("234")
         expect(wrapper.html()).toContain("43253")
-        expect(wrapper.html()).toContain("345")
         done();
       })
     })
