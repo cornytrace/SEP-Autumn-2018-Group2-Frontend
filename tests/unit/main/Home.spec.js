@@ -53,7 +53,7 @@ describe('Home.vue', () => {
     expect(wrapper.is(Home)).toBe(true)
   })
   it('Test if the homepage shows correct statistics for separate courses, and combined statistics are correct.', (done) => {
-    moxios.stubRequest(util.apiUrl() + '/api/course-analytics//', {
+    moxios.stubRequest(util.apiUrl() + '/api/course-analytics/', {
       status: 200,
       response: [{
         enrolled_learners: 6,

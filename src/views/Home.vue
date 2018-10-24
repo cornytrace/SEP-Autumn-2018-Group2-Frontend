@@ -140,7 +140,7 @@ export default {
   },
   beforeMount() {
     //this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
-    util.getDetailedCourseData("", this.$store.state.filters).then(response => {
+    util.getCoursesData(this.$store.state.filters).then(response => {
       this.coursesCoursera = response.data;
       for (let course of this.coursesCoursera) {
         course.ratings =

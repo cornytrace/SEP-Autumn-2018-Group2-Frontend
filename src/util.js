@@ -150,6 +150,13 @@ export default {
       })
   },
 
+  getCoursesData(filters) {
+    return axios
+      .get(this.apiUrl() + `/api/course-analytics/` + this.getQueryParams(filters), {
+        headers: this.authHeader(),
+      })
+  },
+
   getDetailedCourseData(courseId, filters) {
     return axios
       .get(this.apiUrl() + `/api/course-analytics/${courseId}/` + this.getQueryParams(filters), {
