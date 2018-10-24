@@ -5,15 +5,12 @@
         <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
           <b-card class="course-card" no-body>
             <b-card-header>
-              {{course.name}}
-              <div :style="{ backgroundColor: course.specialization_color}" class="specialization-indicator"></div>
+              <router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">{{course.name}}</router-link>
+              <div :style="{ backgroundColor: course.specialization_color}" class="specialization-indicator">{{ course.specialization }}</div>
             </b-card-header>
             <b-card-body class="pb-3">
+
               <table>
-                <tr>
-                  <td>Specialization:</td>
-                  <td>{{ course.specialization }}</td>
-                </tr>
                 <tr>
                   <td>Level:</td>
                   <td>{{ course.level }}</td>
@@ -36,11 +33,6 @@
                 </tr>
               </table>
             </b-card-body>
-            <b-card-footer>
-              <div slot="footer">
-                <router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">Details...</router-link>
-              </div>
-            </b-card-footer>
           </b-card>
         </b-col>
       </b-row>
@@ -126,8 +118,32 @@ export default {
 
 .course-card .specialization-indicator {
   width: 100%;
-  height: 5px;
+  margin-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 0.7rem;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   border-radius: 3px;
+}
+
+.course-card .card-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-card .card-header a {
+  color: #23282c;
+}
+
+.course-card .card-header a:hover {
+  color: #20a8d8;
 }
 
 .course-card table td {
