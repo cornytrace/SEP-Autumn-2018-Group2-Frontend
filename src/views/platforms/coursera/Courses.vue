@@ -3,19 +3,44 @@
     <div class="stats-container" v-if="!isLoading">
       <b-row>
         <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
-          <b-card class="course-card" no-body :header="course.name">
-            <b-card-body class="pb-0">
-              <ul>
-                <li><span class="li-title">Level:</span> {{ course.level }}</li>
-                <li><span class="li-title">Enrolled learners:</span> {{ course.enrolled_learners }}</li>
-                <li><span class="li-title">Finished learners:</span> {{ course.finished_learners }}</li>
-                <li><span class="li-title">Paying learners:</span> {{ course.paying_learners }}</li>
-                <li><span class="li-title">Leaving learners:</span> {{ course.leaving_learners }}</li>
-              </ul>
+          <b-card class="course-card" no-body>
+            <b-card-header>
+              {{course.name}}
+              <div :style="{ backgroundColor: course.specialization_color}" class="specialization-indicator"></div>
+            </b-card-header>
+            <b-card-body class="pb-3">
+              <table>
+                <tr>
+                  <td>Specialization:</td>
+                  <td>{{ course.specialization }}</td>
+                </tr>
+                <tr>
+                  <td>Level:</td>
+                  <td>{{ course.level }}</td>
+                </tr>
+                <tr>
+                  <td>Enrolled:</td>
+                  <td>{{ course.enrolled_learners }}</td>
+                </tr>
+                <tr>
+                  <td>Finished:</td>
+                  <td>{{ course.finished_learners }}</td>
+                </tr>
+                <tr>
+                  <td>Paying:</td>
+                  <td>{{ course.paying_learners }}</td>
+                </tr>
+                <tr id="last-row">
+                  <td>Leaving:</td>
+                  <td>{{ course.leaving_learners }}</td>
+                </tr>
+              </table>
             </b-card-body>
-            <div slot="footer">
-              <router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">Details...</router-link>
-            </div>
+            <b-card-footer>
+              <div slot="footer">
+                <router-link :to="{ name: 'CourseDetail', params: { courseid: course.slug } }">Details...</router-link>
+              </div>
+            </b-card-footer>
           </b-card>
         </b-col>
       </b-row>
@@ -40,6 +65,9 @@ export default {
       util: util,
       isLoading: false,
       loadingText: strings.loading,
+      colors: ["#00a9d444", "#29BF1244", "#F21B3F44", "#FF991444",],
+      lastSpecialization: "",
+      lastIndex: 0,
     };
   },
   mounted: function() {
@@ -47,8 +75,13 @@ export default {
     util
       .getDetailedCourseData("", this.$store.state.filters)
       .then(response => {
-        console.log(response.data);
         if (response.data.length > 0) {
+          for (let course of response.data) {
+            if (!course.level) {
+              course.level = "-";
+            }
+            course.specialization_color = this.getColor(course.specialization);
+          }
           this.isLoading = false;
           this.courses = response.data;
         } else {
@@ -58,6 +91,15 @@ export default {
       .catch(err => {
         this.loadingText = strings.connection_error;
       });
+  },
+  methods: {
+    getColor(specialization) {
+      if (specialization !== this.lastSpecialization) {
+        this.lastIndex = (this.lastIndex + 1) % this.colors.length;
+        this.lastSpecialization = specialization;
+      }
+      return this.colors[this.lastIndex];
+    },
   },
 };
 </script>
@@ -80,5 +122,18 @@ export default {
 
 .course-card ul .li-title {
   font-weight: bold;
+}
+
+.course-card .specialization-indicator {
+  width: 100%;
+  height: 5px;
+  border-radius: 3px;
+}
+
+.course-card table td {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>-
