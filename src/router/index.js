@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import util from '@/util'
+import store from '@/store'
 
 // Containers
 const DefaultContainer = () => import('@/containers/DefaultContainer')
@@ -197,6 +198,10 @@ router.beforeEach((to, from, next) => {
       },
     });
   } else {
+    console.log(to, from);
+    if (from.fullPath == "/" && to.fullPath == "/home" && store.state.user.role == "admin") {
+      next("/admin/home");
+    }
     next()
   }
 });
