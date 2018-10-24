@@ -2,11 +2,11 @@
   <div class="animated fadeIn">
     <div class="stats-container" v-if="!isLoading">
       <b-row>
-        <b-col class="title-col">
+        <b-col class="title-col" sm="12" md="6" lg="9">
           <h1>{{ this.courseName }}</h1>
         </b-col>
         <!-- Course comparison button -->
-        <b-col v-if="showCompare" sm="12" md="6" lg="2">
+        <b-col v-if="showCompare" sm="12" md="6" lg="3">
           <div class="link-container">
             <router-link :to=compareUrl>
               <b-card class="link-card">
