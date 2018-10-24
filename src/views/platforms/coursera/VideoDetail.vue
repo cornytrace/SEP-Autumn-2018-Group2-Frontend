@@ -292,6 +292,20 @@ export default {
         this.hasNextItem = false;
       }
 
+      if (
+        this.videoData.next_video &&
+        this.videoData.next_video.item_id != ""
+      ) {
+        this.hasNextVideo = true;
+        this.nextVideoUrl =
+          "/" +
+          this.$store.state.selectedPlatform +
+          "/" +
+          this.$store.state.selectedCourse +
+          "/videos/" +
+          this.videoData.next_video.item_id;
+      }
+
       // Set all statistics
       this.likes = this.videoData.video_likes;
       this.video_title = this.videoData.name;
