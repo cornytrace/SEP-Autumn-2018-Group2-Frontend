@@ -65,7 +65,7 @@ export default {
   mounted: function() {
     this.isLoading = true;
     util
-      .getDetailedCourseData("", this.$store.state.filters)
+      .getCoursesData(this.$store.state.filters)
       .then(response => {
         if (response.data.length > 0) {
           for (let course of response.data) {
