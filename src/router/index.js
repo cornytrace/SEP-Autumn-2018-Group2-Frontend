@@ -198,7 +198,6 @@ router.beforeEach((to, from, next) => {
       },
     });
   } else {
-    console.log(to, from);
     if (from.fullPath == "/" && to.fullPath == "/home" && store.state.user.role == "admin") {
       next("/admin/home");
     }
