@@ -67,6 +67,8 @@ export default {
             console.log(err);
             this.loadingText = strings.connection_error;
           });
+      } else {
+        this.loadingText = strings.error_course_id;
       }
     },
   },
