@@ -578,6 +578,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  padding: 0;
 }
 
 .cohort-card table .first-row th {
@@ -596,5 +597,15 @@ export default {
 .cohort-card table #from-cell,
 .cohort-card table #to-cell {
   width: 40%;
+}
+
+.cohort-card .list-group-item:first-child {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.cohort-card .list-group-item:last-child {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 </style>
