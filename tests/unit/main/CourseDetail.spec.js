@@ -57,29 +57,42 @@ describe('CourseDetail.vue', () => {
     moxios.stubRequest(util.apiUrl() + '/api/course-analytics/1/', {
       status: 200,
       response: {
-        test: "test",
-        name: "test_name",
-        ratings: [
-          [1, 0,],
-          [2, 10,],
-          [3, 14,],
-        ],
-        finished_learners_over_time: [
-          [1, 0,],
-          [2, 10,],
-          [3, 14,],
-        ],
-        leaving_learners_per_module: [
-          [1, 0,],
-          [2, 10,],
-          [3, 14,],
-        ],
+        assignments: 13,
+        average_time: 56.3453,
         average_time_per_module: [
           [1, 0,],
           [2, 10,],
           [3, 14,],
         ],
-        average_time: 348923048,
+        cohort_list: [
+          ["2016-07-11T07:00:00", "2016-08-22T06:59:59",],
+        ],
+        cohorts: 5,
+        enrolled_learners: 453,
+        finished_learners: 4364,
+        finished_learners_over_time: [
+          [1, 0,],
+          [2, 10,],
+          [3, 14,],
+        ],
+        geo_data: ["NGA", "Nigeria", 58,],
+        leaving_learners: 43253,
+        leaving_learners_per_module: [
+          [1, 0,],
+          [2, 10,],
+          [3, 14,],
+        ],
+        modules: 5,
+        name: "test_name",
+        paying_learners: 324,
+        quizzes: 345,
+        ratings: [
+          [1, 0,],
+          [2, 10,],
+          [3, 14,],
+        ],
+        slug: "test-name",
+        videos: 3254,
       },
     });
 
@@ -89,8 +102,17 @@ describe('CourseDetail.vue', () => {
     });
     const wrapper = mountComponent();
     moxios.wait(function () {
-      expect(wrapper.vm.courseName).toBe("test_name")
-      done();
+
+      return wrapper.vm.$nextTick().then(() => {
+        expect(wrapper.vm.courseName).toBe("test_name")
+        expect(wrapper.html()).toContain("453")
+        expect(wrapper.html()).toContain("4364")
+        expect(wrapper.html()).toContain("43253")
+        expect(wrapper.html()).toContain("345")
+        expect(wrapper.html()).toContain("3254")
+        expect(wrapper.html()).toContain("5")
+        done();
+      })
     })
   })
 

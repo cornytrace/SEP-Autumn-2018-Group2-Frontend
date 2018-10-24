@@ -326,7 +326,6 @@ export default {
             this.$store.state.filters
           )
           .then(response => {
-            console.log(response.data);
             this.quizData = response.data;
             this.setData();
           })

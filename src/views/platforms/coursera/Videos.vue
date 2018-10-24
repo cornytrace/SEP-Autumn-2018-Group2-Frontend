@@ -56,7 +56,6 @@ export default {
         util
           .getVideos(this.courseId, this.$store.state.filters)
           .then(response => {
-            console.log(response.data);
             if (response.data.length > 0) {
               this.isLoading = false;
               this.videos = response.data;

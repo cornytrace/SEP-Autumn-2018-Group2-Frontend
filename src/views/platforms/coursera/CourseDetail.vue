@@ -54,7 +54,7 @@
           </b-tooltip>
         </b-col>
 
-        <b-col sm="12" md="6" lg="3">
+        <b-col sm="12" md="6" lg="3" v-if="qdt">
           <b-card :no-body="true" id="paying-card">
             <b-card-body class="p-0 clearfix align-data mr-3">
               <span class="iconsquare">

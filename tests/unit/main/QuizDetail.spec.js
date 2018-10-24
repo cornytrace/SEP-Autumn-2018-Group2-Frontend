@@ -142,6 +142,7 @@ describe('QuizDetail.vue', () => {
     moxios.wait(function () {
       expect(wrapper.vm.name).toBe("testname")
       expect(wrapper.html()).toContain("testname");
+      expect(wrapper.html()).toContain("0.53")
       done();
     })
   })
