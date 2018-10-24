@@ -116,7 +116,7 @@
       <b-alert v-if=showAddActionAlert class="mt-2" variant="danger" show>{{ addActionWarning }}</b-alert>
 
       <div slot="modal-footer" class="w-100">
-        <b-btn @click="saveAction" class="float-right" id="filter-save-button" variant="primary">
+        <b-btn @click="saveAction" class="float-right" id="action-save-button" variant="primary">
           Save
         </b-btn>
         <b-btn @click="showAddActionModal=false" class="float-right" id="filter-cancel-button" variant="secondary">

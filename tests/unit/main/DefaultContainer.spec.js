@@ -88,7 +88,7 @@ describe('DefaultContainer.vue', () => {
       response: [{
         name: "video1",
         item_id: "id1",
-      },],
+      }, ],
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/videos")
@@ -124,7 +124,7 @@ describe('DefaultContainer.vue', () => {
         name: "quiz 1",
         base_id: "id1",
         version: 1,
-      },],
+      }, ],
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test/quizzes")
@@ -230,18 +230,18 @@ describe('DefaultContainer.vue', () => {
   })
 
   // Actions modal
-  it('action button click shows actions modal and contains right content', () => {
+  it('action button click shows actions modal and contains right content', (done) => {
     moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
       status: 200,
       response: [{
         title: "action 1",
         description: "description 1",
-      },],
+      }, ],
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test");
 
-    moxios.wait(function (done) {
+    moxios.wait(function () {
       expect(wrapper.vm.showActionsModal).toBe(false)
       expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
       wrapper.find("#actions-button").trigger('click')
@@ -254,15 +254,17 @@ describe('DefaultContainer.vue', () => {
     });
   })
 
-  it('action button click shows actions modal and shows error', () => {
+  it('action button click shows actions modal and shows error', (done) => {
     moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
       status: 403,
-      response: { error: "error", },
+      response: {
+        error: "error",
+      },
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test");
 
-    moxios.wait(function (done) {
+    moxios.wait(function () {
       expect(wrapper.vm.showActionsModal).toBe(false)
       expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
       wrapper.find("#actions-button").trigger('click')
@@ -276,18 +278,18 @@ describe('DefaultContainer.vue', () => {
   })
 
   // Add action modal
-  it('Add action modal is reachable', () => {
+  it('Add action modal is reachable', (done) => {
     moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
       status: 200,
       response: [{
         title: "action 1",
         description: "description 1",
-      },],
+      }, ],
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test");
 
-    moxios.wait(function (done) {
+    moxios.wait(function () {
       expect(wrapper.vm.showActionsModal).toBe(false)
       expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
       wrapper.find("#actions-button").trigger('click')
@@ -303,77 +305,84 @@ describe('DefaultContainer.vue', () => {
     });
   })
 
-  it('Test if adding a action works', () => {
+  it('Test if adding a action works', (done) => {
     moxios.stubRequest(util.apiUrl() + '/actions/', {
       status: 200,
-      response: { success: "success", },
+      response: {
+        success: "success",
+      },
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test");
 
-    moxios.wait(function (done) {
+    moxios.wait(function () {
       expect(wrapper.vm.showActionsModal).toBe(false)
       expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
       wrapper.find("#actions-button").trigger('click')
       expect(wrapper.vm.showActionsModal).toBe(true)
-      return wrapper.vm.$nextTick().then(() => {
-        wrapper.vm.action = {
-          title: "title",
-          description: "",
-          date: "2018-10-10",
-        }
-        wrapper.find("#filter-save-button").trigger('click');
-        expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
-        done();
-      })
+      wrapper.find("#add-action-button").trigger('click')
+      expect(wrapper.vm.showAddActionModal).toBe(true)
+      wrapper.vm.action = {
+        title: "title",
+        description: "",
+        date: new Date("2018-10-10"),
+      }
+      wrapper.find("#action-save-button").trigger('click');
+      expect(wrapper.vm.showAddActionModal).toBe(false)
+      done();
     });
   })
 
-  it('Test if adding an empty action shows an error message', () => {
+  it('Test if adding an empty action shows an error message', (done) => {
     moxios.stubRequest(util.apiUrl() + '/actions/', {
       status: 200,
-      response: { success: "success", },
+      response: {
+        success: "success",
+      },
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test");
 
-    moxios.wait(function (done) {
+    moxios.wait(function () {
       expect(wrapper.vm.showActionsModal).toBe(false)
       expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
       wrapper.find("#actions-button").trigger('click')
       expect(wrapper.vm.showActionsModal).toBe(true)
-      return wrapper.vm.$nextTick().then(() => {
-        wrapper.vm.action = {
-          title: "",
-          description: "",
-          date: "",
-        }
-        wrapper.find("#filter-save-button").trigger('click');
-        expect(wrapper.find("#actionsModal").isVisible()).toBe(true)
-        expect(wrapper.html()).toContain("date and title are required")
-        done();
-      })
+      wrapper.find("#add-action-button").trigger('click')
+      expect(wrapper.vm.showAddActionModal).toBe(true)
+      wrapper.vm.action = {
+        title: "title",
+        description: "",
+        date: null,
+      }
+      wrapper.find("#action-save-button").trigger('click')
+
+      expect(wrapper.vm.showAddActionModal).toBe(true)
+      expect(wrapper.vm.showAddActionAlert).toBe(true)
+      done();
     });
   })
 
   // Delete action modal
-  it('Add action modal is reachable', () => {
+  it('Test if an action can be deleted', (done) => {
     moxios.stubRequest(util.apiUrl() + '/actions/coursera/1/', {
       status: 200,
       response: [{
+        pk: 1,
+        course: "1",
+        date: "2018-01-01",
         title: "action 1",
         description: "description 1",
-      },],
+      }, ],
     });
-    moxios.stubRequest(util.apiUrl() + '/actions/', {
-      status: 200,
+    moxios.stubRequest(util.apiUrl() + '/actions/1/', {
+      status: 204,
       response: {},
-
     });
     const wrapper = mountComponent()
     wrapper.vm.setNavigation("/coursera/test");
 
-    moxios.wait(function (done) {
+    moxios.wait(function () {
       expect(wrapper.vm.showActionsModal).toBe(false)
       expect(wrapper.find("#actionsModal").isVisible()).toBe(false)
       wrapper.find("#actions-button").trigger('click')
@@ -385,11 +394,12 @@ describe('DefaultContainer.vue', () => {
         expect(wrapper.find("#deleteActionModal").isVisible()).toBe(true)
         expect(wrapper.html()).toContain("action 1")
         wrapper.find("#delete-save-button").trigger("click")
-        return wrapper.vm.$nextTick().then(() => {
-          expect(wrapper.find("#deleteActionModal").isVisible()).toBe(false)
-          done();
-
-        });
+        moxios.wait(function () {
+          wrapper.vm.$nextTick().then(() => {
+            expect(wrapper.vm.showDeleteActionModal).toBe(false)
+            done();
+          });
+        })
       })
     });
   })
