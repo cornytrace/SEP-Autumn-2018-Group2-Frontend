@@ -60,7 +60,7 @@ describe('Courses.vue', () => {
     expect(defaultData.show).toBe(true)
   })
   it('requests and shows the right data', (done) => {
-    moxios.stubRequest(util.apiUrl() + "/api/course-analytics//", {
+    moxios.stubRequest(util.apiUrl() + "/api/course-analytics/", {
       status: 200,
       response: [{
         "id": "qvkru5bqEeigcQ6ACV18LA",
@@ -94,7 +94,7 @@ describe('Courses.vue', () => {
   })
 
   it('handles empty data', (done) => {
-    moxios.stubRequest(util.apiUrl() + "/api/course-analytics//", {
+    moxios.stubRequest(util.apiUrl() + "/api/course-analytics/", {
       status: 200,
       response: [],
     })
@@ -106,7 +106,7 @@ describe('Courses.vue', () => {
   })
 
   it('handles api error', (done) => {
-    moxios.stubRequest(util.apiUrl() + "/api/course-analytics//", {
+    moxios.stubRequest(util.apiUrl() + "/api/course-analytics/", {
       status: 403,
       response: [],
     })
