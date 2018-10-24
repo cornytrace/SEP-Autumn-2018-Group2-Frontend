@@ -111,6 +111,9 @@ describe('CourseDetail.vue', () => {
         expect(wrapper.html()).toContain("345")
         expect(wrapper.html()).toContain("3254")
         expect(wrapper.html()).toContain("5")
+        // Test cohorts
+        expect(wrapper.html()).toContain("2016-08-22")
+        expect(wrapper.html()).toContain("2016-07-11")
         done();
       })
     })

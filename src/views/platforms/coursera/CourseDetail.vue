@@ -160,18 +160,18 @@
 
       <b-row>
         <!-- Graphs -->
-        <b-col lg="6" xl="4">
-          <b-card id="dist-eval" header="Distribution of evaluation rating">
-            <div class="chart-wrapper">
-              <chart :data=distEvalRateData :layout=distEvalLayout id="graph-1"></chart>
-            </div>
-          </b-card>
-        </b-col>
-
         <b-col lg="12" xl="8">
           <b-card id="geo-data" header="Geographical location of learners">
             <div class="chart-wrapper">
               <chart :data=geoData :layout=geoLayout id="graph-5"></chart>
+            </div>
+          </b-card>
+        </b-col>
+
+        <b-col lg="6" xl="4">
+          <b-card id="dist-eval" header="Distribution of evaluation rating">
+            <div class="chart-wrapper">
+              <chart :data=distEvalRateData :layout=distEvalLayout id="graph-1"></chart>
             </div>
           </b-card>
         </b-col>
@@ -197,6 +197,35 @@
             <div class="chart-wrapper">
               <chart :data=avgTimeModData :layout=avgTimeLayout id="graph-4"></chart>
             </div>
+          </b-card>
+        </b-col>
+
+        <b-col lg="6" xl="4">
+          <b-card id="avg-time-in-mod" header="Cohorts" no-body>
+            <b-card-body class="cohort-card">
+              <b-list-group>
+                <b-list-group-item variant="dark">
+                  <table>
+                    <tr class="first-row">
+                      <th id="id-cell">#</th>
+                      <th id="from-cell">From</th>
+                      <th id="to-cell">To</th>
+                    </tr>
+                  </table>
+                </b-list-group-item>
+                <b-list-group-item v-for="(cohort, index) in cohorts" :key="index">
+
+                  <table>
+                    <tr>
+                      <th id="id-cell">{{ index +1 }}</th>
+                      <th id="from-cell">{{ cohort[0].substring(0,10) }} </th>
+                      <th id="to-cell">{{ cohort[1].substring(0,10) }}</th>
+                    </tr>
+                  </table>
+                </b-list-group-item>
+              </b-list-group>
+            </b-card-body>
+
           </b-card>
         </b-col>
       </b-row>
@@ -272,6 +301,8 @@ export default {
 
       geoData: [],
       geoLayout: {},
+
+      cohorts: [],
 
       /*
        * QDT member analytics 
@@ -492,6 +523,8 @@ export default {
         },
       };
 
+      this.cohorts = data.cohort_list;
+
       this.isLoading = false;
     },
     // Helper function to interpolate values in
@@ -537,5 +570,31 @@ export default {
 
 .text-color {
   color: #00a9d4;
+}
+
+.cohort-card {
+  min-height: 450px;
+  flex: 1 1 0; /* flex: 1, which you had before, is equivalent but doesn't work */
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.cohort-card table .first-row th {
+  font-weight: bold;
+}
+
+.cohort-card table th {
+  font-weight: normal;
+  text-align: left;
+}
+
+.cohort-card table #id-cell {
+  width: 20%;
+}
+
+.cohort-card table #from-cell,
+.cohort-card table #to-cell {
+  width: 40%;
 }
 </style>
