@@ -10,7 +10,8 @@
           </b-card-header>
           <b-card-body class="pb-0">
             <b-row>
-              <b-col v-for="statistic in statisticsCoursera" :key="statistic.name" :lg="6" :xl="4"> <!-- statistics list -->
+              <b-col v-for="statistic in statisticsCoursera" :key="statistic.name" :lg="6" :xl="4">
+                <!-- statistics list -->
                 <b-card :no-body="true">
                   <b-card-body class="p-0 clearfix stats-card">
                     <i :class="statistic.icon" class="bg-success p-2 font-2xl mr-2 float-left icon-container"></i>
@@ -68,7 +69,8 @@
         </b-card>
       </b-col>
       <b-col :sm="4">
-        <b-card class="bg useful-link" no-body> <!-- useful links card -->
+        <b-card class="bg useful-link" no-body>
+          <!-- useful links card -->
           <b-card-header>
             <h4>Useful links</h4>
           </b-card-header>
@@ -139,6 +141,7 @@ export default {
   beforeMount() {
     //this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
     util.getDetailedCourseData("", this.$store.state.filters).then(response => {
+      console.log(response.data);
       this.coursesCoursera = response.data;
       for (let course of this.coursesCoursera) {
         course.ratings =
