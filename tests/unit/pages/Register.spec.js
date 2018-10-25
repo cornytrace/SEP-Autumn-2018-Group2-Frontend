@@ -59,6 +59,7 @@ describe('Register.vue', () => {
     wrapper.setData({
       email: "test@test.nl",
       selectedCourses: ["Course 1", "Course 2", ],
+      organization: "testcorp",
     })
     wrapper.vm.doRegister()
     expect(wrapper.find('#email-warning').classes()).toContain('hidden')
@@ -71,6 +72,7 @@ describe('Register.vue', () => {
     wrapper.setData({
       email: "test@test.nl",
       selectedCourses: ["Course 1", "Course 2", ],
+      organization: "testcorp",
       role: "qdt",
     })
 
@@ -93,6 +95,7 @@ describe('Register.vue', () => {
     wrapper.setData({
       email: "test@test.nl",
       selectedCourses: ["Course 1", "Course 2", ],
+      organization: "testcorp",
       role: "qdt",
       warningText: "",
     })

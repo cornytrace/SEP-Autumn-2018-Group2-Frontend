@@ -56,7 +56,7 @@ export default {
   data: function() {
     return {
       email: "",
-      organization: null,
+      organization: "",
       settings: settings,
       role: settings.roles[0].id,
       courses: [],
@@ -77,29 +77,34 @@ export default {
   },
   methods: {
     doRegister() {
-      if (util.validEmail(this.email)) {
-        util
-          .createUser({
-            email: this.email,
-            role: this.role,
-            courses: this.selectedCourses,
-            organization: this.organization,
-          })
-          .then(response => {
-            this.$emit("update:users", response.data);
-            this.$router.push("/admin");
-          })
-          .catch(error => {
-            this.warningText = "";
-            for (var err in error.response.data) {
-              this.warningText += error.response.data[err][0] + "\n";
-            }
-            this.isHidden = false;
-          });
-      } else {
+      if (!util.validEmail(this.email)) {
         this.warningText = "Please fill in a valid email address";
         this.isHidden = false;
+        return;
       }
+      if (this.organization == "") {
+        this.warningText = "Please fill in an organization";
+        this.isHidden = false;
+        return;
+      }
+      util
+        .createUser({
+          email: this.email,
+          role: this.role,
+          courses: this.selectedCourses,
+          organization: this.organization,
+        })
+        .then(response => {
+          this.$emit("update:users", response.data);
+          this.$router.push("/admin");
+        })
+        .catch(error => {
+          this.warningText = "";
+          for (var err in error.response.data) {
+            this.warningText += err + ": " + error.response.data[err][0] + "\n";
+          }
+          this.isHidden = false;
+        });
     },
     getCourse(courseId) {
       return this.courses.find(course => course.pk === courseId);

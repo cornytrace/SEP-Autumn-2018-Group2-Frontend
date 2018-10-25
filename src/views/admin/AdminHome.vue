@@ -132,7 +132,7 @@ export default {
             role: this.selectedRole,
             organization: this.organization,
           })
-          .then(response => {
+          .then(() => {
             this.showAlert = false;
             this.showSuccess = true;
             this.getUsers();
@@ -140,7 +140,8 @@ export default {
           .catch(error => {
             this.errorReason = "";
             for (var err in error.response.data) {
-              this.errorReason += error.response.data[err][0] + "\n";
+              this.errorReason +=
+                err + ": " + error.response.data[err][0] + "\n";
             }
             this.showAlert = true;
             this.showSuccess = false;
