@@ -67,6 +67,7 @@ export default {
     util
       .getCoursesData(this.$store.state.filters)
       .then(response => {
+        // Check if the data returned has at least one course
         if (response.data.length > 0) {
           for (let course of response.data) {
             if (!course.level) {
@@ -77,6 +78,7 @@ export default {
           this.isLoading = false;
           this.courses = response.data;
         } else {
+          // When we recieve no courses, show message
           this.loadingText = strings.no_courses;
         }
       })
@@ -85,6 +87,7 @@ export default {
       });
   },
   methods: {
+    // Function for applying matching colors to courses with the same specialisation
     getColor(specialization) {
       if (specialization !== this.lastSpecialization) {
         this.lastIndex = (this.lastIndex + 1) % this.colors.length;

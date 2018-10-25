@@ -1,3 +1,7 @@
+<!-- 
+  This component consists of two lists, and buttons to move items between them.
+  The purpose of this component is to make selections from a single list provided to it.
+-->
 <template>
   <div class="content-container">
     <div class="selector-container">

@@ -203,6 +203,7 @@ export default {
         this.assignmentData.submission_ratio
       ).toFixed(2);
 
+      // Determine if we need to show the next item button, and fill in the required data
       if (
         this.assignmentData.next_item &&
         this.assignmentData.next_item.item_id != ""

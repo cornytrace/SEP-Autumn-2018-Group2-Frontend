@@ -334,6 +334,7 @@ export default {
     next();
   },
   mounted() {
+    // When we recieve an update event, refresh our course data
     EventBus.$on(events.refresh_component, data => {
       this.getCourseData();
     });
@@ -347,7 +348,7 @@ export default {
       this.loadingText = strings.loading;
       var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
-      );
+      ); // find the matching course object for the course slug in the URL
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
         Promise.all([
@@ -440,6 +441,8 @@ export default {
           size: 12,
         },
       };
+
+      // Add registered actions to the finished learners graph
       for (let action of actions) {
         let actionDate = new Date(action.date);
         if (minDate < actionDate && actionDate < maxDate) {

@@ -38,10 +38,6 @@
           <router-view></router-view>
         </div>
       </main>
-      <AppAside fixed>
-        <!--aside-->
-        <DefaultAside />
-      </AppAside>
     </div>
     <TheFooter v-bind:class="{ 'bg-success' : isPrimary, 'bg-danger' : !isPrimary }">
       API Status: {{apiStatus}}
@@ -161,7 +157,6 @@ import {
   Footer as TheFooter,
   Breadcrumb
 } from "@coreui/vue";
-import DefaultAside from "./DefaultAside";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
 import NotificationToggler from "../views/buttons/NotificationToggler";
 import BottombarNav from "../views/sidebars/BottombarNav";
@@ -182,7 +177,6 @@ export default {
     AppAside,
     TheFooter,
     Breadcrumb,
-    DefaultAside,
     DefaultHeaderDropdownAccnt,
     SidebarForm,
     SidebarFooter,
