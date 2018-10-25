@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>1/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>1/3</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -244,10 +244,10 @@
 199
 200
 201
-202</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+202
+203
+204
+205</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -395,6 +395,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -454,19 +460,16 @@
             &lt;tbody&gt;
               &lt;tr&gt;
                 &lt;td&gt;
-                  &lt;label for="switchid" id="hoverdesc"&gt;Enable hover text: &lt;/label&gt;
-                  &lt;b-tooltip  v-if="hoverEnable" target="hoverdesc"&gt;
-                    Toggle explanation tooltips that describe analytics on hover.
-                  &lt;/b-tooltip&gt;
-                &lt;/td&gt;        
-                &lt;td&gt;      
+                  &lt;label for="switchid" id="hoverdesc"&gt;Enable tooltips: &lt;/label&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
                   &lt;label class="switch switch-pill switch-primary" id="switchid"&gt;
                     &lt;input type="checkbox" class="switch-input" v-model="hoverEnable" checked&gt;
                     &lt;span class="switch-slider"&gt;&lt;/span&gt;
                   &lt;/label&gt;
                 &lt;/td&gt;
               &lt;/tr&gt;
-              &lt;tr&gt;
+              &lt;!-- &lt;tr&gt;
                 &lt;td&gt;
                   &lt;label&gt;Default platform: &lt;/label&gt;
                 &lt;/td&gt;
@@ -481,74 +484,74 @@
                 &lt;td&gt;
                   &lt;b-form-radio-group v-model="sortMode" :options="sortOptions" stacked&gt;&lt;/b-form-radio-group&gt;
                 &lt;/td&gt;
-              &lt;/tr&gt;
-              
+              &lt;/tr&gt; --&gt;
+&nbsp;
             &lt;/tbody&gt;
           &lt;/table&gt;
           &lt;b-alert variant="success" :show="showAlertGeneral" dismissible @dismissed="showAlertGeneral=false"&gt;Changes saved!&lt;/b-alert&gt;
-          &lt;b-btn class="submit" @click="showAlertGeneral=true"&gt;Save changes&lt;/b-btn&gt;
+          &lt;b-btn class="submit" @click="save" variant="success"&gt;Save changes&lt;/b-btn&gt;
         &lt;/b-card&gt;
       &lt;/b-col&gt;
       &lt;b-col md="8" lg="6"&gt;
         &lt;b-card header="&lt;h3&gt;Profile settings&lt;/h3&gt;"&gt;
           &lt;b-row&gt;
-          &lt;b-col lg="6"&gt;
-    
-          &lt;b-card class="accordion" no-body&gt;
-          &lt;b-card-header class="clickable" v-b-toggle.collapse1 header-bg-variant="primary"&gt;Edit display name&lt;/b-card-header&gt;
-          &lt;b-collapse class="accordion" id="collapse1" accordion="accordion1"&gt;
-            &lt;b-card-body class="accordion"&gt;
-              &lt;b-form-input class="profilefield" v-model="newProfile.displayName" type="text" placeholder="New display name"&gt;&lt;/b-form-input&gt;
-              &lt;b-alert variant="success" :show="showAlertName" dismissible @dismissed="showAlertName=false"&gt;Changes saved!&lt;/b-alert&gt;
-              &lt;b-btn class="submit" @click="showAlertName=true"&gt;Submit&lt;/b-btn&gt;
-            &lt;/b-card-body&gt;
-          &lt;/b-collapse&gt;
-          &lt;/b-card&gt;
+            &lt;b-col lg="6"&gt;
 &nbsp;
-          &lt;b-card class="accordion" no-body&gt;
-          &lt;b-card-header class="clickable" v-b-toggle.collapse2 header-bg-variant="primary"&gt;Edit email&lt;/b-card-header&gt;
-          &lt;b-collapse class="accordion" id="collapse2" accordion="accordion1"&gt;
-            &lt;b-card-body class="accordion"&gt;
-              &lt;b-form-input class="profilefield" v-model="newProfile.email" type="text" placeholder="New email"&gt;&lt;/b-form-input&gt;
-              &lt;b-alert variant="success" :show="showAlertEmail" dismissible @dismissed="showAlertEmail=false"&gt;Confirmation email sent!&lt;/b-alert&gt;
-              &lt;b-btn class="submit" @click="showAlertEmail=true"&gt;Submit&lt;/b-btn&gt;
-            &lt;/b-card-body&gt;
-          &lt;/b-collapse&gt;
-          &lt;/b-card&gt;
+              &lt;b-card class="accordion" no-body&gt;
+                &lt;b-card-header class="clickable" v-b-toggle.collapse1 header-bg-variant="primary"&gt;Edit display name&lt;/b-card-header&gt;
+                &lt;b-collapse class="accordion" id="collapse1" accordion="accordion1"&gt;
+                  &lt;b-card-body class="accordion"&gt;
+                    &lt;b-form-input class="profilefield" v-model="newProfile.displayName" type="text" placeholder="New display name"&gt;&lt;/b-form-input&gt;
+                    &lt;b-alert variant="success" :show="showAlertName" dismissible @dismissed="showAlertName=false"&gt;Changes saved!&lt;/b-alert&gt;
+                    &lt;b-btn class="submit" @click="showAlertName=true"&gt;Submit&lt;/b-btn&gt;
+                  &lt;/b-card-body&gt;
+                &lt;/b-collapse&gt;
+              &lt;/b-card&gt;
 &nbsp;
-          &lt;b-card class="accordion" no-body&gt;
-          &lt;b-card-header class="clickable" v-b-toggle.collapse3 header-bg-variant="primary"&gt;Edit password&lt;/b-card-header&gt;
-          &lt;b-collapse class="accordion" id="collapse3" accordion="accordion1"&gt;
-            &lt;b-card-body class="accordion"&gt;
-              &lt;b-form-input class="profilefield" type="text" placeholder="Old password"&gt;&lt;/b-form-input&gt;
-              &lt;b-form-input class="profilefield" type="text" placeholder="New password"&gt;&lt;/b-form-input&gt;
-              &lt;b-form-input class="profilefield" type="text" placeholder="Repeat new password"&gt;&lt;/b-form-input&gt;
-              &lt;b-alert variant="success" :show="showAlertPassword" dismissible @dismissed="showAlertPassword=false"&gt;Changes saved!&lt;/b-alert&gt;
-              &lt;b-btn class="submit" @click="showAlertPassword=true"&gt;Submit&lt;/b-btn&gt;
-            &lt;/b-card-body&gt;
-          &lt;/b-collapse&gt;
-          &lt;/b-card&gt;
-          &lt;/b-col&gt;
-          &lt;b-col lg="6"&gt;
-            &lt;b-card class="profilecard" header="Profile preview:"&gt;
-              &lt;p v-if="newProfile.displayName"&gt; 
+              &lt;b-card class="accordion" no-body&gt;
+                &lt;b-card-header class="clickable" v-b-toggle.collapse2 header-bg-variant="primary"&gt;Edit email&lt;/b-card-header&gt;
+                &lt;b-collapse class="accordion" id="collapse2" accordion="accordion1"&gt;
+                  &lt;b-card-body class="accordion"&gt;
+                    &lt;b-form-input class="profilefield" v-model="newProfile.email" type="text" placeholder="New email"&gt;&lt;/b-form-input&gt;
+                    &lt;b-alert variant="success" :show="showAlertEmail" dismissible @dismissed="showAlertEmail=false"&gt;Confirmation email sent!&lt;/b-alert&gt;
+                    &lt;b-btn class="submit" @click="showAlertEmail=true"&gt;Submit&lt;/b-btn&gt;
+                  &lt;/b-card-body&gt;
+                &lt;/b-collapse&gt;
+              &lt;/b-card&gt;
+&nbsp;
+              &lt;b-card class="accordion" no-body&gt;
+                &lt;b-card-header class="clickable" v-b-toggle.collapse3 header-bg-variant="primary"&gt;Edit password&lt;/b-card-header&gt;
+                &lt;b-collapse class="accordion" id="collapse3" accordion="accordion1"&gt;
+                  &lt;b-card-body class="accordion"&gt;
+                    &lt;b-form-input class="profilefield" type="text" placeholder="Old password"&gt;&lt;/b-form-input&gt;
+                    &lt;b-form-input class="profilefield" type="text" placeholder="New password"&gt;&lt;/b-form-input&gt;
+                    &lt;b-form-input class="profilefield" type="text" placeholder="Repeat new password"&gt;&lt;/b-form-input&gt;
+                    &lt;b-alert variant="success" :show="showAlertPassword" dismissible @dismissed="showAlertPassword=false"&gt;Changes saved!&lt;/b-alert&gt;
+                    &lt;b-btn class="submit" @click="showAlertPassword=true"&gt;Submit&lt;/b-btn&gt;
+                  &lt;/b-card-body&gt;
+                &lt;/b-collapse&gt;
+              &lt;/b-card&gt;
+            &lt;/b-col&gt;
+            &lt;b-col lg="6"&gt;
+              &lt;b-card class="profilecard" header="Profile preview:"&gt;
+                &lt;p v-if="newProfile.displayName"&gt;
                   {{ newProfile.displayName }}
-              &lt;/p&gt;
-              &lt;p v-else&gt; 
+                &lt;/p&gt;
+                &lt;p v-else&gt;
                   {{ currentProfile.displayName }}
-              &lt;/p&gt;
+                &lt;/p&gt;
 &nbsp;
-              &lt;p v-if="newProfile.email"&gt; 
+                &lt;p v-if="newProfile.email"&gt;
                   {{ newProfile.email }}
-              &lt;/p&gt;
-              &lt;p v-else&gt; 
+                &lt;/p&gt;
+                &lt;p v-else&gt;
                   {{ currentProfile.email }}
-              &lt;/p&gt;
-              
-            &lt;/b-card&gt;
-          &lt;/b-col&gt;
+                &lt;/p&gt;
+&nbsp;
+              &lt;/b-card&gt;
+            &lt;/b-col&gt;
           &lt;/b-row&gt;
-        &lt;/b-card&gt;  
+        &lt;/b-card&gt;
       &lt;/b-col&gt;
     &lt;/b-row&gt;
   &lt;/div&gt;
@@ -585,7 +588,7 @@ export default {
       ],
 &nbsp;
       selectedPlatform: "1",
-      hoverEnable: true,
+      hoverEnable: this.$store.state.tooltips,
       sortMode: "favorite",
 &nbsp;
       showAlertGeneral: false,
@@ -593,6 +596,12 @@ export default {
       showAlertEmail: false,
       showAlertPassword: false,
     };
+  },
+  methods: {
+<span class="fstat-no" title="function not covered" >    save() {</span>
+<span class="cstat-no" title="statement not covered" >      this.$store.commit("setTooltips", this.hoverEnable);</span>
+<span class="cstat-no" title="statement not covered" >      this.showAlertGeneral = true;</span>
+    },
   },
 };
 &lt;/script&gt;
@@ -652,7 +661,7 @@ table {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 23 2018 13:57:26 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 25 2018 07:54:50 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

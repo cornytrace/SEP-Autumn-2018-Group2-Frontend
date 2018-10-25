@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.5% </span>
+        <span class="strong">82.93% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>33/40</span>
+        <span class='fraction'>34/41</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>12/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.5% </span>
+        <span class="strong">82.93% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>33/40</span>
+        <span class='fraction'>34/41</span>
       </div>
     </div>
   </div>
@@ -275,7 +275,24 @@
 230
 231
 232
-233</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -382,6 +399,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -395,6 +413,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -449,6 +468,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -517,25 +539,27 @@
               &lt;tr&gt;
                 &lt;th id="pk-cell"&gt;&lt;b&gt;ID&lt;/b&gt;&lt;/th&gt;
                 &lt;th id="email-cell"&gt;Email&lt;/th&gt;
-                &lt;th id="name-cell"&gt;Display Name&lt;/th&gt;
+                &lt;th id="name-cell"&gt;Organization&lt;/th&gt;
                 &lt;th id="role-cell"&gt;Role&lt;/th&gt;
                 &lt;th&gt;Courses&lt;/th&gt;
               &lt;/tr&gt;
             &lt;/table&gt;
           &lt;/b-list-group-item&gt;
           &lt;b-list-group-item&gt;
-            &lt;table&gt;
+            &lt;table id="user-table"&gt;
               &lt;tr id="userelement" @click="click(user.pk)" v-for="user in users" :key="user.pk"&gt;
                 &lt;th id="pk-cell"&gt;&lt;b&gt;{{ user.pk }}&lt;/b&gt;&lt;/th&gt;
                 &lt;th id="email-cell"&gt;{{ user.email }}&lt;/th&gt;
-                &lt;th id="name-cell"&gt;&lt;/th&gt;
+                &lt;th id="name-cell"&gt;{{ user.organization }}&lt;/th&gt;
                 &lt;th id="role-cell"&gt;{{ user.role }}&lt;/th&gt;
                 &lt;th id="course-cell"&gt;
                   &lt;ul&gt;
                     &lt;li v-for="course in user.courses" :key="course.course_name"&gt;&lt;span id="course"&gt;{{ course.course_name }}&lt;/span&gt;&lt;/li&gt;
                   &lt;/ul&gt;
                 &lt;/th&gt;
-                &lt;th id="button-cell"&gt;&lt;button v-b-modal="'deleteModal'"&gt;&lt;i class="cui-trash" /&gt;&lt;/button&gt;&lt;/th&gt;
+                &lt;th id="button-cell"&gt;
+                  &lt;b-button v-b-modal="'deleteModal'"&gt;&lt;i class="cui-trash" /&gt;&lt;/b-button&gt;
+                &lt;/th&gt;
               &lt;/tr&gt;
             &lt;/table&gt;
           &lt;/b-list-group-item&gt;
@@ -554,6 +578,10 @@
                   &lt;b-input-group-text&gt;@&lt;/b-input-group-text&gt;
                 &lt;/b-input-group-prepend&gt;
                 &lt;b-form-input v-model="selectedEmail" type="text" class="form-control" placeholder="Email" autocomplete="email" /&gt;
+              &lt;/b-input-group&gt;
+&nbsp;
+              &lt;b-input-group class="mb-3"&gt;
+                &lt;b-form-input v-model="organization" type="text" class="form-control" placeholder="Organization name" /&gt;
               &lt;/b-input-group&gt;
               &lt;b-input-group class="mb-3"&gt;
                 &lt;select class="form-control" v-model="selectedRole"&gt;
@@ -614,6 +642,7 @@ export default {
       this.selectedEmail = user.email;
       this.selectedUser = user.pk;
       this.selectedRole = user.role;
+      this.organization = user.organization;
     },
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    deleteUser(id) {</span></span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      util.deleteUser(id).then(response =&gt; {</span></span>
@@ -632,6 +661,7 @@ export default {
             email: this.selectedEmail,
             pk: this.selectedUser,
             role: this.selectedRole,
+            organization: this.organization,
           })
           .then(response =&gt; {
             this.showAlert = false;
@@ -722,6 +752,8 @@ table #course {
 }
 table #course-cell ul {
   padding-left: 10px;
+  margin-bottom: 0px;
+  list-style-type: square;
 }
 table th {
   font-weight: normal;
@@ -735,6 +767,7 @@ table th {
 th #course {
   margin-right: 10px;
 }
+&nbsp;
 table {
   border-collapse: separate;
   border-spacing: 0 1em;
@@ -745,7 +778,7 @@ table {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 23 2018 13:57:26 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 25 2018 07:54:50 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
