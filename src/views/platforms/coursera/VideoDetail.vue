@@ -352,10 +352,10 @@ export default {
       this.chartData[0].marker = { color: colors.blue, };
       this.chartLayout = {
         xaxis: {
-          title: "Number of views",
+          title: "Number of seconds",
         },
         yaxis: {
-          title: "Number of seconds",
+          title: "Number of views",
         },
       };
       this.chartLayout.shapes = [];

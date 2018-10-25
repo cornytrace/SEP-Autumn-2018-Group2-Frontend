@@ -25,7 +25,7 @@ export default {
   // Video
   watchers_text: "Number of unique learners who have watched the video.",
   completers_text: "Number of learners who have completed watching the video.",
-  views_over_time_text: "This graph shows the number of watchers every five seconds of the video.",
+  views_over_time_text: "This graph shows the number of watchers for every five seconds of the video.",
 
   // Assignment
   submission_ratio_text: "Ratio of learners who have submitted the assignment.",
