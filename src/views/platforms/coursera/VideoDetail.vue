@@ -304,6 +304,8 @@ export default {
           this.$store.state.selectedCourse +
           "/videos/" +
           this.videoData.next_video.item_id;
+      } else {
+        this.hasNextVideo = false;
       }
 
       // Set all statistics
