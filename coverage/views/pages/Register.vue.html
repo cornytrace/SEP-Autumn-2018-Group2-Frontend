@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85% </span>
+        <span class="strong">76% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/20</span>
+        <span class='fraction'>19/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">55.56% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>5/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85% </span>
+        <span class="strong">76% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/20</span>
+        <span class='fraction'>19/25</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -163,7 +163,12 @@
 118
 119
 120
-121</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+121
+122
+123
+124
+125
+126</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,6 +248,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,10 +273,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,7 +351,7 @@ export default {
   data: function() {
     return {
       email: "",
-      organization: null,
+      organization: "",
       settings: settings,
       role: settings.roles[0].id,
       courses: [],
@@ -362,29 +372,34 @@ export default {
   },
   methods: {
     doRegister() {
-      if (util.validEmail(this.email)) {
-        util
-          .createUser({
-            email: this.email,
-            role: this.role,
-            courses: this.selectedCourses,
-            organization: this.organization,
-          })
-          .then(response =&gt; {
-            this.$emit("update:users", response.data);
-            this.$router.push("/admin");
-          })
-          .catch(error =&gt; {
-            this.warningText = "";
-            for (var err in error.response.data) {
-              this.warningText += error.response.data[err][0] + "\n";
-            }
-            this.isHidden = false;
-          });
-      } else {
+      if (!util.validEmail(this.email)) {
         this.warningText = "Please fill in a valid email address";
         this.isHidden = false;
+        return;
       }
+<span class="missing-if-branch" title="if path not taken" >I</span>      if (this.organization == "") {
+<span class="cstat-no" title="statement not covered" >        this.warningText = "Please fill in an organization";</span>
+<span class="cstat-no" title="statement not covered" >        this.isHidden = false;</span>
+<span class="cstat-no" title="statement not covered" >        return;</span>
+      }
+      util
+        .createUser({
+          email: this.email,
+          role: this.role,
+          courses: this.selectedCourses,
+          organization: this.organization,
+        })
+        .then(response =&gt; {
+          this.$emit("update:users", response.data);
+          this.$router.push("/admin");
+        })
+        .catch(error =&gt; {
+          this.warningText = "";
+          for (var err in error.response.data) {
+            this.warningText += err + ": " + error.response.data[err][0] + "\n";
+          }
+          this.isHidden = false;
+        });
     },
 <span class="fstat-no" title="function not covered" >    getCourse(courseId) {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.courses.find(course =&gt; course.pk === courseId);</span></span>
@@ -409,7 +424,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 25 2018 07:54:50 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 26 2018 07:57:39 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
