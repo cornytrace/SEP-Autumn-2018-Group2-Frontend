@@ -34,7 +34,6 @@ describe('Courses.vue', () => {
         $router: {},
       },
       stubs: [],
-
     }, components))
   }
 
@@ -43,21 +42,12 @@ describe('Courses.vue', () => {
   })
 
   it('is Vue instance', () => {
-    const wrapper = mountComponent({
-      store,
-    })
+    const wrapper = mountComponent()
     expect(wrapper.isVueInstance()).toBe(true)
   })
   it('is Register', () => {
-    const wrapper = mountComponent({
-      store,
-    })
+    const wrapper = mountComponent()
     expect(wrapper.is(Courses)).toBe(true)
-  })
-  it('sets the correct default data', () => {
-    expect(typeof Courses.data).toBe('function')
-    const defaultData = Courses.data()
-    expect(defaultData.show).toBe(true)
   })
   it('requests and shows the right data', (done) => {
     moxios.stubRequest(util.apiUrl() + "/api/course-analytics/", {
@@ -71,20 +61,20 @@ describe('Courses.vue', () => {
         "enrolled_learners": 1,
         "leaving_learners": 1,
         "ratings": [
-          [1, 0, ],
-          [2, 0, ],
-          [3, 0, ],
-          [4, 0, ],
-          [5, 0, ],
-          [6, 0, ],
-          [7, 0, ],
-          [8, 0, ],
-          [9, 0, ],
-          [10, 0, ],
+          [1, 0,],
+          [2, 0,],
+          [3, 0,],
+          [4, 0,],
+          [5, 0,],
+          [6, 0,],
+          [7, 0,],
+          [8, 0,],
+          [9, 0,],
+          [10, 0,],
         ],
         "finished_learners": 0,
         "paying_learners": 0,
-      }, ],
+      },],
     })
     const wrapper = mountComponent()
     moxios.wait(function () {
