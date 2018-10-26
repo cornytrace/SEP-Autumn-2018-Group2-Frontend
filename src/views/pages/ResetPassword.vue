@@ -21,8 +21,9 @@
                     </b-input-group-prepend>
                     <b-form-input type="password" v-model="passwordCheck" class="form-control" placeholder="Password (repeat)" autocomplete="current-password" @keyup.native.enter="doReset" />
                   </b-input-group>
-                  <b-alert id="alertbox" variant="danger" dismissible :show="showAlert" @dismissed="showAlert=false">
-                    Reset failed: {{errorReason}}.
+                  <b-alert id="alertbox" variant="danger"
+                  dismissible :show="showAlert" @dismissed="showAlert=false">
+                    Reset failed: <span v-html="errorReason"></span>
                   </b-alert>
                   <b-alert id="successbox" variant="success" dismissible :show="showSuccess" @dismissed="showSuccess=false">
                     Reset success.
@@ -70,7 +71,13 @@ export default {
             this.showSuccess = true;
           })
           .catch(error => {
-            this.errorReason = error;
+            if (error.response.data.password) {
+              for (let reason of error.response.data.password) {
+                this.errorReason += reason + "</br>";
+              }
+            } else {
+              this.errorReason = "An error has occurred";
+            }
             this.showAlert = true;
           });
       }
