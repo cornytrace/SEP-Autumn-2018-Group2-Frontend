@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.66% </span>
+        <span class="strong">89.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>26/29</span>
+        <span class='fraction'>25/28</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>5/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.66% </span>
+        <span class="strong">89.29% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>26/29</span>
+        <span class='fraction'>25/28</span>
       </div>
     </div>
   </div>
@@ -157,8 +157,7 @@
 112
 113
 114
-115
-116</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+115</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,6 +201,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,7 +243,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,8 +252,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -285,17 +283,18 @@
                   &lt;h1&gt;Login&lt;/h1&gt;
                   &lt;p class="text-muted"&gt;Sign In to your account&lt;/p&gt;
                   &lt;b-input-group class="mb-3"&gt;
-                    &lt;b-input-group-prepend&gt;&lt;b-input-group-text&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/b-input-group-text&gt;&lt;/b-input-group-prepend&gt;
+                    &lt;b-input-group-prepend&gt;
+                      &lt;b-input-group-text&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/b-input-group-text&gt;
+                    &lt;/b-input-group-prepend&gt;
                     &lt;b-form-input type="text" class="form-control" v-model="username" placeholder="Email" autocomplete="username email" /&gt;
                   &lt;/b-input-group&gt;
                   &lt;b-input-group class="mb-4"&gt;
-                    &lt;b-input-group-prepend&gt;&lt;b-input-group-text&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/b-input-group-text&gt;&lt;/b-input-group-prepend&gt;
-                    &lt;b-form-input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password" @keyup.native.enter="doLogin"/&gt;
+                    &lt;b-input-group-prepend&gt;
+                      &lt;b-input-group-text&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/b-input-group-text&gt;
+                    &lt;/b-input-group-prepend&gt;
+                    &lt;b-form-input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password" @keyup.native.enter="doLogin" /&gt;
                   &lt;/b-input-group&gt;
-                  &lt;b-alert id="errorAlert" variant="danger"
-                      dismissible
-                      :show="showAlert"
-                      @dismissed="showAlert=false"&gt;
+                  &lt;b-alert id="errorAlert" variant="danger" dismissible :show="showAlert" @dismissed="showAlert=false"&gt;
                     Login failed: {{errorReason}}.
                   &lt;/b-alert&gt;
                   &lt;b-row&gt;
@@ -318,6 +317,7 @@
 &nbsp;
 &lt;script&gt;
 import util from "@/util";
+import strings from "@/strings";
 &nbsp;
 export default {
   name: "Login",
@@ -330,7 +330,7 @@ export default {
       }
 &nbsp;
       if (this.username == "" || this.password == "") {
-        this.errorReason = "please enter a valid username or password";
+        this.errorReason = strings.error_username_password;
         this.showAlert = true;
         return;
       }
@@ -356,21 +356,18 @@ export default {
               }
 <span class="fstat-no" title="function not covered" >            })</span>
             .catch(() =&gt; {
-<span class="cstat-no" title="statement not covered" >              this.errorReason =</span>
-                "a server error has occurred, please try again";
+<span class="cstat-no" title="statement not covered" >              this.errorReason = strings.error_server;</span>
 <span class="cstat-no" title="statement not covered" >              this.showAlert = true;</span>
             });
         })
         .catch(response =&gt; {
           // username or password is wrong
           if (response.response &amp;&amp; response.response.status == 401) {
-            this.errorReason = "check username and password";
+            this.errorReason = strings.error_username_password;
             this.showAlert = true;
           } else {
-            this.errorReason = "a server error has occurred, please try again";
+            this.errorReason = strings.error_server;
             this.showAlert = true;
-            console.log("login failed!");
-            console.dir(response);
           }
         });
     },
@@ -394,7 +391,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 26 2018 09:17:57 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 26 2018 09:22:35 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
