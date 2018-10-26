@@ -7,5 +7,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  beforeMount: function() {
+    this.$store.commit("setResetToken", this.$route.params.token);
+    this.$store.commit("setResetId", this.$route.params.id);
+    this.$router.push("/pages/resetpassword");
+  },
+};
 </script>
