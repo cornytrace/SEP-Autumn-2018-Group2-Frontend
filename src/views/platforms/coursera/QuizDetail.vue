@@ -34,7 +34,7 @@
                 <b-card-body class="p-0 clearfix align-data mr-3">
                   <i class="fa fa-user-times icon-color p-4 font-2xl mr-3 float-left"></i>
                   <div class="h5 text-color mb-0 pt-3" id="leaving-learners">{{ attempts }}</div>
-                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Attempts</div>
+                  <div class="text-muted text-uppercase font-weight-bold text-font-size">Average attempts</div>
                 </b-card-body>
               </b-card>
             </b-col>

@@ -30,7 +30,7 @@ export default {
 
   // Error messages
   error_wrong_email: "Please enter a valid email address.",
-  error_no_organization: "Please enter a organizationname.",
+  error_no_organization: "Please enter a organization name.",
   error_username_password: "Please check your username and password.",
   error_server: "Server error, please try again",
   error_course_id: "Course not found!",

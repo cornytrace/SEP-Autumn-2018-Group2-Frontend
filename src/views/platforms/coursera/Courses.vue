@@ -23,7 +23,7 @@
                   <td>Finished:</td>
                   <td>{{ course.finished_learners }}</td>
                 </tr>
-                <tr>
+                <tr v-if="qdt">
                   <td>Paying:</td>
                   <td>{{ course.paying_learners }}</td>
                 </tr>
@@ -60,6 +60,7 @@ export default {
       colors: ["#00a9d444", "#29BF1244", "#F21B3F44", "#FF991444",],
       lastSpecialization: "",
       lastIndex: 0,
+      qdt: this.$store.state.user.role === "qdt",
     };
   },
   mounted: function() {

@@ -29,7 +29,7 @@
                   <span class="iconsquare">
                     <i class="fa fa-upload bg-primary p-4 font-2xl float-left"></i>
                   </span>
-                  <div class="h5 text-primary mb-0 pt-3">{{submission_ratio * 100}}%</div>
+                  <div class="h5 text-primary mb-0 pt-3">{{submission_ratio}}%</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Submission ratio</div>
                 </b-card-body>
               </b-card>
@@ -199,9 +199,9 @@ export default {
       this.assignmentTitle = this.assignmentData.name;
       this.average = parseFloat(this.assignmentData.average_grade).toFixed(2);
       this.submissions = this.assignmentData.submissions;
-      this.submission_ratio = parseFloat(
-        this.assignmentData.submission_ratio
-      ).toFixed(2);
+      this.submission_ratio = parseInt(
+        this.assignmentData.submission_ratio * 100
+      );
 
       // Determine if we need to show the next item button, and fill in the required data
       if (
