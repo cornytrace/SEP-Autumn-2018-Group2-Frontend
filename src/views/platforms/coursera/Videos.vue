@@ -60,7 +60,7 @@ export default {
               this.isLoading = false;
               this.videos = response.data;
             } else {
-              this.loadingText = "No videos";
+              this.loadingText = strings.no_videos;
             }
           })
           .catch(err => {

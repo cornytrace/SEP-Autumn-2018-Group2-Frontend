@@ -60,7 +60,7 @@ export default {
               this.quizzes = response.data;
               this.isLoading = false;
             } else {
-              this.loadingText = "No quizzes";
+              this.loadingText = strings.no_quizzes;
             }
           })
           .catch(err => {

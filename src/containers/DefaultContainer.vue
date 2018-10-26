@@ -158,7 +158,6 @@ import {
   Breadcrumb
 } from "@coreui/vue";
 import DefaultHeaderDropdownAccnt from "./DefaultHeaderDropdownAccnt";
-import NotificationToggler from "../views/buttons/NotificationToggler";
 import BottombarNav from "../views/sidebars/BottombarNav";
 import TopbarNav from "../views/sidebars/TopbarNav";
 import BackButton from "../views/sidebars/sidebaritems/BackButton";
@@ -184,7 +183,6 @@ export default {
     SidebarHeader,
     SidebarNav,
     SidebarMinimizer,
-    NotificationToggler,
     BottombarNav,
     TopbarNav,
     BackButton,

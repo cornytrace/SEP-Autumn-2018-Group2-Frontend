@@ -39,10 +39,6 @@ export {
   from './AssignmentDetail'
 
 export {
-  default as Lessons
-}
-  from './Lessons'
-export {
   default as CourseComparison
 }
   from './CourseComparison'

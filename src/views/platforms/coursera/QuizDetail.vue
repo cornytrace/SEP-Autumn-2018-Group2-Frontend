@@ -420,10 +420,14 @@ export default {
       this.attempts = parseFloat(this.attempts).toFixed(2);
       this.likes = this.quizData.quiz_likes;
       this.comments = this.quizData.quiz_comments;
-      this.likeDislikeRatio = parseFloat(
-        this.quizData.quiz_likes /
-          (this.quizData.quiz_likes + this.quizData.quiz_dislikes)
-      ).toFixed(2);
+      if (this.quizData.quiz_likes + this.quizData.quiz_dislikes === 0) {
+        this.likeDislikeRatio = "1";
+      } else {
+        this.likeDislikeRatio = parseFloat(
+          this.quizData.quiz_likes /
+            (this.quizData.quiz_likes + this.quizData.quiz_dislikes)
+        ).toFixed(2);
+      }
       if (this.quizData.last_attempt_average_grade) {
         this.avgScoreLastAttempt = this.quizData.last_attempt_average_grade;
         this.avgScoreLastAttempt = parseFloat(this.avgScoreLastAttempt).toFixed(

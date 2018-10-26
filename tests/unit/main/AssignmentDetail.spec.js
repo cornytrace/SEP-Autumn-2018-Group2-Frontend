@@ -73,7 +73,7 @@ describe('AssignmentDetail.vue', () => {
     });
     const wrapper = mountComponent();
     moxios.wait(function () {
-      expect(wrapper.vm.assignment_title).toBe("testname")
+      expect(wrapper.vm.assignmentTitle).toBe("testname")
       expect(wrapper.html()).toContain("testname");
       expect(wrapper.html()).toContain("0.87");
       expect(wrapper.html()).toContain("34");
@@ -136,7 +136,7 @@ describe('AssignmentDetail.vue', () => {
       },
     }, {}, next)
     moxios.wait(function () {
-      expect(wrapper.vm.assignment_title).toBe("testname2")
+      expect(wrapper.vm.assignmentTitle).toBe("testname2")
       expect(wrapper.html()).toContain("testname2");
       done();
     })

@@ -59,7 +59,7 @@ export default {
               this.isLoading = false;
               this.assignments = response.data;
             } else {
-              this.loadingText = "No assignments";
+              this.loadingText = strings.no_assignments;
             }
           })
           .catch(err => {

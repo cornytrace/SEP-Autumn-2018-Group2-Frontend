@@ -46,6 +46,7 @@
 <script>
 import util from "@/util";
 import settings from "@/settings";
+import strings from "@/strings";
 import MultiSelect from "@/components/MultiSelect";
 
 export default {
@@ -78,12 +79,12 @@ export default {
   methods: {
     doRegister() {
       if (!util.validEmail(this.email)) {
-        this.warningText = "Please fill in a valid email address";
+        this.warningText = strings.error_wrong_email;
         this.isHidden = false;
         return;
       }
       if (this.organization == "") {
-        this.warningText = "Please fill in an organization";
+        this.warningText = strings.error_no_organization;
         this.isHidden = false;
         return;
       }

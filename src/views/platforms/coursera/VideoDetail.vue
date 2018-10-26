@@ -4,7 +4,7 @@
 
       <b-row>
         <b-col class="title-col">
-          <h1>{{video_title}}</h1>
+          <h1>{{videoTitle}}</h1>
         </b-col>
       </b-row>
       <b-row>
@@ -35,7 +35,7 @@
                   <span class="iconsquare">
                     <i class="fa fa-check bg-primary p-4 font-2xl float-left"></i>
                   </span>
-                  <div class="h5 text-primary mb-0 pt-3">{{full_plays}}</div>
+                  <div class="h5 text-primary mb-0 pt-3">{{fullPlays}}</div>
                   <div class="text-muted text-uppercase font-weight-bold font-xs">Completed</div>
                 </b-card-body>
               </b-card>
@@ -187,11 +187,11 @@ export default {
       qdt: this.$store.state.user.role === "qdt",
       isLoading: false,
       loadingText: "Loading...",
-      video_title: "",
+      videoTitle: "",
       likes: 0,
       dislikes: 0,
       plays: 0,
-      full_plays: 0,
+      fullPlays: 0,
       ratio: 0,
       comments: 0,
       maintainAspectRatio: false,
@@ -219,7 +219,7 @@ export default {
   },
 
   beforeRouteUpdate(to, from, next) {
-    // this.video_title = "Lecture " + to.params.videoid + " - 12/05/2018";
+    // this.videoTitle = "Lecture " + to.params.videoid + " - 12/05/2018";
     this.courseSlug = to.params.courseid;
     this.videoId = to.params.videoid;
     this.getVideoData();
@@ -310,10 +310,10 @@ export default {
 
       // Set all statistics
       this.likes = this.videoData.video_likes;
-      this.video_title = this.videoData.name;
+      this.videoTitle = this.videoData.name;
       this.dislikes = this.videoData.video_dislikes;
       this.plays = this.videoData.watched_video;
-      this.full_plays = this.videoData.finished_video;
+      this.fullPlays = this.videoData.finished_video;
       if (
         this.videoData.video_likes !== 0 ||
         this.videoData.video_dislikes !== 0

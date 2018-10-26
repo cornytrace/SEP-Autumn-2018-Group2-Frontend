@@ -19,21 +19,12 @@ export default {
     slug: "assignments",
     icon: "cui-calendar",
   },
-    // {
-    //   name: "Lessons",
-    //   slug: "lessons",
-    //   icon: "cui-calendar",
-    // },
   ],
   resources: [
     {
       name: "Coursera for Educators",
       link: "https://blog.coursera.org/for-educators/",
     },
-  ],
-
-  quizzes: [
-    { name: "quiz 1", id: 1, },
   ],
 
   // Constants

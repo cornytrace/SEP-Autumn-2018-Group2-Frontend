@@ -4,7 +4,7 @@
 
       <b-row>
         <b-col class="title-col">
-          <h1>{{assignment_title}}</h1>
+          <h1>{{assignmentTitle}}</h1>
         </b-col>
       </b-row>
       <b-row>
@@ -127,7 +127,7 @@ export default {
       qdt: this.$store.state.user.role === "qdt",
       isLoading: false,
       loadingText: "Loading...",
-      assignment_title: "",
+      assignmentTitle: "",
       submissions: 0,
       submission_ratio: 0,
       average: 0,
@@ -196,7 +196,7 @@ export default {
     },
     setAssignmentData() {
       // Set url to the next item
-      this.assignment_title = this.assignmentData.name;
+      this.assignmentTitle = this.assignmentData.name;
       this.average = parseFloat(this.assignmentData.average_grade).toFixed(2);
       this.submissions = this.assignmentData.submissions;
       this.submission_ratio = parseFloat(

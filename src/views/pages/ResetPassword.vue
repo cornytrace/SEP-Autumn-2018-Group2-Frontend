@@ -10,19 +10,21 @@
                   <h1>Reset Password</h1>
                   <p class="text-muted">Reset your password</p>
                   <b-input-group class="mb-4">
-                    <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password"/>
+                    <b-input-group-prepend>
+                      <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
+                    </b-input-group-prepend>
+                    <b-form-input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password" />
                   </b-input-group>
                   <b-input-group class="mb-4">
-                    <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="password" v-model="passwordCheck" class="form-control" placeholder="Password (repeat)" autocomplete="current-password" @keyup.native.enter="doReset"/>
+                    <b-input-group-prepend>
+                      <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
+                    </b-input-group-prepend>
+                    <b-form-input type="password" v-model="passwordCheck" class="form-control" placeholder="Password (repeat)" autocomplete="current-password" @keyup.native.enter="doReset" />
                   </b-input-group>
-                  <b-alert id="alertbox" variant="danger"
-                  dismissible :show="showAlert" @dismissed="showAlert=false">
+                  <b-alert id="alertbox" variant="danger" dismissible :show="showAlert" @dismissed="showAlert=false">
                     Reset failed: {{errorReason}}.
                   </b-alert>
-                  <b-alert id="successbox" variant="success"
-                  dismissible :show="showSuccess" @dismissed="showSuccess=false">
+                  <b-alert id="successbox" variant="success" dismissible :show="showSuccess" @dismissed="showSuccess=false">
                     Reset success.
                   </b-alert>
                   <b-row>
@@ -42,6 +44,7 @@
 
 <script>
 import util from "@/util";
+import strings from "@/strings";
 
 export default {
   name: "ResetPassword",
@@ -81,7 +84,7 @@ export default {
         this.showAlert = true;
         return false;
       }
-      this.errorReason = "Please enter two identical passwords.";
+      this.errorReason = strings.error_passwords_identical;
       this.showAlert = true;
       return false;
     },

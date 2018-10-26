@@ -10,13 +10,12 @@
                   <h1>Forgot password</h1>
                   <p class="text-muted">Enter email address and you will receive a password reset link.</p>
                   <b-input-group class="mb-3">
-                    <b-input-group-prepend><b-input-group-text>@</b-input-group-text></b-input-group-prepend>
+                    <b-input-group-prepend>
+                      <b-input-group-text>@</b-input-group-text>
+                    </b-input-group-prepend>
                     <b-form-input type="text" class="form-control" v-model="email" placeholder="Email" autocomplete="username email" />
                   </b-input-group>
-                  <b-alert id="errorAlert" variant="danger"
-                      dismissible
-                      :show="showAlert"
-                      @dismissed="showAlert=false">
+                  <b-alert id="errorAlert" variant="danger" dismissible :show="showAlert" @dismissed="showAlert=false">
                     Password reset failed: {{errorReason}}.
                   </b-alert>
                   <b-row>
@@ -36,6 +35,7 @@
 
 <script>
 import util from "@/util";
+import strings from "@/strings";
 
 export default {
   name: "ForgotPassword",
@@ -62,13 +62,13 @@ export default {
               }
               this.showAlert = true;
             } else {
-              this.errorReason = "Server error";
+              this.errorReason = strings.error_server;
               this.showAlert = true;
             }
           });
       } else {
         this.showAlert = true;
-        this.errorReason = "Please enter a valid email address.";
+        this.errorReason = strings.error_wrong_email;
       }
     },
     isValidJSONString(str) {

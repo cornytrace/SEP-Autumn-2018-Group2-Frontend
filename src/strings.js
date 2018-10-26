@@ -9,8 +9,6 @@ export default {
   loading: "Loading...",
   select_platform: "Select platform",
   select_course: "Select course",
-  error_course_id: "Course not found!",
-  no_courses: "No courses",
   home: "Home",
 
   // Tooltips
@@ -29,4 +27,17 @@ export default {
 
   // Assignment
   submission_ratio_text: "Ratio of learners who have submitted the assignment.",
+
+  // Error messages
+  error_wrong_email: "Please enter a valid email address.",
+  error_no_organization: "Please enter a organizationname.",
+  error_username_password: "Please check your username and password.",
+  error_server: "Server error, please try again",
+  error_course_id: "Course not found!",
+  error_passwords_identical: "Please enter two identical passwords.",
+
+  no_assignments: "No assignments found!",
+  no_courses: "No courses found!",
+  no_quizzes: "No quizzes found!",
+  no_videos: "No videos found!",
 }
