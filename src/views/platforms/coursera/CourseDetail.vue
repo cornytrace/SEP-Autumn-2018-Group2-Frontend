@@ -418,9 +418,18 @@ export default {
         )
       );
 
+      let xrangestart = null;
+      let xrangeend = null;
+      if (this.$store.state.filters.from) {
+        xrangestart = this.$store.state.filters.from;
+      }
+      if (this.$store.state.filters.to) {
+        xrangeend = this.$store.state.filters.to;
+      }
       this.progFinLearLayout = {
         xaxis: {
           title: "Time",
+          range: [xrangestart, xrangeend,],
         },
         yaxis: {
           title: "Number of learners",
