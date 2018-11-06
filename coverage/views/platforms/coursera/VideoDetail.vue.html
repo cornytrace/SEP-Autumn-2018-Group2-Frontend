@@ -30,9 +30,9 @@
         <span class='fraction'>21/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">72.73% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>8/11</span>
+        <span class='fraction'>7/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">92.05% </span>
@@ -450,7 +450,18 @@
 405
 406
 407
-408</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -665,10 +676,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -677,15 +692,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -693,7 +711,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -702,10 +722,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1037,15 +1059,19 @@ export default {
       // Show tooltips option
       tooltips: this.$store.state.tooltips,
 &nbsp;
+      // General variables
       courseSlug: "",
       videoData: {},
       videoId: "",
       videoName: "",
       courseId: "",
-&nbsp;
       qdt: this.$store.state.user.role === "qdt",
+&nbsp;
+      // Message variables
       isLoading: false,
       loadingText: "Loading...",
+&nbsp;
+      // Statistics variables
       videoTitle: "",
       likes: 0,
       dislikes: 0,
@@ -1071,6 +1097,7 @@ export default {
   components: {
     Chart,
   },
+  // Update url params on before mount and route update.
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
     this.videoId = this.$route.params.videoid;
@@ -1078,21 +1105,23 @@ export default {
   },
 &nbsp;
 <span class="fstat-no" title="function not covered" >  beforeRouteUpdate(to, from, next) {</span>
-    // this.videoTitle = "Lecture " + to.params.videoid + " - 12/05/2018";
 <span class="cstat-no" title="statement not covered" >    this.courseSlug = to.params.courseid;</span>
 <span class="cstat-no" title="statement not covered" >    this.videoId = to.params.videoid;</span>
 <span class="cstat-no" title="statement not covered" >    this.getVideoData();</span>
 <span class="cstat-no" title="statement not covered" >    next();</span>
   },
+  // Add event bus to get notified when component needs updating.
   mounted() {
 <span class="fstat-no" title="function not covered" >    EventBus.$on(events.refresh_component, data =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      this.getVideoData();</span>
     });
   },
+  // Remove event bus on destroy
 <span class="fstat-no" title="function not covered" >  beforeDestroy() {</span>
 <span class="cstat-no" title="statement not covered" >    EventBus.$off(events.refresh_component, null);</span>
   },
   methods: {
+    // Get all video data from API.
     getVideoData() {
       this.isLoading = true;
       var currentCourse = this.$store.state.user.courses.find(
@@ -1100,22 +1129,26 @@ export default {
       );
 <span class="missing-if-branch" title="else path not taken" >E</span>      if (currentCourse) {
         this.courseId = currentCourse.course_id;
+        // Call api using util helper function.
         util
           .getVideoDetails(
             this.courseId,
             this.videoId,
             this.$store.state.filters
           )
+          // Success, update video data.
           .then(response =&gt; {
             this.videoData = response.data;
             this.setVideoData();
           })
+          // No success, show error.
           .catch(err =&gt; {
             console.log(err);
             this.loadingText = strings.connection_error;
           });
       }
     },
+    // Helper function to set video data.
     setVideoData() {
       // Set url to the next item
       let category = this.videoData.next_item.category;
@@ -1270,7 +1303,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 09:51:55 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 06 2018 10:33:38 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

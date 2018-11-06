@@ -30,9 +30,9 @@
         <span class='fraction'>10/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.92% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>10/13</span>
+        <span class='fraction'>9/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">87.6% </span>
@@ -666,7 +666,13 @@
 621
 622
 623
-624</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+624
+625
+626
+627
+628
+629
+630</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -918,6 +924,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1001,6 +1008,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -1008,7 +1016,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
@@ -1024,8 +1034,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -1606,6 +1618,7 @@ export default {
   components: {
     Chart,
   },
+  // Before mount and route update fetch data.
   beforeMount() {
     var otherCourses = this.$store.state.user.courses.filter(
       el =&gt; el.course_slug !== this.$route.params.courseid
@@ -1624,16 +1637,19 @@ export default {
     this.getCourseData();
     next();
   },
+  // Add event bus to get notified when component needs changing.
   mounted() {
     // When we recieve an update event, refresh our course data
 <span class="fstat-no" title="function not covered" >    EventBus.$on(events.refresh_component, data =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      this.getCourseData();</span>
     });
   },
+  // Remove event bus, on destroy.
 <span class="fstat-no" title="function not covered" >  beforeDestroy() {</span>
 <span class="cstat-no" title="statement not covered" >    EventBus.$off(events.refresh_component, null);</span>
   },
   methods: {
+    // Get data.
     getCourseData() {
       this.isLoading = true;
       this.loadingText = strings.loading;
@@ -1646,10 +1662,12 @@ export default {
           util.getActions("coursera", this.courseId, this.$store.state.filters),
           util.getDetailedCourseData(this.courseId, this.$store.state.filters),
         ])
+          // Success update data.
           .then(response =&gt; {
             this.courseData = response[1].data;
             this.setCourseData(response[1].data, response[0].data);
           })
+          // No success, show error message.
           .catch(err =&gt; {
             this.loadingText = strings.connection_error;
             console.log(err);
@@ -1830,8 +1848,8 @@ export default {
 &nbsp;
       this.isLoading = false;
     },
-    // Helper function to interpolate values in
-    // a graph.
+    // Helper function to interpolate values in a graph.
+    // Is used to place changes into the progression graph
 <span class="fstat-no" title="function not covered" >    interpolateY(dateArray, yArray, date) {</span>
 <span class="cstat-no" title="statement not covered" >      date = new Date(Date.parse(date));</span>
 <span class="cstat-no" title="statement not covered" >      for (var i = 0; i &lt; dateArray.length; i++) {</span>
@@ -1918,7 +1936,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 09:51:55 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 06 2018 10:33:38 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

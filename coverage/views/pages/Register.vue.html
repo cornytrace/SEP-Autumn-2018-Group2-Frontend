@@ -169,7 +169,17 @@
 124
 125
 126
-127</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,6 +229,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,6 +238,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,18 +260,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -276,6 +293,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -298,6 +316,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="app flex-row align-items-center"&gt;
     &lt;div class="container"&gt;
+      &lt;!-- Register form --&gt;
       &lt;b-row class="justify-content-center"&gt;
         &lt;b-col md="8" sm="10"&gt;
           &lt;b-card no-body class="mx-4"&gt;
@@ -351,6 +370,7 @@ export default {
   components: {
     MultiSelect,
   },
+  // Data, mainly form v-models.
   data: function() {
     return {
       email: "",
@@ -363,6 +383,7 @@ export default {
       isHidden: true,
     };
   },
+  // On before mount get all courses to fill the select courses list.
   beforeMount: function() {
 <span class="fstat-no" title="function not covered" >    util</span>
       .getCourses()
@@ -374,17 +395,21 @@ export default {
       });
   },
   methods: {
+    // Register method.
     doRegister() {
+      // Uses util function to check email.
       if (!util.validEmail(this.email)) {
         this.warningText = strings.error_wrong_email;
         this.isHidden = false;
         return;
       }
+      // If no organization show error.
 <span class="missing-if-branch" title="if path not taken" >I</span>      if (this.organization == "") {
 <span class="cstat-no" title="statement not covered" >        this.warningText = strings.error_no_organization;</span>
 <span class="cstat-no" title="statement not covered" >        this.isHidden = false;</span>
 <span class="cstat-no" title="statement not covered" >        return;</span>
       }
+      // Uses util function to create user.
       util
         .createUser({
           email: this.email,
@@ -392,6 +417,7 @@ export default {
           courses: this.selectedCourses,
           organization: this.organization,
         })
+        // Succes, redirect to admin home.
         .then(response =&gt; {
           this.$emit("update:users", response.data);
           this.$router.push("/admin");
@@ -404,6 +430,7 @@ export default {
           this.isHidden = false;
         });
     },
+    // Helper function to get a single course from courses based on the course ID.
 <span class="fstat-no" title="function not covered" >    getCourse(courseId) {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.courses.find(course =&gt; course.pk === courseId);</span></span>
     },
@@ -427,7 +454,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 29 2018 09:51:55 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 06 2018 10:33:38 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
