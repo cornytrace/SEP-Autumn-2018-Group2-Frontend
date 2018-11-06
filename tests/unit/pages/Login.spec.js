@@ -62,27 +62,6 @@ describe('Login.vue', () => {
       expect(wrapper.find('#errorAlert').exists()).toBe(true)
     })
   })
-  // This is just for debugging, and tested for coverage.
-  it('login test', () => {
-    const push = jest.fn()
-    const wrapper = mount(Login, {
-      store,
-      localVue,
-      mocks: {
-        $router: {
-          push: push,
-        },
-      },
-    })
-    wrapper.setData({
-      username: 'test',
-      password: '',
-    })
-    wrapper.find('#loginbutton').trigger('click')
-    return wrapper.vm.$nextTick().then(() => {
-      expect(push).toHaveBeenCalledWith("/")
-    })
-  })
   it('login then if ', (done) => {
     const push = jest.fn()
     const wrapper = mount(Login, {
