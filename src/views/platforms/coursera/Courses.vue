@@ -1,5 +1,6 @@
 <template>
   <div class="animated fadeIn">
+    <!-- Courses list container -->
     <div class="stats-container" v-if="!isLoading">
       <b-row>
         <b-col sm="6" md="4" v-for="course in courses" :key="course.name">
@@ -63,10 +64,12 @@ export default {
       qdt: this.$store.state.user.role === "qdt",
     };
   },
+  // On mount get all data.
   mounted: function() {
     this.isLoading = true;
     util
       .getCoursesData(this.$store.state.filters)
+      // Success, update data.
       .then(response => {
         // Check if the data returned has at least one course
         if (response.data.length > 0) {
@@ -83,12 +86,13 @@ export default {
           this.loadingText = strings.no_courses;
         }
       })
+      // No success, show error.
       .catch(err => {
         this.loadingText = strings.connection_error;
       });
   },
   methods: {
-    // Function for applying matching colors to courses with the same specialisation
+    // Function for applying matching colors to courses with the same specialization
     getColor(specialization) {
       if (specialization !== this.lastSpecialization) {
         this.lastIndex = (this.lastIndex + 1) % this.colors.length;

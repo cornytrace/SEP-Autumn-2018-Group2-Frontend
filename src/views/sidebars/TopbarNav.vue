@@ -25,6 +25,7 @@
 </template>
 
 <script>
+// Edited vue sidebar to facilitate top sidebar.
 import VuePerfectScrollbar from "vue-perfect-scrollbar";
 import {
   SidebarNavDivider,
@@ -40,9 +41,9 @@ export default {
     navItems: {
       type: Array,
       required: true,
-      default: () => [],
+      default: () => []
     },
-    clickCallback: Function,
+    clickCallback: Function
   },
   components: {
     SidebarNavDivider,
@@ -51,7 +52,7 @@ export default {
     SidebarNavTitle,
     SidebarNavItem,
     SidebarNavLabel,
-    VuePerfectScrollbar,
+    VuePerfectScrollbar
   },
   data() {
     return {
@@ -60,13 +61,13 @@ export default {
         minScrollbarLength: 40,
         suppressScrollX: true,
         wheelPropagation: false,
-        interceptRailY: styles => ({ ...styles, height: 0, }),
-      },
+        interceptRailY: styles => ({ ...styles, height: 0 })
+      }
     };
   },
   methods: {
-    scrollHandle() {},
-  },
+    scrollHandle() {}
+  }
 };
 </script>
 

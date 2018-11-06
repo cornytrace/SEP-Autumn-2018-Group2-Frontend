@@ -1,3 +1,4 @@
+// Navigation items in the bottom sidebar.
 export default {
   bottom_items: [{
     name: 'Settings',

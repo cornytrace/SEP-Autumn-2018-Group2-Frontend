@@ -10,25 +10,37 @@
     <b-row>
       <b-col sm="6" md="6" lg="6">
         <b-card class="bg" no-body>
-          <b-card-header class="border-contact header-text"><h2>Contact</h2></b-card-header>
+          <b-card-header class="border-contact header-text">
+            <h2>Contact</h2>
+          </b-card-header>
           <b-card-body>
-              <form>
-                <div class="text-color"><h6>Firstname</h6></div>
-                <input class="form" type="text" name="firstname"><br><br>
-                <div class="text-color"><h6>Lastname</h6></div>
-                <input class="form" type="text" name="lastname"><br><br>
-                <div class="text-color"><h6>Email adress</h6></div>
-                <input class="form" type="email" name="email"><br><br>
-                <div class="text-color"><h6>Message</h6></div>
-                <textarea class="form" name="message" cols="30" rows="7"></textarea><br><br>
-                <input class="text-color" type="button" value="Send" onclick="alert('Sending not yet implemented!')">    
-              </form> 
+            <form>
+              <div class="text-color">
+                <h6>Firstname</h6>
+              </div>
+              <input class="form" type="text" name="firstname"><br><br>
+              <div class="text-color">
+                <h6>Lastname</h6>
+              </div>
+              <input class="form" type="text" name="lastname"><br><br>
+              <div class="text-color">
+                <h6>Email adress</h6>
+              </div>
+              <input class="form" type="email" name="email"><br><br>
+              <div class="text-color">
+                <h6>Message</h6>
+              </div>
+              <textarea class="form" name="message" cols="30" rows="7"></textarea><br><br>
+              <input class="text-color" type="button" value="Send" onclick="alert('Sending not yet implemented!')">
+            </form>
           </b-card-body>
         </b-card>
       </b-col>
-      <b-col sm="6" md="6" lg="6"> 
+      <b-col sm="6" md="6" lg="6">
         <b-card class="bg" no-body>
-          <b-card-header class="border-contact header-text"><h2>Details</h2></b-card-header>
+          <b-card-header class="border-contact header-text">
+            <h2>Details</h2>
+          </b-card-header>
           <b-card-body class="border-contact">
             <div class="text-color">
               <h6>
@@ -57,6 +69,7 @@
 </template>
 
 <script>
+// No script static page.
 export default {
   name: "Contact",
 };

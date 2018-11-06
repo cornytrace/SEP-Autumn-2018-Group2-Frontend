@@ -47,6 +47,7 @@
 </template>
 
 <script>
+// Edited vue sidebar to facilitate bottom sidebar.
 import VuePerfectScrollbar from "vue-perfect-scrollbar";
 import {
   SidebarNavDivider,

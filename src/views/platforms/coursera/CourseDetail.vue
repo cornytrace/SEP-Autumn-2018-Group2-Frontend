@@ -315,6 +315,7 @@ export default {
   components: {
     Chart,
   },
+  // Before mount and route update fetch data.
   beforeMount() {
     var otherCourses = this.$store.state.user.courses.filter(
       el => el.course_slug !== this.$route.params.courseid
@@ -333,16 +334,19 @@ export default {
     this.getCourseData();
     next();
   },
+  // Add event bus to get notified when component needs changing.
   mounted() {
     // When we recieve an update event, refresh our course data
     EventBus.$on(events.refresh_component, data => {
       this.getCourseData();
     });
   },
+  // Remove event bus, on destroy.
   beforeDestroy() {
     EventBus.$off(events.refresh_component, null);
   },
   methods: {
+    // Get data.
     getCourseData() {
       this.isLoading = true;
       this.loadingText = strings.loading;
@@ -355,10 +359,12 @@ export default {
           util.getActions("coursera", this.courseId, this.$store.state.filters),
           util.getDetailedCourseData(this.courseId, this.$store.state.filters),
         ])
+          // Success update data.
           .then(response => {
             this.courseData = response[1].data;
             this.setCourseData(response[1].data, response[0].data);
           })
+          // No success, show error message.
           .catch(err => {
             this.loadingText = strings.connection_error;
             console.log(err);
@@ -539,8 +545,8 @@ export default {
 
       this.isLoading = false;
     },
-    // Helper function to interpolate values in
-    // a graph.
+    // Helper function to interpolate values in a graph.
+    // Is used to place changes into the progression graph
     interpolateY(dateArray, yArray, date) {
       date = new Date(Date.parse(date));
       for (var i = 0; i < dateArray.length; i++) {

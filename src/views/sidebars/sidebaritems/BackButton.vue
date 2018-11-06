@@ -2,6 +2,8 @@
   <button class="backbutton" type="button" @click="callback"><span v-if="!minimized" class="backbutton-text">Up</span><i class="fa fa-level-up nav-icon"></i></button>
 </template>
 <script>
+// Custom component to facilitate the "Up" button
+// in the sidebar.
 export default {
   name: "backbutton",
   methods: {},

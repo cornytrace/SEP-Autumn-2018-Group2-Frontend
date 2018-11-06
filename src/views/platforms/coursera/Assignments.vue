@@ -1,7 +1,9 @@
 <template>
   <div class="animated fadeIn">
+    <!-- Assignment list container. -->
     <div class="stats-container" v-if="!isLoading">
       <b-row>
+        <!-- For every assignment add card -->
         <b-col sm="4" lg="4" v-for="assignment of assignments" :key="assignment.item_id">
           <b-card no-body class="bg assignment-card">
             <b-card-header>
@@ -46,14 +48,17 @@ export default {
     this.getAssignments();
   },
   methods: {
+    // Get all assignments.
     getAssignments() {
       var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
       );
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
+        // Use util function to get all assignments.
         util
           .getAssignments(this.courseId, this.$store.state.filters)
+          // Success, update assignments.
           .then(response => {
             if (response.data.length) {
               this.isLoading = false;
@@ -62,6 +67,7 @@ export default {
               this.loadingText = strings.no_assignments;
             }
           })
+          // Not success, show error.
           .catch(err => {
             console.log(err);
             this.loadingText = strings.connection_error;

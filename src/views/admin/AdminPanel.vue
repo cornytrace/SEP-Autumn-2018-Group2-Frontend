@@ -5,10 +5,13 @@
 
 <template>
   <div class="app sidebar-hidden">
+    <!-- Header -->
     <AppHeader fixed>
+      <!-- Title -->
       <b-link to="/admin" class="navbar-brand">
         <h4>Admin dashboard</h4>
       </b-link>
+      <!-- Right side buttons -->
       <b-navbar-nav>
         <router-link to="register">
           <b-button><i class="fa fa-plus"></i>Add user</b-button>
@@ -16,6 +19,7 @@
         <b-button @click="doLogout" id="logout-button"><i class="fa fa-sign-out"></i>Logout</b-button>
       </b-navbar-nav>
     </AppHeader>
+    <!-- Container for other components -->
     <div class="app-body">
       <main class="main">
         <div class="container-fluid">
@@ -31,15 +35,16 @@ import { Header as AppHeader } from "@coreui/vue";
 export default {
   name: "AdminPanel",
   components: {
-    AppHeader,
+    AppHeader
   },
   methods: {
+    // Logout function for admin.
     doLogout() {
       this.$store.dispatch("logout").then(() => {
         this.$router.push("/pages/login");
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

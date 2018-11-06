@@ -178,15 +178,19 @@ export default {
       // Show tooltips option
       tooltips: this.$store.state.tooltips,
 
+      // General variables
       courseSlug: "",
       videoData: {},
       videoId: "",
       videoName: "",
       courseId: "",
-
       qdt: this.$store.state.user.role === "qdt",
+
+      // Message variables
       isLoading: false,
       loadingText: "Loading...",
+
+      // Statistics variables
       videoTitle: "",
       likes: 0,
       dislikes: 0,
@@ -212,6 +216,7 @@ export default {
   components: {
     Chart,
   },
+  // Update url params on before mount and route update.
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
     this.videoId = this.$route.params.videoid;
@@ -219,21 +224,23 @@ export default {
   },
 
   beforeRouteUpdate(to, from, next) {
-    // this.videoTitle = "Lecture " + to.params.videoid + " - 12/05/2018";
     this.courseSlug = to.params.courseid;
     this.videoId = to.params.videoid;
     this.getVideoData();
     next();
   },
+  // Add event bus to get notified when component needs updating.
   mounted() {
     EventBus.$on(events.refresh_component, data => {
       this.getVideoData();
     });
   },
+  // Remove event bus on destroy
   beforeDestroy() {
     EventBus.$off(events.refresh_component, null);
   },
   methods: {
+    // Get all video data from API.
     getVideoData() {
       this.isLoading = true;
       var currentCourse = this.$store.state.user.courses.find(
@@ -241,22 +248,26 @@ export default {
       );
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
+        // Call api using util helper function.
         util
           .getVideoDetails(
             this.courseId,
             this.videoId,
             this.$store.state.filters
           )
+          // Success, update video data.
           .then(response => {
             this.videoData = response.data;
             this.setVideoData();
           })
+          // No success, show error.
           .catch(err => {
             console.log(err);
             this.loadingText = strings.connection_error;
           });
       }
     },
+    // Helper function to set video data.
     setVideoData() {
       // Set url to the next item
       let category = this.videoData.next_item.category;

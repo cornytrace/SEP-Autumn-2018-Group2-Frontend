@@ -145,6 +145,7 @@ export default {
     };
   },
   methods: {
+    // Save settings.
     save() {
       this.$store.commit("setTooltips", this.hoverEnable);
       this.showAlertGeneral = true;

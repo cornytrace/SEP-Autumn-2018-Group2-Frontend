@@ -53,10 +53,10 @@ export default {
   getQueryParams(filters) {
     var params = [];
     if (filters.from !== null && filters.from !== undefined) {
-      params.push(["from_date", filters.from, ]);
+      params.push(["from_date", filters.from,]);
     }
     if (filters.to !== null && filters.to !== undefined) {
-      params.push(["to_date", filters.to, ]);
+      params.push(["to_date", filters.to,]);
     }
     var queryString = new URLSearchParams(params).toString();
     if (queryString === "") {
@@ -91,6 +91,7 @@ export default {
   },
 
   // User API calls
+  // Get a list of all users.
   getUsers() {
     return axios
       .get(this.apiUrl() + "/users/", {
@@ -98,6 +99,7 @@ export default {
       })
   },
 
+  // Create user.
   createUser(data) {
     return axios
       .post(this.apiUrl() + "/users/", data, {
@@ -105,6 +107,7 @@ export default {
       })
   },
 
+  // Reset password for user with id.
   resetPassword(id, data) {
     return axios
       .put(this.apiUrl() + `/users/${id}/password_reset/`, data, {
@@ -112,6 +115,7 @@ export default {
       })
   },
 
+  // Update single user.
   updateUser(user) {
     return axios
       .put(this.apiUrl() + `/users/${user.pk}/`, user, {
@@ -119,15 +123,17 @@ export default {
       })
   },
 
+  // Send password reset mail to email.
   sendPasswordReset(email) {
     return axios
       .post(this.apiUrl() + `/users/forgot_password/`, {
         email: email,
       }, {
-        headers: this.authHeader(),
-      })
+          headers: this.authHeader(),
+        })
   },
 
+  // Get current user.
   getUser() {
     return axios
       .get(this.apiUrl() + `/users/me/`, {
@@ -135,6 +141,7 @@ export default {
       })
   },
 
+  // Delete user with id.
   deleteUser(id) {
     return axios
       .delete(this.apiUrl() + `/users/${id}/`, {
@@ -143,6 +150,7 @@ export default {
   },
 
   // Course API calls
+  // Get all courses user has access to.
   getCourses() {
     return axios
       .get(this.apiUrl() + "/courses/", {
@@ -150,6 +158,7 @@ export default {
       })
   },
 
+  // Get data for courses.
   getCoursesData(filters) {
     return axios
       .get(this.apiUrl() + `/api/course-analytics/` + this.getQueryParams(filters), {
@@ -157,6 +166,7 @@ export default {
       })
   },
 
+  // Get data for single course.
   getDetailedCourseData(courseId, filters) {
     return axios
       .get(this.apiUrl() + `/api/course-analytics/${courseId}/` + this.getQueryParams(filters), {
@@ -165,6 +175,7 @@ export default {
   },
 
   // Video API calls
+  // Get a list of videos for a course.
   getVideos(courseId, filters) {
     return axios
       .get(this.apiUrl() + `/api/video-analytics/${courseId}/` + this.getQueryParams(filters), {
@@ -172,6 +183,7 @@ export default {
       })
   },
 
+  // Get details for a single video.
   getVideoDetails(courseId, videoId, filters) {
     return axios
       .get(this.apiUrl() + `/api/video-analytics/${courseId}/${videoId}/` + this.getQueryParams(filters), {
@@ -180,6 +192,7 @@ export default {
   },
 
   // Quiz API calls
+  // Get list of quizzes.
   getQuizzes(courseId, filters) {
     return axios
       .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/` + this.getQueryParams(filters), {
@@ -187,6 +200,7 @@ export default {
       })
   },
 
+  // Get all versions for a single quiz.
   getQuizVersions(courseId, baseId) {
     return axios
       .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/`, {
@@ -194,6 +208,7 @@ export default {
       })
   },
 
+  // Get details for a single quiz.
   getQuizDetails(courseId, baseId, version, filters) {
     return axios
       .get(this.apiUrl() + `/api/quiz-analytics/${courseId}/${baseId}/${version}/` + this.getQueryParams(filters), {
@@ -202,6 +217,7 @@ export default {
   },
 
   // Assignment API calls
+  // Get a list of assignments.
   getAssignments(courseId, filters) {
     return axios
       .get(this.apiUrl() + `/api/assignment-analytics/${courseId}/` + this.getQueryParams(filters), {
@@ -209,6 +225,7 @@ export default {
       })
   },
 
+  // Get details for a single assignment.
   getAssignmentDetails(courseId, itemId, filters) {
     return axios
       .get(this.apiUrl() + `/api/assignment-analytics/${courseId}/${itemId}/` + this.getQueryParams(filters), {
@@ -217,6 +234,7 @@ export default {
   },
 
   // Actions API calls
+  // Get all actions for a course.
   getActions(platformId, courseId, filters) {
     return axios
       .get(this.apiUrl() + `/actions/${platformId}/${courseId}/` + this.getQueryParams(filters), {
@@ -224,6 +242,7 @@ export default {
       })
   },
 
+  // Save single action.
   saveAction(action) {
     return axios
       .post(this.apiUrl() + `/actions/`, action, {
@@ -231,6 +250,7 @@ export default {
       })
   },
 
+  // Delete single action.
   deleteAction(pk) {
     return axios
       .delete(this.apiUrl() + `/actions/${pk}` + '/', {

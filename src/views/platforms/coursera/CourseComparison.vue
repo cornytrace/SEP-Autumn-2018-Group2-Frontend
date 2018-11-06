@@ -1,7 +1,9 @@
 <template>
   <div class="animated fadeIn">
+    <!-- Course comparison modal. -->
     <b-row>
 
+      <!-- Main course -->
       <b-col sm="12" md="6">
         <b-card :no-body="true">
           <b-card-header class="custom-header">
@@ -58,8 +60,10 @@
         </b-card>
       </b-col>
 
+      <!-- Compared course -->
       <b-col sm="12" md="6">
         <b-card :no-body="true">
+          <!-- Secondary course selector -->
           <b-card-header>
             <b-form-select id="course-selector" @change=changeCourse v-model=selectedCourse :options=courses value-field="course_slug" text-field="course_name"></b-form-select>
           </b-card-header>
@@ -132,31 +136,38 @@ export default {
   name: "CourseComparison",
   data: function() {
     return {
-      loadingC1: true,
-      loadingC1Text: strings.loading,
-      loadingC2: true,
-      loadingC2Text: strings.loading,
+      // General variables
       qdt: this.$store.state.user.role === "qdt",
       show: true,
+      courses: [],
+      selectedCourse: "",
+
+      // Primary course data.
+      loadingC1: true,
+      loadingC1Text: strings.loading,
       course1: {
         courseSlug: "",
         courseId: "",
         courseData: {},
         courseName: "Course 1",
       },
+
+      // Secondary course data.
+      loadingC2: true,
+      loadingC2Text: strings.loading,
       course2: {
         courseSlug: "",
         courseId: "",
         courseData: {},
         courseName: "Course 2",
       },
-      courses: [],
-      selectedCourse: "",
     };
   },
   components: {
     Chart,
   },
+  // Get data before mount and route update, to facilitate switching
+  // to different courses.
   beforeMount() {
     this.course1.courseSlug = this.$route.params.courseid;
     this.course2.courseSlug = this.$route.params.course2id;
@@ -168,15 +179,18 @@ export default {
     this.getCourseData();
     next();
   },
+  // Attach event bus, to get notified  when to update component.
   mounted() {
     EventBus.$on(events.refresh_component, data => {
       this.getCourseData();
     });
   },
+  // Remove event bus on destroy.
   beforeDestroy() {
     EventBus.$off(events.refresh_component, null);
   },
   methods: {
+    // Handler for dropdown switch.
     changeCourse(evt) {
       this.$router.push(
         "/" +
@@ -187,10 +201,14 @@ export default {
           evt
       );
     },
+    // Get data helper function.
     getCourseData() {
+      // Set both to loading.
       this.loadingC1 = true;
       this.loadingC2 = true;
       this.loadingText = strings.loading;
+
+      // Get courses based on id.
       var currentCourse1 = this.$store.state.user.courses.find(
         x => x.course_slug === this.course1.courseSlug
       );
@@ -202,6 +220,7 @@ export default {
         this.courses = this.$store.state.user.courses.filter(el => {
           return el.course_slug !== this.course1.courseSlug;
         });
+        // Use util function to get primary course data.
         util
           .getDetailedCourseData(
             this.course1.courseId,
@@ -219,6 +238,7 @@ export default {
       if (currentCourse2) {
         this.course2.courseId = currentCourse2.course_id;
         this.selectedCourse = this.course2.courseSlug;
+        // Use util function again to get secondary course data.
         util
           .getDetailedCourseData(
             this.course2.courseId,

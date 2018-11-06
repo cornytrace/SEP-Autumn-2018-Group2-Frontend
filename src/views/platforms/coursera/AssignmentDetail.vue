@@ -55,6 +55,7 @@
           </b-row>
         </b-col>
 
+        <!-- Next item/assignment buttons -->
         <b-col md="3" lg="2">
           <div v-if="hasNextItem" class="link-container">
             <router-link :to=nextItemUrl>
@@ -118,15 +119,19 @@ export default {
       // Show tooltips option
       tooltips: this.$store.state.tooltips,
 
+      // General variables
       courseSlug: "",
       assignmentData: {},
       assignmentId: "",
       videoName: "",
       courseId: "",
-
       qdt: this.$store.state.user.role === "qdt",
+
+      // Message variables
       isLoading: false,
       loadingText: "Loading...",
+
+      // Statistics
       assignmentTitle: "",
       submissions: 0,
       submission_ratio: 0,
@@ -147,28 +152,33 @@ export default {
   components: {
     Chart,
   },
+  // Before mount get all variables from url.
   beforeMount() {
     this.courseSlug = this.$route.params.courseid;
     this.assignmentId = this.$route.params.assignmentid;
     this.getAssignmentData();
   },
-
+  // Before route update to handle going from one to another
+  // assignment. Does the same as beforeMount.
   beforeRouteUpdate(to, from, next) {
-    // this.video_title = "Lecture " + to.params.assignmentId + " - 12/05/2018";
     this.courseSlug = to.params.courseid;
     this.assignmentId = to.params.assignmentid;
     this.getAssignmentData();
     next();
   },
+  // Initialize eventbus on mount, to get notified when
+  // refresh is needed.
   mounted() {
     EventBus.$on(events.refresh_component, () => {
       this.getAssignmentData();
     });
   },
+  // Remove eventbus before destroy.
   beforeDestroy() {
     EventBus.$off(events.refresh_component, null);
   },
   methods: {
+    // Get assignment data.
     getAssignmentData() {
       this.isLoading = true;
       var currentCourse = this.$store.state.user.courses.find(
@@ -176,16 +186,19 @@ export default {
       );
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
+        // Uses util function to get the assignment data.
         util
           .getAssignmentDetails(
             this.courseId,
             this.assignmentId,
             this.$store.state.filters
           )
+          // Succes update data.
           .then(response => {
             this.assignmentData = response.data;
             this.setAssignmentData();
           })
+          // Not succes, show error.
           .catch(err => {
             console.log(err);
             this.loadingText = strings.connection_error;
@@ -194,6 +207,7 @@ export default {
         this.loadingText = strings.connection_error;
       }
     },
+    // Helper function to set all data correctly.
     setAssignmentData() {
       // Set url to the next item
       this.assignmentTitle = this.assignmentData.name;
@@ -237,6 +251,7 @@ export default {
         }
       }
 
+      // Do the same for the next assignment button.
       if (
         this.assignmentData.next_assignment &&
         this.assignmentData.next_assignment.item_id &&
@@ -263,8 +278,5 @@ export default {
 <style scoped>
 .graph {
   max-height: 40vh;
-}
-
-.icon-container {
 }
 </style>

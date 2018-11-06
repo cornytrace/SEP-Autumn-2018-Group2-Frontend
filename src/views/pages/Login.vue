@@ -1,6 +1,7 @@
 <template>
   <div class="app flex-row align-items-center">
     <div class="container">
+      <!-- Login form -->
       <b-row class="justify-content-center">
         <b-col md="8">
           <b-card-group>
@@ -49,19 +50,16 @@ import strings from "@/strings";
 export default {
   name: "Login",
   methods: {
+    // Login function
     doLogin() {
-      if (this.username == "test") {
-        this.$store.commit("setToken", "INVALID_TOKEN");
-        this.$store.commit("setExpire", Date.now() + 1 * 60 * 60 * 1000);
-        this.$router.push("/");
-      }
-
+      // If there is no username or password show error.
       if (this.username == "" || this.password == "") {
         this.errorReason = strings.error_username_password;
         this.showAlert = true;
         return;
       }
 
+      // Uses the store to store credentials.
       this.$store
         .dispatch("login", { username: this.username, password: this.password, })
         // login successful
@@ -70,10 +68,12 @@ export default {
             .getUser()
             .then(response => {
               this.$store.commit("setUser", response.data);
-              // if we have a redirect query, redirect to it, else redirect to home
+              // If admin user redirect to admin home.
               if (response.data.role == "admin") {
                 this.$router.push("/admin");
-              } else if (
+              }
+              // If we have a redirect query, redirect to it, else redirect to home.
+              else if (
                 this.$route.query &&
                 this.$route.query.redirect !== undefined
               ) {
@@ -82,6 +82,7 @@ export default {
                 this.$router.push("/");
               }
             })
+            // If login not succesful, show error.
             .catch(() => {
               this.errorReason = strings.error_server;
               this.showAlert = true;

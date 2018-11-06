@@ -267,6 +267,7 @@ export default {
       hasNextQuiz: false,
     };
   },
+  // Before mount and route update update data.
   beforeRouteUpdate(to, from, next) {
     var urlParam = to.params.quizid;
     this.quizVersion = urlParam.substring(
@@ -289,11 +290,13 @@ export default {
     this.courseSlug = this.$route.params.courseid;
     this.getData();
   },
+  // Add event bus to get notified when to update component.
   mounted() {
     EventBus.$on(events.refresh_component, () => {
       this.getData();
     });
   },
+  // Remove event bus on destroy.
   beforeDestroy() {
     EventBus.$off(events.refresh_component, null);
   },

@@ -1,6 +1,7 @@
 <template>
   <div class="app flex-row align-items-center">
     <div class="container">
+      <!-- Forgot password form -->
       <b-row class="justify-content-center">
         <b-col md="8">
           <b-card-group>
@@ -47,7 +48,9 @@ export default {
     };
   },
   methods: {
+    // Submit method to submit the new password.
     doSubmit() {
+      // Uses util function to check email.
       if (util.validEmail(this.email)) {
         util
           .sendPasswordReset(this.email)
@@ -71,6 +74,7 @@ export default {
         this.errorReason = strings.error_wrong_email;
       }
     },
+    // Check if the string is a valid JSON.
     isValidJSONString(str) {
       try {
         JSON.parse(str);

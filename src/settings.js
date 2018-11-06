@@ -1,3 +1,4 @@
+// Settings used throughout the project.
 export default {
   //Platform settings
   platforms: [{

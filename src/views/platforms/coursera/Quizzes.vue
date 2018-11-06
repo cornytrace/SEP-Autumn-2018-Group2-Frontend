@@ -1,5 +1,6 @@
 <template>
   <div class="animated fadeIn">
+    <!-- Quiz list container -->
     <div class="stats-container" v-if="!isLoading">
       <b-row>
         <b-col sm="4" lg="4" v-for="quiz of quizzes" :key="quiz.name">
@@ -47,6 +48,7 @@ export default {
     this.getQuizzes();
   },
   methods: {
+    // Get all quizzes
     getQuizzes() {
       var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
@@ -55,6 +57,7 @@ export default {
         this.courseId = currentCourse.course_id;
         util
           .getQuizzes(this.courseId, this.$store.state.filters)
+          // Success, update list
           .then(response => {
             if (response.data.length > 0) {
               this.quizzes = response.data;
@@ -63,6 +66,7 @@ export default {
               this.loadingText = strings.no_quizzes;
             }
           })
+          // No success, show error.
           .catch(err => {
             console.log(err);
             this.loadingText = strings.connection_error;

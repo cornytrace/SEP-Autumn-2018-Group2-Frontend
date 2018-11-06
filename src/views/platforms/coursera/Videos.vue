@@ -47,14 +47,17 @@ export default {
     this.getVideos();
   },
   methods: {
+    // Get all videos from API
     getVideos() {
       var currentCourse = this.$store.state.user.courses.find(
         x => x.course_slug === this.courseSlug
       );
       if (currentCourse) {
         this.courseId = currentCourse.course_id;
+        // Call API using util helper function.
         util
           .getVideos(this.courseId, this.$store.state.filters)
+          // Success, update video list.
           .then(response => {
             if (response.data.length > 0) {
               this.isLoading = false;
@@ -63,6 +66,7 @@ export default {
               this.loadingText = strings.no_videos;
             }
           })
+          // No success, show error.
           .catch(err => {
             console.log(err);
             this.loadingText = strings.connection_error;

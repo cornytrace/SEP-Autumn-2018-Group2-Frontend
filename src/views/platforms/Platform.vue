@@ -1,5 +1,5 @@
 <!-- 
- This is a hack in order to fix the breadcrumb.
+ Platform view, to get hierarchy.
 -->
 <template>
     <router-view></router-view>

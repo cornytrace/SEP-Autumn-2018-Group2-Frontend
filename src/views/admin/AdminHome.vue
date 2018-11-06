@@ -1,7 +1,9 @@
 <template>
   <div class="content">
     <b-row>
+      <!-- Admin home container -->
       <b-col sm="7">
+        <!-- Users list -->
         <b-list-group>
           <b-list-group-item class="first-row" id="userelement">
             <table>
@@ -34,6 +36,7 @@
           </b-list-group-item>
         </b-list-group>
       </b-col>
+      <!-- Edit user form on right side -->
       <b-col sm="5">
         <b-card class="bg" no-body>
           <b-card-header>
@@ -72,6 +75,7 @@
         </b-card>
       </b-col>
     </b-row>
+    <!-- Delete confirmation modal -->
     <b-modal id="deleteModal" title="Are you sure?" @ok="handleOk">
       <p class="my-4">Are you sure you want to delete this user? <br> {{ selectedEmail}}</p>
     </b-modal>
@@ -86,23 +90,30 @@ import MultiSelect from "@/components/MultiSelect";
 export default {
   name: "AdminHome",
   components: {
-    MultiSelect,
+    MultiSelect
   },
   data: function() {
     return {
+      // Setting to use in html.
       settings: settings,
+
       courses: [],
+      users: [],
+
+      // Selected user variables.
       selectedCourses: [],
       selectedEmail: "",
       selectedUser: "No user selected",
       selectedRole: settings.roles[0].id,
+
+      // Message variables
       showSuccess: false,
       showAlert: false,
-      errorReason: "",
-      users: [],
+      errorReason: ""
     };
   },
   methods: {
+    // Click on user function.
     click: function(id) {
       this.showSuccess = false;
       this.showAlert = false;
@@ -113,11 +124,13 @@ export default {
       this.selectedRole = user.role;
       this.organization = user.organization;
     },
+    // Helper function to delete user.
     deleteUser(id) {
       util.deleteUser(id).then(response => {
         this.getUsers();
       });
     },
+    // Handles the ok of the delete user pop-up confimation.
     handleOk() {
       this.deleteUser(this.selectedUser);
     },
@@ -130,13 +143,15 @@ export default {
             email: this.selectedEmail,
             pk: this.selectedUser,
             role: this.selectedRole,
-            organization: this.organization,
+            organization: this.organization
           })
+          // Succes, update users..
           .then(() => {
             this.showAlert = false;
             this.showSuccess = true;
             this.getUsers();
           })
+          // Not succes, show error.
           .catch(error => {
             this.errorReason = "";
             for (var err in error.response.data) {
@@ -146,14 +161,14 @@ export default {
             this.showAlert = true;
             this.showSuccess = false;
           });
-      } else {
+      }
+      // No user selected.
+      else {
         this.showAlert = true;
         this.errorReason = "No user selected";
       }
     },
-    getUser: function(id) {
-      return this.users.find(x => x.pk === id);
-    },
+    // Helper function to get all users.
     getUsers() {
       util
         .getUsers()
@@ -164,9 +179,7 @@ export default {
           console.log(error);
         });
     },
-    getCourse(id) {
-      return this.courses.find(x => x.pk === id);
-    },
+    // Helper function to all courses.
     getCourses() {
       util
         .getCourses()
@@ -177,11 +190,20 @@ export default {
           console.log(error);
         });
     },
+    // Helper function to get user based on the id.
+    getUser: function(id) {
+      return this.users.find(x => x.pk === id);
+    },
+    // Helper function to get course based on the id.
+    getCourse(id) {
+      return this.courses.find(x => x.pk === id);
+    }
   },
+  // Before mound get all users and courses.
   beforeMount: function() {
     this.getUsers();
     this.getCourses();
-  },
+  }
 };
 </script>
 

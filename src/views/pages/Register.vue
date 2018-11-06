@@ -1,6 +1,7 @@
 <template>
   <div class="app flex-row align-items-center">
     <div class="container">
+      <!-- Register form -->
       <b-row class="justify-content-center">
         <b-col md="8" sm="10">
           <b-card no-body class="mx-4">
@@ -54,6 +55,7 @@ export default {
   components: {
     MultiSelect,
   },
+  // Data, mainly form v-models.
   data: function() {
     return {
       email: "",
@@ -66,6 +68,7 @@ export default {
       isHidden: true,
     };
   },
+  // On before mount get all courses to fill the select courses list.
   beforeMount: function() {
     util
       .getCourses()
@@ -77,17 +80,21 @@ export default {
       });
   },
   methods: {
+    // Register method.
     doRegister() {
+      // Uses util function to check email.
       if (!util.validEmail(this.email)) {
         this.warningText = strings.error_wrong_email;
         this.isHidden = false;
         return;
       }
+      // If no organization show error.
       if (this.organization == "") {
         this.warningText = strings.error_no_organization;
         this.isHidden = false;
         return;
       }
+      // Uses util function to create user.
       util
         .createUser({
           email: this.email,
@@ -95,6 +102,7 @@ export default {
           courses: this.selectedCourses,
           organization: this.organization,
         })
+        // Succes, redirect to admin home.
         .then(response => {
           this.$emit("update:users", response.data);
           this.$router.push("/admin");
@@ -107,6 +115,7 @@ export default {
           this.isHidden = false;
         });
     },
+    // Helper function to get a single course from courses based on the course ID.
     getCourse(courseId) {
       return this.courses.find(course => course.pk === courseId);
     },

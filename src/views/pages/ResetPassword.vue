@@ -1,6 +1,7 @@
 <template>
   <div class="app flex-row align-items-center">
     <div class="container">
+      <!-- Reset password form -->
       <b-row class="justify-content-center">
         <b-col md="8">
           <b-card-group>
@@ -21,8 +22,7 @@
                     </b-input-group-prepend>
                     <b-form-input type="password" v-model="passwordCheck" class="form-control" placeholder="Password (repeat)" autocomplete="current-password" @keyup.native.enter="doReset" />
                   </b-input-group>
-                  <b-alert id="alertbox" variant="danger"
-                  dismissible :show="showAlert" @dismissed="showAlert=false">
+                  <b-alert id="alertbox" variant="danger" dismissible :show="showAlert" @dismissed="showAlert=false">
                     Reset failed: <span v-html="errorReason"></span>
                   </b-alert>
                   <b-alert id="successbox" variant="success" dismissible :show="showSuccess" @dismissed="showSuccess=false">
@@ -59,17 +59,21 @@ export default {
     };
   },
   methods: {
+    // Reset password function.
     doReset: function() {
       if (this.checkPassword()) {
+        // Use util function to reset password.
         util
           .resetPassword(this.$store.state.resetId, {
             password: this.password,
             token: this.$store.state.resetToken,
           })
+          // Reset succes, notify user.
           .then(response => {
             this.showAlert = false;
             this.showSuccess = true;
           })
+          // Error resetting password, notify user.
           .catch(error => {
             if (error.response.data.password) {
               for (let reason of error.response.data.password) {
@@ -82,6 +86,8 @@ export default {
           });
       }
     },
+    // Helper function to check if both password boxes are the same
+    // and if password reset token is valid.
     checkPassword() {
       if (this.password === this.passwordCheck) {
         return true;

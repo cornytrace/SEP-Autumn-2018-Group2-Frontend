@@ -1,6 +1,7 @@
 <template>
   <div class="app flex-row align-items-center">
     <div class="container">
+      <!-- 404 container -->
       <b-row class="justify-content-center">
         <b-col md="6">
           <div class="clearfix">
@@ -27,6 +28,6 @@
 
 <script>
 export default {
-  name: 'Page404',
-}
+  name: "Page404",
+};
 </script>

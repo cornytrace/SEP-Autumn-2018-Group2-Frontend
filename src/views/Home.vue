@@ -93,16 +93,22 @@ export default {
   name: "home",
   data: function() {
     return {
+      // Settings
       platforms: settings.platforms,
+      resources: settings.resources,
+
+      // Statistics variables.
       courses: 0,
       learners: 0,
       completers: 0,
       paidUsers: 0,
+
+      // General variables
       coursesCoursera: [],
-      resources: settings.resources,
     };
   },
   computed: {
+    // Get total numbers computed from single items.
     statisticsCoursera() {
       return {
         courses: {
@@ -138,6 +144,7 @@ export default {
     arrayWeightedAverage: util.arrayWeightedAverage,
     arrayColumn: util.arrayColumn,
   },
+  // Before mount get statistics.
   beforeMount() {
     //this.statisticsCoursera.courses.value = this.$store.state.user.courses.length;
     util.getCoursesData(this.$store.state.filters).then(response => {
